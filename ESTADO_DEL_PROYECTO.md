@@ -233,8 +233,7 @@ Se corrigieron unas 270 líneas en los 7 proyectos con Blender. La tabla complet
 - **Cómo comprobar un nombre:** la traducción oficial está en
   `C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\locale\es\LC_MESSAGES\blender.mo`
   (formato gettext; se puede leer con un script pequeño de Node). No adivinar nombres de menús.
-- [ ] **Animación `simetria`** (Mini fútbol G2): todavía muestra "Simetría" y "Fijar origen"; en Blender 5.2 son
-      **Simetrizar** y **Definir origen** (`publico/js/animaciones/simetria.js`, 3 textos).
+- [x] **Animación `simetria`** (Mini fútbol G2): ahora dice **Simetrizar** y **Definir origen** (14 de octubre).
 - [ ] Confirmar en una PC de la academia cómo aparecen: la carpeta **Object/Objeto** al anexar (Garra, Puente y
       Laberinto G13) y los menús de la extensión de engranajes (Garra G4, en inglés: **Gears → Gear**).
 

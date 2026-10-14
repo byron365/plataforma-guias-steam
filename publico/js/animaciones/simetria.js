@@ -1,5 +1,5 @@
 // ============================================================
-// Animación "simetria": el modificador Simetría (Mirror) de Blender.
+// Animación "simetria": el modificador Simetrizar (Mirror) de Blender.
 // Se ve la portería de frente: solo se modela la mitad derecha (poste,
 // medio travesaño y medio piso) y Blender copia el otro lado en el eje X.
 //   - Mover el poste cambia las dos mitades a la vez.
@@ -22,7 +22,7 @@ export default function montar(contenedor, config) {
   let activo = true;         // modificador encendido
 
   const capa = svg('g', {});
-  const raiz = svg('svg', { viewBox: '0 0 520 270', class: 'sim-svg', role: 'img', 'aria-label': 'Portería vista de frente con el modificador Simetría' },
+  const raiz = svg('svg', { viewBox: '0 0 520 270', class: 'sim-svg', role: 'img', 'aria-label': 'Portería vista de frente con el modificador Simetrizar' },
     ...Array.from({ length: 13 }, (_, i) => svg('line', { x1: 20 + i * 40, x2: 20 + i * 40, y1: 20, y2: 250, class: 'gemelo-cuadricula' })),
     svg('line', { x1: 10, x2: 510, y1: PISO, y2: PISO, class: 'coord-eje-x' }),
     svg('line', { x1: CX, x2: CX, y1: 14, y2: 256, class: 'sim-eje-z' }),
@@ -35,12 +35,12 @@ export default function montar(contenedor, config) {
   const vPoste = el('strong'); const vOrigen = el('strong');
   const casilla = el('input', { type: 'checkbox', checked: true });
   const nota = el('p', { class: 'anim-estado', 'aria-live': 'polite' });
-  const botonOrigen = el('button', { type: 'button', class: 'anim-boton' }, 'Fijar origen en (0, 0, 0)');
+  const botonOrigen = el('button', { type: 'button', class: 'anim-boton' }, 'Definir origen en (0, 0, 0)');
 
   contenedor.append(el('div', { class: 'anim-simetria' },
     raiz,
     el('div', { class: 'anim-controles' },
-      el('label', { class: 'casilla-simple' }, casilla, ' Modificador Simetría (eje X)'),
+      el('label', { class: 'casilla-simple' }, casilla, ' Modificador Simetrizar (eje X)'),
       el('label', { class: 'anim-etiqueta' }, 'Poste en X = ', vPoste, rPoste),
       el('label', { class: 'anim-etiqueta' }, 'Origen del objeto en X = ', vOrigen, rOrigen),
       el('div', { class: 'anim-rapidos' }, botonOrigen),

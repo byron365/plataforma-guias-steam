@@ -718,7 +718,7 @@ Lee los promedios de la tabla de calibración (pruébalo aquí, no se guarda):
 :::animacion tipo="escala" escala="200" fija="si" ejemplo="Largo de la cancha|105" objetos="Jugador (alto)|1.8; Autobús (largo)|12"
 :::
 
-## Simetría en Blender
+## Modificador Simetrizar en Blender
 
 ```markdown
 :::animacion tipo="simetria" mitad="50" alto="50"
