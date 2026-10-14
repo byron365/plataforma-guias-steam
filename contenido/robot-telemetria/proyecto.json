@@ -1,0 +1,122 @@
+{
+  "id": "robot-telemetria",
+  "nombre": "Robot con mando y telemetría",
+  "nivel": "Intermedio II",
+  "descripcion": "Un robot con dos motores DC y un mando con joystick y pantalla, comunicados por Bluetooth con un protocolo propio de órdenes y telemetría.",
+  "docente": "Bairon Alas",
+  "imagen": "imagenes/IMAGEN_1.1.png",
+  "guias": [
+    {
+      "archivo": "guia-01.md",
+      "guia": 1,
+      "sabado": 1,
+      "titulo": "Dos cerebros que conversan",
+      "sesion": "Definición del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-02.md",
+      "guia": 2,
+      "sabado": 2,
+      "titulo": "La arquitectura del robot",
+      "sesion": "Diseño de arquitectura",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-03.md",
+      "guia": 3,
+      "sabado": 3,
+      "titulo": "Elegir con números",
+      "sesion": "Selección de componentes",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-04.md",
+      "guia": 4,
+      "sabado": 4,
+      "titulo": "Robot y mando por dentro",
+      "sesion": "Implementación electrónica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-05.md",
+      "guia": 5,
+      "sabado": 5,
+      "titulo": "Órdenes y telemetría",
+      "sesion": "Programación del sistema",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-06.md",
+      "guia": 6,
+      "sabado": 6,
+      "titulo": "Probar con datos",
+      "sesion": "Pruebas funcionales",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-07.md",
+      "guia": 7,
+      "sabado": 7,
+      "titulo": "Cazar fallos",
+      "sesion": "Corrección de fallos",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-08.md",
+      "guia": 8,
+      "sabado": 8,
+      "titulo": "Suave, seguro y eficiente",
+      "sesion": "Optimización del sistema",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-09.md",
+      "guia": 9,
+      "sabado": 9,
+      "titulo": "El documento técnico",
+      "sesion": "Documentación técnica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-10.md",
+      "guia": 10,
+      "sabado": 10,
+      "titulo": "La pista de pruebas",
+      "sesion": "Preparación de presentación",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-11.md",
+      "guia": 11,
+      "sabado": 11,
+      "titulo": "Demostración en pista",
+      "sesion": "Presentación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-12.md",
+      "guia": 12,
+      "sabado": 12,
+      "titulo": "Evaluar el sistema",
+      "sesion": "Evaluación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-13.md",
+      "guia": 13,
+      "sabado": 13,
+      "titulo": "Pensar en sistemas distribuidos",
+      "sesion": "Cierre académico",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-14.md",
+      "guia": 14,
+      "sabado": 14,
+      "titulo": "Del mando al celular",
+      "sesion": "Proyección a Intermedio III",
+      "duracion": 120
+    }
+  ]
+}

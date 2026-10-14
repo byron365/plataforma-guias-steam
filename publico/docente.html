@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel del docente · Guías STEAM</title>
+  <meta name="theme-color" content="#0E1015">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="stylesheet" href="/css/animaciones.css">
+  <link rel="stylesheet" href="/css/docente.css">
+  <link rel="stylesheet" href="/css/tema-oscuro.css">
+  <script src="/js/tema.js"></script>
+</head>
+<body class="panel">
+  <header class="cabecera">
+    <div class="contenedor contenedor-ancho">
+      <a class="marca" href="/docente">
+        <img src="/img/logo-cabecera.jpg" alt="" width="71" height="48" onerror="this.hidden = true">
+        <span class="marca-texto">STEAM Robotics Academy<small>Panel del docente</small></span>
+      </a>
+      <div class="cabecera-extra" id="cabecera-extra"></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="contenedor contenedor-ancho" id="pagina">
+      <p class="cargando">Cargando…</p>
+    </div>
+  </main>
+
+  <!-- Ventana para confirmar acciones que borran datos -->
+  <dialog id="confirmar" class="ventana" aria-labelledby="confirmar-titulo">
+    <div class="ventana-cabecera"><h2 id="confirmar-titulo">¿Seguro?</h2></div>
+    <div class="ventana-cuerpo">
+      <p id="confirmar-texto"></p>
+      <div class="ventana-acciones">
+        <button type="button" class="boton boton-secundario" value="no">Cancelar</button>
+        <button type="button" class="boton boton-peligro" value="si" id="confirmar-si">Sí, continuar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="indicador-guardado" id="indicador" role="status" aria-live="polite"></div>
+  <script type="module" src="/js/docente.js"></script>
+</body>
+</html>

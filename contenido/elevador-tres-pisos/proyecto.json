@@ -1,0 +1,122 @@
+{
+  "id": "elevador-tres-pisos",
+  "nombre": "Elevador a escala de tres pisos",
+  "nivel": "Intermedio II",
+  "descripcion": "Un elevador con motor DC, puente H y finales de carrera, con un nodo por piso comunicado por I2C; se compara la versión centralizada con la distribuida.",
+  "docente": "Bairon Alas",
+  "imagen": "imagenes/IMAGEN_1.1.png",
+  "guias": [
+    {
+      "archivo": "guia-01.md",
+      "guia": 1,
+      "sabado": 1,
+      "titulo": "Subir, bajar y frenar",
+      "sesion": "Definición del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-02.md",
+      "guia": 2,
+      "sabado": 2,
+      "titulo": "Centralizado o distribuido",
+      "sesion": "Diseño de arquitectura",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-03.md",
+      "guia": 3,
+      "sabado": 3,
+      "titulo": "Motor, sensores y torre",
+      "sesion": "Selección de componentes",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-04.md",
+      "guia": 4,
+      "sabado": 4,
+      "titulo": "La torre cobra vida",
+      "sesion": "Implementación electrónica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-05.md",
+      "guia": 5,
+      "sabado": 5,
+      "titulo": "De un cerebro a cuatro",
+      "sesion": "Programación del sistema",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-06.md",
+      "guia": 6,
+      "sabado": 6,
+      "titulo": "¿Para justo en el piso?",
+      "sesion": "Pruebas funcionales",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-07.md",
+      "guia": 7,
+      "sabado": 7,
+      "titulo": "Ni pasarse ni perder llamadas",
+      "sesion": "Corrección de fallos",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-08.md",
+      "guia": 8,
+      "sabado": 8,
+      "titulo": "Suave y eficiente",
+      "sesion": "Optimización del sistema",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-09.md",
+      "guia": 9,
+      "sabado": 9,
+      "titulo": "Centralizado contra distribuido",
+      "sesion": "Documentación técnica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-10.md",
+      "guia": 10,
+      "sabado": 10,
+      "titulo": "Ensayo con llamadas simultáneas",
+      "sesion": "Preparación de presentación",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-11.md",
+      "guia": 11,
+      "sabado": 11,
+      "titulo": "El elevador en servicio",
+      "sesion": "Presentación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-12.md",
+      "guia": 12,
+      "sabado": 12,
+      "titulo": "La prueba de seguridad",
+      "sesion": "Evaluación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-13.md",
+      "guia": 13,
+      "sabado": 13,
+      "titulo": "Sistemas críticos",
+      "sesion": "Cierre académico",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-14.md",
+      "guia": 14,
+      "sabado": 14,
+      "titulo": "Saber dónde está la cabina",
+      "sesion": "Proyección a Intermedio III",
+      "duracion": 120
+    }
+  ]
+}

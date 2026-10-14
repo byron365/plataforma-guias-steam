@@ -1,0 +1,122 @@
+{
+  "id": "laberinto-inclinable",
+  "nombre": "Laberinto inclinable",
+  "nivel": "Básico II",
+  "descripcion": "Un laberinto con canica que se inclina en dos ejes con un joystick, con cronómetro, récord y torneo.",
+  "docente": "Bairon Alas",
+  "imagen": "imagenes/IMAGEN_1.1.png",
+  "guias": [
+    {
+      "archivo": "guia-01.md",
+      "guia": 1,
+      "sabado": 1,
+      "titulo": "Un joystick que mueve motores",
+      "sesion": "Introducción al proyecto STEAM",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-02.md",
+      "guia": 2,
+      "sabado": 2,
+      "titulo": "Diseñar el laberinto",
+      "sesion": "Ideación y diseño",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-03.md",
+      "guia": 3,
+      "sabado": 3,
+      "titulo": "El juego completo en el simulador",
+      "sesion": "Planificación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-04.md",
+      "guia": 4,
+      "sabado": 4,
+      "titulo": "Un soporte que se inclina en dos ejes",
+      "sesion": "Construcción del prototipo",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-05.md",
+      "guia": 5,
+      "sabado": 5,
+      "titulo": "¡El tablero se mueve!",
+      "sesion": "Integración de sistemas",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-06.md",
+      "guia": 6,
+      "sabado": 6,
+      "titulo": "Movimiento suave y una meta que avisa",
+      "sesion": "Pruebas y ajustes",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-07.md",
+      "guia": 7,
+      "sabado": 7,
+      "titulo": "El récord y la ficha técnica",
+      "sesion": "Documentación técnica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-08.md",
+      "guia": 8,
+      "sabado": 8,
+      "titulo": "Preparando el gran torneo",
+      "sesion": "Preparación de presentación",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-09.md",
+      "guia": 9,
+      "sabado": 9,
+      "titulo": "¡El torneo de laberintos!",
+      "sesion": "Presentación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-10.md",
+      "guia": 10,
+      "sabado": 10,
+      "titulo": "¿Mejoramos con la práctica?",
+      "sesion": "Evaluación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-11.md",
+      "guia": 11,
+      "sabado": 11,
+      "titulo": "Fácil, medio o difícil",
+      "sesion": "Mejoras finales",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-12.md",
+      "guia": 12,
+      "sabado": 12,
+      "titulo": "Inclinar el mundo",
+      "sesion": "Aplicaciones alternativas",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-13.md",
+      "guia": 13,
+      "sabado": 13,
+      "titulo": "El cierre del laberinto",
+      "sesion": "Cierre académico",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-14.md",
+      "guia": 14,
+      "sabado": 14,
+      "titulo": "Controlar con el movimiento",
+      "sesion": "Proyección a Básico III",
+      "duracion": 120
+    }
+  ]
+}

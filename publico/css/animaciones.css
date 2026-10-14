@@ -1,0 +1,1375 @@
+/* ============================================================
+   Estilos de las animaciones interactivas
+   ============================================================ */
+
+/* ---------- Piezas comunes ---------- */
+.anim-dibujo svg, .perilla-servo svg { width: 100%; height: auto; display: block; }
+.anim-etiqueta { display: block; font-weight: 600; font-size: .95rem; margin: 0 0 .3em; text-align: center; }
+.anim-codigo {
+  font-family: var(--codigo); font-size: 1.15rem; background: var(--oscuro); color: #E6E1D6;
+  padding: 10px 16px; border-radius: var(--radio-chico); text-align: center; margin-bottom: 16px;
+}
+.anim-valor { color: var(--acento); font-weight: 600; display: inline-block; min-width: 3ch; }
+.anim-rapidos { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 12px; }
+.anim-boton {
+  min-width: 64px; min-height: 44px; border-radius: 999px; border: 2px solid var(--borde); background: var(--superficie);
+  font: 600 1rem var(--texto-fuente); color: var(--texto); cursor: pointer;
+}
+.anim-boton:hover { border-color: var(--acento); }
+.anim-boton:active { background: var(--acento-suave); }
+
+/* Deslizador grande, fácil de usar con el dedo */
+.anim-deslizador { -webkit-appearance: none; appearance: none; width: 100%; height: 44px; background: transparent; cursor: pointer; margin: 0; }
+.anim-deslizador::-webkit-slider-runnable-track { height: 12px; border-radius: 999px; background: var(--superficie-3); }
+.anim-deslizador::-moz-range-track { height: 12px; border-radius: 999px; background: var(--superficie-3); }
+.anim-deslizador::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 34px; height: 34px; border-radius: 50%; margin-top: -11px;
+  background: var(--acento); border: 4px solid var(--blanco); box-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+}
+.anim-deslizador::-moz-range-thumb {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--acento);
+  border: 4px solid var(--blanco); box-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+}
+
+/* ---------- Servo ---------- */
+.anim-servo { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px; align-items: center; }
+.servo-arco { fill: none; stroke: var(--linea); stroke-width: 2; }
+.servo-marca { stroke: var(--linea); stroke-width: 2; }
+.servo-numero { font: 600 12px var(--texto-fuente); fill: var(--texto-suave); }
+.servo-sector { fill: var(--acento); opacity: .22; }
+.servo-fuera { fill: #9CA3AF; opacity: .25; }
+.servo-oreja { fill: #2563EB; }
+.servo-cuerpo { fill: var(--azul); }
+.servo-etiqueta { font: 700 14px var(--titulos); fill: var(--blanco); letter-spacing: .05em; }
+.servo-brazo path, .servo-brazo circle { fill: var(--superficie-2); stroke: var(--linea); stroke-width: 2; }
+.servo-brazo .servo-agujero { fill: var(--oscuro); stroke: none; }
+.servo-brazo .servo-eje { fill: #C9C4BA; }
+
+/* ---------- Perilla ---------- */
+.anim-perilla { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1.2fr); gap: 18px; align-items: center; }
+.perilla-columna { text-align: center; }
+.perilla-svg { width: 100%; max-width: 220px; height: auto; touch-action: none; cursor: grab; border-radius: var(--radio); }
+.perilla-svg:active { cursor: grabbing; }
+.perilla-pista { fill: none; stroke: var(--superficie-3); stroke-width: 10; stroke-linecap: round; }
+.perilla-recorrido { fill: none; stroke: var(--acento); stroke-width: 10; stroke-linecap: round; }
+.perilla-marca { stroke: var(--borde-fuerte); stroke-width: 2; }
+.perilla-texto { font: 600 12px var(--texto-fuente); fill: var(--texto-suave); }
+.perilla-cuerpo { fill: var(--oscuro); }
+.perilla-tapa { fill: #2A2E38; }
+.perilla-indicador { fill: var(--acento); }
+
+.perilla-cadena { display: flex; flex-direction: column; align-items: stretch; }
+.perilla-caja { background: var(--superficie); border: 2px solid var(--borde); border-radius: var(--radio-chico); padding: 8px 12px; text-align: center; }
+.perilla-caja-titulo { font-size: .85rem; font-weight: 600; color: var(--texto-suave); }
+.perilla-caja-titulo code { font-size: .85rem; }
+.perilla-numero { font: 700 1.6rem/1.2 var(--titulos); font-variant-numeric: tabular-nums; }
+.n-angulo { color: var(--acento-texto); }
+.n-lectura { color: var(--azul-texto); }
+.perilla-flecha { text-align: center; font-size: .8rem; color: var(--texto-suave); padding: 2px 0; line-height: 1.3; }
+.perilla-flecha span { display: block; font-size: 1.1rem; color: var(--texto); }
+.perilla-flecha code { background: none; padding: 0; font-size: .8rem; }
+
+/* ---------- Pantallas angostas ---------- */
+@media (max-width: 720px) {
+  .anim-servo { grid-template-columns: 1fr; }
+  .anim-perilla { grid-template-columns: 1fr 1fr; }
+  .perilla-servo { grid-column: 1 / -1; max-width: 340px; margin: 0 auto; width: 100%; }
+}
+@media (max-width: 440px) {
+  .anim-perilla { grid-template-columns: 1fr; }
+  .perilla-svg { max-width: 190px; }
+}
+
+/* ============================================================
+   Animaciones de la Fase 2
+   ============================================================ */
+
+/* ---------- Piezas comunes ---------- */
+.anim-estado { font-size: .95rem; margin: 12px 0 0; padding: 8px 12px; border-radius: var(--radio-chico); background: var(--superficie); border: 2px solid var(--borde); }
+.anim-estado.ok { background: var(--verde-suave); border-color: var(--verde-borde); color: var(--verde-texto-fuerte); }
+.anim-estado.alerta { background: var(--rojo-suave); border-color: var(--rojo-borde); color: var(--rojo-texto); }
+.anim-boton.activo { background: var(--oscuro); color: var(--claro); border-color: var(--oscuro); }
+.anim-etiqueta .anim-deslizador { margin-top: 4px; }
+.oculto { display: none; }
+svg .terminal { fill: #E5E7EB; stroke: var(--linea); stroke-width: 2; }
+.placa-arduino { fill: #0F7C8C; stroke: #0A5C68; stroke-width: 2; }
+.placa-texto { font: 700 15px var(--titulos); fill: #F5F2EC; }
+.placa-subtexto { font: 600 12px var(--texto-fuente); fill: var(--texto-suave); }
+.pin-texto { font: 700 12px var(--codigo); fill: var(--texto); }
+
+/* ---------- Engranes ---------- */
+.engrane .rueda path { fill: #CBD5E1; stroke: var(--linea); stroke-width: 2; stroke-linejoin: round; }
+.engrane.motriz .rueda path { fill: #93C5FD; }
+.rueda-centro { fill: #F1F5F9; stroke: var(--linea); stroke-width: 1.5; }
+.rueda-eje { fill: var(--oscuro); }
+.rueda-marca { stroke: var(--acento); stroke-width: 4; stroke-linecap: round; }
+.dedo rect { fill: #F5F2EC; stroke: var(--linea); stroke-width: 2; }
+.dedo .dedo-goma { fill: var(--acento); }
+.engrane-nombre { font: 600 13px var(--texto-fuente); fill: var(--texto-suave); }
+.engrane-sentido { font: 700 14px var(--texto-fuente); fill: var(--azul-texto); }
+
+/* ---------- Booleano ---------- */
+.booleano-piso line { stroke: var(--borde-fuerte); stroke-width: 1; }
+.cara { stroke: #3F4553; stroke-width: 1.5; stroke-linejoin: round; }
+.cara-arriba { fill: #D9DDE3; }
+.cara-izq { fill: #A9B0BC; }
+.cara-der { fill: #C3C9D2; }
+.cara-sombra { fill: #6B7280; }
+.hueco-fondo { fill: #8A919D; }
+.hueco-pared-a { fill: #5B6170; }
+.hueco-pared-b { fill: #737A88; }
+.hueco-pasante { fill: var(--superficie-2); stroke: #3F4553; stroke-width: 1.5; }
+.cortador { fill: rgba(56, 189, 248, .16); stroke: var(--acento); stroke-width: 1.5; stroke-linejoin: round; }
+.booleano-texto { font: 600 12px var(--texto-fuente); fill: var(--texto); }
+.booleano-panel { background: #2B2F38; color: #E5E7EB; border-radius: var(--radio-chico); padding: 10px 14px; font-size: .9rem; margin-bottom: 14px; }
+.booleano-panel-titulo { font-weight: 700; margin-bottom: 6px; }
+.booleano-fila { display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid #3D4250; padding: 4px 0; }
+.booleano-fila strong { color: #93C5FD; }
+.anim-deslizador:disabled { opacity: .45; cursor: not-allowed; }
+
+/* ---------- Fuente y GND común ---------- */
+.anim-fuente { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; align-items: center; }
+.portapilas { fill: #374151; }
+.pila { fill: #FBBF24; stroke: #92400E; stroke-width: 1.5; }
+.fuente-cable { fill: none; stroke-width: 5; stroke-linecap: round; }
+.cable-senal, .cable-senal-fijo { stroke: #F97316; }
+.fuente-cable-servo { stroke-width: 3.5; }
+.cable-rojo { stroke: #DC2626; }
+.cable-cafe { stroke: #7C4A1E; }
+.cable-negro { stroke: #1F2937; }
+.cable-senal.fluye { stroke-dasharray: 10 8; animation: fluir .6s linear infinite; }
+.cable-senal.sin-referencia { stroke-dasharray: 3 9; opacity: .6; }
+@keyframes fluir { to { stroke-dashoffset: -18; } }
+.gnd-corte line { stroke: #DC2626; stroke-width: 4; stroke-linecap: round; }
+.interruptor {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 6px 18px 6px 6px;
+  border-radius: 999px; border: 2px solid var(--borde); background: var(--superficie); cursor: pointer;
+  font: 700 1rem var(--texto-fuente); color: var(--texto);
+}
+.interruptor-bola { width: 54px; height: 32px; border-radius: 999px; background: #D1D5DB; position: relative; transition: background .2s; }
+.interruptor-bola::after { content: ""; position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--superficie); box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: transform .2s; }
+.interruptor.activo .interruptor-bola { background: var(--verde); }
+.interruptor.activo .interruptor-bola::after { transform: translateX(22px); }
+
+/* ---------- Joystick ---------- */
+.anim-joystick { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 20px; align-items: start; }
+.joystick-columna { text-align: center; }
+.joystick-svg { width: 100%; max-width: 230px; touch-action: none; cursor: grab; border-radius: var(--radio); }
+.joystick-svg.arrastrando { cursor: grabbing; }
+.joystick-base { fill: #2A2E38; }
+.joystick-zona { fill: rgba(56, 189, 248, .18); stroke: var(--acento); stroke-dasharray: 4 4; }
+.joystick-cruz { stroke: #4B5162; stroke-width: 2; }
+.joystick-sombra { fill: rgba(0, 0, 0, .35); }
+.joystick-bola { fill: var(--acento); stroke: var(--acento-borde); stroke-width: 3; }
+.joystick-lecturas { display: grid; gap: 4px; font-family: var(--codigo); font-size: .85rem; }
+.joystick-servos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.joystick-servos figure { margin: 0; text-align: center; font-size: .9rem; }
+.joystick-servos figure svg { width: 100%; height: auto; }
+.joystick-codigo, .joystick-servos .anim-estado { grid-column: 1 / -1; }
+.joystick-codigo { margin: 0; background: var(--oscuro); color: #E6E1D6; font: .82rem/1.6 var(--codigo); padding: 10px 14px; border-radius: var(--radio-chico); overflow-x: auto; }
+.selector-modo { margin: 0 0 10px; }
+
+/* ---------- Diagrama de flujo ---------- */
+.anim-flujo { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.flujo-svg { width: 100%; height: auto; display: block; }
+.flujo-nodo polygon, .flujo-nodo rect { fill: var(--superficie); stroke: var(--linea); stroke-width: 2; transition: fill .2s; }
+.flujo-inicio rect, .flujo-fin rect { fill: var(--indigo-fondo); }
+.flujo-decision polygon { fill: var(--amarillo-suave); }
+.flujo-nodo.activo polygon, .flujo-nodo.activo rect { fill: var(--acento); stroke-width: 3; }
+.flujo-nodo.activo .flujo-texto { fill: var(--oscuro); font-weight: 700; }
+.flujo-texto { font: 500 13px var(--texto-fuente); fill: var(--texto); }
+.flujo-numero { font: 700 13px var(--titulos); fill: var(--texto-suave); }
+.flujo-flecha { fill: none; stroke: #6B7280; stroke-width: 2; }
+.flujo-flecha.recorrida { stroke: var(--acento); stroke-width: 4; }
+.flujo-punta { fill: #6B7280; }
+.flujo-etiqueta { font: 700 12px var(--texto-fuente); fill: var(--azul-texto); }
+.flujo-controles { position: sticky; top: 150px; }
+.flujo-ahora { background: var(--superficie); border: 2px solid var(--acento); border-radius: var(--radio-chico); padding: 10px 14px; margin: 0 0 6px; }
+.flujo-contador { display: block; font-size: .85rem; color: var(--texto-suave); margin-top: 10px; text-align: center; }
+
+/* ---------- Rutina ---------- */
+.anim-rutina { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.rutina-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.rutina-piso { stroke: var(--borde-fuerte); stroke-width: 3; }
+.rutina-pedestal { fill: var(--azul); }
+.rutina-segmento { stroke: var(--linea); stroke-width: 16; stroke-linecap: round; }
+.rutina-mandibula { stroke: var(--acento); stroke-width: 8; stroke-linecap: round; }
+.rutina-articulacion { fill: var(--acento); stroke: var(--linea); stroke-width: 3; }
+.rutina-texto { font: 600 12px var(--texto-fuente); fill: var(--texto-suave); }
+.rutina-dial-fondo { fill: var(--superficie-2); stroke: var(--linea); stroke-width: 2; }
+.rutina-dial-aguja { stroke: var(--acento); stroke-width: 6; stroke-linecap: round; }
+.rutina-dial-eje { fill: var(--linea); }
+.rutina-lecturas { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center; font-size: .9rem; margin-top: 8px; }
+.rutina-origen { font-size: .85rem; font-weight: 600; color: var(--texto-suave); margin: 0 0 8px; }
+.rutina-codigo { font-size: .95rem; }
+.rutina-velocidad { min-height: 44px; border-radius: 999px; border: 2px solid var(--borde); padding: 0 12px; font: 600 .95rem var(--texto-fuente); background: var(--superficie); color: var(--texto); }
+.rutina-pasos { margin: 14px 0 0; padding-left: 2.4em; font-size: .88rem; max-height: 320px; overflow-y: auto; }
+.rutina-pasos li { padding: 3px 6px; border-radius: 6px; }
+.rutina-pasos li.activo { background: var(--acento-suave); font-weight: 600; }
+.rutina-pasos li.falta { color: var(--error-texto); }
+.rutina-pasos code { background: none; padding: 0; }
+
+/* ---------- Conexiones ---------- */
+.conexiones-dibujo { background: var(--superficie); border-radius: var(--radio-chico); overflow: hidden; }
+.conexiones-svg { width: 100%; height: auto; display: block; }
+.placa-usb { fill: #9CA3AF; stroke: #4B5563; stroke-width: 2; }
+.placa-jack { fill: #1F2937; }
+.placa-chip { fill: #1F2937; }
+.pin-hueco { fill: #111827; stroke: #E5E7EB; stroke-width: 1; }
+.pin-hueco.usado { fill: #FDE68A; stroke: var(--linea); cursor: pointer; }
+.pin-nombre { font: 600 8.5px var(--codigo); fill: #E6F4F1; }
+.conexiones-componente rect { fill: var(--superficie-2); stroke: var(--linea); stroke-width: 2; }
+.componente-nombre { font: 700 13px var(--titulos); fill: var(--texto); }
+.componente-terminal { font: 500 12px var(--texto-fuente); fill: var(--texto-suave); }
+.conexiones-componente { cursor: pointer; }
+.cable path { fill: none; stroke-linecap: round; }
+.cable-contorno { stroke: rgba(14, 16, 21, .35); stroke-width: 6.5; }
+.cable-color { stroke-width: 4; }
+.cable-zona { stroke: transparent; stroke-width: 16; cursor: pointer; }
+.con-seleccion .cable { opacity: .12; transition: opacity .15s; }
+.con-seleccion .cable.activo { opacity: 1; }
+.cable.activo .cable-color { stroke-width: 6; }
+.conexiones-info { min-height: 52px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 10px 14px; margin-top: 10px; background: var(--superficie); border: 2px solid var(--borde); border-radius: var(--radio-chico); }
+.conexiones-ayuda { color: var(--texto-suave); font-size: .92rem; }
+.conexiones-nota { flex-basis: 100%; font-size: .9rem; color: var(--texto-suave); }
+.conexiones-muestra { display: inline-block; width: 26px; height: 8px; border-radius: 4px; border: 1px solid rgba(0, 0, 0, .3); flex: none; }
+.conexiones-detalles { margin-top: 10px; }
+.conexiones-detalles summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+.conexiones-lista { display: grid; gap: 6px; }
+.conexiones-boton { display: flex; align-items: center; gap: 10px; text-align: left; min-height: 44px; padding: 6px 12px; border-radius: var(--radio-chico); border: 2px solid var(--borde); background: var(--superficie); font: 500 .92rem var(--texto-fuente); color: var(--texto); cursor: pointer; }
+.conexiones-boton:hover { border-color: var(--acento); }
+
+/* ---------- Pantallas angostas (Fase 2) ---------- */
+@media (max-width: 720px) {
+  .anim-fuente, .anim-joystick, .anim-flujo, .anim-rutina { grid-template-columns: 1fr; }
+  .flujo-controles { position: static; }
+}
+
+/* ============================================================
+   Animaciones del puente levadizo (y piezas reutilizables)
+   ============================================================ */
+.texto-ayuda { font-size: .88rem; color: var(--texto-suave); margin: 8px 0 0; }
+.anim-controles .casilla-simple, .casilla-simple { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .92rem; cursor: pointer; min-height: 44px; }
+.casilla-simple input { width: 20px; height: 20px; }
+
+/* ---------- Gráfica de línea (comun/grafica.js) ---------- */
+.anim-grafica { display: grid; gap: 8px; }
+.grafica-titulo { font-family: var(--titulos); font-weight: 700; margin: 0; }
+.grafica { position: relative; }
+.grafica-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.grafica-reja { stroke: var(--borde); stroke-width: 1; }
+.grafica-base { stroke: var(--borde-fuerte); stroke-width: 1.5; }
+.grafica-numero { font: 500 12px var(--texto-fuente); fill: var(--texto-suave); font-variant-numeric: tabular-nums; }
+.grafica-eje { font: 600 13px var(--texto-fuente); fill: var(--texto); }
+.grafica-referencia { stroke: var(--texto-suave); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.grafica-linea { fill: none; stroke: var(--serie-1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.grafica-marca { fill: var(--serie-1); stroke: var(--superficie); stroke-width: 2; }
+.grafica-zona { fill: transparent; cursor: pointer; }
+.grafica-punto:focus { outline: none; }
+.grafica-punto:focus .grafica-marca, .grafica-punto:hover .grafica-marca { r: 7; }
+.grafica-vacio { font: 500 14px var(--texto-fuente); fill: var(--texto-suave); }
+.grafica-etiqueta {
+  position: absolute; transform: translate(-50%, calc(-100% - 12px)); pointer-events: none; white-space: nowrap;
+  background: var(--oscuro); color: var(--claro); font: 600 .85rem var(--texto-fuente); padding: 4px 10px; border-radius: 8px;
+}
+
+/* ---------- Semáforo ---------- */
+.anim-semaforo { display: grid; grid-template-columns: minmax(0, 160px) minmax(0, 1fr); gap: 20px; align-items: start; }
+.semaforo-columna { text-align: center; }
+.semaforo-svg { width: 100%; max-width: 150px; height: auto; }
+.semaforo-poste { fill: #4B5563; }
+.semaforo-caja { fill: #1F2937; }
+.semaforo-luz { opacity: .18; transition: opacity .12s; }
+.semaforo-luz.encendida { opacity: 1; filter: drop-shadow(0 0 5px rgba(255, 255, 255, .55)); }
+.semaforo-reloj { font: 600 .85rem var(--codigo); white-space: nowrap; margin: 8px 0 0; font-variant-numeric: tabular-nums; }
+.semaforo-codigo { margin: 0; background: var(--oscuro); color: #E6E1D6; font: .88rem/1.7 var(--codigo); padding: 10px 0; border-radius: var(--radio-chico); overflow-x: auto; }
+.semaforo-codigo > span { display: block; padding: 0 14px; white-space: pre; }
+.semaforo-linea.activa { background: rgba(56, 189, 248, .22); box-shadow: inset 4px 0 0 var(--acento); }
+.semaforo-tiempo { width: 7.5ch; -moz-appearance: textfield; font: inherit; color: var(--acento); background: #1A1D25; border: 1px solid #3A3F4B; border-radius: 4px; padding: 0 4px; text-align: right; }
+.semaforo-tiempo::-webkit-inner-spin-button, .semaforo-tiempo::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ---------- Puente completo ---------- */
+.anim-puente { display: grid; gap: 14px; }
+.puente-vistas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 12px; align-items: stretch; }
+.puente-arriba, .puente-frente { width: 100%; height: auto; display: block; border-radius: var(--radio-chico); background: #DBEAFE; }
+.puente-tierra { fill: #A3B18A; }
+.puente-agua { fill: #60A5FA; }
+.puente-calle { fill: #6B7280; }
+.puente-tramo { fill: #9CA3AF; transition: fill .2s; }
+.puente-tramo.abierto { fill: #60A5FA; stroke: #F5F2EC; stroke-width: 2; stroke-dasharray: 5 4; }
+.puente-umbral { stroke: #FACC15; stroke-width: 2; stroke-dasharray: 6 4; }
+.puente-texto-chico { font: 600 11px var(--texto-fuente); fill: #0E1015; }
+.puente-sensor { fill: #0F7C8C; stroke: #0E1015; stroke-width: 1.5; }
+.puente-haz { stroke: #FACC15; stroke-width: 2; stroke-dasharray: 3 4; opacity: .9; }
+.puente-barco { cursor: grab; }
+.puente-barco path { fill: #F5F2EC; stroke: #0E1015; stroke-width: 2; }
+.puente-barco-mastil { fill: #0E1015; }
+.puente-barco:focus { outline: none; }
+.puente-barco:focus path { stroke: var(--acento); stroke-width: 3; }
+.puente-hoja { fill: #9CA3AF; stroke: #0E1015; stroke-width: 2; }
+.puente-torre { fill: #B45309; stroke: #0E1015; stroke-width: 1.5; }
+.puente-eje { fill: #0E1015; }
+.puente-mastil-frente rect { fill: #78350F; }
+.puente-vela { fill: #F5F2EC; stroke: #0E1015; stroke-width: 1.5; }
+.puente-buzzer { fill: #1F2937; }
+.puente-sonido path { fill: none; stroke: #0E1015; stroke-width: 2.5; stroke-linecap: round; opacity: 0; }
+.puente-sonido.activo path { animation: sonar .45s ease-in-out infinite alternate; }
+@keyframes sonar { from { opacity: .2; } to { opacity: 1; } }
+.puente-paso { font-weight: 700; margin: 0; padding: 8px 12px; border-radius: var(--radio-chico); background: var(--acento-fondo); border: 2px solid var(--acento-borde); }
+.puente-lecturas { display: flex; flex-wrap: wrap; gap: 6px 18px; font: .9rem var(--codigo); margin-top: 10px; }
+
+/* ---------- Escala ---------- */
+.anim-escala .anim-rapidos { justify-content: flex-start; margin: 0 0 12px; }
+.anim-escala .anim-etiqueta { text-align: left; }
+.escala-calculo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 6px 0 12px; }
+.escala-paso { background: var(--superficie); border: 2px solid var(--borde); border-radius: var(--radio-chico); padding: 6px 12px; text-align: center; }
+.escala-paso span { display: block; font-size: .8rem; color: var(--texto-suave); font-weight: 600; }
+.escala-paso strong { font: 700 1.25rem var(--titulos); font-variant-numeric: tabular-nums; }
+.escala-resultado { border-color: var(--acento); }
+.escala-resultado strong { color: var(--acento-texto); }
+.escala-flecha { font: 600 .9rem var(--codigo); color: var(--texto-suave); }
+.escala-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.escala-marca { stroke: var(--linea); stroke-width: 1.5; }
+.escala-numero { font: 600 12px var(--texto-fuente); fill: var(--texto-suave); }
+.escala-icono { font-size: 26px; }
+.escala-barra { fill: var(--acento); stroke: var(--linea); stroke-width: 1; }
+
+/* ---------- Triángulos ---------- */
+.anim-triangulo { display: grid; gap: 12px; }
+.triangulo-svg { width: 100%; height: auto; display: block; touch-action: pan-y; cursor: ew-resize; }
+.palito { stroke: #C08A4B; stroke-width: 9; stroke-linecap: round; }
+.palito-diagonal { stroke: #A16207; }
+.union { fill: var(--superficie); stroke: var(--linea); stroke-width: 2.5; }
+.triangulo-flecha line { stroke: var(--acento); stroke-width: 4; stroke-linecap: round; }
+.triangulo-flecha path { fill: var(--acento); }
+.triangulo-mesa { stroke: var(--borde-fuerte); stroke-width: 3; }
+.triangulo-nombre { font: 700 14px var(--titulos); fill: var(--texto); }
+.triangulo-estado { font: 600 13px var(--texto-fuente); fill: var(--verde); }
+.triangulo-estado.mal { fill: var(--error-texto); }
+
+/* ---------- Espejo de servos ---------- */
+.anim-espejo { display: grid; gap: 12px; }
+.espejo-frente { width: 100%; height: auto; display: block; border-radius: var(--radio-chico); background: #DBEAFE; }
+.espejo-servos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.espejo-servos figure { margin: 0; }
+.espejo-servos figure svg { width: 100%; height: auto; display: block; }
+.espejo-servos .anim-codigo { font-size: .95rem; margin: 6px 0 0; }
+.valor-error { color: #F87171 !important; }
+.hoja-error .puente-hoja { fill: #F87171; }
+
+/* ---------- Sensor ultrasónico ---------- */
+.anim-ultrasonico { display: grid; gap: 12px; }
+.ultra-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.ultra-placa { fill: #1D4ED8; stroke: var(--linea); stroke-width: 1.5; }
+.ultra-ojo { fill: #CBD5E1; stroke: #0E1015; stroke-width: 3; }
+.ultra-texto-placa { font: 700 13px var(--codigo); fill: #F5F2EC; }
+.ultra-texto { font: 600 12px var(--texto-fuente); fill: var(--texto-suave); }
+.ultra-objeto { cursor: grab; }
+.ultra-objeto rect { fill: var(--acento); stroke: var(--linea); stroke-width: 2; }
+.ultra-objeto:focus { outline: none; }
+.ultra-objeto:focus rect { stroke-width: 4; }
+.ultra-onda path { fill: none; stroke-width: 3; stroke-linecap: round; }
+.ultra-onda .ida { stroke: #F59E0B; }
+.ultra-onda .vuelta { stroke: #22C55E; }
+.ultra-cota line { stroke: var(--texto-suave); stroke-width: 1.5; }
+.ultra-pasos { margin: 10px 0; padding-left: 1.4em; font-size: .9rem; }
+.ultra-pasos li { color: var(--texto-suave); padding: 2px 4px; border-radius: 6px; }
+.ultra-pasos li.activo { color: var(--texto); font-weight: 700; background: var(--acento-fondo); }
+.ultra-pasos li.hecho { color: var(--texto); }
+.ultra-cuenta { white-space: pre-wrap; text-align: left; font-size: .95rem; }
+
+@media (max-width: 720px) {
+  .anim-semaforo { grid-template-columns: 1fr; }
+  .semaforo-svg { max-width: 110px; }
+  .puente-vistas { grid-template-columns: 1fr; }
+  .puente-arriba { max-width: 240px; justify-self: center; }
+}
+
+/* ============================================================
+   Animaciones del mini invernadero
+   ============================================================ */
+
+/* ---------- Invernadero completo ---------- */
+.anim-invernadero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.inv-svg { width: 100%; height: auto; display: block; border-radius: var(--radio-chico); background: #E0F2FE; }
+.inv-suelo { fill: #A3B18A; }
+.inv-casa { fill: rgba(255, 255, 255, .35); stroke: #64748B; stroke-width: 3; }
+.inv-techo { stroke: #64748B; stroke-width: 4; }
+.inv-ventana rect { fill: rgba(255, 255, 255, .7); stroke: #475569; stroke-width: 2; }
+.inv-luz-barra { fill: #94A3B8; stroke: #475569; stroke-width: 1.5; }
+.inv-rayo { stroke: #FACC15; stroke-width: 3; stroke-linecap: round; opacity: 0; }
+.inv-luz.encendida .inv-luz-barra { fill: #FDE047; }
+.inv-luz.encendida .inv-rayo { opacity: .9; }
+.inv-maceta { fill: #C2410C; stroke: #7C2D12; stroke-width: 2; }
+.inv-tierra { stroke: #3F2A14; stroke-width: 1.5; transition: fill .4s; }
+.inv-tallo { fill: none; stroke: #15803D; stroke-width: 5; stroke-linecap: round; }
+.inv-hoja { fill: #22C55E; stroke: #15803D; stroke-width: 2; }
+.inv-sensor { fill: #1D4ED8; stroke: #0E1015; stroke-width: 1; }
+.inv-texto { font: 600 11px var(--texto-fuente); fill: #0E1015; }
+.inv-dht { fill: #38BDF8; stroke: #0E1015; stroke-width: 1.5; }
+.inv-deposito { fill: rgba(255, 255, 255, .5); stroke: #475569; stroke-width: 2.5; }
+.inv-agua { fill: #60A5FA; }
+.inv-bomba { fill: #1F2937; }
+.inv-bomba.activa { fill: #22C55E; }
+.inv-manguera { fill: none; stroke: #475569; stroke-width: 4; stroke-linecap: round; }
+.inv-gota { fill: #3B82F6; }
+.inv-lecturas { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; font: .85rem var(--codigo); margin: 10px 0; }
+
+/* ---------- Causa y efecto ---------- */
+.anim-causa { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; align-items: center; }
+.causa-svg { width: 100%; height: auto; display: block; }
+.causa-nodo rect { fill: var(--superficie); stroke: var(--linea); stroke-width: 2; transition: fill .2s; }
+.causa-nodo.activo rect { fill: var(--acento); stroke-width: 3; }
+.causa-texto { font: 600 13px var(--texto-fuente); fill: var(--texto); }
+.causa-nodo.activo .causa-texto { fill: var(--oscuro); }
+.causa-flecha { fill: none; stroke: var(--texto-suave); stroke-width: 2.5; }
+.causa-flecha.recorrida { stroke: var(--acento); stroke-width: 4; }
+.causa-punta { fill: var(--texto-suave); }
+.causa-centro { font: 700 16px var(--titulos); fill: var(--texto-suave); }
+
+/* ---------- Relé ---------- */
+.anim-rele { display: grid; gap: 12px; }
+.rele-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.rele-cable { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.rele-control { stroke: #F97316; }
+.rele-potencia { stroke: #DC2626; }
+.rele-caja { fill: var(--superficie-2); stroke: var(--linea); stroke-width: 2; }
+.rele-titulo { font: 700 14px var(--titulos); fill: var(--texto); }
+.rele-bobina rect { fill: #B45309; stroke: var(--linea); stroke-width: 1.5; }
+.rele-bobina line { stroke: #FDE68A; stroke-width: 2; }
+.rele-svg.encendido .rele-bobina rect { fill: #F59E0B; filter: drop-shadow(0 0 6px rgba(245, 158, 11, .8)); }
+.rele-palanca { stroke: var(--linea); stroke-width: 5; stroke-linecap: round; transition: all .15s; }
+.rele-borne { fill: var(--superficie); stroke: var(--linea); stroke-width: 2; }
+.rele-etiqueta { font: 700 12px var(--codigo); fill: var(--texto-suave); }
+.rele-pin { font: 700 13px var(--codigo); fill: #FDE68A; }
+.rele-pilas { font: 700 13px var(--codigo); fill: #FDE68A; }
+.rele-motor circle { fill: var(--superficie-2); stroke: var(--linea); stroke-width: 3; }
+.rele-svg.encendido .rele-motor circle { fill: #BBF7D0; }
+.rele-motor-texto { font: 700 20px var(--titulos); fill: var(--texto); }
+.rele-corriente circle { fill: #FACC15; stroke: #92400E; stroke-width: 1; }
+
+/* ---------- Umbral ---------- */
+.anim-umbral { display: grid; gap: 12px; }
+.umbral-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.umbral-zona-humeda { fill: #BFDBFE; }
+.umbral-zona-seca { fill: #FDE68A; }
+.umbral-zona-texto { font: 700 12px var(--texto-fuente); fill: #0E1015; }
+.umbral-recta { stroke: var(--linea); stroke-width: 2; }
+.umbral-numero { font: 600 12px var(--texto-fuente); fill: var(--texto-suave); }
+.umbral-nombre { fill: var(--texto); }
+.umbral-linea { stroke: #DC2626; stroke-width: 3; }
+.umbral-etiqueta { font: 700 13px var(--codigo); fill: var(--error-texto); }
+.umbral-punto { fill: var(--serie-1); stroke: var(--superficie); stroke-width: 2; }
+.umbral-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: .95rem; }
+
+/* ---------- Histéresis ---------- */
+.anim-histeresis { display: grid; gap: 12px; }
+.hist-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.hist-banda { fill: var(--acento-fondo); }
+.hist-limite { stroke-width: 1.5; stroke-dasharray: 6 5; }
+.hist-abrir { stroke: #DC2626; }
+.hist-cerrar { stroke: #2563EB; }
+.hist-abierta { fill: #22C55E; }
+.hist-temp { font-variant-numeric: tabular-nums; }
+.hist-ventanas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.hist-caja { background: var(--superficie); border: 2px solid var(--borde); border-radius: var(--radio-chico); padding: 8px 12px; text-align: center; font-size: .9rem; }
+.hist-titulo { font-weight: 700; margin: 0 0 4px; }
+.hist-ventana { width: 120px; height: auto; display: block; margin: 0 auto; }
+.hist-hoja { fill: #CBD5E1; stroke: var(--linea); stroke-width: 2; }
+.hist-techo { stroke: var(--linea); stroke-width: 3; }
+.hist-cambios { display: block; color: var(--texto-suave); }
+
+/* ---------- Temporizador ---------- */
+.anim-temporizador { display: grid; gap: 10px; }
+.temp-arriba { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 12px; align-items: center; }
+.temp-svg { width: 100%; height: auto; display: block; }
+.temp-on { fill: #FDE047; stroke: var(--linea); stroke-width: 1.5; }
+.temp-off { fill: #334155; stroke: var(--linea); stroke-width: 1.5; }
+.temp-tramo-texto { font: 700 13px var(--texto-fuente); fill: #0E1015; }
+.temp-tramo-off { fill: #F5F2EC; }
+.temp-aguja { stroke: #DC2626; stroke-width: 3; }
+.temp-aguja-punta { fill: #DC2626; }
+.temp-foco { width: 80px; height: auto; }
+.temp-foco-luz { fill: #475569; stroke: var(--linea); stroke-width: 2; transition: fill .1s; }
+.temp-foco.encendida .temp-foco-luz { fill: #FDE047; filter: drop-shadow(0 0 10px rgba(250, 204, 21, .9)); }
+.temp-foco-base { fill: #64748B; }
+.temp-cuentas { margin: 0; }
+.temp-ajustes { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.temp-entrada { width: 7ch; min-height: 40px; font: 600 1rem var(--codigo); padding: 0 6px; border: 2px solid var(--borde); border-radius: 8px; background: var(--superficie); color: var(--texto); }
+
+/* ---------- Nivel de agua ---------- */
+.anim-nivel { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 16px; align-items: start; }
+.nivel-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); touch-action: none; cursor: ns-resize; }
+.nivel-deposito { fill: rgba(148, 163, 184, .15); stroke: var(--linea); stroke-width: 3; }
+.nivel-agua { fill: #60A5FA; opacity: .85; }
+.nivel-superficie { stroke: #1D4ED8; stroke-width: 3; }
+.nivel-sensor { fill: #DC2626; stroke: var(--linea); stroke-width: 1.5; }
+.nivel-tiras line { stroke: #E5E7EB; stroke-width: 2; }
+.nivel-flecha { stroke: var(--texto-suave); stroke-width: 2; stroke-dasharray: 3 3; }
+.nivel-led { fill: #7F1D1D; stroke: var(--linea); stroke-width: 2; }
+.nivel-led.encendido { fill: #EF4444; filter: drop-shadow(0 0 8px rgba(239, 68, 68, .9)); }
+
+@media (max-width: 720px) {
+  .anim-invernadero, .anim-causa, .anim-nivel { grid-template-columns: 1fr; }
+  .inv-lecturas { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Animaciones del dispensador de comida
+   ============================================================ */
+/* ---------- Dispensador completo ---------- */
+.anim-dispensador { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.disp-svg { width: 100%; height: auto; display: block; border-radius: var(--radio-chico); background: #F1F5F9; }
+.disp-mesa { fill: #C8A27A; }
+.disp-torre { fill: #D6D3D1; stroke: #78716C; stroke-width: 1.5; }
+.disp-botella { fill: rgba(255, 255, 255, .55); stroke: #64748B; stroke-width: 3; }
+.disp-relleno circle, .disp-croqueta, .disp-monton { fill: #B45309; stroke: #78350F; stroke-width: 1.2; }
+.disp-croqueta.atascada { fill: #DC2626; stroke: #7F1D1D; }
+.disp-embudo { fill: rgba(255, 255, 255, .7); stroke: #475569; stroke-width: 3; stroke-linejoin: round; }
+.disp-compuerta { fill: #0369A1; stroke: #0E1015; stroke-width: 1; }
+.disp-servo { fill: #1F2937; stroke: #0E1015; stroke-width: 1.5; }
+.disp-plato { fill: #E11D48; stroke: #881337; stroke-width: 2; }
+.disp-led { fill: #14532D; stroke: #0E1015; stroke-width: 2; }
+.disp-led.encendido { fill: #22C55E; filter: drop-shadow(0 0 7px rgba(34, 197, 94, .9)); }
+.disp-boton { cursor: pointer; }
+.disp-boton:focus { outline: none; }
+.disp-boton-base { fill: #1F2937; }
+.disp-boton-tapa { fill: #DC2626; stroke: #0E1015; stroke-width: 1.5; transition: r .1s; }
+.disp-boton.activo .disp-boton-tapa, .disp-boton:focus .disp-boton-tapa { stroke: #38BDF8; stroke-width: 3; }
+.disp-boton.activo .disp-boton-tapa { r: 7; }
+.disp-monitor { margin: 0; background: var(--oscuro); color: #A7F3D0; font: .82rem/1.6 var(--codigo); padding: 8px 12px; border-radius: var(--radio-chico); min-height: 6.4em; max-height: 9.6em; overflow-y: auto; white-space: pre-wrap; }
+
+/* ---------- Mecanismos ---------- */
+.meca-paneles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.meca-caja { margin: 0; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio-chico); padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.meca-caja figcaption { font-size: .88rem; display: flex; flex-direction: column; gap: 2px; }
+.meca-caja figcaption span { color: var(--texto-suave); }
+.meca-svg { width: 100%; height: auto; display: block; background: #F1F5F9; border-radius: var(--radio-chico); }
+.meca-hueco { fill: #0E1015; }
+.meca-disco { fill: #CBD5E1; stroke: #475569; stroke-width: 2; }
+.meca-disco-borde { fill: #94A3B8; stroke: #475569; stroke-width: 2; }
+.meca-eje { fill: #1F2937; }
+.meca-helice { fill: none; stroke: #0369A1; stroke-width: 4; stroke-linecap: round; }
+.meca-tubo { fill: rgba(255, 255, 255, .6); stroke: #475569; stroke-width: 2.5; }
+.anim-mecanismos { display: grid; gap: 10px; }
+
+/* ---------- Ángulo del embudo ---------- */
+.anim-embudo { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.embudo-svg { width: 100%; height: auto; display: block; border-radius: var(--radio-chico); background: #F1F5F9; }
+.embudo-pared { fill: none; stroke: #475569; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.embudo-arco { fill: none; stroke: #0369A1; stroke-width: 2.5; }
+.embudo-texto { font: 700 14px var(--texto-fuente); fill: #0369A1; }
+.embudo-horizontal { stroke: #64748B; stroke-width: 1.5; stroke-dasharray: 5 4; }
+
+/* ---------- Selector de tamaño ---------- */
+.anim-selector { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 18px; align-items: start; }
+.selector-zona { fill: none; stroke-width: 12; stroke-linecap: butt; }
+.selector-etiqueta { font: 700 10px var(--texto-fuente); fill: var(--texto); }
+.perilla-boton { pointer-events: none; }
+.semaforo-fija { color: #A8B0BD; }
+
+/* ---------- Porción en pasos ---------- */
+.anim-pasos { display: grid; gap: 12px; }
+.pasos-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.pasos-titulo { font: 600 13px var(--texto-fuente); fill: var(--texto); }
+.pasos-fondo { fill: var(--superficie-3); }
+.pasos-abierta { fill: var(--serie-1); stroke: var(--superficie); stroke-width: 1; }
+
+/* ---------- Nivel con ultrasónico y gráfica con tendencia ---------- */
+.nivel-fijo { cursor: default; }
+.nivel-comida { fill: rgba(180, 83, 9, .25); }
+.nivel-croquetas circle { fill: #B45309; stroke: #78350F; stroke-width: 1; }
+.grafica-tendencia { fill: none; stroke: var(--texto-suave); stroke-width: 2; stroke-dasharray: 8 6; }
+
+@media (max-width: 720px) {
+  .anim-dispensador, .anim-embudo, .anim-selector { grid-template-columns: 1fr; }
+  .anim-selector .perilla-columna { max-width: 240px; margin: 0 auto; }
+  .meca-paneles { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+}
+
+/* ============================================================
+   Animaciones de la estación meteorológica
+   ============================================================ */
+.casilla-simple { display: flex; align-items: center; gap: 8px; font-size: .92rem; margin: 8px 0; cursor: pointer; }
+.casilla-simple input { width: 20px; height: 20px; accent-color: var(--acento); }
+.tabla-scroll { overflow-x: auto; margin: 8px 0; }
+
+/* ---------- Gemelo digital ---------- */
+.anim-gemelo { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.gemelo-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.gemelo-titulo { font: 700 14px var(--titulos); fill: var(--texto); }
+.gemelo-real .gemelo-pieza { fill: #F8FAFC; stroke: #64748B; stroke-width: 1.5; }
+.gemelo-real .gemelo-columna { fill: #CBD5E1; }
+.gemelo-virtual .gemelo-pieza { fill: var(--material, #16A34A); stroke: rgba(0, 0, 0, .45); stroke-width: 1.5; transition: fill .3s; }
+.gemelo-virtual .gemelo-columna { fill: var(--material, #16A34A); filter: brightness(.75); }
+.gemelo-blender { fill: #2B2B2B; }
+.gemelo-cuadricula { stroke: #3A3A3A; stroke-width: 1; }
+.gemelo-blender ~ .gemelo-titulo { fill: var(--texto); }
+.gemelo-texto3d { font: 800 28px var(--titulos); }
+.gemelo-texto3d.sombra { fill: rgba(0, 0, 0, .55); }
+.gemelo-pantalla { fill: #05070A; stroke: #334155; stroke-width: 2; }
+.gemelo-pantalla-texto { font: 700 12px var(--codigo); fill: #E0F2FE; }
+.gemelo-led { stroke: #0E1015; stroke-width: 1.5; }
+.gemelo-brillo { opacity: .3; }
+.gemelo-mesa { fill: #C8A27A; }
+.gemelo-flecha { fill: none; stroke: var(--texto-suave); stroke-width: 2; stroke-dasharray: 5 4; }
+.gemelo-paquete rect { fill: var(--acento); stroke: var(--superficie); stroke-width: 2; }
+.gemelo-paquete text { font: 700 11px var(--codigo); fill: #0E1015; }
+
+/* ---------- Coordenadas ---------- */
+.anim-coord { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 18px; align-items: start; }
+.coord-svg { width: 100%; height: auto; display: block; background: #2B2B2B; border-radius: var(--radio-chico); }
+.coord-reja { stroke: #3D3D3D; stroke-width: 1; }
+.coord-eje-x { stroke: #EF4444; stroke-width: 2; }
+.coord-eje-y { stroke: #84CC16; stroke-width: 2; }
+.coord-nombre-x { font: 800 14px var(--titulos); fill: #EF4444; }
+.coord-nombre-y { font: 800 14px var(--titulos); fill: #84CC16; }
+.coord-origen { fill: #F8FAFC; }
+.coord-texto { font: 600 11px var(--texto-fuente); fill: #D4D4D4; }
+.coord-z { fill: none; stroke: #60A5FA; stroke-width: 2; }
+.coord-z-punto { fill: #60A5FA; }
+.coord-plato { fill: rgba(148, 163, 184, .18); stroke: #94A3B8; stroke-width: 1.5; }
+.coord-hueco { fill: #2B2B2B; stroke: #94A3B8; stroke-width: 1.5; }
+.coord-radio { fill: none; stroke: #FACC15; stroke-width: 1.2; stroke-dasharray: 4 4; }
+.coord-columna { fill: #F97316; stroke: #FFF7ED; stroke-width: 2; }
+.coord-columna.fija { fill: #FDBA74; }
+.coord-brazo { stroke: #FACC15; stroke-width: 2; }
+.coord-arco { fill: none; stroke: #FACC15; stroke-width: 2; }
+.coord-sombra-x, .coord-sombra-y { stroke: #E5E7EB; stroke-width: 1.2; stroke-dasharray: 3 3; }
+.coord-medida-x { stroke: #EF4444; stroke-width: 5; stroke-linecap: round; opacity: .85; }
+.coord-medida-y { stroke: #84CC16; stroke-width: 5; stroke-linecap: round; opacity: .85; }
+.coord-casilla { fill: transparent; stroke: #64748B; stroke-width: 1; cursor: pointer; }
+.coord-casilla:hover, .coord-casilla:focus { fill: rgba(56, 189, 248, .25); outline: none; }
+
+/* ---------- Extrusión ---------- */
+.anim-extrusion { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.extru-svg { width: 100%; height: auto; display: block; background: #3A3A3A; border-radius: var(--radio-chico); }
+.extru-modo { margin: 0 0 6px; font: 700 .85rem var(--codigo); color: var(--texto-suave); }
+.extru-piso { stroke: #4B4B4B; stroke-width: 1; }
+.extru-cara { fill: #8A8A8A; }
+.extru-cara.seleccionada { fill: #9C7A55; }
+.extru-costado { fill: #6B6B6B; stroke: #1F1F1F; stroke-width: 1; }
+.extru-arista { stroke: #1F1F1F; stroke-width: 1; }
+.extru-arista.seleccionada { stroke: #FFA033; }
+.extru-borde { fill: none; stroke: #1F1F1F; stroke-width: 1.5; }
+.extru-borde.seleccionada { stroke: #FFA033; stroke-width: 2; }
+.extru-vertice { fill: #111; }
+.extru-vertice.seleccionada { fill: #FFA033; }
+.extru-medida { font: 700 12px var(--texto-fuente); fill: #F5F5F5; }
+.extru-extruir { margin: 10px 0; display: grid; gap: 6px; }
+
+/* ---------- LED RGB ---------- */
+.anim-rgb { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.rgb-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.rgb-pared { fill: #000; }
+.rgb-mezcla { isolation: isolate; }
+.rgb-luz { mix-blend-mode: screen; }
+.rgb-texto { font: 600 12px var(--texto-fuente); fill: var(--texto); }
+.rgb-texto.sobre-negro { fill: #E5E7EB; }
+.rgb-texto.chico { font-size: 10px; fill: var(--texto-suave); }
+.rgb-cuerpo { stroke: #475569; stroke-width: 2; fill-opacity: .9; }
+.rgb-cuerpo.apagado { fill: rgba(226, 232, 240, .6); }
+.rgb-brillo { filter: blur(8px); }
+.rgb-base { fill: #94A3B8; }
+.rgb-pata { stroke: #94A3B8; stroke-width: 3; }
+.rgb-fila { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) 2.6em; align-items: center; gap: 8px; text-align: left; }
+.rgb-numero { font-variant-numeric: tabular-nums; text-align: right; }
+.rgb-deslizador.r { accent-color: #DC2626; }
+.rgb-deslizador.g { accent-color: #16A34A; }
+.rgb-deslizador.b { accent-color: #2563EB; }
+
+/* ---------- LDR ---------- */
+.anim-ldr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 18px; align-items: start; }
+.ldr-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.ldr-sol { fill: #FACC15; stroke: #CA8A04; stroke-width: 2; }
+.ldr-rayos line { stroke: #FACC15; stroke-linecap: round; }
+.ldr-cable { stroke: var(--texto-suave); stroke-width: 3; }
+.ldr-flujo { stroke: #38BDF8; stroke-width: 3; stroke-dasharray: 3 14; stroke-linecap: round; animation: ldr-corre var(--velocidad, 1s) linear infinite; }
+@keyframes ldr-corre { to { stroke-dashoffset: -17; } }
+.ldr-borne { font: 700 14px var(--codigo); fill: var(--texto); }
+.ldr-borne.claro { fill: #F5F2EC; }
+.ldr-cuerpo { fill: #FDE68A; stroke: #92400E; stroke-width: 2; }
+.ldr-zigzag { fill: none; stroke: #B91C1C; stroke-width: 2.5; stroke-linejoin: round; }
+.ldr-resistencia { fill: #D6C29A; stroke: #78350F; stroke-width: 2; }
+.ldr-banda.b0 { fill: #7C4A1E; }
+.ldr-banda.b1 { fill: #1F2937; }
+.ldr-banda.b2 { fill: #F97316; }
+.ldr-nombre { font: 700 13px var(--texto-fuente); fill: var(--texto); }
+.ldr-valor { font: 600 12px var(--codigo); fill: var(--texto-suave); }
+.ldr-nodo { fill: var(--acento); }
+.ldr-pin { fill: #0F766E; }
+.ldr-voltaje { font: 700 14px var(--codigo); fill: var(--acento); }
+
+/* ---------- OLED ---------- */
+.anim-oled { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.oled-marco { background: #1E3A5F; padding: 10px; border-radius: 10px; display: inline-block; max-width: 100%; box-sizing: border-box; }
+.oled-marco.chico { padding: 6px; }
+.oled-lienzo { display: block; width: 100%; max-width: 384px; height: auto; image-rendering: pixelated; border-radius: 3px; }
+.oled-bus { width: 100%; height: auto; display: block; margin-top: 8px; }
+.oled-caja-arduino { fill: #0F766E; }
+.oled-caja-modulo { fill: #1E3A5F; }
+.oled-texto-claro { font: 700 14px var(--titulos); fill: #F5F2EC; }
+.oled-texto-claro.chico { font: 600 12px var(--codigo); }
+.oled-cable { stroke-width: 4; }
+.oled-cable.sda { stroke: #2563EB; }
+.oled-cable.scl { stroke: #EAB308; }
+.oled-etiqueta { font: 600 11px var(--texto-fuente); fill: var(--texto-suave); }
+.oled-bit, .oled-reloj { opacity: 0; animation: oled-viaja 1.1s linear 1 forwards; }
+.oled-bit { fill: #60A5FA; }
+.oled-reloj { fill: #FDE047; }
+@keyframes oled-viaja { 0% { opacity: 1; transform: translateX(0); } 95% { opacity: 1; } 100% { opacity: 0; transform: translateX(200px); } }
+.oled-ajustes { display: grid; gap: 8px; margin: 10px 0; }
+.oled-mensaje { width: 100%; max-width: 18em; font: inherit; padding: 4px 8px; border: 2px solid var(--borde); border-radius: var(--radio-chico); background: var(--superficie); color: var(--texto); }
+
+/* ---------- Calibración ---------- */
+.anim-calibracion { display: grid; gap: 12px; }
+.calib-visores { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.calib-visor { border: 2px solid var(--borde); border-radius: var(--radio-chico); padding: 8px 12px; background: var(--superficie); display: flex; flex-direction: column; gap: 2px; }
+.calib-visor span { font-size: .85rem; color: var(--texto-suave); font-weight: 600; }
+.calib-numero { font: 700 1.6rem/1.2 var(--titulos); font-variant-numeric: tabular-nums; }
+.calib-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.calib-termo path { fill: var(--texto); }
+.calib-termo text { font: 600 11px var(--texto-fuente); fill: var(--texto); }
+.calib-estacion path { fill: var(--serie-1); }
+.calib-estacion text { font: 700 11px var(--texto-fuente); fill: var(--serie-1); }
+.calib-estacion line { stroke: var(--serie-1); stroke-width: 1.5; }
+.calib-hueco .bien { fill: rgba(34, 197, 94, .45); }
+.calib-hueco .mal { fill: rgba(239, 68, 68, .45); }
+.calib-tabla { border-collapse: collapse; font-size: .88rem; font-variant-numeric: tabular-nums; min-width: 100%; }
+.calib-tabla th, .calib-tabla td { border: 1px solid var(--borde); padding: 4px 8px; text-align: center; }
+.calib-tabla th { background: var(--superficie); }
+.calib-bien { color: var(--verde-texto-fuerte); font-weight: 700; }
+.calib-mal { color: var(--rojo-texto); font-weight: 700; }
+.joystick-codigo .temp-entrada { width: 7.5ch; font: inherit; color: #0E1015; padding: 0 4px; }
+
+/* ---------- Máxima y mínima ---------- */
+.anim-maxmin { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.maxmin-max line { stroke: #DC2626; stroke-width: 1.5; stroke-dasharray: 6 4; }
+.maxmin-min line { stroke: #2563EB; stroke-width: 1.5; stroke-dasharray: 6 4; }
+.maxmin-max text { font: 700 11px var(--texto-fuente); fill: #DC2626; }
+.maxmin-min text { font: 700 11px var(--texto-fuente); fill: #2563EB; }
+.maxmin-variables { margin: 10px 0; }
+
+/* ---------- WiFi ---------- */
+.anim-wifi { display: grid; gap: 12px; }
+.wifi-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.wifi-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.wifi-texto { font: 600 12px var(--texto-fuente); fill: var(--texto); }
+.wifi-texto.claro { fill: #F5F2EC; font-weight: 700; }
+.wifi-texto.chico { font-size: 10px; }
+.wifi-arduino { fill: #0F766E; }
+.wifi-esp32 { fill: #1F2937; }
+.wifi-cable { fill: none; stroke: #475569; stroke-width: 5; stroke-linecap: round; }
+.wifi-pantalla { fill: #1E293B; stroke: #475569; stroke-width: 3; }
+.wifi-teclado { fill: #94A3B8; }
+.wifi-ondas path { fill: none; stroke: var(--acento); stroke-width: 3; stroke-linecap: round; }
+.wifi-ondas.buscando path { animation: wifi-busca 1s ease-in-out infinite; }
+.wifi-ondas.buscando path:nth-child(2) { animation-delay: .2s; }
+.wifi-ondas.buscando path:nth-child(3) { animation-delay: .4s; }
+@keyframes wifi-busca { 0%, 100% { opacity: .15; } 50% { opacity: 1; } }
+.wifi-router { fill: #334155; }
+.wifi-antena { stroke: #334155; stroke-width: 3; stroke-linecap: round; }
+.wifi-nube { fill: #E0F2FE; stroke: #0369A1; stroke-width: 2; }
+.wifi-celular { fill: #1F2937; }
+.wifi-celular-pantalla { fill: #0EA5E9; }
+.wifi-celular-texto { font: 800 14px var(--titulos); fill: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ldr-flujo, .wifi-ondas.buscando path, .oled-bit, .oled-reloj { animation: none; }
+}
+@media (max-width: 720px) {
+  .anim-gemelo, .anim-coord, .anim-extrusion, .anim-rgb, .anim-ldr, .anim-oled, .anim-maxmin, .wifi-panel { grid-template-columns: 1fr; }
+  .anim-coord .coord-svg { max-width: 340px; margin: 0 auto; }
+}
+
+/* ============================================================
+   Animaciones del laberinto inclinable
+   ============================================================ */
+/* ---------- Laberinto completo ---------- */
+.anim-laberinto { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.lab-escena { padding: 18px; background: var(--superficie); border-radius: var(--radio-chico); overflow: hidden; }
+.lab-inclinado { transition: transform .08s linear; transform-origin: 50% 50%; }
+.lab-svg { width: 100%; height: auto; display: block; }
+.lab-borde { fill: #A16207; }
+.lab-fondo { fill: #FEF3C7; }
+.lab-pared { stroke: #78350F; stroke-width: 5; stroke-linecap: round; }
+.lab-meta { fill: #1F2937; stroke: #DC2626; stroke-width: 3; }
+.lab-texto { font: 700 10px var(--texto-fuente); fill: #78350F; }
+.lab-sombra { fill: rgba(0, 0, 0, .22); }
+.lab-canica { fill: #2563EB; stroke: #1E3A8A; stroke-width: 1.5; }
+.lab-brillo { fill: rgba(255, 255, 255, .75); }
+.lab-panel { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 12px; align-items: start; }
+.lab-pad { width: 100%; max-width: 150px; height: auto; touch-action: none; cursor: grab; border-radius: 50%; }
+.lab-pad:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+.lab-buzzer { display: inline-block; margin-top: 6px; font-size: 1.3rem; opacity: .25; transition: opacity .1s; }
+.lab-buzzer.sonando { opacity: 1; }
+
+/* ---------- Cardán ---------- */
+.anim-cardan { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.cardan-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.cardan-base { fill: #D6D3D1; stroke: #78716C; stroke-width: 1.5; }
+.cardan-torre { fill: #A8A29E; stroke: #57534E; stroke-width: 1.5; }
+.cardan-torre.lado { fill: #78716C; }
+.cardan-eje { stroke-width: 2.5; stroke-dasharray: 6 4; }
+.cardan-eje.x { stroke: #DC2626; }
+.cardan-eje.y { stroke: #16A34A; }
+.cardan-marco { fill: #60A5FA; stroke: #1D4ED8; stroke-width: 1.5; fill-opacity: .9; }
+.cardan-tablero { fill: #FDE68A; stroke: #A16207; stroke-width: 2; fill-opacity: .95; }
+.cardan-reja { stroke: rgba(161, 98, 7, .35); stroke-width: 1; }
+.cardan-servo { fill: #1F2937; }
+.cardan-texto { font: 700 12px var(--texto-fuente); }
+.cardan-texto.x { fill: #DC2626; }
+.cardan-texto.y { fill: #16A34A; }
+
+/* ---------- Suavizado ---------- */
+.anim-suavizado { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.suave-meta { fill: none; stroke: var(--texto-suave); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.suave-directo { fill: none; stroke: #F97316; stroke-width: 2; stroke-linejoin: round; }
+.suave-leyenda { font-size: .85rem; color: var(--texto-suave); margin: 6px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.suave-muestra { display: inline-block; width: 22px; height: 0; border-top: 3px solid; vertical-align: middle; }
+.suave-muestra.meta { border-top: 2px dashed var(--texto-suave); }
+.suave-muestra.directo { border-color: #F97316; }
+.suave-muestra.suave { border-color: var(--serie-1); }
+.suave-servos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+
+/* ---------- Sensor infrarrojo ---------- */
+.anim-ir { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.ir-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.ir-zona { fill: rgba(239, 68, 68, .08); stroke: rgba(239, 68, 68, .35); stroke-dasharray: 4 4; }
+.ir-placa { fill: #1D4ED8; stroke: #1E3A8A; stroke-width: 2; }
+.ir-emisor { fill: #E5E7EB; stroke: #6B7280; stroke-width: 1.5; }
+.ir-receptor { fill: #111827; stroke: #6B7280; stroke-width: 1.5; }
+.ir-texto { font: 600 11px var(--texto-fuente); fill: var(--texto); }
+.ir-texto.claro { fill: #F5F2EC; }
+.ir-led { fill: #14532D; stroke: #052E16; stroke-width: 1.5; }
+.ir-led.encendido { fill: #4ADE80; filter: drop-shadow(0 0 6px rgba(74, 222, 128, .9)); }
+.ir-pot { fill: #3B82F6; stroke: #E0F2FE; stroke-width: 2; }
+.ir-pot-ranura { stroke: #E0F2FE; stroke-width: 3; stroke-linecap: round; }
+.ir-objeto:focus { outline: none; }
+.ir-objeto:focus .ir-bola { stroke-width: 4; }
+.ir-bola { fill: #F8FAFC; stroke: #64748B; stroke-width: 2; }
+.ir-bola-brillo { fill: rgba(255, 255, 255, .9); }
+.ir-haz { stroke: rgba(239, 68, 68, .35); stroke-width: 6; stroke-linecap: round; }
+.ir-haz.vuelta { stroke: rgba(234, 88, 12, .35); }
+.ir-ida { fill: #EF4444; }
+.ir-vuelta { fill: #EA580C; }
+
+/* ---------- EEPROM ---------- */
+.anim-eeprom { display: grid; gap: 12px; }
+.eeprom-memorias { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px; }
+.eeprom-caja { border: 2px solid var(--borde); border-radius: var(--radio-chico); padding: 10px 12px; background: var(--superficie); }
+.eeprom-caja p { margin: 0 0 6px; }
+.eeprom-titulo { font-weight: 700; }
+.eeprom-ram-valor { font: 700 1.1rem var(--codigo); color: var(--acento-texto, var(--texto)); }
+.eeprom-rejilla { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
+.eeprom-celda { border: 1px solid var(--borde); border-radius: 6px; padding: 2px; text-align: center; background: var(--fondo, transparent); }
+.eeprom-celda small { display: block; font-size: .65rem; color: var(--texto-suave); }
+.eeprom-celda strong { font: 700 .85rem var(--codigo); }
+.eeprom-celda.record { border-color: var(--acento); background: rgba(56, 189, 248, .14); }
+.eeprom-celda.apagada { opacity: .75; }
+.eeprom-placa { margin: 0; font-weight: 600; padding: 8px 12px; border-radius: var(--radio-chico); background: rgba(34, 197, 94, .14); }
+.eeprom-placa.apagado { background: rgba(100, 116, 139, .18); }
+.eeprom-abajo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+
+/* ---------- Acelerómetro ---------- */
+.anim-acel { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.acel-escena { display: grid; gap: 8px; background: var(--superficie); border-radius: var(--radio-chico); padding: 14px; }
+.acel-inclinado { transition: transform .1s linear; }
+.acel-modulo { width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto; touch-action: none; cursor: grab; }
+.acel-placa { fill: #1E40AF; stroke: #1E3A8A; stroke-width: 2; }
+.acel-chip { fill: #111827; }
+.acel-texto { font: 700 12px var(--codigo); fill: #E0F2FE; }
+.acel-pin { fill: #FACC15; stroke: #713F12; stroke-width: 1; }
+.acel-pin-texto { font: 600 8px var(--codigo); fill: #E0F2FE; }
+.acel-eje { stroke-width: 2; }
+.acel-eje.x { stroke: #FCA5A5; }
+.acel-eje.y { stroke: #86EFAC; }
+.acel-eje-texto { font: 700 10px var(--texto-fuente); }
+.acel-eje-texto.x { fill: #FCA5A5; }
+.acel-eje-texto.y { fill: #86EFAC; }
+.acel-flecha { stroke-width: 5; stroke-linecap: round; }
+.acel-flecha.x { stroke: #EF4444; }
+.acel-flecha.y { stroke: #22C55E; }
+.acel-punta.x { fill: #EF4444; }
+.acel-punta.y { fill: #22C55E; }
+.acel-lado { width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto; }
+.acel-tabla-lado { stroke: #1E40AF; stroke-width: 8; stroke-linecap: round; }
+.acel-gravedad { stroke: var(--texto-suave); stroke-width: 3; stroke-dasharray: 5 4; }
+.acel-texto-lado { font: 600 11px var(--texto-fuente); fill: var(--texto-suave); }
+
+/* ---------- Joystick sin servos ---------- */
+.anim-joystick.solo { grid-template-columns: minmax(0, 220px) minmax(0, 1fr); }
+
+@media (max-width: 720px) {
+  .anim-laberinto, .anim-cardan, .anim-suavizado, .anim-ir, .anim-acel, .eeprom-memorias, .eeprom-abajo, .anim-joystick.solo { grid-template-columns: 1fr; }
+  .lab-panel { grid-template-columns: 120px minmax(0, 1fr); }
+}
+.anim-joystick.solo .joystick-servos { display: block; }
+.ir-texto.chico { font-size: 9px; }
+
+/* ============================================================
+   Animaciones del mini fútbol
+   ============================================================ */
+/* ---------- Cancha y marcador ---------- */
+.anim-futbol { display: grid; gap: 14px; }
+.fut-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); cursor: crosshair; touch-action: none; }
+.fut-pasto { fill: #16A34A; }
+.fut-linea { fill: none; stroke: rgba(255, 255, 255, .85); stroke-width: 2; }
+.fut-porteria { stroke-width: 3; fill-opacity: .25; }
+.fut-porteria.azul { fill: #2563EB; stroke: #1D4ED8; }
+.fut-porteria.roja { fill: #DC2626; stroke: #B91C1C; }
+.fut-sensor { fill: #1F2937; stroke: #94A3B8; stroke-width: 1; }
+.fut-sensor.activo { fill: #4ADE80; filter: drop-shadow(0 0 5px rgba(74, 222, 128, .9)); }
+.fut-texto { font: 700 12px var(--texto-fuente); fill: var(--texto); }
+.fut-pelota { fill: #F8FAFC; stroke: #475569; stroke-width: 1.5; }
+.fut-panel { display: grid; grid-template-columns: minmax(0, 270px) minmax(0, 1fr); gap: 16px; align-items: start; }
+
+/* ---------- Simetría ---------- */
+.anim-simetria { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.sim-svg { width: 100%; height: auto; display: block; background: #2B2B2B; border-radius: var(--radio-chico); }
+.sim-eje-z { stroke: #60A5FA; stroke-width: 2; }
+.sim-z { font: 800 14px var(--titulos); fill: #60A5FA; }
+.sim-mitad { fill: #9CA3AF; stroke: #FFA033; stroke-width: 2; }
+.sim-copia { fill: rgba(156, 163, 175, .55); stroke: #D1D5DB; stroke-width: 1.5; stroke-dasharray: 4 3; }
+.sim-origen { fill: #FACC15; stroke: #111; stroke-width: 1.5; }
+.sim-texto { font: 600 11px var(--texto-fuente); fill: #F5F5F5; }
+.sim-texto.copia { fill: #D1D5DB; }
+
+/* ---------- Escaneo 3D ---------- */
+.anim-escaneo { display: grid; gap: 12px; }
+.esc-vistas { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; }
+.esc-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.esc-svg.modelo { background: #1F2937; }
+.esc-mesa { fill: #D6D3D1; }
+.esc-orbita { fill: none; stroke: var(--texto-suave); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.esc-trofeo { fill: #FACC15; stroke: #A16207; stroke-width: 2; }
+.esc-camara rect { fill: #1F2937; }
+.esc-camara circle { fill: #93C5FD; stroke: #1F2937; stroke-width: 2; }
+.esc-flash { fill: #FFFFFF; pointer-events: none; }
+.esc-huella { fill: var(--acento); }
+.esc-texto { font: 700 12px var(--texto-fuente); fill: #E5E7EB; }
+.esc-punto.afuera { fill: #FACC15; }
+.esc-punto.adentro { fill: #FB923C; }
+
+/* ---------- Calibración del sensor de la portería ---------- */
+.anim-calir { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.calir-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); touch-action: none; }
+.calir-zona { fill: rgba(239, 68, 68, .28); stroke: rgba(239, 68, 68, .7); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.calir-sensor { fill: #1D4ED8; }
+.calir-sensor.activo { fill: #4ADE80; }
+.calir-linea { stroke: #FFFFFF; stroke-width: 4; }
+.calir-texto { font: 700 12px var(--texto-fuente); fill: #FFFFFF; }
+.calir-texto.oscuro { fill: var(--texto); }
+.calir-objeto { cursor: grab; }
+.calir-objeto:focus { outline: none; }
+.calir-objeto:focus circle { stroke-width: 4; }
+.calir-pelota { fill: #F8FAFC; stroke: #475569; stroke-width: 2; }
+.calir-mano { fill: rgba(253, 186, 116, .85); stroke: #9A3412; stroke-width: 2; }
+.calir-emoji { font-size: 18px; }
+
+/* ---------- Antirrebote ---------- */
+.anim-antirrebote { display: grid; gap: 10px; }
+.anti-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.anti-senal { fill: none; stroke: var(--serie-1); stroke-width: 2.5; stroke-linejoin: round; }
+.anti-pausa { fill: rgba(250, 204, 21, .55); }
+.anti-ocupado { fill: rgba(148, 163, 184, .28); }
+.anti-gol { stroke: #16A34A; stroke-width: 2.5; }
+.anti-texto { font: 700 11px var(--texto-fuente); fill: #16A34A; }
+.anti-muestra { display: inline-block; width: 18px; height: 10px; border-radius: 2px; vertical-align: middle; }
+.anti-muestra.ocupado { background: rgba(148, 163, 184, .45); }
+.anti-muestra.pausa { background: rgba(250, 204, 21, .75); }
+.anti-muestra.gol { background: #16A34A; width: 3px; }
+.anti-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+
+/* ---------- Animación en la OLED ---------- */
+.anim-oledanim { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+
+/* ---------- Contador de personas ---------- */
+.anim-contador { display: grid; gap: 14px; }
+.cont-svg { width: 100%; height: auto; display: block; border-radius: var(--radio-chico); }
+.cont-pasillo { fill: #E7E5E4; }
+.cont-salon { fill: #DBEAFE; }
+.cont-texto { font: 700 12px var(--texto-fuente); fill: #1F2937; }
+.cont-pared { fill: #57534E; }
+.cont-haz { stroke: rgba(239, 68, 68, .55); stroke-width: 3; stroke-dasharray: 6 4; }
+.cont-haz.cortado { stroke: #DC2626; stroke-width: 5; stroke-dasharray: none; }
+.cont-sensor { fill: #1D4ED8; }
+.cont-cuerpo { fill: #F97316; stroke: #9A3412; stroke-width: 2; }
+.cont-cabeza { fill: #FED7AA; stroke: #9A3412; stroke-width: 1.5; }
+.cont-panel { display: grid; grid-template-columns: minmax(0, 270px) minmax(0, 1fr); gap: 16px; align-items: start; }
+
+/* ---------- Bluetooth ---------- */
+.anim-bluetooth { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.bt-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.bt-pin { font: 700 10px var(--codigo); fill: var(--texto); }
+.bt-pin.claro { fill: #E0F2FE; }
+.bt-cable { stroke-width: 4; }
+.bt-cable.tx { stroke: #16A34A; }
+.bt-cable.rx { stroke: #2563EB; }
+.bt-divisor { fill: #D6C29A; stroke: #78350F; stroke-width: 1.5; }
+.bt-modulo { fill: #1E3A8A; }
+.bt-ondas path { fill: none; stroke: var(--acento); stroke-width: 3; stroke-linecap: round; animation: wifi-busca 1s ease-in-out infinite; }
+.bt-pantalla { fill: #0B1220; }
+.bt-app { font: 600 10px var(--codigo); fill: #86EFAC; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bt-ondas path { animation: none; }
+}
+@media (max-width: 720px) {
+  .fut-panel, .anim-simetria, .esc-vistas, .anim-calir, .anti-panel, .anim-oledanim, .cont-panel, .anim-bluetooth { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Animaciones de la banda clasificadora (y compartidas de Intermedio II)
+   ============================================================ */
+/* ---------- Display de 7 segmentos ---------- */
+.siete-svg { width: 100%; max-width: 380px; height: auto; display: block; }
+.siete-fondo { fill: #0B0D12; }
+.siete-seg { fill: rgba(239, 68, 68, .1); }
+.siete-seg.encendido { fill: var(--siete-color, #EF4444); filter: drop-shadow(0 0 3px var(--siete-color, #EF4444)); }
+
+/* ---------- Banda completa ---------- */
+.anim-banda { display: grid; gap: 14px; }
+.banda-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.banda-cinta { fill: #374151; }
+.banda-marcas line { stroke: #4B5563; stroke-width: 2; }
+.banda-rodillo { fill: #9CA3AF; stroke: #4B5563; stroke-width: 2; }
+.banda-tunel { fill: rgba(17, 24, 39, .55); stroke: #111827; stroke-width: 1.5; }
+.banda-paleta { stroke: #F59E0B; stroke-width: 6; stroke-linecap: round; }
+.banda-pieza { stroke: rgba(0, 0, 0, .35); stroke-width: 1.5; }
+.banda-caja { fill: var(--superficie); stroke-width: 3; }
+.banda-texto { font: 700 11px var(--texto-fuente); fill: var(--texto); }
+.banda-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+
+/* ---------- I2C ---------- */
+.anim-i2c { display: grid; gap: 12px; }
+.i2c-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.i2c-caja { fill: #0F766E; }
+.i2c-caja.maestro { fill: #1E3A8A; }
+.i2c-esclavo.activo .i2c-caja { fill: #0D9488; filter: drop-shadow(0 0 6px rgba(45, 212, 191, .8)); }
+.i2c-texto { font: 600 11px var(--texto-fuente); fill: var(--texto); }
+.i2c-texto.claro { fill: #F5F2EC; font-weight: 700; }
+.i2c-texto.chico { font: 600 10px var(--codigo); }
+.i2c-cable { stroke-width: 4; }
+.i2c-cable.sda { stroke: #2563EB; }
+.i2c-cable.scl { stroke: #EAB308; }
+.i2c-led { fill: #FACC15; stroke: #713F12; stroke-width: 1; }
+.i2c-parte rect { fill: #DBEAFE; stroke: #2563EB; stroke-width: 1.5; }
+.i2c-parte text { font: 700 10px var(--codigo); fill: #1E3A8A; }
+.i2c-parte.esclavo rect { fill: #CCFBF1; stroke: #0D9488; }
+.i2c-parte.esclavo text { fill: #115E59; }
+.i2c-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+
+/* ---------- MOSFET y rueda libre ---------- */
+.anim-mosfet, .anim-rueda { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.mos-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.mos-cable { stroke: var(--texto-suave); stroke-width: 3; fill: none; }
+.mos-cable.potencia { stroke: #DC2626; }
+.mos-cable.senal { stroke: #2563EB; }
+.mos-flujo { fill: none; stroke: #F87171; stroke-width: 5; stroke-dasharray: 3 14; stroke-linecap: round; animation: ldr-corre 1s linear infinite; }
+.mos-flujo.chico { stroke: #60A5FA; stroke-width: 3; }
+.mos-onda { fill: none; stroke: #2563EB; stroke-width: 2; }
+.mos-borne { font: 700 13px var(--codigo); fill: var(--texto); }
+.mos-texto { font: 600 11px var(--texto-fuente); fill: var(--texto); }
+.mos-texto.claro { fill: #F5F2EC; font-weight: 700; }
+.mos-texto.chico { font: 600 9px var(--codigo); }
+.mos-cuerpo { fill: #1F2937; stroke: #0E1015; stroke-width: 1.5; }
+.mos-cuerpo.danado { fill: #7F1D1D; }
+.mos-motor { fill: #94A3B8; stroke: #475569; stroke-width: 3; }
+.mos-aspa { stroke: #1F2937; stroke-width: 4; stroke-linecap: round; }
+.mos-tira { fill: #F8FAFC; stroke: #94A3B8; stroke-width: 2; }
+.mos-led { fill: #FDE047; filter: drop-shadow(0 0 4px rgba(253, 224, 71, .9)); }
+.rl-lazo { fill: none; stroke: #F59E0B; stroke-width: 5; stroke-dasharray: 3 12; stroke-linecap: round; animation: ldr-corre .6s linear infinite; }
+.rl-diodo-cuerpo { fill: #1F2937; }
+.rl-franja { stroke: #E5E7EB; stroke-width: 4; }
+.rl-chispa { font-size: 32px; transition: opacity .1s; }
+
+/* ---------- Diagrama de bloques ---------- */
+.anim-bloques { display: grid; gap: 10px; }
+.bloques-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.bloques-grupo { fill: rgba(56, 189, 248, .06); stroke: var(--borde); stroke-dasharray: 6 4; }
+.bloques-grupo-texto { font: 700 11px var(--texto-fuente); fill: var(--texto-suave); }
+.bloques-bloque { cursor: pointer; }
+.bloques-bloque rect { fill: var(--fondo, #FFFFFF); stroke: var(--borde-fuerte); stroke-width: 1.5; }
+.bloques-bloque text { font: 600 11px var(--texto-fuente); fill: var(--texto); pointer-events: none; }
+.bloques-bloque.elegido rect, .bloques-bloque:focus rect { stroke: var(--acento); stroke-width: 3; }
+.bloques-bloque:focus { outline: none; }
+.bloques-flecha { stroke-width: 2.5; transition: opacity .15s; }
+.bloques-flecha.tenue { opacity: .15; }
+.bloques-flecha.marcada { stroke-width: 4; }
+.bloques-flecha.potencia, .bloques-punta.potencia { stroke: #DC2626; fill: #DC2626; }
+.bloques-flecha.logica, .bloques-punta.logica { stroke: #EA580C; fill: #EA580C; }
+.bloques-flecha.control, .bloques-punta.control { stroke: #2563EB; fill: #2563EB; }
+.bloques-flecha.datos, .bloques-punta.datos { stroke: #16A34A; fill: #16A34A; }
+.bloques-flecha { fill: none; }
+.bloques-etiqueta { font: 700 11px var(--codigo); fill: var(--texto); paint-order: stroke; stroke: var(--superficie); stroke-width: 4px; }
+.bloques-leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .85rem; color: var(--texto-suave); }
+.bloques-muestra { display: inline-block; width: 22px; height: 0; border-top: 3px solid; vertical-align: middle; }
+.bloques-muestra.potencia { border-color: #DC2626; }
+.bloques-muestra.logica { border-color: #EA580C; }
+.bloques-muestra.control { border-color: #2563EB; }
+.bloques-muestra.datos { border-color: #16A34A; }
+
+/* ---------- Protocolo ---------- */
+.anim-protocolo { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.proto-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.proto-nodo { fill: #1E3A8A; }
+.proto-nodo-texto { font: 700 12px var(--texto-fuente); fill: #F5F2EC; }
+.proto-vida { stroke: var(--borde-fuerte); stroke-width: 2; stroke-dasharray: 5 5; }
+.proto-flecha { stroke: #2563EB; stroke-width: 2.5; }
+.proto-flecha.respuesta { stroke: #0D9488; stroke-dasharray: 7 4; }
+.proto-flecha.nueva { stroke-width: 4; }
+.proto-punta { fill: #2563EB; }
+.proto-punta.respuesta { fill: #0D9488; }
+.proto-texto { font: 600 11px var(--codigo); fill: var(--texto); }
+.proto-vuelta { font: 600 10px var(--codigo); fill: var(--texto-suave); }
+.proto-byte rect { fill: #FEF3C7; stroke: #D97706; stroke-width: 1; }
+.proto-byte text { font: 700 10px var(--codigo); fill: #78350F; }
+
+/* ---------- Color: calibración, proporciones y matriz ---------- */
+.calcol-barra.calcol-r, .anti-muestra.calcol-r { fill: #DC2626; background: #DC2626; }
+.calcol-barra.calcol-g, .anti-muestra.calcol-g { fill: #16A34A; background: #16A34A; }
+.calcol-barra.calcol-b, .anti-muestra.calcol-b { fill: #2563EB; background: #2563EB; }
+.calcol-barra.calcol-c { fill: #9CA3AF; }
+.calcol-punto { fill: var(--superficie); stroke: var(--texto); stroke-width: 1.5; }
+.anim-proporcion { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.umbral-linea.delgada { stroke-width: 2; stroke-dasharray: 5 3; }
+.anim-matriz { display: grid; gap: 8px; }
+.matriz-svg { width: 100%; max-width: 520px; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.matriz-celda { fill: var(--serie-1); fill-opacity: var(--nivel, .1); stroke: var(--borde); stroke-width: 1; }
+.matriz-celda.diagonal { stroke: var(--texto); stroke-width: 2.5; }
+.matriz-numero { font: 700 18px var(--titulos); fill: var(--texto); font-variant-numeric: tabular-nums; }
+.matriz-numero.claro { fill: #FFFFFF; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mos-flujo, .rl-lazo { animation: none; }
+}
+@media (max-width: 720px) {
+  .banda-panel, .i2c-panel, .anim-mosfet, .anim-rueda, .anim-protocolo, .anim-proporcion { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Animaciones de la casa inteligente
+   ============================================================ */
+/* ---------- Casa completa ---------- */
+.anim-casa { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.casa-svg { width: 100%; height: auto; display: block; border-radius: var(--radio-chico); background: var(--superficie); }
+.casa-piso { fill: #F5F5F4; stroke: #57534E; stroke-width: 4; }
+.casa-pared { stroke: #57534E; stroke-width: 4; }
+.casa-brillo { fill: #FDE047; pointer-events: none; }
+.casa-cuarto { font: 700 13px var(--titulos); fill: #44403C; }
+.casa-texto { font: 600 11px var(--texto-fuente); fill: #44403C; }
+.casa-texto.claro { fill: #F5F2EC; font-weight: 700; }
+.casa-tira { stroke: #A16207; stroke-width: 1.5; }
+.casa-sol { font-size: 26px; }
+.casa-ventilador { fill: #E7E5E4; stroke: #78716C; stroke-width: 3; }
+.casa-aspas line { stroke: #44403C; stroke-width: 7; stroke-linecap: round; }
+.casa-marco { fill: #A8A29E; }
+.casa-puerta { stroke: #92400E; stroke-width: 7; stroke-linecap: round; transition: transform .3s; }
+.casa-persona, .casa-buzzer { font-size: 26px; transition: opacity .2s; }
+.casa-arduino { fill: #0F766E; }
+.casa-hc05 { fill: #1E3A8A; }
+.casa-mundo { display: grid; gap: 6px; margin-top: 10px; }
+.casa-lado { display: grid; gap: 12px; }
+.casa-celular { border: 3px solid #1F2937; border-radius: 18px; padding: 10px; background: var(--superficie); }
+.casa-celular-titulo { margin: 0 0 6px; font-weight: 700; font-size: .9rem; }
+.casa-chat { margin: 0 0 8px; background: #0B1220; color: #86EFAC; font: .8rem/1.5 var(--codigo); padding: 8px; border-radius: 8px; min-height: 7.5em; white-space: pre-wrap; }
+.casa-teclas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.casa-teclas .anim-boton { padding: .25em 0; min-height: 34px; font-size: .85rem; }
+.casa-enviar { display: flex; gap: 6px; margin-top: 8px; }
+
+/* ---------- Optoacoplador ---------- */
+.anim-opto { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.opto-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.opto-lado { stroke-width: 1.5; stroke-dasharray: 6 4; }
+.opto-lado.logica { fill: rgba(37, 99, 235, .06); stroke: #2563EB; }
+.opto-lado.carga { fill: rgba(220, 38, 38, .06); stroke: #DC2626; }
+.opto-titulo { font: 700 12px var(--texto-fuente); fill: var(--texto); }
+.opto-texto { font: 600 10px var(--texto-fuente); fill: var(--texto); }
+.opto-barrera { stroke: var(--texto-suave); stroke-width: 2; stroke-dasharray: 3 5; }
+.opto-chip { fill: #1F2937; opacity: .9; }
+.opto-led { fill: #7F1D1D; }
+.opto-led.encendido { fill: #F87171; filter: drop-shadow(0 0 6px rgba(248, 113, 113, .95)); }
+.opto-onda { fill: none; stroke: #FCA5A5; stroke-width: 3; stroke-linecap: round; }
+.opto-foto { fill: #374151; stroke: #9CA3AF; stroke-width: 2; }
+.opto-bobina { fill: #92400E; stroke: #451A03; stroke-width: 1.5; }
+.opto-bobina.activa { fill: #F59E0B; }
+.opto-punto { fill: var(--texto); }
+.opto-contacto { stroke: var(--texto); stroke-width: 4; stroke-linecap: round; }
+.opto-carga { fill: #E5E7EB; stroke: #6B7280; stroke-width: 2; }
+.opto-carga.encendida { fill: #FDE047; filter: drop-shadow(0 0 6px rgba(253, 224, 71, .9)); }
+
+/* ---------- Integración ---------- */
+.anim-integ { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.integ-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.i2c-cable.suelto { stroke-dasharray: 4 4; opacity: .4; }
+.integ-nodo { fill: #9CA3AF; }
+.integ-nodo.conectado { fill: #0F766E; }
+.integ-nodo.falla { fill: #B91C1C; }
+.integ-pasos { margin: 8px 0 0; padding-left: 1.4em; font-size: .9rem; }
+.integ-pasos li.bien { color: var(--verde-texto-fuerte); }
+.integ-pasos li.mal { color: var(--rojo-texto); font-weight: 700; }
+
+/* ---------- Caída de voltaje ---------- */
+.anim-caida { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.caida-linea { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+.caida-linea.carga { stroke: #DC2626; }
+.caida-linea.logica { stroke: var(--serie-1); }
+.suave-muestra.caida-carga { border-color: #DC2626; }
+.suave-muestra.caida-logica { border-color: var(--serie-1); }
+
+/* ---------- IoT ---------- */
+.anim-iot { display: grid; gap: 12px; }
+.iot-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.iot-led { fill: #14532D; stroke: #052E16; stroke-width: 1.5; }
+.iot-led.encendido { fill: #FDE047; filter: drop-shadow(0 0 8px rgba(253, 224, 71, .95)); }
+.iot-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.iot-pagina { border: 2px solid var(--borde); border-radius: var(--radio-chico); background: #FFFFFF; color: #111827; overflow: hidden; }
+.iot-pagina h4 { margin: 10px 14px 4px; font-size: 1.3rem; }
+.iot-pagina p { margin: 4px 14px 10px; }
+.iot-pagina a { color: #1D4ED8; text-decoration: underline; }
+.iot-barra { background: #E5E7EB; padding: 6px 10px; font: .78rem var(--codigo); color: #374151; }
+
+@media (max-width: 720px) {
+  .anim-casa, .anim-opto, .anim-integ, .anim-caida, .iot-panel { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Animaciones del elevador (y compartidas con el robot)
+   ============================================================ */
+/* ---------- Elevador completo ---------- */
+.anim-elevador { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 18px; align-items: start; }
+.elev-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.elev-guia { fill: #A8A29E; }
+.elev-base { fill: #78716C; }
+.elev-piso { stroke: var(--texto-suave); stroke-width: 2; stroke-dasharray: 5 4; }
+.elev-texto { font: 700 11px var(--texto-fuente); fill: var(--texto); }
+.elev-texto.claro { fill: #F5F2EC; font-size: 14px; }
+.elev-cabina { fill: #0369A1; stroke: #0C4A6E; stroke-width: 2; }
+.elev-cabina.abierta { fill: #38BDF8; }
+.elev-iman { fill: #DC2626; }
+.elev-reed, .elev-fin { fill: #9CA3AF; stroke: #4B5563; stroke-width: 1; }
+.elev-reed.activo, .elev-fin.activo { fill: #22C55E; }
+.elev-panel { border: 2px solid var(--borde); border-radius: var(--radio-chico); padding: 6px 10px; background: var(--superficie); margin-bottom: 8px; }
+.elev-panel-titulo { font-weight: 700; font-size: .9rem; margin-bottom: 4px; }
+.elev-panel-titulo small { font-weight: 500; color: var(--texto-suave); }
+.elev-panel-fila { display: grid; grid-template-columns: 44px 22px minmax(0, 1fr); gap: 10px; align-items: center; }
+.elev-panel-fila .siete-svg { max-width: 44px; }
+.elev-led { width: 18px; height: 18px; border-radius: 50%; background: #3F3F46; display: inline-block; }
+.elev-led.encendido { background: #FACC15; box-shadow: 0 0 8px rgba(250, 204, 21, .9); }
+.elev-led-svg { fill: #3F3F46; }
+.elev-led-svg.encendido { fill: #FACC15; }
+
+/* ---------- Puente H ---------- */
+.anim-ph { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.ph-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.ph-caja { fill: var(--superficie); stroke: var(--borde-fuerte); stroke-width: 2; }
+.ph-caja.cerrado { fill: #DCFCE7; stroke: #16A34A; }
+.ph-palanca { stroke: var(--texto); stroke-width: 4; stroke-linecap: round; }
+.ph-flujo { fill: none; stroke: #F87171; stroke-width: 6; stroke-dasharray: 3 14; stroke-linecap: round; animation: ldr-corre 1s linear infinite; }
+
+/* ---------- Siete segmentos ---------- */
+.anim-siete { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 18px; align-items: start; }
+.siete-col { text-align: center; }
+.siete-grande-svg { width: 100%; max-width: 200px; height: auto; display: block; margin: 0 auto; }
+.siete-grande { fill: rgba(239, 68, 68, .15); cursor: pointer; stroke: transparent; stroke-width: 2; }
+.siete-grande:focus { outline: none; stroke: var(--acento); }
+.siete-grande.encendido { fill: #EF4444; filter: drop-shadow(0 0 4px #EF4444); }
+.siete-grande.leyendo { stroke: #FACC15; stroke-width: 3; }
+.siete-letra { font: 700 11px var(--codigo); fill: #9CA3AF; pointer-events: none; }
+.siete-bits { display: grid; gap: 2px; font: .85rem var(--codigo); }
+.siete-fila { display: grid; grid-template-columns: 6em repeat(7, minmax(0, 1fr)); text-align: center; }
+.siete-fila > span:first-child { text-align: left; color: var(--texto-suave); }
+.siete-fila.valores span { font-weight: 700; }
+.siete-fila span.uno { color: #DC2626; }
+.siete-fila span.leyendo { background: rgba(250, 204, 21, .35); border-radius: 4px; }
+
+/* ---------- Contrapeso ---------- */
+.anim-contra { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.contra-svg { width: 100%; max-width: 380px; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.contra-soporte { fill: #78716C; }
+.contra-polea { fill: #D6D3D1; stroke: #57534E; stroke-width: 3; }
+.contra-eje { fill: #57534E; }
+.contra-hilo { stroke: #44403C; stroke-width: 2; }
+.contra-cabina { fill: #0369A1; stroke: #0C4A6E; stroke-width: 2; }
+.contra-peso { fill: #57534E; stroke: #292524; stroke-width: 1.5; }
+.contra-texto { font: 600 11px var(--texto-fuente); fill: var(--texto); }
+.contra-texto.claro { fill: #F5F2EC; font-weight: 700; }
+
+/* ---------- Rampa, algoritmo del ascensor y lazo cerrado ---------- */
+.anim-rampa { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.rampa-corriente { fill: none; stroke: #F59E0B; stroke-width: 2; }
+.suave-muestra.rampa-c { border-color: #F59E0B; }
+.anim-ascensor { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 18px; align-items: start; }
+.asc-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.asc-hueco { fill: rgba(148, 163, 184, .15); stroke: var(--borde-fuerte); stroke-width: 1.5; }
+.asc-botones { display: flex; flex-wrap: wrap; gap: 6px; }
+.asc-registro { margin: 2px 0 8px; font: 700 1rem var(--codigo); }
+.anim-lazo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.anim-lazo.robot { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+.lazo-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.lazo-fantasma { fill: rgba(3, 105, 161, .25); stroke: #0369A1; stroke-width: 2; stroke-dasharray: 5 4; }
+.lazo-fantasma.dudosa { fill: rgba(148, 163, 184, .2); stroke: #94A3B8; }
+.lazo-signo { font: 800 22px var(--titulos); fill: #94A3B8; }
+.lazo-ruta { fill: none; stroke: var(--serie-1); stroke-width: 3; stroke-linecap: round; }
+.lazo-robot { fill: #1F2937; }
+.lazo-rueda { fill: #6B7280; }
+.lazo-frente { fill: #FACC15; }
+
+@media (max-width: 720px) {
+  .anim-elevador, .anim-ph, .anim-siete, .anim-contra, .anim-rampa, .anim-ascensor, .anim-lazo, .anim-lazo.robot { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Animaciones del robot con telemetría
+   ============================================================ */
+/* ---------- Robot y mando ---------- */
+.anim-robotmando { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.robot-pista { fill: #E7E5E4; stroke: #57534E; stroke-width: 4; }
+.robot-caja { fill: #A8A29E; stroke: #57534E; stroke-width: 2; }
+.robot-rayo { stroke: #F59E0B; stroke-width: 2; stroke-dasharray: 4 4; }
+.robot-sensor { fill: #1D4ED8; }
+.robot-mando { border: 3px solid #1F2937; border-radius: 18px; padding: 10px; background: var(--superficie); }
+
+/* ---------- UART ---------- */
+.anim-uart { display: grid; gap: 12px; }
+.uart-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.uart-cable { fill: none; stroke-width: 4; }
+.uart-cable.a { stroke: #16A34A; }
+.uart-cable.b { stroke: #2563EB; }
+.uart-cable.gnd { stroke: #1F2937; }
+.uart-pin { font: 700 10px var(--codigo); fill: var(--texto); }
+.uart-led { fill: #3F3F46; stroke: #0E1015; stroke-width: 1; }
+.uart-led.encendido { fill: #FACC15; filter: drop-shadow(0 0 6px rgba(250, 204, 21, .95)); }
+.uart-bit { stroke: #0E1015; stroke-width: 1; }
+.uart-bit.dato { fill: #FEF3C7; }
+.uart-bit.inicio { fill: #BBF7D0; }
+.uart-bit.fin { fill: #FECACA; }
+.uart-bit-texto { font: 700 11px var(--codigo); fill: #0E1015; }
+.uart-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+
+/* ---------- PWM ---------- */
+.anim-pwm { display: grid; gap: 12px; }
+.pwm-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.pwm-onda { fill: none; stroke: var(--serie-1); stroke-width: 2.5; stroke-linejoin: round; }
+.pwm-promedio { stroke: #DC2626; stroke-width: 2; stroke-dasharray: 6 4; }
+.pwm-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+
+/* ---------- Divisor de batería ---------- */
+.anim-divisor { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.div-svg { width: 100%; height: auto; display: block; background: var(--superficie); border-radius: var(--radio-chico); }
+.div-bateria { fill: #E5E7EB; stroke: #374151; stroke-width: 3; }
+.div-nivel { fill: #22C55E; }
+.div-texto { font: 600 12px var(--texto-fuente); fill: var(--texto); }
+.div-voltaje { font: 700 13px var(--codigo); fill: var(--acento); }
+.div-escala { fill: rgba(148, 163, 184, .18); stroke: var(--borde-fuerte); stroke-width: 1.5; }
+.div-medidor { fill: var(--serie-1); }
+
+/* ---------- Mezcla diferencial ---------- */
+.anim-mezcla { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.mezcla-flecha { fill: none; stroke: #F59E0B; stroke-width: 3; stroke-linecap: round; }
+.mezcla-valores p { margin: 6px 0; font-weight: 600; }
+
+@media (max-width: 720px) {
+  .anim-robotmando, .uart-panel, .pwm-panel, .anim-divisor, .anim-mezcla { grid-template-columns: 1fr; }
+}

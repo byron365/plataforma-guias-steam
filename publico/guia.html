@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guías STEAM · Guía</title>
+  <meta name="theme-color" content="#0E1015">
+  <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="stylesheet" href="/css/animaciones.css">
+  <link rel="stylesheet" href="/css/tema-oscuro.css">
+  <script src="/js/tema.js"></script>
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor">
+      <a class="marca" href="/proyecto">
+        <img src="/img/logo-cabecera.jpg" alt="" width="71" height="48" onerror="this.hidden = true">
+        <span class="marca-texto">STEAM Robotics Academy<small>Guías de proyecto</small></span>
+      </a>
+      <div class="cabecera-extra" id="quien"></div>
+    </div>
+  </header>
+
+  <div class="barra-guia" id="barra-guia" hidden>
+    <div class="contenedor">
+      <div class="barra-guia-fila">
+        <a class="volver" href="/proyecto">← Guías</a>
+        <span class="barra-guia-titulo" id="titulo-guia"></span>
+      </div>
+      <nav class="pasos" id="pasos" aria-label="Partes de la guía"></nav>
+    </div>
+  </div>
+
+  <main>
+    <div class="contenedor" id="pagina">
+      <p class="cargando">Cargando guía…</p>
+    </div>
+  </main>
+
+  <div class="indicador-guardado" id="indicador" role="status" aria-live="polite"></div>
+
+  <footer class="pie">STEAM Robotics Academy</footer>
+  <script type="module" src="/js/guia.js"></script>
+</body>
+</html>

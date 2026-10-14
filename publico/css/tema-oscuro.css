@@ -1,0 +1,76 @@
+/* ============================================================
+   Modo oscuro
+   Se activa con <html data-tema="oscuro"> (lo pone js/tema.js según
+   la preferencia del dispositivo o el botón 🌙/☀️ de la cabecera).
+   ============================================================ */
+:root[data-tema="oscuro"] {
+  color-scheme: dark; /* barras de desplazamiento y controles del navegador en oscuro */
+
+  --fondo: #12151C;
+  --superficie: #1B1F29;
+  --superficie-2: #232834;
+  --superficie-3: #2F3544;
+  --superficie-bloqueada: #20232B;
+  --deshabilitado: #3A4050;
+  --deshabilitado-texto: #9AA0AE;
+
+  --texto: #ECEAE5;
+  --texto-suave: #A9AFBC;
+  --borde: #343B4A;
+  --borde-fuerte: #4E576B;
+  --linea: #D9D6CF;
+  --sombra: 0 1px 2px rgba(0, 0, 0, .35), 0 4px 16px rgba(0, 0, 0, .25);
+
+  --acento-texto: #7DD3FC;
+  --acento-suave: #0C3A55;
+  --acento-fondo: #102A3B;
+  --acento-borde: #1E5878;
+  --azul-texto: #93C5FD;
+  --azul-suave: #1C355C;
+  --azul-fondo: #162236;
+  --azul-borde: #2B4A7A;
+  --verde-suave: #143D25;
+  --verde-fondo: #12301E;
+  --verde-borde: #1F6B3B;
+  --verde-texto-fuerte: #86EFAC;
+  --amarillo-suave: #3D3212;
+  --ambar-texto: #FCD34D;
+  --rojo-suave: #3B1717;
+  --rojo-borde: #7F2A2A;
+  --rojo-texto: #FCA5A5;
+  --error-texto: #F87171;
+  --morado-fondo: #211B36;
+  --morado-borde: #3E3366;
+  --morado-suave: #312652;
+  --morado-texto: #C4B5FD;
+  --gris-texto: #A9AFBC;
+  --indigo-fondo: #262F57;
+  --serie-1: #0284C7;              /* validado en oscuro: contraste 4,0 */
+}
+
+/* Detalles que no se resuelven solo con variables */
+[data-tema="oscuro"] .estado-completada { color: #86EFAC; }
+[data-tema="oscuro"] .anim-boton.activo { background: var(--acento); color: var(--oscuro); border-color: var(--acento); }
+[data-tema="oscuro"] .imagen-guia img { background: #FFFFFF; } /* imágenes con fondo transparente */
+[data-tema="oscuro"] .tabla-contenedor th,
+[data-tema="oscuro"] .tabla-avance thead th { background: #0B0D12; }
+[data-tema="oscuro"] .barra-guia { border-bottom-color: var(--borde); }
+[data-tema="oscuro"] .cabecera { border-bottom: 1px solid #222733; }
+[data-tema="oscuro"] .portada { border-bottom: 1px solid #222733; }
+[data-tema="oscuro"] .tiempo { background: var(--superficie-3); color: var(--texto); }
+[data-tema="oscuro"] .servo-brazo path,
+[data-tema="oscuro"] .servo-brazo circle:not(.servo-agujero):not(.servo-eje) { fill: #E6E1D6; stroke: #0E1015; }
+/* Cables: contorno claro para que el cable negro (GND) se vea sobre fondo oscuro */
+[data-tema="oscuro"] .cable-contorno { stroke: rgba(255, 255, 255, .45); }
+[data-tema="oscuro"] .fuente-cable.cable-negro { stroke: #1F2937; filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, .9)); }
+[data-tema="oscuro"] .celebracion-caja,
+[data-tema="oscuro"] .ventana { background: var(--superficie); color: var(--texto); }
+
+/* ---------- Botón para cambiar de tema ---------- */
+.boton-tema {
+  margin-left: auto; flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3A3F4B;
+  background: transparent; color: var(--claro); font-size: 1.15rem; line-height: 1; cursor: pointer;
+  display: inline-grid; place-items: center;
+}
+.boton-tema:hover { background: var(--oscuro-2); }
+.boton-tema + .cabecera-extra { margin-left: 0; }

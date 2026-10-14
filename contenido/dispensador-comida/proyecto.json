@@ -1,0 +1,122 @@
+{
+  "id": "dispensador-comida",
+  "nombre": "Dispensador de comida para mascotas",
+  "nivel": "Básico",
+  "descripcion": "Un dispensador que sirve porciones de croquetas con un botón o con horario, según el tamaño de la mascota.",
+  "docente": "Bairon Alas",
+  "imagen": "imagenes/IMAGEN_1.1.png",
+  "guias": [
+    {
+      "archivo": "guia-01.md",
+      "guia": 1,
+      "sabado": 1,
+      "titulo": "¡La comida está servida!",
+      "sesion": "Introducción al proyecto STEAM",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-02.md",
+      "guia": 2,
+      "sabado": 2,
+      "titulo": "¿Cómo dejar caer la comida?",
+      "sesion": "Ideación y diseño",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-03.md",
+      "guia": 3,
+      "sabado": 3,
+      "titulo": "Embudo y compuerta",
+      "sesion": "Planificación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-04.md",
+      "guia": 4,
+      "sabado": 4,
+      "titulo": "Una estructura que no se atasca",
+      "sesion": "Construcción del prototipo",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-05.md",
+      "guia": 5,
+      "sabado": 5,
+      "titulo": "Servir con un botón",
+      "sesion": "Integración de sistemas",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-06.md",
+      "guia": 6,
+      "sabado": 6,
+      "titulo": "¿Cuántos gramos sirvió?",
+      "sesion": "Pruebas y ajustes",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-07.md",
+      "guia": 7,
+      "sabado": 7,
+      "titulo": "Predecir la porción",
+      "sesion": "Documentación técnica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-08.md",
+      "guia": 8,
+      "sabado": 8,
+      "titulo": "Gato, perro pequeño o perro grande",
+      "sesion": "Preparación de presentación",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-09.md",
+      "guia": 9,
+      "sabado": 9,
+      "titulo": "¡Día de presentación!",
+      "sesion": "Presentación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-10.md",
+      "guia": 10,
+      "sabado": 10,
+      "titulo": "El reto de los 50 gramos",
+      "sesion": "Evaluación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-11.md",
+      "guia": 11,
+      "sabado": 11,
+      "titulo": "Más precisión y un contador",
+      "sesion": "Mejoras finales",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-12.md",
+      "guia": 12,
+      "sabado": 12,
+      "titulo": "Dispensadores por todas partes",
+      "sesion": "Aplicaciones alternativas",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-13.md",
+      "guia": 13,
+      "sabado": 13,
+      "titulo": "Nuestro dispensador, de portada",
+      "sesion": "Cierre académico",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-14.md",
+      "guia": 14,
+      "sabado": 14,
+      "titulo": "El dispensador que sabe la hora",
+      "sesion": "Proyección a Básico II",
+      "duracion": 120
+    }
+  ]
+}

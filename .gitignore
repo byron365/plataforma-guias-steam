@@ -1,0 +1,14 @@
+# Datos de los estudiantes (nunca se suben a ningún lado)
+datos/
+subidas/
+
+# Respaldos: las copias de la base de datos y de las fotos se quedan en esta PC.
+# Solo se sube la copia de las guías antes de la revisión (sin datos de estudiantes) y su verificador.
+respaldos/*
+!respaldos/guias-antes-de-la-revision-2026-10-10/
+
+# Contraseña del docente
+.env
+
+# Librerías instaladas con npm install
+node_modules/

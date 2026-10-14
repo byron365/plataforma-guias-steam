@@ -1,0 +1,19 @@
+# Los archivos de texto se guardan con saltos de línea LF (como los escribe la plataforma),
+# también al descargarlos en Windows. Así las guías y el código no cambian de una PC a otra.
+* text=auto eol=lf
+
+# Los .bat de Windows necesitan CRLF para ejecutarse bien
+*.bat text eol=crlf
+
+# Archivos binarios: nunca se tocan
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.blend binary
+*.stl binary
+*.zip binary

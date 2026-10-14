@@ -1,0 +1,122 @@
+{
+  "id": "casa-inteligente",
+  "nombre": "Casa inteligente distribuida",
+  "nivel": "Intermedio II",
+  "descripcion": "Una maqueta de casa con una central Bluetooth y nodos por habitación que controlan cargas de 12 V; cada equipo desarrolla un nodo y se integran por I2C.",
+  "docente": "Bairon Alas",
+  "imagen": "imagenes/IMAGEN_1.1.png",
+  "guias": [
+    {
+      "archivo": "guia-01.md",
+      "guia": 1,
+      "sabado": 1,
+      "titulo": "Una casa, cuatro equipos",
+      "sesion": "Definición del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-02.md",
+      "guia": 2,
+      "sabado": 2,
+      "titulo": "El contrato entre nodos",
+      "sesion": "Diseño de arquitectura",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-03.md",
+      "guia": 3,
+      "sabado": 3,
+      "titulo": "Cargas de 12 V con seguridad",
+      "sesion": "Selección de componentes",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-04.md",
+      "guia": 4,
+      "sabado": 4,
+      "titulo": "Cada equipo arma su nodo",
+      "sesion": "Implementación electrónica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-05.md",
+      "guia": 5,
+      "sabado": 5,
+      "titulo": "Del celular a cada habitación",
+      "sesion": "Programación del sistema",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-06.md",
+      "guia": 6,
+      "sabado": 6,
+      "titulo": "El día de la integración",
+      "sesion": "Pruebas funcionales",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-07.md",
+      "guia": 7,
+      "sabado": 7,
+      "titulo": "Bus, voltaje y direcciones",
+      "sesion": "Corrección de fallos",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-08.md",
+      "guia": 8,
+      "sabado": 8,
+      "titulo": "Escenas y modos automáticos",
+      "sesion": "Optimización del sistema",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-09.md",
+      "guia": 9,
+      "sabado": 9,
+      "titulo": "El manual de la casa",
+      "sesion": "Documentación técnica",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-10.md",
+      "guia": 10,
+      "sabado": 10,
+      "titulo": "El recorrido por la casa",
+      "sesion": "Preparación de presentación",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-11.md",
+      "guia": 11,
+      "sabado": 11,
+      "titulo": "Bienvenidos a la casa",
+      "sesion": "Presentación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-12.md",
+      "guia": 12,
+      "sabado": 12,
+      "titulo": "Evaluar la integración",
+      "sesion": "Evaluación del proyecto",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-13.md",
+      "guia": 13,
+      "sabado": 13,
+      "titulo": "Trabajar entre equipos",
+      "sesion": "Cierre académico",
+      "duracion": 120
+    },
+    {
+      "archivo": "guia-14.md",
+      "guia": 14,
+      "sabado": 14,
+      "titulo": "La casa en internet",
+      "sesion": "Proyección a Intermedio III",
+      "duracion": 120
+    }
+  ]
+}
