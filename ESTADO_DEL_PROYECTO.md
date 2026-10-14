@@ -4,6 +4,7 @@
 
 Este documento resume qué está hecho, qué falta y cómo retomar el trabajo.
 Para usar la plataforma, ver `LEEME.md`. Para escribir guías, ver `COMO_AGREGAR_PROYECTOS.md`.
+Respaldo del código y las guías en GitHub: https://github.com/byron365/plataforma-guias-steam (ver `LEEME.md`).
 
 > **Estado:** las animaciones de los 11 proyectos están completas (112 en la galería, 129 bloques en las guías).
 > **Archivos de trabajo del equipo:** listos (10 de octubre), ver sección 2.1.1.

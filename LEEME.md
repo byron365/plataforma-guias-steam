@@ -179,3 +179,30 @@ copia el contenido de `respaldos/subidas/` dentro de `subidas/`.
    versión de Node de cada computadora y no sirve en otra.
 3. Doble clic en `Iniciar plataforma.bat`: la primera vez instala lo necesario (`npm install`,
    requiere internet solo esa vez).
+
+## Respaldo del código y las guías en GitHub
+
+El proyecto está en **https://github.com/byron365/plataforma-guias-steam** (repositorio **público**).
+Es un respaldo de las guías, la plataforma y la documentación, y guarda el historial de cada cambio.
+
+**Qué NO se sube** (lo impide el archivo `.gitignore`): las respuestas y la base de datos (`datos/`), las fotos
+y archivos de los equipos (`subidas/`), las copias de la base de datos de `respaldos/`, la contraseña (`.env`)
+y `node_modules/`. Sí se sube `respaldos/guias-antes-de-la-revision-2026-10-10/` (guías originales y su verificador).
+
+> Ojo: como es público, cualquiera puede leer las guías, **incluidas las notas `:::docente` con las respuestas**.
+
+**Para subir los cambios nuevos** (en una terminal abierta en esta carpeta):
+
+```
+git add -A
+git commit -m "Qué cambió, en pocas palabras"
+git push
+```
+
+- Antes de `git commit` puedes revisar qué se va a subir con `git status`.
+- La primera vez en una computadora nueva, `git push` abre el navegador para iniciar sesión en GitHub.
+- Los cambios se firman como "Bairon Alas" con el correo privado de GitHub (configurado solo en este proyecto).
+
+**Para recuperar el proyecto en otra computadora:** `git clone https://github.com/byron365/plataforma-guias-steam.git`
+y luego sigue "Llevar la plataforma a otra computadora". Las respuestas y fotos no vienen: se restauran desde
+`respaldos/` (ver "Respaldos").
