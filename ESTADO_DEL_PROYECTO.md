@@ -1,6 +1,6 @@
 # Estado del proyecto · Plataforma de guías STEAM
 
-*Última actualización: 13 de octubre de 2026*
+*Última actualización: 14 de octubre de 2026*
 
 Este documento resume qué está hecho, qué falta y cómo retomar el trabajo.
 Para usar la plataforma, ver `LEEME.md`. Para escribir guías, ver `COMO_AGREGAR_PROYECTOS.md`.
@@ -10,6 +10,8 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > **Archivos de trabajo del equipo:** listos (10 de octubre), ver sección 2.1.1.
 > **13 de octubre:** guías paso a paso, bitácora del equipo, revisión de las 154 guías y nombres de Blender 5.2
 > (secciones 2.1.2 a 2.1.5).
+> **14 de octubre:** proyecto respaldado en GitHub (público; sin datos de estudiantes ni contraseña) y animación de
+> simetría con los nombres de Blender 5.2. Para subir cambios: `git add -A`, `git commit -m "…"`, `git push` (ver `LEEME.md`).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
 
