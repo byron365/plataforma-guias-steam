@@ -110,6 +110,7 @@ router.get('/resumen', async (req, res) => {
       proyecto: e.proyecto,
       nombre: e.nombre,
       pin: e.pin,
+      version: e.version || '',
       estudiantes: estudiantes.all(e.id).map((f) => f.estudiante),
       ultimaActividad: actividad.get(e.id).ultima,
       desbloqueosPropios: desbloqueosEquipo.all(e.id).map((f) => f.guia),
@@ -123,8 +124,8 @@ router.get('/resumen', async (req, res) => {
 
   res.json({
     proyectos: proyectos.map((p) => ({
-      id: p.id, nombre: p.nombre, nivel: p.nivel,
-      guias: p.guias.map((g) => ({ numero: g.numero, titulo: g.titulo, sabado: g.sabado, sesion: g.sesion, existe: g.existe })),
+      id: p.id, nombre: p.nombre, nivel: p.nivel, versiones: p.versiones,
+      guias: p.guias.map((g) => ({ numero: g.numero, titulo: g.titulo, sabado: g.sabado, sesion: g.sesion, existe: g.existe, versiones: g.versiones })),
       desbloqueadas: desbloqueosProyecto.all(p.id).map((f) => f.guia),
     })),
     equipos,
@@ -173,6 +174,21 @@ router.put('/equipos/:id', (req, res) => {
     .run(datos.nombre || equipo.nombre, datos.pin || equipo.pin, equipo.id);
   // Si cambió el PIN, los dispositivos del equipo deben volver a entrar
   if (datos.pin && datos.pin !== equipo.pin) db.prepare('DELETE FROM sesiones WHERE equipo_id = ?').run(equipo.id);
+  res.json({ ok: true });
+});
+
+// Versión de las guías del equipo (por ejemplo "tinkercad"). "" = la versión normal del proyecto.
+// Las respuestas no se borran: los campos tienen los mismos nombres en todas las versiones.
+router.put('/equipos/:id/version', (req, res) => {
+  const equipo = db.prepare('SELECT * FROM equipos WHERE id = ?').get(req.params.id);
+  if (!equipo) return res.status(404).json({ error: 'Ese equipo no existe.' });
+  const proyecto = obtenerProyecto(equipo.proyecto);
+  const version = String((req.body || {}).version || '');
+  const normal = proyecto && proyecto.versiones[0] ? proyecto.versiones[0].id : '';
+  if (version && !(proyecto && proyecto.versiones.some((v) => v.id === version))) {
+    return res.status(400).json({ error: 'Esa versión no existe en el proyecto.' });
+  }
+  db.prepare('UPDATE equipos SET version = ? WHERE id = ?').run(version === normal ? '' : version, equipo.id);
   res.json({ ok: true });
 });
 
@@ -234,12 +250,15 @@ router.post('/desbloqueos', (req, res) => {
 router.get('/guias/:proyecto/:numero', (req, res) => {
   const proyecto = obtenerProyecto(req.params.proyecto);
   const numero = parseInt(req.params.numero, 10);
-  const guia = proyecto && obtenerGuia(proyecto.id, numero);
+  // Con equipo se muestra la versión del equipo; sin equipo, la que se pida (?version=) o la normal
+  const equipoVersion = req.query.equipo ? (db.prepare('SELECT version FROM equipos WHERE id = ?').get(req.query.equipo) || {}).version : '';
+  const version = req.query.equipo ? (equipoVersion || '') : String(req.query.version || '');
+  const guia = proyecto && obtenerGuia(proyecto.id, numero, version);
   if (!guia) return res.status(404).json({ error: 'Esa guía no existe o todavía no tiene archivo.' });
 
   const datos = {
     proyecto: { id: proyecto.id, nombre: proyecto.nombre },
-    numero, titulo: guia.titulo, sabado: guia.sabado, sesion: guia.sesion,
+    numero, titulo: guia.titulo, sabado: guia.sabado, sesion: guia.sesion, version: guia.version,
     partes: guia.partes, // incluye las notas del docente
     checklistsFinales: guia.checklistsFinales,
   };
@@ -344,7 +363,7 @@ router.get('/exportar/:tipo', (req, res) => {
       const proyecto = proyectos.find((p) => p.id === e.proyecto);
       if (!proyecto) continue;
       for (const fila of consulta.all(e.id)) {
-        const guia = obtenerGuia(proyecto.id, fila.guia);
+        const guia = obtenerGuia(proyecto.id, fila.guia, e.version);
         const [id, dueno] = fila.campo.split(SEPARADOR_INDIVIDUAL);
         const tipo = guia ? guia.campos[id] : null;
         const etiqueta = (guia && guia.etiquetas[id]) || {};
@@ -359,7 +378,7 @@ router.get('/exportar/:tipo', (req, res) => {
       }
       // Fotos y videos: una fila por archivo con su ubicación en subidas/
       for (const foto of db.prepare('SELECT * FROM fotos WHERE equipo_id = ? ORDER BY guia, id').all(e.id)) {
-        const guia = obtenerGuia(proyecto.id, foto.guia);
+        const guia = obtenerGuia(proyecto.id, foto.guia, e.version);
         const etiqueta = (guia && guia.etiquetas[foto.campo]) || {};
         lineas.push(filaCSV([proyecto.nombre, e.nombre, foto.guia, guia ? guia.titulo : '', foto.campo,
           etiqueta.pregunta || 'Foto', foto.estudiante, `${foto.tipo.startsWith('video') ? 'Video' : 'Foto'}: subidas/${foto.archivo}`, foto.creada]));
@@ -367,13 +386,13 @@ router.get('/exportar/:tipo', (req, res) => {
       // Bitácora: una fila por nota (las vacías no se exportan)
       for (const n of notasDeEquipo(e.id).reverse()) {
         if (!n.texto.trim()) continue;
-        const guia = n.guia ? obtenerGuia(proyecto.id, n.guia) : null;
+        const guia = n.guia ? obtenerGuia(proyecto.id, n.guia, e.version) : null;
         lineas.push(filaCSV([proyecto.nombre, e.nombre, n.guia || '', guia ? guia.titulo : '', 'bitacora',
           'Bitácora', n.editadoPor || n.autor, n.texto, n.actualizada]));
       }
       // Archivos de trabajo: una fila por versión guardada
       for (const a of archivosDeEquipo(e.id)) {
-        const guia = obtenerGuia(proyecto.id, a.guia);
+        const guia = obtenerGuia(proyecto.id, a.guia, e.version);
         lineas.push(filaCSV([proyecto.nombre, e.nombre, a.guia, guia ? guia.titulo : '', a.campo,
           'Archivo de trabajo', a.estudiante, `Archivo: ${a.nombre} (${Math.max(1, Math.round(a.tamano / 1024))} KB)`, a.creado]));
       }

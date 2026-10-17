@@ -99,7 +99,21 @@ El aviso de pieza se borra cuando el maestro lo lee. ¿Qué pasaría si el maest
 
 ## Parte 4 · Simular la decisión de color (40 min)
 
-En Wokwi probamos la lógica del clasificador sin el sensor real: tres **potenciómetros** simulan los valores rojo, verde y azul.
+**¿Para qué es esta simulación?** Antes de armar la banda queremos comprobar que la **decisión** del clasificador funciona: "llega una pieza → ¿de qué color es? → mover el desviador al lugar correcto".
+
+El sensor de color real (TCS34725) no da el nombre del color: da **tres números**, cuánta luz **roja**, **verde** y **azul** refleja la pieza. Una pieza roja refleja mucho rojo y poco de los otros dos. El programa compara los tres números y elige el **más grande**.
+
+Wokwi no tiene ese sensor, así que lo imitamos con piezas que sí tiene:
+
+| En la simulación | Imita a | Qué hace |
+| --- | --- | --- |
+| Potenciómetro "R" | Canal rojo del sensor de color | Girarlo es como poner una pieza más o menos roja |
+| Potenciómetro "G" | Canal verde del sensor de color | Igual, con el verde |
+| Potenciómetro "B" | Canal azul del sensor de color | Igual, con el azul |
+| Botón "llega pieza" | Sensor infrarrojo de llegada | Presionarlo es como si una pieza llegara al sensor |
+| Servo | Desviador | Gira hacia la salida del color elegido |
+
+Ojo: aquí los potenciómetros **no** son la perilla de velocidad del diagrama de la Parte 2. Solo en esta simulación hacen de sensor de color.
 
 1. En **wokwi.com**, inicien sesión, **Start from Scratch → Arduino Uno**.
 2. Con el botón **+** agreguen tres *Potentiometer*, un *Servo* y un *Pushbutton*.
@@ -154,7 +168,12 @@ void loop() {
 }
 ```
 
-5. Presionen **Play** (botón verde ▶). Para cada fila: hagan clic en cada potenciómetro y llévenlo aproximadamente al valor de la tabla (al mínimo es 0, al máximo 1023, a la mitad unos 512), presionen el botón y anoten lo que dice el Monitor serie y el ángulo del servo.
+**Cómo decide:** `leerColor()` lee los tres potenciómetros y devuelve 0 (rojo), 1 (verde) o 2 (azul) según cuál es mayor. `ANG` guarda el ángulo del servo para cada color y `cuenta` lleva cuántas piezas van de cada color.
+
+5. Presionen **Play** (botón verde ▶). Para cada fila de la tabla:
+   - Hagan clic en cada potenciómetro y gírenlo. Wokwi no muestra el número, pero no hace falta que quede exacto: todo a la izquierda es 0, todo a la derecha 1023 y a la mitad unos 512. Lo que importa es **cuál queda más alto**.
+   - En la última fila los tres deben ser **exactamente iguales**: llévenlos los tres **todo a la izquierda** (en 0).
+   - Presionen el botón "llega pieza" y anoten lo que dice el Monitor serie y hacia dónde apunta el servo.
 
 :::tabla id="g2-simulacion"
 | R | G | B | Color esperado | Resultado | Ángulo del servo |

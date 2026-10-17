@@ -1,6 +1,6 @@
 # Estado del proyecto · Plataforma de guías STEAM
 
-*Última actualización: 14 de octubre de 2026*
+*Última actualización: 16 de octubre de 2026*
 
 Este documento resume qué está hecho, qué falta y cómo retomar el trabajo.
 Para usar la plataforma, ver `LEEME.md`. Para escribir guías, ver `COMO_AGREGAR_PROYECTOS.md`.
@@ -12,6 +12,8 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > (secciones 2.1.2 a 2.1.5).
 > **14 de octubre:** proyecto respaldado en GitHub (público; sin datos de estudiantes ni contraseña) y animación de
 > simetría con los nombres de Blender 5.2. Para subir cambios: `git add -A`, `git commit -m "…"`, `git push` (ver `LEEME.md`).
+> **16 de octubre:** el Dispensador, el Mini invernadero, el Puente levadizo y el Laberinto tienen versión **Tinkercad (bloques)** de sus guías de diseño 3D;
+> el docente elige la versión de cada equipo (sección 2.1.6).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
 
@@ -197,6 +199,70 @@ Todas las decisiones están tomadas: en la próxima sesión se puede programar d
 
 Botón flotante 📓 en guías y página del proyecto (`publico/js/bitacora.js`, `servidor/bitacora.js`, tabla `notas`).
 Notas separadas con autor, guía y fecha; autoguardado; el docente las ve en la tarjeta del equipo y en el CSV.
+
+### 2.1.6 Versiones de guías en Tinkercad: los 7 proyectos con Blender ✅ (16 de octubre)
+
+**Estación, Garra y Mini fútbol** (16 de octubre, a pedido). Con esto, los 7 proyectos que usan Blender tienen versión Tinkercad:
+- **Estación meteorológica** (guías 1, 2, 4, 8, 10, 11 y 13): torre de platos con Repetir (Copiar + Mover Z 15), columnas con las
+  coordenadas de la tabla, carcasa con tapa/base/soporte/huecos, gemelo digital con **Definir color** (Rojo, Verde, Azul) después del
+  último Group Selection, texto parado con Girar alrededor, carcasa v2 (platos inclinados con dos Conos) e imagen final.
+  La pregunta g4-p2 (aplicar Repetir antes de Ctrl + J) se adaptó: qué pasa si se exporta sin agrupar.
+- **Garra robótica** (guías 1, 2, 3, 4, 8, 10, 11 y 13): base, plato con pared, eslabones (un diseño por pieza), pinza con
+  **engrane armado con bloques** (disco + 6 barras giradas 30° con Repetir = 12 dientes rectos), placa con la ventana del servo
+  según la distancia eje-borde que mida el equipo, pinza v2 y una **maqueta** para la imagen final (Codeblocks no junta diseños).
+  La Guía 2 se llama "Del papel a Tinkercad": una versión puede traer su propio `titulo:` (cambio en `servidor/contenido.js`).
+- **Mini fútbol** (guías 1, 2, 3, 8 y 13): portería con **simetría** = Copiar + **Escala X −1** + Mover X −52.5, red con Repetir
+  (se pone antes del espejo), medalla con Texto, maqueta de la cancha con las porterías en espejo y Tubo para el círculo central.
+  La Guía 4, Parte 4 (limpiar y escalar el trofeo escaneado) se queda en Blender para todos (decisión de Bairon): la hace el docente o un equipo con Blender.
+- **Bloques verificados hoy en Tinkercad:** **Escala** X/Y/Z con −1 refleja la pieza (espejo); **Definir color** con Rojo, Verde y
+  Azul pinta todo el grupo seleccionado; **Copiar** después de Group Selection copia el grupo. En Modificar también hay
+  **Escala** uniforme, **Mover … a** y **Definir color** con Tonalidad/Saturación/Brillo; en Controlar, **Contar con**, **Pausar** y **si … entonces**.
+- [ ] Probar en clase: el engrane de la Garra (que los dientes rectos engranen bien impresos) y la ventana del servo de la placa.
+
+**Mini invernadero:** versión Tinkercad de las guías **1, 2, 3 y 13** (soporte del servo, bisagra con nudillo acostado y agujero
+del pasador, clip de la manguera y escena final con caja transparente).
+
+**Laberinto inclinable:** versión Tinkercad de las guías **1, 2, 3, 4, 11 y 13** (tablero con bordes y paredes, agujero de la meta,
+pieza de prueba, soporte cardán en dos diseños —base y marco— con ejes y agujeros acostados con Girar alrededor, tablero v2
+con Tubo, Texto y Definir tamaño, escena final). Verificados también los bloques **Copiar** (dentro de Repetir hace una fila)
+y **Texto**. El Robot con telemetría y la Banda clasificadora no tienen guías con Blender: no llevan versión Tinkercad.
+
+**Puente levadizo** (16 de octubre, a pedido): versión **Tinkercad (bloques)** de las guías **1, 2, 3, 8 y 13**: soporte del
+servo, hoja con barandas y encastre (agujero acostado con **Girar alrededor**, Eje x 90°), barco con proa redondeada y
+escena final con las hojas levantadas (Girar alrededor, Eje y ±40°) y el barco. Mismos campos que la versión Blender.
+
+**Importante (comprobado en Tinkercad):** en Codeblocks las formas nacen **centradas en el origen** (también en Z), como
+en Blender, y **Girar alrededor** gira la forma desde su centro. Por eso los números de **Mover** son las mismas
+Posiciones de las guías de Blender. Las primeras guías Tinkercad del Dispensador se habían escrito creyendo que las
+formas nacían apoyadas en el plano; se corrigieron (soporte: hueco Z 2; embudo: sin Mover −1, tapa Z 26.5, cuello
+Z 35.5; compuerta: Z 4 y 4.5; escena de la Guía 13). También se quitaron los recuadros de "programa completo" en texto,
+porque confundían a los chicos.
+
+Algunos grupos diseñan mejor en Tinkercad que en Blender. El **Dispensador** tiene ahora una versión
+**Tinkercad (bloques)** de las guías **1, 2, 3 y 13** (`guia-NN.tinkercad.md`), con el diseño 3D en
+**Tinkercad Codeblocks**: mismas piezas y medidas que en Blender (soporte, embudo con cuello, compuerta)
+y, en la Guía 13, una escena con botella transparente y croquetas al azar exportada como imagen.
+
+- **Cómo funciona:** `"versiones"` en `proyecto.json`; columna `version` en la tabla `equipos` (se agrega sola);
+  `obtenerGuia(proyecto, número, versión)` en `servidor/contenido.js`. El docente elige la versión de cada equipo en
+  **Equipos** (menú "Versión de las guías") y puede ver cada versión en el visor. El CSV usa la versión de cada equipo.
+- **Respuestas:** las versiones tienen los mismos campos que las guías normales (comprobado con
+  `herramientas/comparar-versiones.js`), así que cambiar de versión no borra nada.
+- **Nombres verificados** en Tinkercad en español (16 de octubre): Codeblocks, **+ Crear → Codeblocks**, categorías
+  Formas / Modificar / Controlar / Matemáticas / Variables / Plantillas / Marcar; bloque **Añadir** con medidas
+  (Cubo: A, L, A, arista · Cilindro: Radio, A, Lados · Cono: Radio superior, Radio inferior, A, Lados · Tubo: Radio,
+  Grosor del muro, A · Esfera: Radio); círculo rayado = hueco; **Mover:**, **Seleccionar todo**, **Group Selection**
+  (en inglés), **Establecer transparencia** (False/True), **Repetir … veces**, **Aleatorio entre … y …**;
+  **Compartir → Exportar y compartir → .STL** e **Imagen o vídeo → Captura de pantalla / GIF animado**.
+  Los programas del soporte, el embudo, la compuerta y la escena se probaron y funcionan.
+- [ ] Probar con un grupo: que los programas de las guías 2 y 3 salgan igual en sus computadoras.
+- [ ] No pude confirmar: cómo se gira la vista 3D de Codeblocks con el mouse (la guía dice arrastrar, o con el
+      botón derecho) y que el diseño se renombre haciendo clic en su nombre.
+- [ ] Imágenes nuevas de las versiones Tinkercad: Dispensador `2.3T`, `2.4T`, `3.1T`, `3.2T`, `13.1T`; Puente `2.2T`, `2.3T`,
+      `3.1T`, `8.1T`, `13.1T`; Laberinto `2.2T`, `3.3T`, `4.2T`, `11.2T`, `13.1T`;
+      Invernadero `2.2T`, `2.3T`, `2.4T`, `3.1T`, `13.1T`; Estación (10), Garra (11) y Mini fútbol (3)
+      (listas en `imagenes/LEEME.md` de cada proyecto).
+- [ ] En el Tinkercad del docente quedó un diseño de prueba de Codeblocks ("Tremendous Jaiks-Esboo") que se puede borrar.
 
 ### 2.1.2 Guías paso a paso ✅ (13 de octubre)
 

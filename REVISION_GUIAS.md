@@ -349,3 +349,21 @@ Varios nombres de las guías no coincidían:
   (Blender no acepta la coma).
 - **Revisión completa:** las 154 guías pasan el verificador. Lo que queda con "Matriz" o "Ubicación" no es de
   Blender ("Matriz de confusión", "Matriz de pruebas", tabla de sensores del Elevador).
+
+## Banda y Robot · revisión de coherencia (16 de octubre)
+
+- **Banda G2 Parte 4 (simulación del color):** se agregó al inicio para qué sirve la simulación: el TCS34725 da tres
+  números (cuánta luz roja, verde y azul refleja la pieza) y el programa elige el mayor. Una tabla nueva dice qué
+  imita cada pieza de Wokwi (potenciómetros = canales R, G y B; botón = sensor IR de llegada; servo = desviador). Se
+  aclara que esos potenciómetros no son la perilla de velocidad de la Parte 2, y se agregó un párrafo corto que
+  explica `leerColor()`, `ANG` y `cuenta`. En el paso 5 se explica que Wokwi no muestra el número (lo que importa es
+  cuál queda más alto) y que en la fila de valores iguales los tres van todo a la izquierda. El código, la tabla y las
+  preguntas no cambian.
+- **Banda, resto:** pines, protocolo I2C ('S'/'G', 2 bytes, dirección 8, sensor 0x29) y nombres coinciden entre las
+  guías 1, 2, 4, 5, 7, 8, 13 y 14. Sin errores.
+- **Robot:** pines (TB6612 D5/D7/D8 y D6/D4/D9, STBY D12, HC-SR04 D2/D3, HC-05 D10/D11, batería A0), protocolo M/T y
+  cálculos del docente coinciden en las guías 1 a 14. Pendientes (decide Bairon):
+  - G8 Parte 2 pide medir `distancia()` dentro del bloque de 20 ms, pero la nota del docente dice medirla cada 100 ms.
+  - G7, tabla de mensajes: los mensajes cortados también pasan porque SoftwareSerial no recibe mientras envía la
+    telemetría; la tabla solo dice "el mando envía demasiado rápido".
+  - G9: el ejemplo "D5, D7, D8" es la respuesta de la primera fila de la tabla de conexiones.

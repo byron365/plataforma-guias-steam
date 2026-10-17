@@ -48,6 +48,16 @@ Lo más fácil: copia la carpeta `garra-robotica`, cámbiale el nombre y edita l
 - `color`: color de la tarjeta mientras no haya imagen de portada.
 - `imagen`: nombre del archivo dentro de `imagenes/`.
 - `orden`: posición en la página de inicio (1 = primero).
+- `versiones` (opcional): versiones distintas de algunas guías, por ejemplo con otro programa de diseño 3D.
+  Se escribe `"versiones": [{ "id": "blender", "nombre": "Blender" }, { "id": "tinkercad", "nombre": "Tinkercad (bloques)" }]`.
+  La **primera** es la normal (los archivos `guia-02.md`). Para otra versión de una guía se crea, junto a la normal,
+  `guia-02.tinkercad.md` (el id de la versión antes de `.md`). Las guías sin ese archivo se ven igual en todas las versiones.
+  Si el título cambia en esa versión, escríbanlo en el `titulo:` del encabezado del archivo de la versión (tiene prioridad sobre el de `proyecto.json`).
+  El docente elige la versión de cada equipo en la pestaña **Equipos**.
+  **Importante:** la versión debe tener **los mismos campos** que la normal (mismos `id`, mismas tablas con casillas
+  vacías, misma cantidad de casillas en los checklists); así un equipo puede cambiar de versión sin perder respuestas.
+  Para comprobarlo: `node herramientas/comparar-versiones.js "<carpeta de la plataforma>" <proyecto> <versión> <guías…>`.
+  Para sus imágenes usen otro código, por ejemplo `[IMAGEN 2.3T: …]` → `IMAGEN_2.3T.png`.
 - `pasoAPaso` (opcional): las guías se muestran **paso por paso** (si pones `"pasoAPaso": false`, cada parte se ve completa),
   con botones "Paso anterior" / "Siguiente paso" y "Ver toda la parte". Los pasos se cortan solos:
   cada número de una lista (1., 2., 3.…) es un paso, y cada tabla, pregunta, animación, foto o código va

@@ -5,6 +5,16 @@
   "descripcion": "Un brazo robótico con pinza que se controla con perillas y luego trabaja solo.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "versiones": [
+    {
+      "id": "blender",
+      "nombre": "Blender"
+    },
+    {
+      "id": "tinkercad",
+      "nombre": "Tinkercad (bloques)"
+    }
+  ],
   "guias": [
     {
       "archivo": "guia-01.md",

@@ -5,6 +5,16 @@
   "descripcion": "Un puente a escala que se abre solo al detectar un barco, con semáforo, alarma y torres reforzadas con triángulos.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "versiones": [
+    {
+      "id": "blender",
+      "nombre": "Blender"
+    },
+    {
+      "id": "tinkercad",
+      "nombre": "Tinkercad (bloques)"
+    }
+  ],
   "guias": [
     {
       "archivo": "guia-01.md",

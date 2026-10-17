@@ -29,3 +29,13 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_12.2.png | agujero trampa en un pasillo del laberinto con el segundo sensor infrarrojo debajo |
 | IMAGEN_13.1.png | render final del laberinto inclinado con la canica brillante, el soporte cardán y la meta en verde |
 | IMAGEN_14.1.png | simulación en Wokwi con el MPU6050 y dos servos que giran al cambiar la aceleración |
+
+**Versión Tinkercad (bloques)** de las guías 2, 3, 4, 11 y 13 (archivos `guia-NN.tinkercad.md`):
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_2.2T.png | tablero de 180 por 180 mm en Tinkercad Codeblocks con sus cuatro bordes y las primeras paredes del laberinto |
+| IMAGEN_3.3T.png | tablero completo del laberinto en Tinkercad Codeblocks con todas las paredes y el agujero de la meta |
+| IMAGEN_4.2T.png | soporte cardán en Tinkercad Codeblocks con base, torres, marco exterior y ventanas para los servos |
+| IMAGEN_11.2T.png | laberinto versión 2 en Tinkercad Codeblocks con paredes curvas y obstáculos |
+| IMAGEN_13.1T.png | escena final del laberinto inclinado en Tinkercad con la canica, el soporte y el marco |

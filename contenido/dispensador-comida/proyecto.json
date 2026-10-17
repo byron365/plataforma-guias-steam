@@ -5,6 +5,16 @@
   "descripcion": "Un dispensador que sirve porciones de croquetas con un botón o con horario, según el tamaño de la mascota.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "versiones": [
+    {
+      "id": "blender",
+      "nombre": "Blender"
+    },
+    {
+      "id": "tinkercad",
+      "nombre": "Tinkercad (bloques)"
+    }
+  ],
   "guias": [
     {
       "archivo": "guia-01.md",

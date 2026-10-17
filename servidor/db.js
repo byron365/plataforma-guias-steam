@@ -120,6 +120,12 @@ db.exec(`
   );
 `);
 
+// Versión de las guías que usa cada equipo (por ejemplo "tinkercad"). Vacío = la versión normal del proyecto.
+// Las bases de datos creadas antes no tienen la columna: se agrega sola.
+if (!db.prepare('PRAGMA table_info(equipos)').all().some((c) => c.name === 'version')) {
+  db.exec("ALTER TABLE equipos ADD COLUMN version TEXT NOT NULL DEFAULT ''");
+}
+
 // Las sesiones del docente duran 12 horas: al arrancar se borran las vencidas
 db.prepare("DELETE FROM sesiones_docente WHERE creada < datetime('now', 'localtime', '-12 hours')").run();
 

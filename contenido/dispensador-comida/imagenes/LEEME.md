@@ -27,3 +27,13 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_12.2.png | sensor ultrasónico pegado en la boca de la botella mirando hacia la comida |
 | IMAGEN_13.1.png | render final del dispensador con la botella transparente, croquetas cayendo y el plato |
 | IMAGEN_14.1.png | dispensador simulado en Wokwi con el reloj DS1307, el servo, el LED y el buzzer |
+
+**Versión Tinkercad (bloques)** de las guías 2, 3 y 13 (archivos `guia-NN.tinkercad.md`):
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_2.3T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
+| IMAGEN_2.4T.png | soporte del servo terminado en Tinkercad Codeblocks |
+| IMAGEN_3.1T.png | embudo hueco en Tinkercad Codeblocks con el cuello para la botella |
+| IMAGEN_3.2T.png | compuerta en Tinkercad Codeblocks: paleta con el encastre para el servo |
+| IMAGEN_13.1T.png | escena final del dispensador en Tinkercad con la botella transparente, el embudo, la compuerta y las croquetas en el plato |

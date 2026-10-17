@@ -39,3 +39,19 @@ Si una imagen todavía no existe, la plataforma muestra un recuadro gris con la 
 | IMAGEN_13.2.png | ejemplo de render final de una garra con piezas de colores |
 | IMAGEN_14.1.png | módulo joystick conectado al Arduino, con sus pines señalados |
 | IMAGEN_14.2.png | simulación en Wokwi con Arduino, servo y potenciómetro conectados |
+
+**Versión Tinkercad (bloques)** de las guías 1, 2, 3, 4, 8, 10, 11 y 13 (archivos `guia-NN.tinkercad.md`):
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_2.2T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
+| IMAGEN_2.3T.png | bloque Cubo con las medidas de la caja exterior y su bloque Mover |
+| IMAGEN_2.4T.png | caja de la base con el hueco del servo en Tinkercad Codeblocks |
+| IMAGEN_2.5T.png | base terminada en Tinkercad Codeblocks, vista 3/4, con el hueco del servo y los agujeros |
+| IMAGEN_3.2T.png | plato giratorio con su pared de soporte y la ventana del servo en Tinkercad Codeblocks |
+| IMAGEN_3.3T.png | eslabón del hombro con el agujero del eje y la ventana del servo en Tinkercad Codeblocks |
+| IMAGEN_4.4T.png | engrane de 12 dientes hecho con un cilindro y barras giradas con Repetir en Tinkercad Codeblocks |
+| IMAGEN_4.5T.png | engrane motriz con su mandíbula y el agujero del centro en Tinkercad Codeblocks |
+| IMAGEN_11.1T.png | comparación en Tinkercad de la pinza versión 1 y versión 2, lado a lado |
+| IMAGEN_13.1T.png | maqueta de la garra en Tinkercad Codeblocks con piezas de colores |
+| IMAGEN_13.2T.png | ejemplo de imagen final de una garra en Tinkercad con piezas de colores |

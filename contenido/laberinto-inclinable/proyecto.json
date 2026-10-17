@@ -5,6 +5,16 @@
   "descripcion": "Un laberinto con canica que se inclina en dos ejes con un joystick, con cronómetro, récord y torneo.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "versiones": [
+    {
+      "id": "blender",
+      "nombre": "Blender"
+    },
+    {
+      "id": "tinkercad",
+      "nombre": "Tinkercad (bloques)"
+    }
+  ],
   "guias": [
     {
       "archivo": "guia-01.md",

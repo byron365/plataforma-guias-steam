@@ -98,7 +98,7 @@ Abre `http://localhost:3000/docente` y entra con la contraseña `DOCENTE_CLAVE` 
 | Pestaña | Para qué |
 | --- | --- |
 | **Avance** | Equipos en filas y guías en columnas, con colores por estado. Se actualiza solo cada 15 s. Toca una celda para ver las respuestas de ese equipo en esa guía, con tus notas. |
-| **Equipos** | Crear equipos con su PIN (el 🎲 propone uno al azar), cambiar nombre o PIN, desbloquear una guía solo para un equipo, reiniciar su progreso o borrarlo. |
+| **Equipos** | Crear equipos con su PIN (el 🎲 propone uno al azar), cambiar nombre o PIN, elegir la **versión de las guías** (en proyectos que la tienen), desbloquear una guía solo para un equipo, reiniciar su progreso o borrarlo. |
 | **Guías** | Desbloquear o bloquear cada guía para todo el proyecto, ver cada guía con las notas del docente y crear un proyecto nuevo. |
 | **Compartir** | Dirección y código QR para los estudiantes (con botón de pantalla completa para proyectarlo). |
 | **Exportar** | Descargar todas las respuestas o el avance en CSV (Excel o Google Sheets). |
@@ -106,6 +106,15 @@ Abre `http://localhost:3000/docente` y entra con la contraseña `DOCENTE_CLAVE` 
 Notas:
 
 - Si cambias el PIN de un equipo, sus dispositivos tienen que volver a entrar.
+- **Versiones de las guías:** todos los proyectos que usan Blender (**Dispensador**, **Mini invernadero**, **Puente levadizo**,
+  **Laberinto inclinable**, **Estación meteorológica**, **Garra robótica** y **Mini fútbol**) tienen dos versiones del diseño 3D: **Blender** y
+  **Tinkercad (bloques)**, que usa Tinkercad Codeblocks. En la pestaña **Equipos**, cada tarjeta tiene el menú
+  **"Versión de las guías"**: elige la que verá ese equipo. Solo cambian las guías de diseño 3D (Dispensador e Invernadero: 1, 2, 3 y 13;
+  Puente: 1, 2, 3, 8 y 13; Laberinto: 1, 2, 3, 4, 11 y 13; Estación: 1, 2, 4, 8, 10, 11 y 13; Garra: 1, 2, 3, 4, 8, 10, 11 y 13;
+  Mini fútbol: 1, 2, 3, 8 y 13); las demás son iguales. En el Mini fútbol, la Parte 4 de la Guía 4 (limpiar el trofeo escaneado)
+  se queda en Blender: la hace el docente o un equipo con Blender. Puedes cambiarla en cualquier
+  momento: **las respuestas se conservan**. En el visor de una guía, sin equipo elegido, el menú **Versión** muestra cada una.
+  Tinkercad necesita internet y una cuenta de Tinkercad para cada equipo (o una clase de Tinkercad).
 - En el visor de respuestas, la casilla **"Solo notas del docente"** deja solo tus notas de esa guía.
 - Una guía abierta para todo el proyecto no se puede cerrar para un solo equipo; al revés sí
   (abrir una guía solo para un equipo que va adelantado).

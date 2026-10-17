@@ -158,5 +158,6 @@ Antes de irse, suban `equipo_NOMBRE_trofeo.blend` y el `.stl` juntos en un `.zip
 - Objetos brillantes, transparentes o negros escanean mal: sugerir cubrirlos con talco o elegir otro objeto.
 - Si el escaneo falla, pueden modelar un trofeo con el modificador Enroscar (Screw) a partir de un perfil.
 - Durante la semana: imprimir los trofeos (opcional) para el torneo del sábado 9.
+- Equipos con la versión Tinkercad: la Parte 4 se queda en Blender (Codeblocks no abre modelos escaneados). La hace el docente o un equipo que tenga Blender, con el archivo que el equipo escaneó.
 - Tiempo total: 40 + 10 + 30 + 25 + 5 + 10 = 120 minutos.
 :::

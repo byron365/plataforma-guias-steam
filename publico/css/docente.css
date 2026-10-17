@@ -146,3 +146,9 @@
   .visor-barra { top: 58px; }
   .pestana { padding: 0 12px; }
 }
+
+/* Versión de las guías de un equipo (por ejemplo Blender o Tinkercad) */
+.version-equipo { margin: 8px 0; display: flex; flex-direction: column; gap: 2px; }
+.campo-version { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 600; }
+.campo-version select { min-height: 36px; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--borde); background: var(--superficie); color: var(--texto); font: inherit; }
+.marca-version { display: block; color: var(--acento-texto); font-weight: 600; }

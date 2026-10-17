@@ -5,6 +5,16 @@
   "descripcion": "Una estación que mide temperatura, humedad y luz, con carcasa 3D y un gemelo digital en Blender.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "versiones": [
+    {
+      "id": "blender",
+      "nombre": "Blender"
+    },
+    {
+      "id": "tinkercad",
+      "nombre": "Tinkercad (bloques)"
+    }
+  ],
   "guias": [
     {
       "archivo": "guia-01.md",

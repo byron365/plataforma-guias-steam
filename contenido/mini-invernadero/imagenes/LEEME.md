@@ -25,3 +25,13 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_12.1.png | sistema de riego por goteo en un cultivo de hortalizas |
 | IMAGEN_13.1.png | render final del mini invernadero transparente con la planta, la maceta y la ventana abierta |
 | IMAGEN_14.1.png | invernadero simulado en Wokwi con DHT22, potenciómetro, servo y pantalla OLED mostrando los datos |
+
+**Versión Tinkercad (bloques)** de las guías 2, 3 y 13 (archivos `guia-NN.tinkercad.md`):
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_2.2T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
+| IMAGEN_2.3T.png | soporte del servo terminado en Tinkercad Codeblocks |
+| IMAGEN_2.4T.png | hoja de bisagra en Tinkercad Codeblocks con su nudillo y el agujero para el pasador |
+| IMAGEN_3.1T.png | clip de manguera en Tinkercad Codeblocks con anillo abierto y pestaña para pegar |
+| IMAGEN_13.1T.png | escena final del mini invernadero en Tinkercad con la caja transparente, la planta, la maceta y la ventana abierta |

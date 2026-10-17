@@ -329,6 +329,7 @@ function tarjetaEquipo(equipo, p) {
           el('br'), `${completadas} de ${equipo.guias.length} guías completadas`,
           equipo.ultimaActividad ? ` · última respuesta ${fechaCorta(equipo.ultimaActividad)}` : ''),
         desbloqueosDelEquipo(equipo, p),
+        versionDelEquipo(equipo, p),
         archivosDelEquipo(equipo, p),
         bitacoraDelEquipo(equipo),
         el('div', { class: 'acciones-tarjeta' },
@@ -364,6 +365,26 @@ function archivosDelEquipo(equipo, p) {
   return el('details', { class: 'archivos-panel' },
     el('summary', {}, `Archivos de trabajo (${archivos.length})`),
     listaArchivosEquipo(archivos, { titulos }));
+}
+
+// Versión de las guías del equipo (solo en proyectos con versiones, por ejemplo Blender o Tinkercad)
+function versionDelEquipo(equipo, p) {
+  const versiones = (p && p.versiones) || [];
+  if (versiones.length < 2) return null;
+  const actual = equipo.version || versiones[0].id;
+  const conVersion = p.guias.filter((g) => (g.versiones || []).length).map((g) => g.numero);
+  const menu = el('select', { 'aria-label': `Versión de las guías de ${equipo.nombre}` },
+    versiones.map((v) => el('option', { value: v.id, selected: v.id === actual }, v.nombre)));
+  menu.addEventListener('change', async () => {
+    const elegida = versiones.find((v) => v.id === menu.value);
+    const ok = await accion(() => api(`/api/docente/equipos/${equipo.id}/version`, { method: 'PUT', body: { version: menu.value } }),
+      `${equipo.nombre} ahora ve la versión ${elegida.nombre}. Sus respuestas se conservan.`);
+    if (ok) equipo.version = menu.value === versiones[0].id ? '' : menu.value;
+    else menu.value = actual;
+  });
+  return el('div', { class: 'version-equipo' },
+    el('label', { class: 'campo-version' }, 'Versión de las guías ', menu),
+    conVersion.length ? el('small', { class: 'texto-suave' }, `Cambia las guías ${conVersion.join(', ')}; las demás son iguales.`) : null);
 }
 
 // Bitácora del equipo: sus notas, de la más nueva a la más vieja
@@ -434,7 +455,8 @@ function vistaGuias() {
           el('span', { class: 'info' },
             (g.sabado || g.sesion) ? el('span', { class: 'sesion-guia' }, [g.sabado ? `Sábado ${g.sabado}` : '', g.sesion].filter(Boolean).join(' · ')) : null,
             el('strong', {}, g.titulo),
-            g.existe ? el('small', {}, `${completada} de ${equipos.length} equipos la completaron`) : el('small', { class: 'falta-archivo' }, 'Falta el archivo .md')),
+            g.existe ? el('small', {}, `${completada} de ${equipos.length} equipos la completaron`) : el('small', { class: 'falta-archivo' }, 'Falta el archivo .md'),
+            (g.versiones || []).length ? el('small', { class: 'marca-version' }, `También en versión ${g.versiones.map((id) => ((p.versiones || []).find((v) => v.id === id) || { nombre: id }).nombre).join(', ')}`) : null),
           interruptor,
           el('button', { class: 'boton boton-chico boton-secundario', type: 'button', disabled: !g.existe, onclick: () => abrirVisor(p.id, g.numero, null) }, 'Ver guía y notas'));
       })),
@@ -576,12 +598,12 @@ function seccionRespaldos() {
 // ============================================================
 // Visor: una guía con las respuestas de un equipo y las notas del docente
 // ============================================================
-async function abrirVisor(proyectoId, numero, equipoId) {
+async function abrirVisor(proyectoId, numero, equipoId, version = '') {
   clearInterval(refresco);
   contenedorVista.replaceChildren(el('p', { class: 'cargando' }, 'Cargando guía…'));
   let guia;
   try {
-    guia = await api(`/api/docente/guias/${proyectoId}/${numero}${equipoId ? `?equipo=${equipoId}` : ''}`);
+    guia = await api(`/api/docente/guias/${proyectoId}/${numero}${equipoId ? `?equipo=${equipoId}` : (version ? `?version=${version}` : '')}`);
   } catch (error) {
     if (error.estado === 401) return mostrarEntrada();
     contenedorVista.replaceChildren(el('p', { class: 'mensaje-error' }, error.message),
@@ -597,7 +619,18 @@ async function abrirVisor(proyectoId, numero, equipoId) {
   const selectorEquipo = el('select', { 'aria-label': 'Equipo' },
     el('option', { value: '' }, 'Solo la guía y las notas'),
     equipos.map((e) => el('option', { value: e.id, selected: e.id === equipoId }, e.nombre)));
-  selectorEquipo.addEventListener('change', () => abrirVisor(proyectoId, numero, Number(selectorEquipo.value) || null));
+  selectorEquipo.addEventListener('change', () => abrirVisor(proyectoId, numero, Number(selectorEquipo.value) || null, version));
+
+  // Versión de la guía: con equipo se ve la suya; sin equipo se puede elegir
+  const versiones = p.versiones || [];
+  const infoGuia = p.guias.find((g) => g.numero === numero) || {};
+  let selectorVersion = null;
+  if (versiones.length > 1 && (infoGuia.versiones || []).length) {
+    const actual = guia.version || versiones[0].id;
+    selectorVersion = el('select', { 'aria-label': 'Versión de la guía', disabled: Boolean(equipoId), title: equipoId ? 'Se muestra la versión que usa este equipo' : '' },
+      versiones.map((v) => el('option', { value: v.id, selected: v.id === actual }, `Versión ${v.nombre}`)));
+    selectorVersion.addEventListener('change', () => abrirVisor(proyectoId, numero, null, selectorVersion.value === versiones[0].id ? '' : selectorVersion.value));
+  }
 
   const soloNotas = el('input', { type: 'checkbox' });
   const cuerpo = el('div', { class: 'visor-cuerpo' });
@@ -629,9 +662,10 @@ async function abrirVisor(proyectoId, numero, equipoId) {
   contenedorVista.replaceChildren(
     el('div', { class: 'visor-barra' },
       el('button', { class: 'boton boton-chico boton-secundario', type: 'button', onclick: dibujarVista }, '← Volver'),
-      el('button', { class: 'anim-boton', type: 'button', disabled: posicion <= 0, onclick: () => abrirVisor(proyectoId, existentes[posicion - 1], equipoId) }, '‹ Guía anterior'),
-      el('button', { class: 'anim-boton', type: 'button', disabled: posicion < 0 || posicion >= existentes.length - 1, onclick: () => abrirVisor(proyectoId, existentes[posicion + 1], equipoId) }, 'Guía siguiente ›'),
+      el('button', { class: 'anim-boton', type: 'button', disabled: posicion <= 0, onclick: () => abrirVisor(proyectoId, existentes[posicion - 1], equipoId, version) }, '‹ Guía anterior'),
+      el('button', { class: 'anim-boton', type: 'button', disabled: posicion < 0 || posicion >= existentes.length - 1, onclick: () => abrirVisor(proyectoId, existentes[posicion + 1], equipoId, version) }, 'Guía siguiente ›'),
       selectorEquipo,
+      selectorVersion,
       el('label', { class: 'casilla-simple' }, soloNotas, ' Solo notas del docente')),
     el('header', { class: 'visor-cabecera' },
       el('p', { class: 'portada-guia-datos' }, `Guía ${guia.numero}`, guia.sabado ? ` · Sábado ${guia.sabado}` : '', guia.sesion ? ` · ${guia.sesion}` : ''),
@@ -660,7 +694,7 @@ async function abrirVisor(proyectoId, numero, equipoId) {
   cargarAnimaciones(cuerpo, {
     respuestas: guia.respuestas || {},
     guia: numero,
-    obtenerGuia: (n) => api(`/api/docente/guias/${proyectoId}/${n}${equipoId ? `?equipo=${equipoId}` : ''}`),
+    obtenerGuia: (n) => api(`/api/docente/guias/${proyectoId}/${n}${equipoId ? `?equipo=${equipoId}` : (version ? `?version=${version}` : '')}`),
   });
   window.scrollTo({ top: 0 });
 }

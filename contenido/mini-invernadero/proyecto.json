@@ -5,6 +5,16 @@
   "descripcion": "Un invernadero que riega la planta cuando la tierra está seca, abre la ventana con calor y enciende la luz con temporizador.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "versiones": [
+    {
+      "id": "blender",
+      "nombre": "Blender"
+    },
+    {
+      "id": "tinkercad",
+      "nombre": "Tinkercad (bloques)"
+    }
+  ],
   "guias": [
     {
       "archivo": "guia-01.md",

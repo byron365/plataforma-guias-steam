@@ -37,3 +37,18 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_13.1.png | render final de la estación meteorológica con suelo, luz de sol, sombras y el nombre del equipo |
 | IMAGEN_14.1.png | simulación en Wokwi de un ESP32 con DHT22 conectándose a la red Wokwi-GUEST |
 | IMAGEN_14.2.png | todas las estaciones de los equipos juntas formando una red de estaciones en el salón |
+
+**Versión Tinkercad (bloques)** de las guías 1, 2, 4, 8, 10, 11 y 13 (archivos `guia-NN.tinkercad.md`):
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_2.2T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
+| IMAGEN_2.3T.png | plato de 100 mm con el agujero central de 50 mm en Tinkercad Codeblocks |
+| IMAGEN_2.4T.png | torre de seis platos hecha con el bloque Repetir en Tinkercad Codeblocks |
+| IMAGEN_2.5T.png | torre completa con seis platos y tres columnas a 120° en Tinkercad Codeblocks |
+| IMAGEN_4.1T.png | carcasa completa en Tinkercad Codeblocks con tapa, torre de platos, soporte del sensor y base con agujero para cables |
+| IMAGEN_8.1T.png | carcasa en Tinkercad Codeblocks pintada de verde con el bloque Definir color al final del programa |
+| IMAGEN_8.2T.png | gemelo digital en Tinkercad con un texto 3D que dice 24.6 C frente a la carcasa |
+| IMAGEN_8.3T.png | las tres imágenes del gemelo digital en Tinkercad lado a lado en azul, verde y rojo |
+| IMAGEN_11.3T.png | carcasa versión 2 en Tinkercad Codeblocks con platos inclinados y caja para el Arduino en la base |
+| IMAGEN_13.1T.png | imagen final de la estación meteorológica en Tinkercad con colores y el nombre del equipo |

@@ -21,7 +21,7 @@ const DURACION_SESION = 1000 * 60 * 60 * 24 * 180; // 180 días
 // ------------------------------------------------------------
 
 const consultaSesion = db.prepare(`
-  SELECT s.token, s.estudiante, e.id AS equipo_id, e.nombre AS equipo, e.proyecto
+  SELECT s.token, s.estudiante, e.id AS equipo_id, e.nombre AS equipo, e.proyecto, e.version
   FROM sesiones s JOIN equipos e ON e.id = s.equipo_id
   WHERE s.token = ?`);
 const tocarSesion = db.prepare(`UPDATE sesiones SET ultimo_uso = datetime('now', 'localtime') WHERE token = ?`);
@@ -145,7 +145,7 @@ function guiaPermitida(req, res) {
   const info = estadosDeGuias(req.sesion.equipo_id, proyecto).find((g) => g.numero === numero);
   if (!info) { res.status(404).json({ error: 'Guía no encontrada.' }); return null; }
   if (info.estado === 'bloqueada') { res.status(403).json({ error: 'Esta guía todavía está bloqueada.' }); return null; }
-  const guia = obtenerGuia(proyecto.id, numero);
+  const guia = obtenerGuia(proyecto.id, numero, req.sesion.version);
   if (!guia) { res.status(404).json({ error: 'Esta guía todavía no tiene contenido.' }); return null; }
   return { proyecto, guia, estado: info.estado };
 }

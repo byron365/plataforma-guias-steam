@@ -14,6 +14,7 @@ const { RUTAS } = require('./config');
 const { procesarGuia } = require('./markdown');
 
 const ID_VALIDO = /^[a-z0-9-]+$/;
+const ID_VERSION = /^[a-z0-9-]+$/; // nombre de una versión de guías (en el archivo: guia-02.ID.md)
 const EXTENSIONES_IMAGEN = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'];
 // Archivos que los estudiantes pueden descargar desde una guía (carpeta archivos/ del proyecto)
 const EXTENSIONES_ARCHIVO = ['.blend', '.stl', '.obj', '.ino', '.pdf', '.zip', '.txt', '.csv', '.png', '.jpg', '.jpeg'];
@@ -62,6 +63,11 @@ function obtenerProyecto(id) {
     return null;
   }
 
+  // Versiones de las guías (por ejemplo Blender y Tinkercad). La primera es la normal.
+  const versiones = (Array.isArray(datos.versiones) ? datos.versiones : [])
+    .filter((v) => v && ID_VERSION.test(String(v.id)))
+    .map((v) => ({ id: String(v.id), nombre: String(v.nombre || v.id) }));
+
   const guias = (datos.guias || []).map((g, i) => {
     const numero = Number(g.numero) || Number(g.guia) || i + 1;
     const nombreArchivo = g.archivo || `guia-${String(numero).padStart(2, '0')}.md`;
@@ -70,6 +76,8 @@ function obtenerProyecto(id) {
     return {
       numero,
       archivo: path.basename(nombreArchivo),
+      // Versiones que tienen su propio archivo (guia-02.tinkercad.md); las demás usan el normal
+      versiones: versiones.filter((v) => fs.existsSync(rutaDeVersion(ruta, v.id))).map((v) => v.id),
       titulo: g.titulo || (existe && tituloDesdeArchivo(ruta)) || `Guía ${numero}`,
       sabado: Number(g.sabado) || null,
       sesion: g.sesion || '',
@@ -87,6 +95,7 @@ function obtenerProyecto(id) {
     orden: datos.orden,
     // Cada parte de la guía se muestra paso por paso; "pasoAPaso": false en proyecto.json lo apaga
     pasoAPaso: datos.pasoAPaso !== false,
+    versiones,
     imagen: imagen ? `/imagenes/${id}/${encodeURIComponent(imagen)}` : null,
     guias,
   };
@@ -128,17 +137,25 @@ function buscarArchivoDescarga(proyectoId, nombre) {
 // Guías ya procesadas, para no leerlas en cada visita
 const cache = new Map();
 
-function obtenerGuia(proyectoId, numero) {
+// "guia-02.md" + "tinkercad" → "guia-02.tinkercad.md"
+function rutaDeVersion(ruta, version) {
+  return ruta.replace(/\.md$/i, `.${version}.md`);
+}
+
+// version: la que usa el equipo ("" o la primera = la normal). Si la guía no tiene archivo de esa versión,
+// se usa el normal.
+function obtenerGuia(proyectoId, numero, version = '') {
   const proyecto = obtenerProyecto(proyectoId);
   if (!proyecto) return null;
   const info = proyecto.guias.find((g) => g.numero === numero);
   if (!info || !info.existe) return null;
 
   const carpeta = carpetaProyecto(proyectoId);
-  const ruta = path.join(carpeta, info.archivo);
+  const usaVersion = Boolean(version) && info.versiones.includes(version);
+  const ruta = usaVersion ? rutaDeVersion(path.join(carpeta, info.archivo), version) : path.join(carpeta, info.archivo);
   // Si cambia la guía o se agrega una imagen, se vuelve a procesar
   const firma = `${fechaModificacion(ruta)}-${fechaModificacion(path.join(carpeta, 'imagenes'))}-${fechaModificacion(path.join(carpeta, 'archivos'))}`;
-  const clave = `${proyectoId}/${numero}`;
+  const clave = `${proyectoId}/${numero}/${usaVersion ? version : ''}`;
   const guardada = cache.get(clave);
   if (guardada && guardada.firma === firma) return guardada.guia;
 
@@ -149,8 +166,11 @@ function obtenerGuia(proyectoId, numero) {
   });
   guia.numero = numero;
   guia.titulo = info.titulo !== `Guía ${numero}` ? info.titulo : guia.titulo;
+  // Una versión puede traer su propio título en el encabezado (ej. "Del papel a Tinkercad")
+  if (usaVersion && guia.datos.titulo) guia.titulo = guia.datos.titulo;
   guia.sabado = info.sabado || guia.datos.sabado || null;
   guia.sesion = info.sesion || guia.datos.sesion || '';
+  guia.version = usaVersion ? version : '';
   cache.set(clave, { firma, guia });
   return guia;
 }
