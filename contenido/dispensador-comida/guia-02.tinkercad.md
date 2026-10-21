@@ -1,101 +1,45 @@
 ---
-titulo: ¿Cómo dejar caer la comida?
+titulo: El dispensador en 3D (1): torre y compuerta
 guia: 2
 sabado: 2
 sesion: Ideación y diseño
 duracion: 120
 ---
 
-# Guía 2 · ¿Cómo dejar caer la comida?
+# Guía 2 · El dispensador en 3D (1): torre y compuerta
 
 ## Objetivo del día
 
-Comparar tres mecanismos para soltar comida, elegir uno, hacer el boceto y dar los primeros pasos en Tinkercad Codeblocks (diseño 3D con bloques) con el soporte del servo.
+Conocer las piezas de nuestro dispensador y diseñar en Tinkercad Codeblocks (diseño 3D con bloques) las dos primeras: la **torre** y la **compuerta**.
 
-**Al terminar tendremos:** el mecanismo elegido, el boceto con medidas y el soporte del servo listo para imprimir.
+**Al terminar tendremos:** la torre y la compuerta diseñadas y exportadas en STL.
 
 ## Materiales del equipo
 
-- Bitácora, lápiz, regla
-- Cartón, tijeras, cinta (prototipo rápido)
-- Croquetas o cereal
-- Botella plástica grande (para medirla)
 - Computadora con internet y mouse con rueda
 - Cuenta de Tinkercad (la del equipo o la que indique el docente)
+- 1 servo SG90 con su brazo (para mirarlo)
+- Bitácora y lápiz
 
-## Parte 1 · Tres mecanismos (20 min)
+## Parte 1 · Nuestro dispensador (10 min)
 
-Miren la animación de los tres mecanismos. Cambien de uno a otro y observen cómo cae la comida en cada uno:
+Las croquetas bajan desde una botella por un **embudo**. Abajo, una **compuerta** movida por un **servo** tapa la salida; cuando el servo gira, la compuerta se abre y cae una porción en el plato. Todo va en una **torre** que diseñamos e imprimimos nosotros.
 
-:::animacion tipo="mecanismos"
-:::
+[IMAGEN 2.1T: dispensador diseñado en Tinkercad, con etiquetas: botella, embudo con cuello, torre, compuerta, servo, plato, Arduino y protoboard con el botón, el LED y el buzzer]
 
-Lean la tabla y comparen las ventajas y desventajas:
+Las piezas que diseñamos e imprimimos:
 
-| Mecanismo | ¿Cómo funciona? | Ventaja | Desventaja |
-| --- | --- | --- | --- |
-| Compuerta giratoria | Una paleta tapa la salida y el servo la gira para abrir | Muy simple | Se puede atascar si hay mucha comida |
-| Disco giratorio | Un disco con un hueco gira y deja caer una porción | Porciones parejas | Más difícil de construir |
-| Tornillo | Un tornillo grande empuja la comida | Muy preciso | Necesita un motor que gire sin parar |
-
-:::opciones id="g2-mecanismo"
-¿Qué mecanismo elegimos?
-- Compuerta giratoria
-- Disco giratorio
-- Tornillo
-:::
-
-:::pregunta id="g2-p1"
-¿Por qué elegimos ese mecanismo?
-:::
-
-## Parte 2 · Prototipo de cartón (20 min)
-
-Antes de imprimir, probamos la idea con cartón:
-
-1. Haz un cono de cartón (embudo) y pégalo con cinta.
-   - Dibuja en el cartón un círculo de unos 20 cm y recórtalo.
-   - Corta desde el borde hasta el centro (como un radio) y enrolla el círculo hasta formar un cono.
-   - Corta la punta para dejar un agujero de unos 2,5 cm (del tamaño de una moneda grande) y pega con cinta.
-2. Tapa la salida con un pedazo de cartón que puedas girar con el dedo (la compuerta).
-   - Recorta un rectángulo un poco más grande que el agujero.
-   - Pégalo con una tira de cinta solo de un lado, como una bisagra, para que gire.
-3. Llena el embudo de croquetas, abre la compuerta y observa.
-   - Sostengan el embudo sobre un plato o una caja (las croquetas ruedan).
-   - Repitan tres veces y anoten en la tabla.
-
-[IMAGEN 2.1: prototipo de cartón con un embudo y una compuerta de cartón soltando croquetas]
-
-| Prueba | ¿Cayó la comida? | ¿Se atascó? |
+| Pieza | ¿Para qué sirve? | ¿Cuándo? |
 | --- | --- | --- |
-| 1 | | |
-| 2 | | |
-| 3 | | |
+| Torre | Sostiene el embudo arriba y el servo en medio; el plato va en su pie | Hoy |
+| Compuerta | Tapa la salida del embudo; el servo la gira para abrir | Hoy |
+| Embudo con cuello | Recibe la botella y lleva las croquetas a la compuerta | Sábado 3 |
 
-## Parte 3 · El boceto (20 min)
+Lo que **no** se imprime: la botella (una pequeña, de unos 600 ml), el plato, el Arduino y la protoboard con el botón, el LED y el buzzer.
 
-Dibuja el dispensador **de lado** con estas partes. "De lado" es como si lo vieras desde un costado: la botella arriba, el embudo debajo, la compuerta en la salida y el plato abajo.
+Tomen el servo y busquen sus partes: el **cuerpo** (la cajita), las dos **pestañas** de los lados, el **eje** (donde se encaja el brazo) y el **brazo**.
 
-Antes de dibujar, mide el **diámetro** de tu botella (lo ancho del círculo) con la regla y anótalo en la tabla.
-
-| Parte | Medida sugerida |
-| --- | --- |
-| Depósito (botella) | Mide tu botella: diámetro ______ cm |
-| Embudo | Entrada 80 mm, salida 25 mm, 50 mm de alto |
-| Compuerta | 40 × 30 mm, debajo de la salida |
-| Altura total | La salida debe quedar 5 cm sobre el plato |
-
-Marca dónde van el **servo**, el **botón**, el **LED**, el **buzzer** y el **Arduino**.
-
-Escribe la medida junto a cada parte del dibujo. Recuerda: 10 mm = 1 cm.
-
-[IMAGEN 2.2: boceto lateral del dispensador con la botella, el embudo, la compuerta, el servo y el plato]
-
-:::foto id="g2-boceto"
-Foto del boceto del equipo.
-:::
-
-## Parte 4 · Conociendo Tinkercad Codeblocks (15 min)
+## Parte 2 · Conociendo Tinkercad Codeblocks (20 min)
 
 En **Codeblocks** no se dibuja con el mouse: se arma un programa con bloques (como en Scratch) y Tinkercad construye la pieza en 3D. Tinkercad funciona en internet: necesitan conexión mientras diseñan.
 
@@ -106,7 +50,7 @@ En **Codeblocks** no se dibuja con el mouse: se arma un programa con bloques (co
    - Arriba a la derecha, botón **+ Crear** → **Codeblocks**.
    - Se abre el editor. Si aparece una ventana de bienvenida o un tutorial, ciérrala.
 3. Ponle nombre al diseño.
-   - Arriba a la izquierda aparece un nombre inventado (por ejemplo "Tremendous Jaiks-Esboo"). Haz clic sobre él, bórralo y escribe `equipo_NOMBRE_soporte` (cambia NOMBRE por el de tu equipo). Presiona **Enter**.
+   - Arriba a la izquierda aparece un nombre inventado (por ejemplo "Tremendous Jaiks-Esboo"). Haz clic sobre él, bórralo y escribe `equipo_NOMBRE_torre` (cambia NOMBRE por el de tu equipo). Presiona **Enter**.
    - El diseño se guarda solo mientras trabajas. Lo encuentras otra vez en Tinkercad: **Diseños → Codeblocks**.
 
 Conoce las partes del editor:
@@ -131,66 +75,130 @@ Aprende a usar los bloques. Prueba cada acción:
 | Ver la pieza | Botón **▷** de abajo. En la vista 3D: arrastra con el mouse para girarla (si no gira, prueba arrastrando con el botón derecho) y usa la rueda para acercar |
 | Deshacer | Flecha **↶** de arriba a la izquierda del área de programa |
 
-- **Las medidas están en milímetros.** Si escribes 32, la pieza mide 32 mm.
-- Cada forma nueva aparece **centrada**: su centro queda en X = 0, Y = 0, Z = 0, así que la mitad queda arriba del plano de trabajo y la mitad abajo. Con **Mover** la llevan a su lugar.
-- **¿Te perdiste en la vista 3D?** Toca la casita 🏠 que está a la izquierda de la vista.
+Tres reglas que usaremos todo el día:
+
+- **Las medidas están en milímetros.** Si escribes 100, la pieza mide 100 mm (10 cm).
+- **Cada forma nace con su centro en el plano de trabajo:** la mitad queda arriba y la mitad abajo. Por eso, después de cada forma va un bloque **Mover** que la lleva a su lugar. Para que una forma quede **apoyada** en el plano, en **Z** se escribe la **mitad de su alto**.
+- **Un hueco es una forma que se resta.** Se marca tocando el **círculo rayado** del bloque (el círculo de color se pone gris). El hueco se resta de las formas sólidas cuando el programa termina con **Seleccionar todo** y **Group Selection**.
+
+**¿Te perdiste en la vista 3D?** Toca la casita 🏠 que está a la izquierda de la vista.
 
 [IMAGEN 2.3T: editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones]
 
-## Parte 5 · El soporte del servo (30 min)
+## Parte 3 · La torre (50 min)
 
-El soporte es una caja con un **hueco** donde entra el servo. En Tinkercad, un hueco es una forma marcada como **hueco**: al **agrupar**, se resta de las formas sólidas y deja el espacio vacío.
+La torre tiene cuatro partes:
 
-1. **Caja exterior:** un Cubo de 32 × 18 × 20 mm.
+| Parte | ¿Para qué sirve? |
+| --- | --- |
+| Pie | La base. Encima va el plato |
+| Pared | Une todo, atrás |
+| Repisa del embudo | Arriba, con un agujero redondo donde se mete el embudo |
+| Repisa del servo | En medio, con un hueco donde el servo entra parado y queda colgando de sus pestañas |
+
+Trabajen en el diseño `equipo_NOMBRE_torre`. Cada paso es un bloque de forma y, debajo, su bloque **Mover**.
+
+1. **El pie:** un Cubo de 100 × 110 × 4 mm.
    - Toca la categoría **Formas** y arrastra el bloque **Cubo** al área de programa. Ahora dice **Añadir** y tiene un dibujo de cubo.
-   - Toca la flecha **›** del bloque para ver sus medidas: **A**, **L**, **A**, **arista**.
-   - El primer **A** es el **ancho** (X): escribe **32**. **L** es el **largo** (Y): **18**. El segundo **A** es el **alto** (Z): **20**. Deja **arista** en **0**.
-2. **Hueco:** otro Cubo de 23.4 × 12.8 × 18 mm, marcado como hueco. Mide un poco más que el servo: es la **holgura**.
-   - Arrastra otro **Cubo** y suéltalo justo debajo del primero, hasta que encaje.
-   - Toca su **›** y escribe: primer A = **23.4**, L = **12.8**, segundo A = **18**, arista = **0**.
-   - En el bloque hay dos círculos: el de color (el color de la pieza) y uno **rayado**. Toca el **círculo rayado**: el círculo de color se pone gris. Eso significa que esta forma es un **hueco**.
-3. **Subir el hueco 2 mm** para que el soporte tenga piso.
-   - Toca la categoría **Modificar** y arrastra el bloque **Mover:** debajo del hueco.
-   - Escribe **X: 0**, **Y: 0**, **Z: 2**. El bloque Mover mueve la **última forma** que agregaste: el hueco sube 2 mm, así abajo queda un piso de 3 mm y arriba el hueco sale de la caja.
-4. **Agrupar:** así el hueco se resta de la caja.
-   - De **Modificar**, arrastra **Seleccionar todo** debajo de Mover.
-   - Después arrastra **Group Selection** debajo de Seleccionar todo (en esta versión de Tinkercad ese bloque está en inglés: quiere decir "agrupar la selección").
-5. Ejecuta el programa con **▷** (abajo).
-   - En la vista 3D debe aparecer la caja con el hueco arriba. Gírala para ver adentro.
-   - **✔ Revisa:** si la caja sale sólida, revisa que el segundo cubo tenga el círculo de color en gris (hueco) y que Seleccionar todo y Group Selection estén al final.
+   - Toca su flecha **›** para ver las medidas: **A**, **L**, **A**, **arista**.
+   - El primer **A** es el **ancho** (X): escribe **100**. **L** es el **largo** (Y): **110**. El segundo **A** es el **alto** (Z): **4**. Deja **arista** en **0**.
+   - Toca la categoría **Modificar** y arrastra **Mover:** debajo del cubo, hasta que encaje. Escribe **X: 0**, **Y: 55**, **Z: 2**.
+2. **La pared:** un Cubo de 100 × 5 × 150 mm, parado atrás.
+   - Un **Cubo** con primer A = **100**, L = **5**, segundo A = **150**, arista = **0**.
+   - Debajo, **Mover: X 0, Y 2.5, Z 75** (la mitad de 150, para que quede apoyada).
+   - Ejecuta con **▷**: debe verse una "L" acostada: el pie y la pared.
+3. **La repisa del embudo:** un Cubo de 100 × 95 × 4 mm, arriba de todo.
+   - Un **Cubo** con primer A = **100**, L = **95**, segundo A = **4**. Debajo, **Mover: X 0, Y 52.5, Z 148**.
+4. **El agujero del embudo (hueco):** un cilindro de 82 mm de ancho que atraviesa la repisa.
+   - De **Formas**, arrastra un **Cilindro**. Toca su **›** y escribe **Radio = 41** (la mitad de 82), **A = 10**, **Lados = 32**. Márcalo como **hueco** (círculo rayado).
+   - Debajo, **Mover: X 0, Y 55, Z 148**.
+5. **La repisa del servo:** un Cubo de 37 × 65 × 4 mm, a media altura, hacia un lado.
+   - Un **Cubo** con primer A = **37**, L = **65**, segundo A = **4**. Debajo, **Mover: X −31.5, Y 37.5, Z 78.4** (con el signo menos).
+6. **El hueco del servo:** un Cubo de 23.4 × 12.8 × 10 mm, marcado como hueco.
+   - Un **Cubo** con primer A = **23.4**, L = **12.8**, segundo A = **10**, marcado como **hueco**.
+   - Debajo, **Mover: X −27.5, Y 55, Z 78.4**.
+7. **Agrupar:** así los huecos se restan.
+   - De **Modificar**, arrastra **Seleccionar todo** debajo del último Mover.
+   - Después arrastra **Group Selection** debajo (en esta versión de Tinkercad ese bloque está en inglés: quiere decir "agrupar la selección").
+   - Ejecuta con **▷** y gira la vista 3D.
+   - **✔ Revisa:** arriba debe verse la repisa con un agujero redondo grande y, en medio, la repisa pequeña con un hueco rectangular, como en la imagen.
+   - Si los huecos salen como formas transparentes, revisa que **Seleccionar todo** y **Group Selection** estén al final. Si algo salió en otro lugar, revisa los números de su **Mover** (sobre todo los signos menos).
 
-[IMAGEN 2.4T: soporte del servo terminado en Tinkercad Codeblocks]
+[IMAGEN 2.3D: torre en Tinkercad Codeblocks: pie, pared, repisa del embudo con su agujero y repisa del servo con su hueco]
 
-6. Exporta `equipo_NOMBRE_soporte.stl`.
+8. **Exporta** `equipo_NOMBRE_torre.stl`.
    - Arriba a la derecha, botón **Compartir**. Se abre la ventana **Exportar y compartir**.
    - En **Descargar un archivo**, toca **.STL**. El archivo se guarda en la carpeta **Descargas** de la computadora.
-   - Si el archivo no se llama `equipo_NOMBRE_soporte.stl`, cámbiale el nombre: clic derecho sobre él → **Cambiar nombre**.
+   - Cámbiale el nombre: clic derecho sobre él → **Cambiar nombre** → `equipo_NOMBRE_torre.stl`.
+
+:::pregunta id="g2t-p1"
+El servo mide 22,8 × 12,2 mm, pero su hueco mide 23,4 × 12,8 mm. ¿Por qué lo hacemos un poco más grande?
+:::
+
+## Parte 4 · La compuerta (25 min)
+
+La compuerta es una paleta que tapa la salida del embudo. En una punta tiene un **encastre**: un cilindro con un agujero donde entra el brazo del servo. Cuando el servo gira, la paleta se corre hacia un lado y las croquetas caen.
+
+La compuerta va en su **propio diseño**, porque al exportar se guarda todo lo que hay en el diseño.
+
+- En Tinkercad: **+ Crear → Codeblocks**. Haz clic en el nombre de arriba a la izquierda, bórralo y escribe `equipo_NOMBRE_compuerta`. **Enter**.
+
+1. **Paleta:** un Cubo de 54 × 30 × 3 mm. No se mueve: queda en el centro.
+   - De **Formas**, un **Cubo** con primer A = **54**, L = **30**, segundo A = **3**, arista = **0**.
+2. **Encastre:** un cilindro de 8 mm de ancho y 5 mm de alto, parado sobre una punta de la paleta.
+   - Debajo, un **Cilindro** con **Radio = 4** (8 ÷ 2), **A = 5**, **Lados = 32**.
+   - Debajo, **Mover: X −22, Y 0, Z 4**.
+3. **Agujero del encastre (hueco):** un cilindro de 5 mm de ancho, donde entra el brazo del servo.
+   - Debajo, otro **Cilindro** con **Radio = 2.5** (5 ÷ 2), **A = 6**, **Lados = 32**, marcado como **hueco**.
+   - Debajo, **Mover: X −22, Y 0, Z 4.5** (en el mismo lugar que el encastre). Empieza justo encima de la paleta, así la paleta no queda agujereada.
+4. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
+   - **✔ Revisa:** debes ver la paleta con un cilindro hueco en una punta.
+
+[IMAGEN 2.4D: compuerta en Tinkercad Codeblocks: paleta de 54 × 30 mm con el encastre del servo en una punta]
+
+5. **Exporta** `equipo_NOMBRE_compuerta.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
+
+En el dispensador, la compuerta va **boca abajo**: la paleta arriba, pegada a la salida del embudo, y el encastre abajo, encajado en el brazo del servo.
+
+:::pregunta id="g2t-p2"
+¿Por qué el encastre va en una punta de la paleta y no en el centro?
+:::
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g2-logramos"
-- [ ] Comparamos los tres mecanismos y elegimos uno.
-- [ ] Probamos el prototipo de cartón.
-- [ ] El boceto tiene medidas.
-- [ ] Exportamos el soporte del servo.
+:::checklist id="g2t-logramos"
+- [ ] Sabemos usar los bloques de Tinkercad.
+- [ ] La torre tiene sus dos repisas con sus huecos.
+- [ ] La compuerta tiene su encastre en una punta.
+- [ ] Exportamos los 2 archivos: torre y compuerta.
 :::
+
+## Reto extra
+
+La repisa del servo está "en el aire", agarrada solo de la pared. Ponle un **refuerzo** debajo: una tablita parada que vaya del pie a la repisa.
+
+Pista: en la torre, antes de **Seleccionar todo**, agrega un **Cubo** con primer **A = 4**, **L = 60** y segundo **A = 72**, y muévelo con **Mover: X −47, Y 35, Z 40**. Queda en la orilla de la repisa, lejos del servo y de las croquetas que caen.
 
 ## Bitácora (10 min)
 
-:::pregunta id="g2-b1"
-¿Para qué sirve hacer un prototipo de cartón antes de imprimir?
+:::pregunta id="g2t-b1"
+¿Qué fue lo más difícil de diseñar hoy y cómo lo resolvieron?
 :::
 
-Antes de irse, suban aquí `equipo_NOMBRE_soporte.stl`. El programa de bloques se queda guardado en su cuenta de Tinkercad (**Diseños → Codeblocks**): la próxima semana seguirán desde ahí.
+Antes de irse, junten los 2 `.stl` en un `.zip` (selecciónenlos, clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí. Los programas de bloques se quedan guardados en su cuenta de Tinkercad (**Diseños → Codeblocks**).
 
 :::archivo id="g2-archivo"
-**Archivo de trabajo:** suban aquí el .stl que exportaron. Su diseño de bloques queda guardado en Tinkercad: en cualquier computadora entran con la misma cuenta y lo abren en **Diseños → Codeblocks**. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** suban aquí el .zip con los .stl que exportaron. Sus diseños de bloques quedan guardados en Tinkercad: en cualquier computadora entran con la misma cuenta y los abren en **Diseños → Codeblocks**. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- Las guías siguientes están escritas para la **compuerta giratoria**, la más adecuada para el nivel. Si un equipo elige disco, el docente puede adaptar la pieza del sábado 3 (disco de 60 mm con un hueco de 20 mm).
-- Imprimir los soportes esta semana (≈30 min cada uno).
-- **Versión Tinkercad (Codeblocks):** las piezas y medidas son las mismas que en la versión Blender. Tinkercad necesita internet. Cada equipo necesita una cuenta de Tinkercad (o una clase de Tinkercad del docente) para que sus diseños queden guardados.
-- En Codeblocks el hueco se resta solo al **agrupar**: el programa debe terminar con **Seleccionar todo** y **Group Selection** (este bloque aparece en inglés).
-- Tiempo total: 20 + 20 + 20 + 15 + 30 + 5 + 10 = 120 minutos.
+- **Versión Tinkercad (Codeblocks), reestructurada el 21 de octubre:** se centra en la práctica. Las guías 2 y 3 terminan el diseño (torre, compuerta y embudo) y desde la Guía 4 se arma lo impreso y se programa. Ya no lleva comparación de mecanismos, prototipo de cartón, boceto ni soporte suelto del servo: la torre lo reemplaza.
+- Las piezas son las mismas del lado del cereal del dispensador doble (imágenes 2.3D y 2.4D). Campos propios (g2t-…).
+- Diseño completo de referencia en la cuenta del docente: "Dispensador sencillo - propuesta completa". Las piezas por separado son los diseños "Dispensador doble - modelo torre cereal", "… compuerta" y "… embudo".
+- Medidas: torre de 10 × 11 × 15 cm. El embudo se apoya con su tapa (90 mm) sobre el agujero de 82 mm, y su salida queda a 10 cm del pie. La compuerta queda 1 mm debajo de la salida. El servo (SG90 de 22,8 × 12,2 mm, pestañas a 15,9 mm de la base) cuelga de la repisa con el eje hacia arriba, y su eje queda a 22 mm del centro de la salida. Si el servo de la academia mide distinto, se ajusta el hueco.
+- Plato: de menos de 9 cm de ancho y 5 cm de alto, para que quepa en el pie, debajo del servo.
+- Impresión: la torre se imprime **acostada sobre la pared** (la pared en la cama), así las repisas no necesitan soportes. STL de referencia: `Dispensador doble - STL para imprimir\dispensador_torre_cereal.stl` y `dispensador_compuerta.stl`.
+- g2t-p1: holgura; la impresora no es exacta y el servo no entraría o quedaría muy apretado.
+- g2t-p2: al girar desde una punta, la paleta se corre y destapa la salida; si girara desde el centro, seguiría tapándola.
+- Tiempo total: 10 + 20 + 50 + 25 + 5 + 10 = 120 minutos.
 :::

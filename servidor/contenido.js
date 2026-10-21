@@ -64,9 +64,15 @@ function obtenerProyecto(id) {
   }
 
   // Versiones de las guías (por ejemplo Blender y Tinkercad). La primera es la normal.
+  // "base" (opcional): versión que se usa en las guías que no tienen archivo propio
+  // (por ejemplo "doble" se basa en "tinkercad").
   const versiones = (Array.isArray(datos.versiones) ? datos.versiones : [])
     .filter((v) => v && ID_VERSION.test(String(v.id)))
-    .map((v) => ({ id: String(v.id), nombre: String(v.nombre || v.id) }));
+    .map((v) => ({
+      id: String(v.id),
+      nombre: String(v.nombre || v.id),
+      base: v.base && ID_VERSION.test(String(v.base)) ? String(v.base) : '',
+    }));
 
   const guias = (datos.guias || []).map((g, i) => {
     const numero = Number(g.numero) || Number(g.guia) || i + 1;
@@ -143,7 +149,7 @@ function rutaDeVersion(ruta, version) {
 }
 
 // version: la que usa el equipo ("" o la primera = la normal). Si la guía no tiene archivo de esa versión,
-// se usa el normal.
+// se usa el de su versión base (si tiene) y, si tampoco existe, el normal.
 function obtenerGuia(proyectoId, numero, version = '') {
   const proyecto = obtenerProyecto(proyectoId);
   if (!proyecto) return null;
@@ -151,11 +157,13 @@ function obtenerGuia(proyectoId, numero, version = '') {
   if (!info || !info.existe) return null;
 
   const carpeta = carpetaProyecto(proyectoId);
-  const usaVersion = Boolean(version) && info.versiones.includes(version);
-  const ruta = usaVersion ? rutaDeVersion(path.join(carpeta, info.archivo), version) : path.join(carpeta, info.archivo);
+  const datosVersion = proyecto.versiones.find((v) => v.id === version);
+  const usada = [version, datosVersion && datosVersion.base].find((v) => v && info.versiones.includes(v)) || '';
+  const usaVersion = Boolean(usada);
+  const ruta = usaVersion ? rutaDeVersion(path.join(carpeta, info.archivo), usada) : path.join(carpeta, info.archivo);
   // Si cambia la guía o se agrega una imagen, se vuelve a procesar
   const firma = `${fechaModificacion(ruta)}-${fechaModificacion(path.join(carpeta, 'imagenes'))}-${fechaModificacion(path.join(carpeta, 'archivos'))}`;
-  const clave = `${proyectoId}/${numero}/${usaVersion ? version : ''}`;
+  const clave = `${proyectoId}/${numero}/${usada}`;
   const guardada = cache.get(clave);
   if (guardada && guardada.firma === firma) return guardada.guia;
 
@@ -170,7 +178,7 @@ function obtenerGuia(proyectoId, numero, version = '') {
   if (usaVersion && guia.datos.titulo) guia.titulo = guia.datos.titulo;
   guia.sabado = info.sabado || guia.datos.sabado || null;
   guia.sesion = info.sesion || guia.datos.sesion || '';
-  guia.version = usaVersion ? version : '';
+  guia.version = usada;
   cache.set(clave, { firma, guia });
   return guia;
 }

@@ -58,6 +58,10 @@ Lo más fácil: copia la carpeta `garra-robotica`, cámbiale el nombre y edita l
   vacías, misma cantidad de casillas en los checklists); así un equipo puede cambiar de versión sin perder respuestas.
   Para comprobarlo: `node herramientas/comparar-versiones.js "<carpeta de la plataforma>" <proyecto> <versión> <guías…>`.
   Para sus imágenes usen otro código, por ejemplo `[IMAGEN 2.3T: …]` → `IMAGEN_2.3T.png`.
+  Una versión puede apoyarse en otra con `"base"`: `{ "id": "doble", "nombre": "Doble…", "base": "tinkercad" }`.
+  En las guías sin `guia-NN.doble.md` se usa `guia-NN.tinkercad.md` y, si tampoco existe, la normal.
+  Una versión que **cambia el proyecto** (como el dispensador doble) puede tener campos propios (`g2d-…`): en ese caso
+  `comparar-versiones.js` marca diferencias a propósito, y un equipo que cambie de versión no ve esas respuestas.
 - `pasoAPaso` (opcional): las guías se muestran **paso por paso** (si pones `"pasoAPaso": false`, cada parte se ve completa),
   con botones "Paso anterior" / "Siguiente paso" y "Ver toda la parte". Los pasos se cortan solos:
   cada número de una lista (1., 2., 3.…) es un paso, y cada tabla, pregunta, animación, foto o código va

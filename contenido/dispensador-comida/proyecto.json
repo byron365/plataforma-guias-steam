@@ -13,6 +13,11 @@
     {
       "id": "tinkercad",
       "nombre": "Tinkercad (bloques)"
+    },
+    {
+      "id": "doble",
+      "nombre": "Doble: cereal y líquido (Tinkercad)",
+      "base": "tinkercad"
     }
   ],
   "guias": [

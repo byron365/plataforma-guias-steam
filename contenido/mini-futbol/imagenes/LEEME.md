@@ -29,10 +29,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_14.1.png | monitor serie mostrando los mensajes MARCADOR y TIEMPO durante un partido |
 | IMAGEN_14.2.png | celular con una app de terminal Bluetooth mostrando el marcador del partido |
 
-**Versión Tinkercad (bloques)** de las guías 1, 2, 3, 8 y 13 (archivos `guia-NN.tinkercad.md`):
+**Versión Tinkercad (bloques)** de las guías 1, 2, 3, 4, 5, 8 y 13 (archivos `guia-NN.tinkercad.md`). La Guía 4T también usa `IMAGEN_3.1.png` y `IMAGEN_3.2.png` (Wokwi), que antes estaban en la Guía 3.
 
 | Archivo | Descripción |
 | --- | --- |
-| IMAGEN_2.2T.png | media portería en Tinkercad Codeblocks y su copia en espejo con el bloque Escala |
-| IMAGEN_2.3T.png | portería completa con la ventana para el sensor en el fondo, en Tinkercad Codeblocks |
+| IMAGEN_2.1T.png | mini fútbol diseñado en Tinkercad, con etiquetas: portería azul, portería roja, cancha a escala, bandas laterales, pelota, soporte del marcador, Arduino y protoboard con el botón *(lista)* |
+| IMAGEN_2.2T.png | media portería en Tinkercad Codeblocks y su copia en espejo con el bloque Escala *(lista: bloques y vista 3D)* |
+| IMAGEN_2.3T.png | portería completa con la ventana para el sensor en el fondo, en Tinkercad Codeblocks *(lista, con etiquetas)* |
+| IMAGEN_3.1T.png | soporte del marcador en Tinkercad Codeblocks, con etiquetas: panel inclinado, ventana de la pantalla, agujero del buzzer y base *(lista)* |
 | IMAGEN_13.1T.png | maqueta de la cancha de mini fútbol en Tinkercad con las porterías azul y roja y la pelota |

@@ -1,6 +1,6 @@
 # Estado del proyecto · Plataforma de guías STEAM
 
-*Última actualización: 16 de octubre de 2026*
+*Última actualización: 20 de octubre de 2026*
 
 Este documento resume qué está hecho, qué falta y cómo retomar el trabajo.
 Para usar la plataforma, ver `LEEME.md`. Para escribir guías, ver `COMO_AGREGAR_PROYECTOS.md`.
@@ -14,6 +14,15 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > simetría con los nombres de Blender 5.2. Para subir cambios: `git add -A`, `git commit -m "…"`, `git push` (ver `LEEME.md`).
 > **16 de octubre:** el Dispensador, el Mini invernadero, el Puente levadizo y el Laberinto tienen versión **Tinkercad (bloques)** de sus guías de diseño 3D;
 > el docente elige la versión de cada equipo (sección 2.1.6).
+> **17 de octubre:** imagen 1.3 del Mini invernadero (sensor de humedad) hecha y probada en Tinkercad Circuits.
+> **20 de octubre:** guías 2 y 3 del Puente (versión Tinkercad) reestructuradas: diseño 3D completo del puente en
+> piezas imprimibles (sección 2.1.6). Pendiente: adaptar las guías 4 a 8 del Puente al puente impreso.
+> **21 de octubre:** Dispensador con una tercera versión, **"Doble: cereal y líquido (Tinkercad)"** (guías 2, 3 y 5),
+> para un grupo que hace un dispensador doble con bomba (sección 2.1.6). Nuevo campo `"base"` en las versiones.
+> También el **dispensador sencillo (versión Tinkercad)**: guías 2 y 3 reestructuradas con la misma torre impresa y nueva
+> Guía 4 para armar lo impreso; la programación empieza en la Guía 5 (sección 2.1.6).
+> **Mini fútbol (versión Tinkercad)** reestructurado igual: 2T portería, 3T soporte del marcador (pieza nueva), 4T cancha +
+> marcador en Wokwi, 5T sensores reales (sección 2.1.6). Corregida la escena de la Guía 13T (el Cubo no pasa de 200 mm).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
 
@@ -219,6 +228,79 @@ Notas separadas con autor, guía y fecha; autoguardado; el docente las ve en la 
   **Escala** uniforme, **Mover … a** y **Definir color** con Tonalidad/Saturación/Brillo; en Controlar, **Contar con**, **Pausar** y **si … entonces**.
 - [ ] Probar en clase: el engrane de la Garra (que los dientes rectos engranen bien impresos) y la ventana del servo de la placa.
 
+**Dispensador doble: cereal y líquido (21 de octubre, a pedido de Bairon).** Un grupo hará un dispensador doble: cereal
+(compuerta con servo) y líquido (mini bomba de 5 V con relé, como en el Mini invernadero), con **dos botones**. Más
+práctica y menos experimentos con cartón. Tercera versión del proyecto: `"doble"` con `"base": "tinkercad"`.
+- **Servidor:** `obtenerGuia` usa `guia-NN.doble.md`; si no existe, `guia-NN.tinkercad.md`; si tampoco, la normal
+  (`servidor/contenido.js`, campo `base` de cada versión). **Reiniciar el servidor del puerto 3000** para que lo tome.
+- **Guía 2D:** piezas del dispensador, Codeblocks, torre del cereal (pie 100 × 110, pared de 150 de alto, repisa del
+  embudo con agujero de 82 mm, repisa del servo con hueco de 23,4 × 12,8) y compuerta (paleta de 54 × 30, encastre a −22).
+  **Guía 3D:** embudo con tapa de 90 mm (se apoya en la repisa), torre del líquido (brazo con agujero de la manguera) y
+  dónde va cada pieza. **Guía 5D:** relé, circuito completo (botón cereal D2, botón líquido D3, LED D4, buzzer D5,
+  relé D8, servo D9) y programa con `servirCereal()` y `servirLiquido()`; tabla de mililitros según `TIEMPO_BOMBA`.
+  El programa compila para Arduino UNO (comprobado con arduino-cli y una copia mínima de Servo.h).
+- Campos propios (g2d-…, g3d-…, g5d-…). Guías 1 y 13: usan las de Tinkercad. Guía 4: usa la normal (cartón).
+- Diseños de referencia en el Tinkercad del docente: "Dispensador doble - propuesta completa" y "Dispensador doble -
+  modelo torre cereal / compuerta / embudo / torre liquido" (todos probados). Imágenes 2.1D, 2.3D, 2.4D, 3.1D y 3.2D
+  capturadas de esos diseños. La 2.1D lleva etiquetas con el nombre de cada pieza.
+- **STL para imprimir** (21 de octubre): `..\Dispensador doble - STL para imprimir\` (fuera de esta carpeta), 4 archivos:
+  torre del cereal, compuerta, embudo y torre del líquido. Las torres ya vienen **acostadas sobre su pared** (como se
+  imprimen) y el embudo con el cono hacia abajo. Se generan con Blender igual que los del puente:
+  `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/dispensador_stl.py -- "<carpeta de salida>"`.
+  Sólidos cerrados y volúmenes comprobados con las cuentas a mano (torre del cereal 142 cm³, torre del líquido 67 cm³,
+  embudo 32 cm³, compuerta 5 cm³). Para ajustar una medida (hueco del servo, cuello, manguera) se cambia en `PIEZAS`.
+- [ ] Imagen 5.1D (circuito del dispensador doble).
+- [ ] Probar en la academia: el servo colgando de la repisa y la altura del brazo hasta la compuerta (depende del brazo).
+- [ ] **Pendiente para otra tanda:** Guía 6 doble (gramos y mililitros; hoy usa `servir()` y `TIEMPO_ABIERTA`), 7, 8
+  (porciones), 10, 11 y 13. La Guía 4 doble usa la nueva `guia-04.tinkercad.md` (armar lo impreso, lado del cereal).
+
+**Dispensador sencillo, versión Tinkercad reestructurada (21 de octubre, a pedido de Bairon).** Igual que el Puente:
+más práctica y menos teoría. Usa la **misma torre del lado del cereal del doble** (Bairon eligió esa torre, la
+electrónica en la protoboard y adaptar también la Guía 4).
+- **Guía 2T:** piezas del dispensador (imagen 2.1T con etiquetas), Codeblocks, torre (`equipo_NOMBRE_torre`) y compuerta.
+  Se quitaron la comparación de mecanismos, el prototipo de cartón, el boceto y el soporte suelto del servo.
+- **Guía 3T:** embudo con tapa de 90 mm, tiempo para terminar las piezas atrasadas, medir el servo (hueco = servo + 0,6)
+  y el plato (menos de 9 × 5 cm), revisión de las 3 piezas y dónde va cada una. Se quitaron diagrama de flujo y cronograma.
+- **Guía 4T (nueva, `guia-04.tinkercad.md`):** revisar las piezas impresas, circuito y programa de la Guía 1 para
+  dejar el servo en 0°, montar servo y compuerta (imagen 4.1T), la botella y prueba con croquetas.
+- Campos propios g2t-…, g3t-…, g4t-… (las respuestas de la versión anterior no se ven en estas guías).
+- Diseño de referencia: "Dispensador sencillo - propuesta completa" en el Tinkercad del docente (copia del doble sin
+  el lado del líquido y con un solo botón). STL: los de la torre del cereal, compuerta y embudo del doble.
+- [ ] Guía 5 (normal) dice "pegar la protoboard en el frente de la base": con la torre no hay base aparte (nota al docente en la 4T).
+- [ ] Guía 13T: la escena final todavía menciona el soporte suelto del servo; adaptarla a la torre.
+
+**Mini fútbol, versión Tinkercad reestructurada (21 de octubre, a pedido de Bairon).** Más práctica: primero el diseño
+y luego la programación. Decisiones de Bairon: 2-3 diseño y 4 armar; escala corta al trazar la cancha (sin boceto);
+pieza nueva = soporte del marcador; sin escaneo 3D en esta versión. La Guía 1 (Wokwi) no cambia.
+- **Guía 2T:** piezas del mini fútbol (imagen 2.1T con etiquetas), Codeblocks, portería con espejo y ventana (la misma
+  de antes), medir los ojitos del sensor y la pelota, exportar. Sin tabla de escala ni boceto.
+- **Guía 3T:** medir pantalla y buzzer, **soporte del marcador** (panel 70 × 4 × 50 con ventana 25 × 14 y agujero de
+  radio 6,2 para el buzzer; Girar −15° en X; base 70 × 45 × 4), tiempo para terminar la portería, revisión y dónde va
+  cada pieza. Sin pseudocódigo, diagrama de flujo ni cronograma.
+- **Guía 4T (nueva):** escala corta (círculo y área grande), cancha de cartón con porterías y soporte, y el marcador
+  completo en Wokwi con el código base (antes en la Guía 3). Sin escaneo 3D.
+- **Guía 5T (nueva):** igual que la normal, pero el código viene de la Guía 4 y la pantalla y el buzzer van en el soporte.
+- Campos propios g2t-…, g3t-…, g4t-…; la 5T mantiene los campos de la normal (comparar-versiones ✔ en 1, 5, 8 y 13).
+- **Guía 13T corregida:** decía Cubo 525 × 340 para la cancha, pero Codeblocks acepta como máximo 200 mm ("Values out of
+  range"). Ahora: Cubo 105 × 68 × 2 + **Escala 5, 5, 1**; las líneas largas, igual con Escala en su eje (probado).
+- Diseños de referencia en el Tinkercad del docente: "Mini futbol - propuesta completa", "… modelo porteria" y
+  "… modelo soporte marcador". Imágenes 2.1T, 2.2T, 2.3T y 3.1T hechas de esos diseños.
+- **STL para imprimir** (21 de octubre): `..\Mini futbol - STL para imprimir\` (fuera de esta carpeta):
+  `futbol_porteria.stl` (105 × 44 × 52,5 mm; imprimir 2, azul y roja, con el piso en la cama; el travesaño es un puente
+  de 95 mm) y `futbol_soporte_marcador.stl` (70 × 45 × 52 mm, base en la cama, sin soportes). Sólidos cerrados y volúmenes
+  comprobados con las cuentas a mano (30,6 y 24,5 cm³). Se generan con
+  `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/futbol_stl.py -- "<carpeta de salida>"`.
+- [ ] Guía 7 (normal) dice "medidas y escala en la Guía 2": en la versión Tinkercad están en la Guía 4.
+- [ ] Probar en la academia: que el vidrio de la pantalla tape la ventana de 25 × 14 y que los ojitos del sensor quepan
+  en la ventana de 12 mm de la portería.
+
+**Mini invernadero, imagen 1.3 (17 de octubre):** circuito del sensor de humedad armado en Tinkercad Circuits (diseño
+"Invernadero G1 - sensor de humedad" en la cuenta del docente) y probado con el código de la Guía 1 (0 en seco, 847
+mojado). La imagen 1.2 (macetas) debe ser una foto real.
+- [ ] Decidir el pie de la imagen 1.3: dice "sensor capacitivo", pero Tinkercad solo tiene el sensor resistivo, cuyo
+  número **sube** con el agua; en el capacitivo suele **bajar** (pregunta g1-p3). Propuesta: "sensor de humedad de suelo".
+- Truco de Tinkercad Circuits: al pasar de Bloques a Texto quedan restos ocultos del ejemplo; borrar todo (Ctrl + A).
+
 **Mini invernadero:** versión Tinkercad de las guías **1, 2, 3 y 13** (soporte del servo, bisagra con nudillo acostado y agujero
 del pasador, clip de la manguera y escena final con caja transparente).
 
@@ -230,6 +312,31 @@ y **Texto**. El Robot con telemetría y la Banda clasificadora no tienen guías 
 **Puente levadizo** (16 de octubre, a pedido): versión **Tinkercad (bloques)** de las guías **1, 2, 3, 8 y 13**: soporte del
 servo, hoja con barandas y encastre (agujero acostado con **Girar alrededor**, Eje x 90°), barco con proa redondeada y
 escena final con las hojas levantadas (Girar alrededor, Eje y ±40°) y el barco. Mismos campos que la versión Blender.
+
+**Puente levadizo: guías 2 y 3 reestructuradas (20 de octubre, a pedido de Bairon).** Algunos chicos trabajan más lento:
+Bairon pidió centrarse en la práctica y que en los sábados 2 y 3 terminen el **diseño 3D completo del puente en
+piezas imprimibles** (Tinkercad Codeblocks). Solo cambió la **versión Tinkercad**; la de Blender sigue igual.
+- Piezas: **orilla** ×2 (camino + cajón del servo acostado, ventana y ranura del brazo; la segunda en espejo con
+  **Escala X −1**), **hoja** ×2 (tablero, barandas y "oreja" donde se pega el brazo del servo; también en espejo),
+  **torre del semáforo** (hueca, 3 agujeros de 5,2 mm a 8 mm), **torre del buzzer** (agujero de 12,4 mm) y
+  **soporte del sensor** HC-SR04 (placa en L con dos agujeros de 16,6 mm a 26 mm). Río de 16,4 cm; puente de ~28 × 14 cm.
+- Guía 2T: piezas del puente, Codeblocks, orilla y hoja. Guía 3T: torres, soporte del sensor y dónde va cada pieza.
+  Se quitaron escala, boceto, diagrama de flujo, servo con `for` y cronograma.
+- **Campos propios** (g2t-…, g3t-…): `comparar-versiones.js` marca diferencias en estas dos guías **a propósito**
+  (decisión de Bairon); si un equipo cambia de versión, no ve sus respuestas de las guías 2 y 3.
+- Servos en espejo, como antes: el código `a` / `180 - a` de las guías 5 a 7 sigue sirviendo.
+- Diseños de referencia en el Tinkercad del docente: "Puente levadizo - propuesta completa" y "Puente - modelo orilla /
+  hoja / torre semaforo / torre buzzer / soporte sensor" (todos probados). Imágenes 2.1T, 2.3T, 2.4T, 3.1T, 3.2T y 3.3T
+  capturadas de esos diseños.
+- **STL para imprimir** (20 de octubre): `..\Puente levadizo - STL para imprimir\` (fuera de esta carpeta), 7 archivos.
+  Se generan con Blender, con las mismas formas y medidas que los bloques:
+  `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/puente_stl.py -- "<carpeta de salida>"`.
+  Para ajustar una medida (por ejemplo el cajón del servo), se cambia en `PIEZAS` del script y en la guía.
+- [ ] Probar un servo SG90 de la academia en la orilla impresa (cajón 32,8 × 19; brazo a 7 mm de la cara del servo).
+- [ ] **Pendiente para otra tanda:** adaptar la Guía 4 (hoy: torres de palitos, base de 50 cm, río de 30,5 cm) al
+  armado de las piezas impresas; la Parte 1 de la Guía 5 (montar el servo en la orilla y el brazo en la oreja); la
+  Guía 6 (el sensor mira de una orilla a la otra); la Guía 7 (compara con el diagrama de flujo de la Guía 3 y usa la
+  escala de la Guía 2) y el cartel de la Guía 8 (escala y diagrama).
 
 **Importante (comprobado en Tinkercad):** en Codeblocks las formas nacen **centradas en el origen** (también en Z), como
 en Blender, y **Girar alrededor** gira la forma desde su centro. Por eso los números de **Mover** son las mismas
@@ -258,8 +365,8 @@ y, en la Guía 13, una escena con botella transparente y croquetas al azar expor
 - [ ] Probar con un grupo: que los programas de las guías 2 y 3 salgan igual en sus computadoras.
 - [ ] No pude confirmar: cómo se gira la vista 3D de Codeblocks con el mouse (la guía dice arrastrar, o con el
       botón derecho) y que el diseño se renombre haciendo clic en su nombre.
-- [ ] Imágenes nuevas de las versiones Tinkercad: Dispensador `2.3T`, `2.4T`, `3.1T`, `3.2T`, `13.1T`; Puente `2.2T`, `2.3T`,
-      `3.1T`, `8.1T`, `13.1T`; Laberinto `2.2T`, `3.3T`, `4.2T`, `11.2T`, `13.1T`;
+- [ ] Imágenes nuevas de las versiones Tinkercad: Dispensador `2.3T`, `2.4T`, `3.1T`, `3.2T`, `13.1T`; Puente `2.2T`,
+      `8.1T`, `13.1T`; Laberinto `2.2T`, `3.3T`, `4.2T`, `11.2T`, `13.1T`;
       Invernadero `2.2T`, `2.3T`, `2.4T`, `3.1T`, `13.1T`; Estación (10), Garra (11) y Mini fútbol (3)
       (listas en `imagenes/LEEME.md` de cada proyecto).
 - [ ] En el Tinkercad del docente quedó un diseño de prueba de Codeblocks ("Tremendous Jaiks-Esboo") que se puede borrar.

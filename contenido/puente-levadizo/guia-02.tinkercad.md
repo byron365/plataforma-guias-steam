@@ -1,77 +1,45 @@
 ---
-titulo: Un puente a escala
+titulo: El puente en 3D (1): orillas y hojas
 guia: 2
 sabado: 2
 sesion: Ideación y diseño
 duracion: 120
 ---
 
-# Guía 2 · Un puente a escala
+# Guía 2 · El puente en 3D (1): orillas y hojas
 
 ## Objetivo del día
 
-Calcular las medidas del puente a escala, dibujar el boceto y dar los primeros pasos en Tinkercad Codeblocks (diseño 3D con bloques) modelando el soporte del servo.
+Conocer las piezas de nuestro puente y diseñar en Tinkercad Codeblocks (diseño 3D con bloques) las dos primeras: la **orilla**, donde va el servo, y la **hoja**, la parte del puente que se levanta.
 
-**Al terminar tendremos:** el boceto con medidas a escala y el soporte del servo listo para imprimir.
+**Al terminar tendremos:** la orilla y la hoja diseñadas y exportadas en STL, cada una con su copia en espejo (4 archivos).
 
 ## Materiales del equipo
 
-- Bitácora, lápiz, regla y calculadora
-- 1 servo SG90 (para medirlo)
-- Regla o calibrador en milímetros
 - Computadora con internet y mouse con rueda
 - Cuenta de Tinkercad (la del equipo o la que indique el docente)
+- 1 servo SG90 con su brazo (para mirarlo)
+- Bitácora y lápiz
 
-## Parte 1 · ¿Qué es una escala? (15 min)
+## Parte 1 · Las piezas del puente (10 min)
 
-Una maqueta es una copia pequeña de algo real. La **escala** dice cuántas veces más pequeña es. Usaremos **1:200**: 1 cm de la maqueta representa 200 cm (2 m) del puente real.
+Nuestro puente es una maqueta hecha de **piezas que se imprimen en 3D y se pegan**. Hoy diseñamos las dos primeras y el próximo sábado las demás.
 
-> Medida de la maqueta = Medida real ÷ 200
+[IMAGEN 2.1T: puente completo diseñado en Tinkercad: dos orillas con su camino, una hoja bajada y otra levantada, la torre del semáforo, la torre del buzzer y el soporte del sensor]
 
-Prueben la animación: cambien la medida real y miren cuánto mide en la maqueta.
-
-:::animacion tipo="escala"
-:::
-
-## Parte 2 · Calcular el puente (20 min)
-
-Pasa las medidas del Tower Bridge a centímetros y divide entre 200:
-
-1. **Metros a centímetros:** multiplica por 100 (1 m = 100 cm). Por ejemplo, 61 m × 100 = 6100 cm.
-2. **A escala:** divide los centímetros entre 200 con la calculadora.
-3. La primera fila ya está resuelta como ejemplo. Completen las demás de la misma forma.
-
-:::tabla id="g2-escala"
-| Parte | Medida real | En cm | ÷ 200 = maqueta (cm) |
+| Pieza | ¿Cuántas? | ¿Para qué sirve? | ¿Cuándo? |
 | --- | --- | --- | --- |
-| Tramo que se abre | 61 m | 6100 | 30,5 |
-| Cada hoja (la mitad) | 30,5 m | | |
-| Altura de las torres | 65 m | | |
-| Ancho del puente | 18 m | | |
-:::
+| Orilla | 2 | El camino de los carros. Adentro va el servo | Hoy |
+| Hoja | 2 | La parte del puente que se levanta | Hoy |
+| Torre del semáforo | 1 | Tapa un servo y lleva los 3 LEDs | Sábado 3 |
+| Torre del buzzer | 1 | Tapa el otro servo y lleva el buzzer | Sábado 3 |
+| Soporte del sensor | 1 | Sostiene el sensor ultrasónico | Sábado 3 |
 
-:::pregunta id="g2-p1"
-Si la torre de nuestra maqueta midiera 50 cm, ¿cuánto mediría la torre real con escala 1:200?
-:::
+Las dos orillas **no son iguales**: una es el **reflejo** de la otra, como tu mano derecha y tu mano izquierda. Con las hojas pasa lo mismo. Por eso hoy diseñamos una orilla y una hoja y luego sacamos su copia en espejo.
 
-## Parte 3 · El boceto (20 min)
+Tomen el servo y busquen sus partes: el **cuerpo** (la cajita), las dos **pestañas** de los lados, el **eje** (donde se encaja el brazo) y el **brazo**.
 
-Dibuja el puente **de lado** en la bitácora con las medidas de la tabla:
-
-"De lado" es como si lo vieras desde la orilla del río: las torres paradas, el río en medio y las hojas cruzándolo. Si la hoja no alcanza, dibujen a una escala más pequeña (por ejemplo, todo a la mitad) y escriban la medida real de la maqueta junto a cada parte.
-
-1. Las dos torres y la base.
-2. Las dos hojas del puente, abajo (cerradas) y con línea punteada arriba (abiertas).
-3. Marca dónde va cada **servo** (en el punto de giro de cada hoja).
-4. Marca dónde van el **sensor**, el **semáforo** y el **buzzer**.
-
-[IMAGEN 2.1: ejemplo de boceto lateral del puente con medidas, hojas abiertas en punteado y ubicación de servos y sensor]
-
-:::foto id="g2-boceto"
-Foto del boceto del equipo.
-:::
-
-## Parte 4 · Conociendo Tinkercad Codeblocks (15 min)
+## Parte 2 · Conociendo Tinkercad Codeblocks (20 min)
 
 En **Codeblocks** no se dibuja con el mouse: se arma un programa con bloques (como en Scratch) y Tinkercad construye la pieza en 3D. Tinkercad funciona en internet: necesitan conexión mientras diseñan.
 
@@ -82,7 +50,7 @@ En **Codeblocks** no se dibuja con el mouse: se arma un programa con bloques (co
    - Arriba a la derecha, botón **+ Crear** → **Codeblocks**.
    - Se abre el editor. Si aparece una ventana de bienvenida o un tutorial, ciérrala.
 3. Ponle nombre al diseño.
-   - Arriba a la izquierda aparece un nombre inventado (por ejemplo "Tremendous Jaiks-Esboo"). Haz clic sobre él, bórralo y escribe `equipo_NOMBRE_soporte` (cambia NOMBRE por el de tu equipo). Presiona **Enter**.
+   - Arriba a la izquierda aparece un nombre inventado (por ejemplo "Tremendous Jaiks-Esboo"). Haz clic sobre él, bórralo y escribe `equipo_NOMBRE_orilla` (cambia NOMBRE por el de tu equipo). Presiona **Enter**.
    - El diseño se guarda solo mientras trabajas. Lo encuentras otra vez en Tinkercad: **Diseños → Codeblocks**.
 
 Conoce las partes del editor:
@@ -107,89 +75,129 @@ Aprende a usar los bloques. Prueba cada acción:
 | Ver la pieza | Botón **▷** de abajo. En la vista 3D: arrastra con el mouse para girarla (si no gira, prueba arrastrando con el botón derecho) y usa la rueda para acercar |
 | Deshacer | Flecha **↶** de arriba a la izquierda del área de programa |
 
-- **Las medidas están en milímetros.** Si escribes 32, la pieza mide 32 mm.
-- Cada forma nueva aparece **centrada**: su centro queda en X = 0, Y = 0, Z = 0, así que la mitad queda arriba del plano de trabajo y la mitad abajo. Con **Mover** la llevan a su lugar.
-- **¿Te perdiste en la vista 3D?** Toca la casita 🏠 que está a la izquierda de la vista.
+Tres reglas que usaremos todo el día:
+
+- **Las medidas están en milímetros.** Si escribes 30, la pieza mide 30 mm (3 cm).
+- **Cada forma nace con su centro en el plano de trabajo:** la mitad queda arriba y la mitad abajo. Por eso, después de cada forma va un bloque **Mover** que la lleva a su lugar. Para que una forma quede **apoyada** en el plano, en **Z** se escribe la **mitad de su alto**.
+- **Un hueco es una forma que se resta.** Se marca tocando el **círculo rayado** del bloque (el círculo de color se pone gris). El hueco se resta de las formas sólidas cuando el programa termina con **Seleccionar todo** y **Group Selection**.
+
+**¿Te perdiste en la vista 3D?** Toca la casita 🏠 que está a la izquierda de la vista.
 
 [IMAGEN 2.2T: editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones]
 
-## Parte 5 · Modelar el soporte del servo (35 min)
+## Parte 3 · La orilla (45 min)
 
-El soporte es una caja con un hueco donde entra el servo, y se pega en la base al pie de cada torre.
+La orilla es un bloque con el camino arriba y tres huecos en una esquina, donde va el servo:
 
-1. **Mide el servo:**
-   - Con el calibrador: abre las puntas, pon el servo entre ellas y ciérralas hasta que lo toquen, sin apretar. Lee los milímetros.
-   - Mide solo la cajita (el **cuerpo**), sin las pestañas de los lados y sin el eje.
-
-| Medida del servo | Valor (mm) |
+| Hueco | ¿Para qué sirve? |
 | --- | --- |
-| Largo del cuerpo | |
-| Ancho del cuerpo | |
-| Alto del cuerpo | |
+| Cajón | Ahí entra el servo **acostado**, con sus pestañas |
+| Ventana | Por ahí asoma la parte del servo que tiene el eje |
+| Ranura | Ahí gira el brazo del servo junto con la hoja |
 
-En Tinkercad, un hueco es una forma marcada como **hueco**: al **agrupar**, se resta de las formas sólidas y deja el espacio vacío.
+Trabajen en el diseño `equipo_NOMBRE_orilla`. Cada paso es un bloque de forma y, debajo, su bloque **Mover**.
 
-2. **Caja exterior:** un Cubo de 32 × 18 × 20 mm.
-   - En el diseño `equipo_NOMBRE_soporte`, toca la categoría **Formas** y arrastra el bloque **Cubo** al área de programa. Ahora dice **Añadir** y tiene un dibujo de cubo.
-   - Toca la flecha **›** del bloque para ver sus medidas: **A**, **L**, **A**, **arista**.
-   - El primer **A** es el **ancho** (X): escribe **32**. **L** es el **largo** (Y): **18**. El segundo **A** es el **alto** (Z): **20**. Deja **arista** en **0**.
-3. **Hueco:** otro Cubo de 23.4 × 12.8 × 18 mm, marcado como hueco. Mide un poco más que el servo: es la **holgura**.
-   - Arrastra otro **Cubo** y suéltalo justo debajo del primero, hasta que encaje.
-   - Toca su **›** y escribe: primer A = **23.4**, L = **12.8**, segundo A = **18**, arista = **0**. Compara estas medidas con las del servo que mediste.
-   - En el bloque hay dos círculos: el de color (el color de la pieza) y uno **rayado**. Toca el **círculo rayado**: el círculo de color se pone gris. Eso significa que esta forma es un **hueco**.
-4. **Subir el hueco 2 mm** para que el soporte tenga piso.
-   - Toca la categoría **Modificar** y arrastra el bloque **Mover:** debajo del hueco.
-   - Escribe **X: 0**, **Y: 0**, **Z: 2**. El bloque Mover mueve la **última forma** que agregaste: el hueco sube 2 mm, así abajo queda un piso de 3 mm y arriba el hueco sale de la caja.
-5. **Agrupar:** así el hueco se resta de la caja.
-   - De **Modificar**, arrastra **Seleccionar todo** debajo de Mover.
-   - Después arrastra **Group Selection** debajo de Seleccionar todo (en esta versión de Tinkercad ese bloque está en inglés: quiere decir "agrupar la selección").
-   - Ejecuta con **▷** (abajo). En la vista 3D debe aparecer la caja con el hueco arriba. Gírala para ver adentro.
-   - **✔ Revisa:** si la caja sale sólida, revisa que el segundo cubo tenga el círculo de color en gris (hueco) y que Seleccionar todo y Group Selection estén al final.
+1. **El bloque de la orilla:** un Cubo de 60 × 88 × 30 mm.
+   - Toca la categoría **Formas** y arrastra el bloque **Cubo** al área de programa. Ahora dice **Añadir** y tiene un dibujo de cubo.
+   - Toca su flecha **›** para ver las medidas: **A**, **L**, **A**, **arista**.
+   - El primer **A** es el **ancho** (X): escribe **60**. **L** es el **largo** (Y): **88**. El segundo **A** es el **alto** (Z): **30**. Deja **arista** en **0**.
+   - Toca la categoría **Modificar** y arrastra **Mover:** debajo del cubo, hasta que encaje. Escribe **X: 0**, **Y: 0**, **Z: 15** (la mitad de 30, para que quede apoyado).
+   - Ejecuta con **▷**: debe aparecer un bloque gris acostado sobre el plano.
+2. **La ranura (hueco):** un Cubo de 22 × 12 × 12 mm.
+   - Debajo de Mover, otro **Cubo** con primer A = **22**, L = **12**, segundo A = **12**, arista = **0**.
+   - Toca su **círculo rayado** para que sea hueco (el círculo de color se pone gris).
+   - Debajo, **Mover: X −20, Y 10, Z 26** (con el signo menos en el −20).
+3. **La ventana del servo (hueco):** un Cubo de 23.4 × 5 × 10 mm.
+   - Otro **Cubo** con primer A = **23.4**, L = **5**, segundo A = **10**, arista = **0**, marcado como **hueco**.
+   - Debajo, **Mover: X −11.5, Y 17.5, Z 27**.
+4. **El cajón del servo (hueco):** un Cubo de 32.8 × 19 × 10 mm.
+   - Otro **Cubo** con primer A = **32.8**, L = **19**, segundo A = **10**, arista = **0**, marcado como **hueco**.
+   - Debajo, **Mover: X −11.5, Y 29.5, Z 27**.
+5. **Agrupar:** así los huecos se restan del bloque.
+   - De **Modificar**, arrastra **Seleccionar todo** debajo del último Mover.
+   - Después arrastra **Group Selection** debajo (en esta versión de Tinkercad ese bloque está en inglés: quiere decir "agrupar la selección").
+   - Ejecuta con **▷** y gira la vista 3D.
+   - **✔ Revisa:** en una esquina de arriba deben verse los tres huecos juntos, como en la imagen. La ranura llega hasta el borde del bloque: ese borde es el que mira al río.
+   - Si los huecos salen como cajas transparentes, revisa que **Seleccionar todo** y **Group Selection** estén al final. Si algún hueco salió en otro lugar, revisa los números de su **Mover** (sobre todo los signos menos).
 
-[IMAGEN 2.3T: soporte del servo terminado en Tinkercad Codeblocks con su hueco]
+[IMAGEN 2.3T: orilla terminada en Tinkercad Codeblocks, con la ranura en el borde del río y el cajón del servo detrás]
 
-6. Exporta `equipo_NOMBRE_soporte.stl`. Se imprimen **dos**.
+:::pregunta id="g2t-p1"
+Los huecos miden un poco más que el servo. ¿Por qué no los hacemos exactamente del mismo tamaño?
+:::
+
+6. **Exporta la primera orilla:** `equipo_NOMBRE_orilla_A.stl`.
    - Arriba a la derecha, botón **Compartir**. Se abre la ventana **Exportar y compartir**.
    - En **Descargar un archivo**, toca **.STL**. El archivo se guarda en la carpeta **Descargas** de la computadora.
-   - Si no se llama `equipo_NOMBRE_soporte.stl`, cámbiale el nombre: clic derecho sobre él → **Cambiar nombre**.
-   - Se exporta uno solo: el docente imprime dos copias.
+   - Cámbiale el nombre: clic derecho sobre él → **Cambiar nombre** → `equipo_NOMBRE_orilla_A.stl`.
+7. **La orilla en espejo:** agrega **Escala** al final y exporta otra vez.
+   - De **Modificar**, arrastra **Escala** debajo de **Group Selection**. Escribe **X: −1**, **Y: 1**, **Z: 1**.
+   - Ejecuta con **▷**: la ranura debe pasar al **otro lado** del bloque.
+   - Exporta igual que en el paso 6 y nombra el archivo `equipo_NOMBRE_orilla_B.stl`.
+
+## Parte 4 · La hoja (30 min)
+
+La hoja es el tablero por donde pasan los carros, con una baranda a cada lado. En una punta tiene una **oreja**: una pestaña que entra en la ranura de la orilla y donde se pega el brazo del servo. Cuando el servo gira, la hoja sube.
+
+La hoja va en su **propio diseño**, porque al exportar se guarda todo lo que hay en el diseño.
+
+- En Tinkercad: **+ Crear → Codeblocks**. Haz clic en el nombre de arriba a la izquierda, bórralo y escribe `equipo_NOMBRE_hoja`. **Enter**.
+
+1. **Tablero:** un Cubo de 80 × 40 × 4 mm.
+   - De **Formas**, un **Cubo** con primer A = **80**, L = **40**, segundo A = **4**, arista = **0**.
+   - Debajo, **Mover: X 0, Y 0, Z 6**. (Queda 4 mm arriba del plano: ese espacio es para la oreja.)
+2. **Barandas:** dos Cubos de 72 × 2 × 6 mm, paradas en los bordes del tablero.
+   - Un **Cubo** con primer A = **72**, L = **2**, segundo A = **6**. Debajo, **Mover: X −4, Y 19, Z 11**.
+   - Otro **Cubo** igual. Debajo, **Mover: X −4, Y −19, Z 11** (con el signo menos en el −19).
+3. **Oreja:** un Cubo de 38 × 4 × 8 mm que sale por una punta, del lado de una baranda.
+   - Un **Cubo** con primer A = **38**, L = **4**, segundo A = **8**. Debajo, **Mover: X 39, Y 21, Z 4**.
+4. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
+   - **✔ Revisa:** gira la vista 3D. Debes ver el tablero con sus dos barandas y, en una punta, la oreja que sobresale hacia afuera, pegada a una baranda.
+
+[IMAGEN 2.4T: hoja del puente en Tinkercad Codeblocks con tablero, barandas y la oreja en una punta]
+
+5. **Exporta la primera hoja:** `equipo_NOMBRE_hoja_A.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
+6. **La hoja en espejo:** agrega **Escala** debajo de **Group Selection** con **X: −1**, **Y: 1**, **Z: 1**. Ejecuta: la oreja pasa a la otra punta. Exporta `equipo_NOMBRE_hoja_B.stl`.
+
+:::pregunta id="g2t-p2"
+Si nuestro servo midiera 2 mm más de largo, ¿qué números de la orilla tendríamos que cambiar y por cuánto?
+:::
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g2-logramos"
-- [ ] Completamos la tabla de escala.
-- [ ] El boceto tiene medidas y la ubicación de servos y sensor.
+:::checklist id="g2t-logramos"
 - [ ] Sabemos usar los bloques de Tinkercad.
-- [ ] El soporte tiene su hueco y está exportado en STL.
+- [ ] La orilla tiene sus tres huecos en una esquina.
+- [ ] La hoja tiene sus barandas y su oreja.
+- [ ] Exportamos los 4 archivos: orilla A y B, hoja A y B.
 :::
 
 ## Reto extra
 
-Haz una ranura de 8 × 4 mm en una pared del soporte para que salgan los cables del servo.
+Dibuja la **línea del centro del camino** en la orilla y en la hoja: rayitas de 8 × 1 mm, separadas 6 mm, que sobresalgan 0,5 mm del camino.
 
-Pista: antes de **Seleccionar todo**, agrega otro **Cubo** marcado como **hueco** con primer **A = 10** (más largo que el grueso de la pared, para que la atraviese), **L = 8** y segundo **A = 4**, y muévelo con **Mover: X 14, Y 0, Z 8** (arriba, en una de las paredes cortas).
+Pista: en la orilla, antes de **Seleccionar todo**, agrega un **Cubo** con primer **A = 8**, **L = 1** y segundo **A = 1**, y muévelo con **Mover: X −21, Y −14, Z 30** (el camino no está en el centro de la orilla: está corrido hacia un lado). Para las siguientes rayitas, cubos iguales con **X = −7**, **X = 7** y **X = 21** (cada una 14 mm más allá: 8 de la rayita + 6 de espacio). En la hoja, las rayitas van con **Y = 0** y **Z = 8**.
 
 ## Bitácora (10 min)
 
-:::pregunta id="g2-b1"
-¿Para qué sirve hacer una maqueta a escala antes de construir algo real?
+:::pregunta id="g2t-b1"
+¿Qué fue lo más difícil de diseñar hoy y cómo lo resolvieron?
 :::
 
-:::pregunta id="g2-b2"
-¿Por qué el hueco es un poco más grande que el servo?
-:::
-
-Antes de irse, suban aquí `equipo_NOMBRE_soporte.stl`. El programa de bloques se queda guardado en su cuenta de Tinkercad (**Diseños → Codeblocks**).
+Antes de irse, junten los 4 `.stl` en un `.zip` (selecciónenlos, clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí. Los programas de bloques se quedan guardados en su cuenta de Tinkercad (**Diseños → Codeblocks**).
 
 :::archivo id="g2-archivo"
-**Archivo de trabajo:** suban aquí el .stl que exportaron. Su diseño de bloques queda guardado en Tinkercad: en cualquier computadora entran con la misma cuenta y lo abren en **Diseños → Codeblocks**. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** suban aquí el .zip con los .stl que exportaron. Sus diseños de bloques quedan guardados en Tinkercad: en cualquier computadora entran con la misma cuenta y los abren en **Diseños → Codeblocks**. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- Resultados: hoja 15,25 cm; torres 32,5 cm; ancho 9 cm. g2-p1: 50 × 200 = 10 000 cm = 100 m.
-- Si las torres a escala quedan muy altas para la base, se pueden hacer de 25 cm: comentar que en las maquetas a veces se ajusta la escala de alguna parte.
-- Imprimir los soportes esta semana (≈30 min cada uno).
-- **Versión Tinkercad (Codeblocks):** mismas piezas y medidas que la versión Blender. En Codeblocks las formas nacen centradas en el origen, igual que en Blender, así que los números de Mover son las mismas Posiciones. Tinkercad necesita internet y una cuenta para cada equipo (o una clase de Tinkercad).
-- El hueco se resta solo al **agrupar**: el programa debe terminar con **Seleccionar todo** y **Group Selection** (este bloque aparece en inglés).
-- Tiempo total: 15 + 20 + 20 + 15 + 35 + 5 + 10 = 120 minutos.
+- **Guía reestructurada (versión Tinkercad):** el sábado 2 y el 3 se dedican a diseñar el puente completo en piezas imprimibles. Se quitaron de esta versión la tabla de escala, el boceto y el soporte suelto del servo. Por eso esta guía tiene campos propios (g2t-…): si un equipo cambia de versión, no conserva estas respuestas.
+- Diseño completo de referencia en la cuenta del docente: "Puente levadizo - propuesta completa" y un diseño por pieza ("Puente - modelo orilla", "Puente - modelo hoja"…), con los mismos bloques de la guía.
+- Medidas del servo usadas: SG90 de 22,8 × 12,2 × 22,5 mm, con pestañas de 32,2 mm. El hueco deja unos 0,3 mm de holgura. La oreja de la hoja queda a 7 mm de la cara del servo, que es el espacio para el brazo. **Antes de imprimir las 2 orillas, conviene probar con un servo de la academia.** Si el cajón queda justo, se agrandan un poco sus medidas (por ejemplo 33.4 × 19.5).
+- Los servos quedan en espejo, como en las guías 5 a 7, así que el código `a` y `180 - a` funciona sin cambios.
+- La orilla A va a la derecha del río y la B a la izquierda, separadas 16,4 cm. La hoja A va con la orilla A.
+- Impresión: las orillas se imprimen tal como salen, con el camino hacia arriba. Las hojas necesitan **soportes** en el programa de impresión, porque la oreja queda debajo del tablero.
+- g2t-p1: si el hueco fuera exacto, el servo no entraría o quedaría muy apretado; la impresora no es perfecta (holgura).
+- g2t-p2: el primer A (el largo, en X) del cajón y de la ventana, 2 mm más cada uno (32.8 → 34.8 y 23.4 → 25.4). Las Y y Z no cambian.
+- Tiempo total: 10 + 20 + 45 + 30 + 5 + 10 = 120 minutos.
 :::

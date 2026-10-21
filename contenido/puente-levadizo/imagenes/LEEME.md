@@ -31,8 +31,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 
 | Archivo | Descripción |
 | --- | --- |
+| IMAGEN_2.1T.png | puente completo diseñado en Tinkercad: dos orillas con su camino, una hoja bajada y otra levantada, la torre del semáforo, la torre del buzzer y el soporte del sensor *(lista)* |
 | IMAGEN_2.2T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
-| IMAGEN_2.3T.png | soporte del servo terminado en Tinkercad Codeblocks con su hueco |
-| IMAGEN_3.1T.png | hoja del puente en Tinkercad Codeblocks con tablero, barandas y encastre para el servo |
+| IMAGEN_2.3T.png | orilla terminada en Tinkercad Codeblocks, con la ranura en el borde del río y el cajón del servo detrás *(lista)* |
+| IMAGEN_2.4T.png | hoja del puente en Tinkercad Codeblocks con tablero, barandas y la oreja en una punta *(lista)* |
+| IMAGEN_3.1T.png | torre del semáforo en Tinkercad Codeblocks, hueca, con los tres agujeros de los LEDs en una pared *(lista)* |
+| IMAGEN_3.2T.png | torre del buzzer en Tinkercad Codeblocks con el agujero redondo en el techo *(lista)* |
+| IMAGEN_3.3T.png | soporte del sensor ultrasónico en Tinkercad Codeblocks: placa con dos agujeros y pie *(lista)* |
 | IMAGEN_8.1T.png | barco modelado en Tinkercad Codeblocks con proa redondeada, cabina, mástil y bandera |
 | IMAGEN_13.1T.png | escena final del puente en Tinkercad con las hojas levantadas, las torres, el río azul y el barco pasando |

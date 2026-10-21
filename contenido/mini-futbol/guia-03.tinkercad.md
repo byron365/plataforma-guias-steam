@@ -1,246 +1,144 @@
 ---
-titulo: El marcador completo en el simulador
+titulo: El mini fútbol en 3D (2): el soporte del marcador
 guia: 3
 sabado: 3
 sesion: Planificación del proyecto
 duracion: 120
 ---
 
-# Guía 3 · El marcador completo en el simulador
+# Guía 3 · El mini fútbol en 3D (2): el soporte del marcador
 
 ## Objetivo del día
 
-Planificar el programa del marcador con pseudocódigo y diagrama de flujo, simularlo completo en Wokwi y exportar las porterías.
+Diseñar el **soporte del marcador**, donde van la pantalla y el buzzer, revisar las piezas y saber dónde va cada una.
 
-**Al terminar tendremos:** el marcador completo (dos sensores, tiempo, pantalla y sonidos) funcionando en el simulador y las porterías listas para imprimir.
+**Al terminar tendremos:** la portería y el soporte del marcador exportados en STL y listos para imprimir.
 
 ## Materiales del equipo
 
-- Computadora con internet, la cuenta de Tinkercad y el proyecto de Wokwi del sábado 1
+- Computadora con internet, mouse y la cuenta de Tinkercad del sábado 2
+- Pantalla OLED y buzzer (para medirlos)
+- Regla o calibrador en milímetros
+- Bitácora
 
-## Parte 1 · Pseudocódigo (15 min)
+Si les toca otra computadora, no pasa nada: entren a Tinkercad con la misma cuenta y sus diseños estarán en **Diseños → Codeblocks**.
 
-El **pseudocódigo** es el programa escrito en palabras, paso a paso. Completen los espacios pensando en cómo es un partido de verdad: cómo empieza, qué pasa con cada gol y cómo termina.
+## Parte 1 · Repaso (5 min)
 
-:::tabla id="g3-pseudo"
-| Paso | ¿Qué hace el marcador? |
-| --- | --- |
-| 1 | Mostrar el marcador 0 - 0 y esperar el botón |
-| 2 | Al presionar el botón → poner los goles en 0, empezar el tiempo y sonar el ______ |
-| 3 | Si el sensor de la portería azul detecta la pelota → gol del equipo ______ |
-| 4 | Si el sensor de la portería roja detecta la pelota → gol del equipo ______ |
-| 5 | Mostrar el marcador y el ______ que queda |
-| 6 | Si se acabó el tiempo → ______ |
-:::
+1. Entren a Tinkercad → **Diseños → Codeblocks** y revisen que esté `equipo_NOMBRE_porteria`.
+2. Recuerden las tres reglas de la Guía 2:
+   - Las medidas van en **milímetros**.
+   - Cada forma nace con su centro en el plano; con **Mover** la llevamos a su lugar.
+   - Los **huecos** se restan al final con **Seleccionar todo** y **Group Selection**.
 
-:::animacion tipo="diagrama-flujo" programa="futbol" ocultar="si"
-:::
+## Parte 2 · Medir la pantalla y el buzzer (10 min)
 
-:::pregunta id="g3-p1"
-Si la pelota entra en la portería **azul**, ¿qué equipo anotó el gol? ¿Por qué?
-:::
+El soporte es un **panel inclinado** sobre una base. El panel tiene una **ventana** por donde se ve la pantalla y un **agujero** donde se mete el buzzer. Los dos se ponen por detrás.
 
-## Parte 2 · El circuito completo en Wokwi (25 min)
+[IMAGEN 3.1T: soporte del marcador en Tinkercad Codeblocks, con etiquetas: panel inclinado, ventana de la pantalla, agujero del buzzer y base]
 
-En Wokwi no hay sensor infrarrojo de obstáculos, así que usamos **botones** que funcionan igual (dan LOW cuando "detectan").
+1. **La pantalla:** midan el **vidrio** (la parte oscura y brillante), sin la placa. La ventana mide 25 × 14 mm: el vidrio debe ser **más grande** que la ventana, para que tape la ventana por detrás.
+2. **El buzzer:** midan lo ancho de su parte redonda. El radio del agujero es **la mitad + 0,2 mm**, para que entre justo.
 
-Abran el proyecto del sábado 1 (con el enlace de su bitácora, o en **My Projects** con la sesión iniciada). Ya tiene la pantalla y el botón de D3. Agreguen con el **+**: dos *Pushbutton* más y un *Buzzer*.
-
-- Para cada botón: una pata de un lado → su pin; una pata del otro lado → GND (las patas del mismo lado están unidas por dentro).
-- **Buzzer:** el pin **2** es el +, el pin **1** es el −.
-- Al pasar el mouse sobre un pin aparece su nombre.
-
-| Componente | Conexión |
-| --- | --- |
-| Botón de inicio | D2 y GND |
-| Botón "sensor portería azul" | D3 y GND |
-| Botón "sensor portería roja" | D4 y GND |
-| Buzzer | + → D5 · − → GND |
-| OLED SSD1306 | SDA → A4 · SCL → A5 · VCC → 5V · GND → GND |
-
-[IMAGEN 3.1: circuito completo del marcador en Wokwi con tres botones, buzzer y pantalla OLED]
-
-Toquen cada cable de la animación para comparar con su circuito:
-
-:::animacion tipo="conexiones" circuito="futbol"
-:::
-
-## Parte 3 · El código base (35 min)
-
-En `sketch.ino`, borren el código del sábado 1 y escriban (o peguen) este programa completo. Las librerías de la pantalla ya están del sábado 1.
-
-```cpp
-#include <Wire.h>
-#include <Adafruit_SSD1306.h>
-
-// --- Pines ---
-const int BOTON = 2;
-const int SENSOR_AZUL = 3;  // portería azul
-const int SENSOR_ROJO = 4;  // portería roja
-const int BUZZER = 5;
-
-// --- Ajustes del equipo ---
-const unsigned long DURACION = 180000; // 3 min en ms
-const unsigned long PAUSA_GOL = 1500;  // ms
-
-Adafruit_SSD1306 pantalla(128, 64, &Wire, -1);
-int golesAzul = 0, golesRojo = 0;
-unsigned long inicio = 0, ultimoGol = 0;
-bool jugando = false;
-
-void setup() {
-  pinMode(BOTON, INPUT_PULLUP);
-  pinMode(SENSOR_AZUL, INPUT_PULLUP);   // en el real: INPUT
-  pinMode(SENSOR_ROJO, INPUT_PULLUP);   // en el real: INPUT
-  pantalla.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-  pantalla.setTextColor(SSD1306_WHITE);
-  mostrarMarcador(DURACION);
-}
-
-// Suma un gol y lo celebra
-void gol(int &goles, String equipo) {
-  goles++;
-  ultimoGol = millis();
-  pantalla.clearDisplay();
-  pantalla.setTextSize(3);
-  pantalla.setCursor(20, 10);
-  pantalla.print("GOL!");
-  pantalla.setTextSize(2);
-  pantalla.setCursor(40, 45);
-  pantalla.print(equipo);
-  pantalla.display();
-  tone(BUZZER, 1000, 150);
-  delay(200);
-  tone(BUZZER, 1500, 400);
-  delay(1000);
-}
-
-// Dibuja el marcador y el tiempo
-void mostrarMarcador(unsigned long resta) {
-  pantalla.clearDisplay();
-  pantalla.setTextSize(1);
-  pantalla.setCursor(0, 0);
-  pantalla.print("AZUL            ROJO");
-  pantalla.setTextSize(3);
-  pantalla.setCursor(10, 22);
-  pantalla.print(golesAzul);
-  pantalla.print(" - ");
-  pantalla.print(golesRojo);
-  pantalla.setTextSize(1);
-  pantalla.setCursor(30, 56);
-  pantalla.print("Quedan ");
-  pantalla.print(resta / 1000);
-  pantalla.print(" s");
-  pantalla.display();
-}
-
-void loop() {
-  // 1. Esperar el botón para empezar
-  if (!jugando) {
-    if (digitalRead(BOTON) == LOW) {
-      golesAzul = 0;
-      golesRojo = 0;
-      inicio = millis();
-      jugando = true;
-      tone(BUZZER, 2000, 600);  // silbato
-    }
-    return;
-  }
-
-  // 2. ¿Gol? (LOW = pelota en el sensor)
-  bool listo = millis() - ultimoGol > PAUSA_GOL;
-  if (listo && digitalRead(SENSOR_AZUL) == LOW)
-    gol(golesRojo, "ROJO");
-  if (listo && digitalRead(SENSOR_ROJO) == LOW)
-    gol(golesAzul, "AZUL");
-
-  // 3. Tiempo y fin del partido
-  unsigned long pasado = millis() - inicio;
-  if (pasado >= DURACION) {
-    jugando = false;
-    mostrarMarcador(0);
-    tone(BUZZER, 2000, 1500);  // final
-    return;
-  }
-  mostrarMarcador(DURACION - pasado);
-}
-```
-
-Presionen **Play** y prueben con los botones: el de D2 empieza el partido; los de D3 y D4 son los "sensores". Guarden con **Save**.
-
-[IMAGEN 3.2: simulación en Wokwi con la pantalla mostrando el marcador 2 - 1 y el tiempo restante]
-
-| Prueba | ¿Funciona? |
-| --- | --- |
-| El botón de inicio hace sonar el silbato | |
-| El botón azul suma gol al ROJO | |
-| El botón rojo suma gol al AZUL | |
-| La pantalla dice "GOL!" y el equipo | |
-| El tiempo baja | |
-| Al acabar el tiempo suena el final | |
-
-Para probarlo: cambien el número de `DURACION`, presionen Play otra vez y empiecen un partido.
-
-:::pregunta id="g3-p2"
-Cambia `DURACION` para que el partido dure 30 segundos. ¿Qué número escribiste?
-:::
-
-## Parte 4 · Exportar las porterías (15 min)
-
-1. Abre en Tinkercad el diseño **equipo_NOMBRE_porteria** (**Diseños → Codeblocks**).
-   - En cualquier computadora sirve: entren con la misma cuenta de Tinkercad.
-2. Ejecuta con **▷** y revisa que se vea la portería **completa** (las dos mitades) con la ventana del fondo abierta.
-   - Si sale solo la mitad, revisa los bloques **Copiar**, **Escala** (X = −1) y **Mover** (X −52.5) de la Guía 2.
-3. Exporta como **equipo_NOMBRE_porteria.stl** (se imprimen dos: una azul y una roja).
-   - Arriba a la derecha, **Compartir** → en **Descargar un archivo**, toca **.STL**. El archivo queda en **Descargas**.
-   - Si no se llama `equipo_NOMBRE_porteria.stl`, cámbiale el nombre: clic derecho → **Cambiar nombre**.
-
-## Parte 5 · Cronograma (10 min)
-
-Escriban un responsable principal para cada meta (el que se asegura de que se cumpla; el equipo ayuda).
-
-:::tabla id="g3-cronograma"
-| Sábado | Meta | Responsable principal |
+:::tabla id="g3t-medidas"
+| Medida | Ejemplo (mm) | Nuestra medida (mm) |
 | --- | --- | --- |
-| 4 | Cancha, porterías y escaneo 3D | |
-| 5 | Sensores reales y marcador | |
-| 6 | Antirrebote, calibración y partido completo | |
-| 7 | Partidos de prueba y ficha técnica | |
-| 8 | Tabla de posiciones y presentación | |
+| Vidrio de la pantalla (ancho × alto) | 26.7 × 19.3 | |
+| Buzzer (lo ancho) | 12 | |
+| Radio del agujero del buzzer | 6.2 | |
+:::
+
+## Parte 3 · El soporte del marcador (45 min)
+
+Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_soporte_marcador`.
+
+1. **El panel:** un Cubo de 70 × 4 × 50 mm. No se mueve: queda en el centro.
+   - De **Formas**, un **Cubo** con primer **A = 70**, **L = 4**, segundo **A = 50**, **arista = 0**.
+2. **La ventana de la pantalla (hueco):** un Cubo de 25 × 10 × 14 mm, arriba del centro del panel.
+   - Un **Cubo** con primer **A = 25**, **L = 10**, segundo **A = 14**, marcado como **hueco** (círculo rayado).
+   - Debajo, **Mover: X 0, Y 0, Z 8**.
+3. **El agujero del buzzer (hueco):** un cilindro acostado que atraviesa el panel, debajo de la ventana.
+   - Un **Cilindro** con el **Radio** de su tabla (en el ejemplo **6.2**), **A = 10**, **Lados = 32**, marcado como **hueco**.
+   - **Acostarlo:** de **Modificar**, arrastra **Girar alrededor** debajo del cilindro. Deja **Eje x** y escribe **90** en los grados.
+   - Debajo, **Mover: X 0, Y 0, Z −14** (con el signo menos).
+4. **Agrupar** para que los huecos se resten: **Seleccionar todo** y **Group Selection**.
+   - Ejecuta con **▷**. **✔ Revisa:** el panel tiene una ventana rectangular arriba y un agujero redondo abajo, los dos de lado a lado. Si el agujero sale parado (hacia arriba), revisa que **Girar alrededor** diga **Eje x** y **90**.
+5. **Inclinar el panel:** así se ve mejor la pantalla desde la cancha.
+   - Debajo de Group Selection, **Girar alrededor** con **Eje x** y **−15** grados (con el signo menos: el panel se echa hacia atrás).
+   - Debajo, **Mover: X 0, Y 0, Z 27.5** (sube el panel para que quede parado sobre la base).
+6. **La base:** un Cubo de 70 × 45 × 4 mm.
+   - Un **Cubo** con primer **A = 70**, **L = 45**, segundo **A = 4**. Debajo, **Mover: X 0, Y 2.5, Z 2**.
+7. **Unir todo:** otra vez **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
+   - **✔ Revisa:** gira la vista y míralo de lado: el panel está un poco echado hacia atrás y la base sale por delante y por detrás. Si el panel se va hacia adelante, cambia el **−15** por **15**.
+
+8. **Exporta** `equipo_NOMBRE_soporte_marcador.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
+
+:::pregunta id="g3t-p1"
+La placa de la pantalla mide unos 27 × 27 mm, pero la ventana solo mide 25 × 14 mm. ¿Por qué no hacemos la ventana del tamaño de toda la placa?
+:::
+
+## Parte 4 · Terminar y revisar las piezas (30 min)
+
+1. **Si les falta la portería de la Guía 2**, termínenla ahora: los pasos están en la Guía 2.
+2. Abran cada diseño, ejecútenlo con **▷**, gírenlo y marquen:
+
+:::checklist id="g3t-revision"
+- [ ] Portería: las dos mitades están unidas y la ventana del fondo está abierta.
+- [ ] Soporte: la ventana y el agujero del buzzer atraviesan el panel.
+- [ ] Soporte: el panel está inclinado hacia atrás y apoyado en la base.
+- [ ] Los dos `.stl` están en Descargas con su nombre correcto.
+:::
+
+Si terminan antes, hagan el **reto extra** de la Guía 2 (la red de la portería) o el de esta guía.
+
+## Parte 5 · ¿Dónde va cada pieza? (15 min)
+
+Miren el mini fútbol completo y ubiquen cada pieza:
+
+[IMAGEN 2.1T: mini fútbol diseñado en Tinkercad, con etiquetas: portería azul, portería roja, cancha a escala, bandas laterales, pelota, soporte del marcador, Arduino y protoboard con el botón]
+
+- Las **porterías**, una en el centro de cada lado corto, con la boca hacia la cancha y la **ventana del sensor mirando hacia la cancha**. Detrás de cada ventana va su sensor.
+- La **cancha** y las **bandas laterales** se arman con cartón el sábado 4, con un hueco de 10 cm en cada lado corto para la portería.
+- El **soporte del marcador**, a un lado de la cancha, mirando hacia los jugadores. La pantalla va por detrás de la ventana y el buzzer por detrás de su agujero.
+- El **Arduino** y la **protoboard** con el botón de inicio, junto al soporte.
+
+:::pregunta id="g3t-p2"
+¿Qué pasaría si pegamos una portería con la ventana del sensor mirando hacia afuera de la cancha?
 :::
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g3-logramos"
-- [ ] Completamos el pseudocódigo.
-- [ ] El marcador completo funciona en Wokwi.
-- [ ] Probamos todas las partes del juego.
-- [ ] Exportamos la portería en STL.
-- [ ] Tenemos cronograma.
+:::checklist id="g3t-logramos"
+- [ ] El soporte tiene la ventana de la pantalla y el agujero del buzzer.
+- [ ] El agujero del buzzer tiene la medida de nuestro buzzer.
+- [ ] El panel está inclinado y apoyado en la base.
+- [ ] Tenemos las 2 piezas en STL: portería y soporte del marcador.
 :::
 
 ## Reto extra
 
-Haz que la pantalla diga **"FIN"** y el ganador (o "EMPATE") cuando se acaba el tiempo.
+Escribe el **nombre del equipo** en la base del soporte, delante del panel.
 
-Pista: en el bloque del fin del partido, antes del `return;`, comparen `golesAzul` con `golesRojo` (con `if`, `else if` y `else`) y escriban en la pantalla el mensaje que toque.
+Pista: en el soporte, antes del último **Seleccionar todo**, agrega de **Formas** el bloque **Texto** y escribe el nombre en su casilla. Debajo, de **Modificar**, **Definir tamaño** con **X = 60**, **Y = 8**, **Z = 1** y **Mover: X 0, Y −14, Z 4.5** (queda apoyado sobre la base, que mide 4 mm). Si el nombre es largo y las letras se ven aplastadas, escriban uno más corto.
 
-## Bitácora (15 min)
+## Bitácora (10 min)
 
-:::pregunta id="g3-b1"
-¿Qué hace la función `gol()` y por qué la usamos dos veces?
+:::pregunta id="g3t-b1"
+¿Qué pieza del mini fútbol fue la más difícil de diseñar? ¿Por qué?
 :::
 
-Antes de irse, suban juntos en un `.zip` el `.stl` y el proyecto de Wokwi descargado (menú de la flecha junto a **Save** → **Download project zip**). Para el `.zip`: selecciónenlos → clic derecho → **Comprimir en archivo ZIP**.
+Antes de irse, junten los 2 `.stl` en un `.zip` (clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí. El docente los imprimirá para el próximo sábado.
 
 :::archivo id="g3-archivo"
-**Archivo de trabajo:** antes de irse, suban el .stl de la portería, su proyecto de Wokwi (descárguenlo como .zip) y su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** suban aquí el .zip con los .stl que exportaron. Sus diseños de bloques quedan guardados en Tinkercad (**Diseños → Codeblocks**). Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- g3-p1: gol del equipo ROJO, porque la portería azul la defiende el equipo azul.
-- g3-p2: 30000.
-- `int &goles` (por referencia) permite que la función cambie la variable original; explicarlo como "le damos la caja, no una copia".
-- Durante la semana: imprimir dos porterías por equipo (≈1,5 h cada una), de preferencia en colores azul y rojo.
-- Tiempo total: 15 + 25 + 35 + 15 + 10 + 5 + 15 = 120 minutos.
+- **Versión Tinkercad, reestructurada el 21 de octubre:** el pseudocódigo, el diagrama de flujo y el cronograma salen de esta versión; el marcador completo en Wokwi pasa a la Guía 4. La Parte 4 da tiempo a los equipos que van más lento para terminar la portería. Campos propios (g3t-…).
+- El soporte del marcador es una pieza nueva de esta versión, probada en Tinkercad el 21 de octubre ("Mini futbol - modelo soporte marcador" en la cuenta del docente). Mide 70 × 45 mm de base y unos 52 mm de alto; el panel queda echado 15° hacia atrás.
+- Medidas: ventana de 25 × 14 mm para la pantalla OLED de 0,96" (el vidrio mide unos 26,7 × 19,3 mm y tapa la ventana por detrás; la parte que se ilumina mide unos 22 × 11 mm). Agujero de 12,4 mm para el buzzer de 12 mm. La pantalla y el buzzer se pegan por detrás con cinta doble cara o silicona (solo en la placa, no en el vidrio).
+- Imprimir esta semana: el soporte con la base sobre la cama (≈1 h); no necesita soportes.
+- g3t-p1: solo debe verse la parte de la pantalla que se ilumina; la placa queda escondida detrás del panel y de ella se pega la pantalla.
+- g3t-p2: el sensor quedaría mirando hacia afuera y no vería la pelota que entra en la portería: no se contarían los goles.
+- Tiempo total: 5 + 10 + 45 + 30 + 15 + 5 + 10 = 120 minutos.
 :::

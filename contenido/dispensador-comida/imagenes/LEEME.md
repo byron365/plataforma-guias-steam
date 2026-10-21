@@ -28,12 +28,25 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_13.1.png | render final del dispensador con la botella transparente, croquetas cayendo y el plato |
 | IMAGEN_14.1.png | dispensador simulado en Wokwi con el reloj DS1307, el servo, el LED y el buzzer |
 
-**Versión Tinkercad (bloques)** de las guías 2, 3 y 13 (archivos `guia-NN.tinkercad.md`):
+**Versión Tinkercad (bloques)** de las guías 2, 3, 4 y 13 (archivos `guia-NN.tinkercad.md`). Desde el 21 de octubre las guías 2 y 3 usan la torre del dispensador doble: también muestran `IMAGEN_2.3D.png` (torre), `IMAGEN_2.4D.png` (compuerta) y `IMAGEN_3.1D.png` (embudo).
 
 | Archivo | Descripción |
 | --- | --- |
+| IMAGEN_2.1T.png | dispensador diseñado en Tinkercad, con etiquetas: botella, embudo con cuello, torre, compuerta, servo, plato, Arduino y protoboard con el botón, el LED y el buzzer *(lista)* |
 | IMAGEN_2.3T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
-| IMAGEN_2.4T.png | soporte del servo terminado en Tinkercad Codeblocks |
-| IMAGEN_3.1T.png | embudo hueco en Tinkercad Codeblocks con el cuello para la botella |
-| IMAGEN_3.2T.png | compuerta en Tinkercad Codeblocks: paleta con el encastre para el servo |
+| IMAGEN_4.1T.png | acercamiento del dispensador en Tinkercad: salida del embudo, compuerta boca abajo, servo colgando de sus pestañas en su repisa y plato abajo *(lista)* |
+| IMAGEN_2.4T.png | soporte del servo terminado en Tinkercad Codeblocks *(ya no se usa)* |
+| IMAGEN_3.1T.png | embudo hueco en Tinkercad Codeblocks con el cuello para la botella *(ya no se usa)* |
+| IMAGEN_3.2T.png | compuerta en Tinkercad Codeblocks: paleta con el encastre para el servo *(ya no se usa)* |
 | IMAGEN_13.1T.png | escena final del dispensador en Tinkercad con la botella transparente, el embudo, la compuerta y las croquetas en el plato |
+
+**Versión "Doble: cereal y líquido (Tinkercad)"** de las guías 2, 3 y 5 (archivos `guia-NN.doble.md`; el editor usa `IMAGEN_2.3T.png`):
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_2.1D.png | dispensador doble diseñado en Tinkercad: torre del cereal con botella, embudo y compuerta; torre del líquido con su brazo y la manguera; recipiente del líquido; Arduino y protoboard del otro lado, con etiquetas de cada pieza *(lista)* |
+| IMAGEN_2.3D.png | torre del cereal en Tinkercad Codeblocks: pie, pared, repisa del embudo con su agujero y repisa del servo con su hueco *(lista)* |
+| IMAGEN_2.4D.png | compuerta en Tinkercad Codeblocks: paleta de 54 × 30 mm con el encastre del servo en una punta *(lista)* |
+| IMAGEN_3.1D.png | embudo con tapa ancha y cuello en Tinkercad Codeblocks *(lista)* |
+| IMAGEN_3.2D.png | torre del líquido en Tinkercad Codeblocks: pie, pared y brazo con el agujero de la manguera *(lista)* |
+| IMAGEN_5.1D.png | circuito del dispensador doble: servo, dos botones, LED, buzzer y relé con la bomba y las pilas |

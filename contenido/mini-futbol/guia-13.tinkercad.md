@@ -17,7 +17,7 @@ Hacer la imagen final de la cancha en Tinkercad, dejar el código final comentad
 ## Materiales del equipo
 
 - Computadora con internet, cuenta de Tinkercad y Arduino IDE
-- Medidas de la cancha (Guía 2)
+- Medidas de la cancha (Guía 4)
 - Bitácora de todos los sábados
 
 ## Parte 1 · Imagen final (35 min)
@@ -47,15 +47,17 @@ Una imagen final (en Blender se llama *render*) es una "foto" del modelo 3D con 
 3. **Portería roja** en espejo, como en la Guía 2:
    - **Copiar**; **Escala:** **X = −1**, **Y = 1**, **Z = 1** (desde: centro); **Mover: X 564, Y 0, Z 0** (la pasa al otro extremo); **Definir color** con **255, 0, 0** (rojo).
    - Ejecuten con **▷**: deben verse las dos porterías frente a frente.
-4. **Cancha:** un **Cubo** con primer **A = 525**, **L = 340**, segundo **A = 2** y **Mover: X 0, Y 0, Z −1** (su cara de arriba queda en Z = 0). Círculo de color: **verde**.
-5. **Líneas blancas** de 3 mm de ancho y 1 mm de alto, subidas a **Z = 0.5** para que se vean encima del verde. Círculo de color: **blanco**.
-   - **Media cancha:** Cubo 3, 340, 1 con **Mover: X 0, Y 0, Z 0.5**.
-   - **Bordes largos:** Cubo 525, 3, 1 con **Mover Y 168.5** (Z 0.5); otro igual con **Y −168.5**.
-   - **Bordes cortos:** Cubo 3, 340, 1 con **Mover X 261** (Z 0.5); otro igual con **X −261**.
-   - **Áreas grandes:** con sus medidas de la Guía 2 (pasen los cm a mm multiplicando por 10), tres Cubos por área: uno paralelo al borde corto (del largo del área) y dos que lo unen al borde (del fondo del área). Calculen sus Mover desde el borde corto (X = ±261).
+4. **Cancha:** el Cubo de Codeblocks mide como máximo 200 mm, así que la hacemos chica y la agrandamos con **Escala**.
+   - Un **Cubo** con primer **A = 105**, **L = 68**, segundo **A = 2** (las medidas de la cancha real). Círculo de color: **verde**.
+   - Debajo, **Escala: X 5, Y 5, Z 1** (queda de 525 × 340 mm) y **Mover: X 0, Y 0, Z −1** (su cara de arriba queda en Z = 0).
+5. **Líneas blancas** de 3 mm de ancho y 1 mm de alto, subidas a **Z = 0.5** para que se vean encima del verde. Círculo de color: **blanco**. Las líneas largas también se agrandan con **Escala**, solo en su eje largo.
+   - **Media cancha:** Cubo 3, 68, 1 con **Escala: X 1, Y 5, Z 1** y **Mover: X 0, Y 0, Z 0.5**.
+   - **Bordes largos:** Cubo 105, 3, 1 con **Escala: X 5, Y 1, Z 1** y **Mover Y 168.5** (Z 0.5); otro igual con **Y −168.5**.
+   - **Bordes cortos:** Cubo 3, 68, 1 con **Escala: X 1, Y 5, Z 1** y **Mover X 261** (Z 0.5); otro igual con **X −261**.
+   - **Áreas grandes:** con sus medidas de la Guía 4 (pasen los cm a mm multiplicando por 10; si una medida pasa de 200 mm, escriban la mitad y agreguen **Escala** 2 en ese eje), tres Cubos por área: uno paralelo al borde corto (del largo del área) y dos que lo unen al borde (del fondo del área). Calculen sus Mover desde el borde corto (X = ±261).
    - **Círculo central:** un **Tubo** con **Radio = 46** (el radio de 46 mm de su tabla), **Grosor del muro = 3**, **A = 1** y **Mover: X 0, Y 0, Z 0.5**. Queda un anillo de 3 mm.
 6. **Pelota:** una **Esfera** con **Radio = 20** (40 mm de diámetro) y **Mover: X 0, Y 0, Z 20** (apoyada en la cancha). Círculo de color: blanco.
-7. **Trofeo** (opcional): el trofeo escaneado no se puede poner en Codeblocks. Pueden hacer uno sencillo a un costado: **Cilindro** Radio 15, A 5 con **Mover X 0, Y −220, Z 2.5**; **Cilindro** Radio 3, A 25 con **Mover X 0, Y −220, Z 17.5**; y **Cono** (Radio inferior 8, Radio superior 15, A 20) con **Mover X 0, Y −220, Z 40**. Color dorado o el que quieran.
+7. **Trofeo** (opcional): pueden hacer uno sencillo a un costado: **Cilindro** Radio 15, A 5 con **Mover X 0, Y −220, Z 2.5**; **Cilindro** Radio 3, A 25 con **Mover X 0, Y −220, Z 17.5**; y **Cono** (Radio inferior 8, Radio superior 15, A 20) con **Mover X 0, Y −220, Z 40**. Color dorado o el que quieran.
 8. **Guardar la imagen:**
    - **Compartir** → en **Descargar un archivo**, toca **Imagen o vídeo**.
    - Giren la vista hasta ver la cancha desde una esquina ("Incline y aplique zoom para obtener la vista perfecta").
@@ -156,6 +158,6 @@ Antes de irse, suban la imagen `.png` y `equipo_NOMBRE_futbol_final` juntos en u
 
 :::docente
 - Recopilar imágenes finales, códigos y gráficas para el portafolio del nivel.
-- **Versión Tinkercad (Codeblocks):** Codeblocks no importa archivos STL, por eso la escena es una maqueta con formas sencillas; el trofeo escaneado se sustituye por uno simple (opcional). Las porterías se hacen primero porque Seleccionar todo agrupa todo lo que ya existe.
+- **Versión Tinkercad (Codeblocks):** Codeblocks no importa archivos STL, por eso la escena es una maqueta con formas sencillas; el trofeo es uno simple (opcional). El Cubo acepta hasta 200 mm: la cancha y sus líneas largas se hacen chicas y se agrandan con **Escala** (corregido y probado el 21 de octubre; antes decía Cubo 525 × 340, que Tinkercad recorta a 200). Las porterías se hacen primero porque Seleccionar todo agrupa todo lo que ya existe.
 - Tiempo total: 35 + 25 + 25 + 20 + 5 + 10 = 120 minutos.
 :::
