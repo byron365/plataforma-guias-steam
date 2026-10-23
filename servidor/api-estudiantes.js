@@ -5,7 +5,7 @@
 const crypto = require('crypto');
 const express = require('express');
 const db = require('./db');
-const { listarProyectos, obtenerProyecto, obtenerGuia } = require('./contenido');
+const { listarProyectos, obtenerProyecto, obtenerGuia, guiasDeVersion } = require('./contenido');
 const { estadosDeGuias } = require('./progreso');
 const { leerCookie, SEPARADOR_INDIVIDUAL } = require('./util');
 const { TIPOS, MAX_POR_CAMPO, recibirArchivo, fotosDeGuia, borrarArchivos } = require('./fotos');
@@ -174,7 +174,8 @@ router.get('/guias/:numero', requiereSesion, (req, res) => {
   }
 
   res.json({
-    proyecto: { id: proyecto.id, nombre: proyecto.nombre, totalGuias: proyecto.guias.length, pasoAPaso: proyecto.pasoAPaso },
+    // Total de guías de la versión del equipo (una versión corta tiene menos)
+    proyecto: { id: proyecto.id, nombre: proyecto.nombre, totalGuias: guiasDeVersion(proyecto, req.sesion.version).length, pasoAPaso: proyecto.pasoAPaso },
     equipo: req.sesion.equipo,
     estudiante: req.sesion.estudiante,
     numero: guia.numero,

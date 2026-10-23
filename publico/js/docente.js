@@ -218,9 +218,11 @@ function vistaAvance() {
           el('strong', {}, e.nombre),
           el('small', {}, e.estudiantes.length ? e.estudiantes.join(', ') : 'Nadie ha entrado'),
           e.ultimaActividad ? el('small', {}, `Última respuesta: ${fechaCorta(e.ultimaActividad)}`) : null),
-        e.guias.map((g) => {
+        p.guias.map((guia) => {
+          // Una versión corta (por ejemplo "Práctica") no tiene todas las guías del proyecto
+          const g = e.guias.find((x) => x.numero === guia.numero);
+          if (!g) return el('td', { class: 'celda-no-aplica', title: `${e.nombre} · Guía ${guia.numero}: no está en su versión` }, '—');
           const info = ESTADOS[g.estado] || ESTADOS.bloqueada;
-          const guia = p.guias.find((x) => x.numero === g.numero);
           return el('td', {}, el('button', {
             type: 'button', class: `celda-estado estado-${g.estado}`,
             disabled: !guia || !guia.existe,
@@ -373,6 +375,8 @@ function versionDelEquipo(equipo, p) {
   if (versiones.length < 2) return null;
   const actual = equipo.version || versiones[0].id;
   const conVersion = p.guias.filter((g) => (g.versiones || []).length).map((g) => g.numero);
+  // Versiones cortas: cuántas guías tienen
+  const cortas = versiones.filter((v) => v.guias).map((v) => `${v.nombre}: guías ${v.guias.join(', ')}`);
   const menu = el('select', { 'aria-label': `Versión de las guías de ${equipo.nombre}` },
     versiones.map((v) => el('option', { value: v.id, selected: v.id === actual }, v.nombre)));
   menu.addEventListener('change', async () => {
@@ -384,7 +388,8 @@ function versionDelEquipo(equipo, p) {
   });
   return el('div', { class: 'version-equipo' },
     el('label', { class: 'campo-version' }, 'Versión de las guías ', menu),
-    conVersion.length ? el('small', { class: 'texto-suave' }, `Cambia las guías ${conVersion.join(', ')}; las demás son iguales.`) : null);
+    conVersion.length ? el('small', { class: 'texto-suave' }, `Cambia las guías ${conVersion.join(', ')}; las demás son iguales.`) : null,
+    cortas.length ? el('small', { class: 'texto-suave' }, `${cortas.join(' · ')}.`) : null);
 }
 
 // Bitácora del equipo: sus notas, de la más nueva a la más vieja

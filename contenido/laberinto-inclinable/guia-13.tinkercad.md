@@ -29,13 +29,13 @@ Vamos a armar una **escena** del laberinto inclinado sobre su soporte, con la ca
 1. Abre el diseño del tablero.
    - **Diseños → Codeblocks** → `equipo_NOMBRE_laberinto` (o el v2). Ya exportaron su `.stl`, así que pueden agregarle bloques sin problema.
    - Busca el último bloque del programa (el último **Group Selection**). Todos los bloques nuevos van debajo de él, en este orden.
-2. **Inclinar y subir el tablero:** justo debajo del último Group Selection, **Girar alrededor** con **Eje x** y **10** grados, y luego **Mover: X 0, Y 0, Z 60**. Mueven todo el tablero, porque es lo último que se agrupó: queda inclinado y a la altura del marco.
-3. **Base del soporte:** **Cubo** con primer **A = 240**, **L = 240**, segundo **A = 5** y **Mover: X 0, Y 0, Z 2.5**.
-4. **Torres:** dos **Cubos** con primer **A = 10**, **L = 20**, segundo **A = 70**: uno con **Mover: X −116, Y 0, Z 40** y el otro con **Mover: X 116, Y 0, Z 40**.
-5. **Marco** (cuatro barras alrededor del tablero, a 60 mm de altura):
-   - Dos **Cubos** con primer **A = 220**, **L = 10**, segundo **A = 8**: **Mover: X 0, Y 105, Z 60** y **Mover: X 0, Y −105, Z 60**.
-   - Dos **Cubos** con primer **A = 10**, **L = 200**, segundo **A = 8**: **Mover: X 105, Y 0, Z 60** y **Mover: X −105, Y 0, Z 60**.
-6. **Canica:** **Esfera** con **Radio = 8**, de color gris o plateado. Debajo, **Mover** con la **X** y la **Y** del centro de una casilla libre (un pasillo) y **Z = 70**. Si queda hundida en el tablero o flotando, cambien un poco la Z.
+2. **Inclinar y subir el tablero:** justo debajo del último Group Selection, **Girar alrededor** con **Eje y** y **10** grados, y luego **Mover: X 0, Y 0, Z 112.5**. Mueven todo el tablero, porque es lo último que se agrupó: queda inclinado y a la altura del marco.
+3. **Base:** **Cubo** con primer **A = 140**, **L = 125**, segundo **A = 6**. Debajo, de **Modificar**, **Escala** con **X = 2**, **Y = 2**, **Z = 1** (el Cubo no acepta más de 200 mm: así la base mide 280 × 250) y **Mover: X 0, Y 0, Z −3**.
+4. **Torres:** dos **Cubos** con primer **A = 6**, **L = 40**, segundo **A = 134**: uno con **Mover: X −109.3, Y 0, Z 67** y el otro con **Mover: X 109.3, Y 0, Z 67**.
+5. **Marco** (cuatro lados alrededor del tablero, a 120 mm de altura):
+   - Dos **Cubos** con primer **A = 198**, **L = 6**, segundo **A = 19**: **Mover: X 0, Y 100, Z 120** y **Mover: X 0, Y −100, Z 120**.
+   - Dos **Cubos** con primer **A = 6**, **L = 194**, segundo **A = 19**: **Mover: X 96, Y 0, Z 120** y **Mover: X −96, Y 0, Z 120**.
+6. **Canica:** **Esfera** con **Radio = 8**, de color gris o plateado. Debajo, **Mover** con la **X** y la **Y** del centro de una casilla libre (un pasillo) y **Z = 122**. Si queda hundida en el tablero o flotando, cambien un poco la Z.
 7. Ejecuta con **▷** y revisa la escena en la vista 3D. Si algo quedó en mal lugar, revisa los números de su **Mover**.
 
 [IMAGEN 13.1T: escena final del laberinto inclinado en Tinkercad con la canica, el soporte y el marco]
@@ -141,5 +141,6 @@ Antes de irse, suban `equipo_NOMBRE_laberinto_final` (y, si quieren, el GIF del 
 :::docente
 - Recopilar renders, códigos y gráficas para el portafolio del nivel.
 - Si imprimieron el tablero v2, tomar fotos reales junto al render.
+- **21 de octubre:** la escena usa las medidas del soporte nuevo de las guías 3T y 4T (torres de 134 mm, marco de 198 × 206 mm, ejes a 120 mm). El tablero se inclina con Eje y, como el servo del tablero.
 - Tiempo total: 35 + 25 + 25 + 20 + 5 + 10 = 120 minutos.
 :::

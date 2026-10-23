@@ -1,255 +1,161 @@
 ---
-titulo: El juego completo en el simulador
+titulo: El laberinto en 3D (2): marco y torres
 guia: 3
 sabado: 3
 sesion: Planificación del proyecto
 duracion: 120
 ---
 
-# Guía 3 · El juego completo en el simulador
+# Guía 3 · El laberinto en 3D (2): marco y torres
 
 ## Objetivo del día
 
-Planificar el programa del juego, simularlo completo en Wokwi y terminar el tablero en Tinkercad Codeblocks con una pieza de prueba de holgura.
+Terminar el tablero y diseñar el **marco** y las dos **torres** que lo sostienen.
 
-**Al terminar tendremos:** el juego funcionando en el simulador, el tablero terminado y una pieza de prueba lista para imprimir.
+**Al terminar tendremos:** el tablero, el marco, la torre del servo y la torre del eje exportados en STL y listos para imprimir.
 
 ## Materiales del equipo
 
-- Computadora con internet, la cuenta de Tinkercad y el proyecto de Wokwi del sábado 1
-- Canica
+- Computadora con internet, mouse y la cuenta de Tinkercad del sábado 2
+- El laberinto en papel del sábado 2
+- Un servo SG90 (para mirarlo)
 
-## Parte 1 · Pseudocódigo (15 min)
+Si les toca otra computadora, no pasa nada: entren a Tinkercad con la misma cuenta y sus diseños estarán en **Diseños → Codeblocks**.
 
-Completa el programa del juego en español:
+## Parte 1 · Terminar el tablero (25 min)
 
-El **pseudocódigo** es el programa escrito en palabras, paso a paso. Completen los espacios pensando en cómo se juega: ¿qué hace el tablero con el joystick?, ¿qué se ve en la pantalla mientras juegas?, ¿qué pasa al llegar a la meta?
+1. Abran **Diseños → Codeblocks** → `equipo_NOMBRE_laberinto` y terminen las paredes que falten.
+   - Igual que el sábado 2: cada pared es un **Cubo** con su **Mover** (Z = 7.5). Revisen la tabla de la Guía 2 si no recuerdan dónde va cada una.
+2. **El agujero de la meta (hueco):** un Cilindro de 8 mm de ancho en la casilla de la meta. Por ahí mirará el sensor desde abajo.
+   - Un **Cilindro** con **Radio = 4** (8 ÷ 2), **A = 10**, **Lados = 32**.
+   - Toca su **círculo rayado** para que sea hueco (el círculo de color se pone gris).
+   - Debajo, **Mover** con la **X** y la **Y** de su meta (su respuesta de la Guía 2) y **Z = 0**.
+3. **La bisagra:** un Cubo pegado por fuera del borde de atrás. Ahí entra el palito que hace de eje del tablero.
+   - Un **Cubo** con primer **A = 12**, **L = 6**, segundo **A = 12**. Debajo, **Mover: X 0, Y 93, Z 7.5**.
+4. **El agujero de la bisagra (hueco):** un Cilindro acostado que entra en la bisagra.
+   - Un **Cilindro** con **Radio = 2**, **A = 14**, **Lados = 32**, marcado como **hueco**.
+   - **Acostarlo:** de **Modificar**, arrastra **Girar alrededor** debajo del cilindro. Deja **Eje x** y escribe **90** en los grados.
+   - Debajo, **Mover: X 0, Y 98, Z 7.5**.
+5. **Agrupar** para que los huecos se resten: de **Modificar**, **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección").
+   - Ejecuta con **▷**. **✔ Revisa:** se ve el agujero en la meta y, atrás, la bisagra con su agujero. Si el agujero de la bisagra sale parado (hacia arriba), revisa que **Girar alrededor** diga **Eje x** y **90**.
+6. **Exporta** `equipo_NOMBRE_tablero.stl`.
+   - Arriba a la derecha, **Compartir** → en **Descargar un archivo**, toca **.STL**. Queda en la carpeta **Descargas**.
+   - Cámbiale el nombre: clic derecho → **Cambiar nombre** → `equipo_NOMBRE_tablero.stl`.
 
-:::tabla id="g3-pseudo"
-| Paso | ¿Qué hace el laberinto? |
-| --- | --- |
-| 1 | Mostrar "Presiona para jugar" en la pantalla |
-| 2 | Si se presiona el botón → empezar a contar el tiempo y sonar un pitido |
-| 3 | Leer el joystick y ______ |
-| 4 | Mostrar el ______ en la pantalla |
-| 5 | Si el sensor de la meta detecta la canica → ______ |
-| 6 | Si el tiempo es menor que el récord → ______ |
-| 7 | Volver el tablero al centro y esperar |
+[IMAGEN 3.1T: tablero terminado en Tinkercad Codeblocks, con etiquetas: agujero de la meta y bisagra con su agujero]
+
+## Parte 2 · El marco (35 min)
+
+El marco es un cuadro que rodea el tablero. Tiene tres cosas importantes:
+
+- Adelante, una **ventana** donde entra el servo que inclina el tablero.
+- Atrás, un **agujero** donde entra el palito de la bisagra del tablero.
+- En el lado izquierdo, otro **agujero** para el palito de la torre del eje. En el lado derecho se pega el brazo del servo de la otra torre.
+
+Muevan los controles de la animación y miren qué parte gira con cada servo:
+
+:::animacion tipo="cardan"
 :::
 
-:::animacion tipo="diagrama-flujo" programa="laberinto" ocultar="si"
+Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_marco`.
+
+1. **Lado de adelante:** un **Cubo** con primer **A = 198**, **L = 6**, segundo **A = 19**. Debajo, **Mover: X 0, Y −100, Z 9.5**.
+2. **Lado de atrás:** otro **Cubo** igual y **Mover: X 0, Y 100, Z 9.5**.
+3. **Lado derecho:** un **Cubo** con primer **A = 6**, **L = 194**, segundo **A = 19**. Debajo, **Mover: X 96, Y 0, Z 9.5**.
+4. **Lado izquierdo:** otro igual y **Mover: X −96, Y 0, Z 9.5**.
+   - Ejecuta con **▷**. **✔ Revisa:** un cuadro cerrado, sin huecos en las esquinas.
+5. **La ventana del servo (hueco):** un **Cubo** con primer **A = 23.4**, **L = 10**, segundo **A = 12.8**, marcado como **hueco**. Debajo, **Mover: X −5.4, Y −100, Z 9.5**.
+6. **El agujero de atrás (hueco):** un **Cilindro** con **Radio = 2**, **A = 10**, **Lados = 32**, hueco. Debajo, **Girar alrededor** con **Eje x** y **90**, y **Mover: X 0, Y 100, Z 9.5**.
+7. **El agujero izquierdo (hueco):** otro **Cilindro** igual, hueco. Debajo, **Girar alrededor** con **Eje y** y **90**, y **Mover: X −96, Y 0, Z 9.5**.
+8. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
+   - **✔ Revisa:** gira la vista. Adelante, la ventana rectangular atraviesa el lado; atrás y a la izquierda, un agujero redondo en el centro de cada lado.
+9. **Exporta** `equipo_NOMBRE_marco.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
+
+[IMAGEN 3.2T: marco en Tinkercad Codeblocks, con etiquetas: ventana del servo del tablero, agujero del eje del tablero, agujero del eje del marco y lado donde se pega el brazo del otro servo]
+
+:::pregunta id="g3t-p1"
+El servo mide 22,8 × 12,2 mm, pero la ventana mide 23,4 × 12,8 mm. ¿Por qué la hacemos un poco más grande?
 :::
 
-## Parte 2 · El circuito completo en Wokwi (30 min)
+## Parte 3 · Las torres (35 min)
 
-Abre el proyecto del sábado 1 y agrega:
+Las dos torres son iguales por fuera: una **placa** alta, dos **aletas** atrás para que no se doble y un **pie** con dos agujeros para atornillarla a la base. La **torre del servo** tiene una ventana; la **torre del eje**, un agujero.
 
-- Usen el enlace de la bitácora de la Guía 1 (o, con la sesión iniciada en Wokwi, **My Projects**).
-- Con el botón **+** agreguen: un segundo *Servo*, un *Pushbutton*, un *SSD1306 OLED* y un *Buzzer*.
-- Recuerden: clic en la punta de un pin y clic en el destino para hacer un cable. Al pasar el mouse sobre un pin aparece su nombre.
-- **Botón:** sus patas de un mismo lado están unidas por dentro; usen una pata de cada lado (por ejemplo, una de arriba a la izquierda y una de abajo a la derecha).
-- **Buzzer:** el pin **2** es el +, el pin **1** es el −.
+Diseño nuevo: `equipo_NOMBRE_torre`.
 
-| Componente | Conexión |
-| --- | --- |
-| Joystick | VCC → 5V · HORZ → A0 · VERT → A1 · SEL → D2 · GND → GND |
-| Servo X | PWM → D9 · V+ → 5V · GND → GND |
-| Servo Y | PWM → D10 · V+ → 5V · GND → GND |
-| Botón (simula el sensor de meta) | Una pata → D3 · otra → GND |
-| Pantalla OLED SSD1306 | SDA → A4 · SCL → A5 · VCC → 5V · GND → GND |
-| Buzzer | + → D5 · − → GND |
+1. **La placa:** un **Cubo** con primer **A = 6**, **L = 40**, segundo **A = 134**. Debajo, **Mover: X 0, Y 0, Z 67**.
+2. **Las aletas:** dos **Cubos** con primer **A = 15**, **L = 5**, segundo **A = 134**.
+   - El primero con **Mover: X 10.5, Y 17.5, Z 67**; el segundo con **Mover: X 10.5, Y −17.5, Z 67**.
+3. **El pie:** un **Cubo** con primer **A = 30**, **L = 70**, segundo **A = 4**. Debajo, **Mover: X 12, Y 0, Z 2**.
+4. **Los agujeros del pie (huecos):** dos **Cilindros** con **Radio = 2**, **A = 10**, huecos.
+   - El primero con **Mover: X 12, Y 28, Z 2**; el segundo con **Mover: X 12, Y −28, Z 2**.
+5. **La ventana del servo (hueco):** un **Cubo** con primer **A = 10**, **L = 12.8**, segundo **A = 23.4**, hueco. Debajo, **Mover: X 0, Y 0, Z 114.6**. (El servo va **parado**, con el eje arriba.)
+6. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
+   - **✔ Revisa:** la ventana atraviesa la placa, cerca de arriba, y las aletas y el pie quedan del mismo lado.
+7. **Exporta** `equipo_NOMBRE_torre_servo.stl`.
+8. **La torre del eje:** cambien la ventana por un agujero y exporten otra vez.
+   - Arrastren el **Cubo** de la ventana y su **Mover** de vuelta a la columna de bloques (se borran).
+   - En su lugar, antes de **Seleccionar todo**: un **Cilindro** con **Radio = 2**, **A = 10**, hueco; debajo **Girar alrededor** con **Eje y** y **90**, y **Mover: X 0, Y 0, Z 120**.
+   - Ejecuta con **▷**: en vez de la ventana aparece un agujero pequeño. Exporta `equipo_NOMBRE_torre_eje.stl`.
 
-[IMAGEN 3.1: circuito completo del laberinto en Wokwi con joystick, dos servos, botón de meta, OLED y buzzer]
+[IMAGEN 3.3T: torres en Tinkercad Codeblocks, con etiquetas: torre del servo con su ventana, torre del eje con su agujero y pie con agujeros para tornillos]
 
-Toquen cada cable de la animación para comparar con su circuito:
+## Parte 4 · Revisar y ubicar las piezas (15 min)
 
-:::animacion tipo="conexiones" circuito="laberinto"
+1. **Si les falta alguna pieza**, termínenla ahora: tablero (Parte 1), marco (Parte 2) o torres (Parte 3).
+2. Abran cada diseño, ejecútenlo con **▷**, gírenlo y marquen:
+
+:::checklist id="g3t-revision"
+- [ ] Tablero: todas las paredes, el agujero de la meta y la bisagra con su agujero.
+- [ ] Marco: la ventana adelante y los dos agujeros (atrás y a la izquierda).
+- [ ] Torre del servo con su ventana y torre del eje con su agujero.
+- [ ] Los 4 `.stl` están en Descargas con su nombre correcto.
 :::
 
-En Wokwi no hay sensor infrarrojo de obstáculos, así que lo simulamos con un **botón**: presionarlo es como si la canica llegara a la meta. Los dos dan **LOW** al activarse.
+3. Miren de nuevo la imagen del laberinto completo (Guía 2) y ubiquen cada pieza:
+   - Las **torres** se atornillan en la base, una frente a la otra. El **marco** queda entre ellas.
+   - El **servo del marco** va en la torre del servo; su brazo se pega al lado derecho del marco. En el otro lado, un **palito de pincho** pasa por la torre del eje y entra en el agujero izquierdo del marco.
+   - El **servo del tablero** va en la ventana del marco; su brazo se pega al borde de adelante del tablero. Atrás, otro palito pasa por el marco y entra en la bisagra.
+   - El **sensor de la meta** va debajo del tablero, mirando hacia arriba por el agujero.
 
-Agrega las librerías **Adafruit SSD1306** y **Adafruit GFX Library** y copia el código base:
-
-- Pestaña **Library Manager** → botón **+** → busquen cada librería y elíjanla.
-- En `sketch.ino`, borren el código del sábado 1 y escriban (o peguen) este programa completo:
-
-```cpp
-#include <Servo.h>
-#include <Wire.h>
-#include <Adafruit_SSD1306.h>
-
-// --- Pines ---
-const int JOY_X = A0;
-const int JOY_Y = A1;
-const int BOTON = 2;   // botón del joystick
-const int META = 3;    // sensor IR (en Wokwi: botón)
-const int BUZZER = 5;
-
-// --- Ajustes del equipo ---
-const int CENTRO = 90;       // tablero plano
-const int INCLINACION = 15;  // grados máximos
-const float SUAVE = 0.2;     // 0 lento, 1 directo
-
-Servo servoX, servoY;
-Adafruit_SSD1306 pantalla(128, 64, &Wire, -1);
-float angX = CENTRO, angY = CENTRO;
-unsigned long inicio = 0, record = 0;
-bool jugando = false;
-
-void setup() {
-  pinMode(BOTON, INPUT_PULLUP);
-  pinMode(META, INPUT_PULLUP);
-  servoX.attach(9);
-  servoY.attach(10);
-  pantalla.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-  pantalla.setTextColor(SSD1306_WHITE);
-  mostrar("Presiona", "para jugar");
-}
-
-// Escribe dos líneas en la pantalla
-void mostrar(String a, String b) {
-  pantalla.clearDisplay();
-  pantalla.setTextSize(2);
-  pantalla.setCursor(0, 0);
-  pantalla.println(a);
-  pantalla.println(b);
-  pantalla.display();
-}
-
-void loop() {
-  // 1. Iniciar con el botón
-  if (!jugando && digitalRead(BOTON) == LOW) {
-    jugando = true;
-    inicio = millis();
-    tone(BUZZER, 1000, 200);
-  }
-  if (!jugando) return;
-
-  // 2. Joystick -> inclinación
-  int metaX = map(analogRead(JOY_X), 0, 1023,
-                  CENTRO - INCLINACION, CENTRO + INCLINACION);
-  int metaY = map(analogRead(JOY_Y), 0, 1023,
-                  CENTRO - INCLINACION, CENTRO + INCLINACION);
-  angX += (metaX - angX) * SUAVE;  // suavizar
-  angY += (metaY - angY) * SUAVE;
-  servoX.write(angX);
-  servoY.write(angY);
-
-  // 3. Tiempo en la pantalla
-  float seg = (millis() - inicio) / 1000.0;
-  mostrar("Tiempo", String(seg, 1) + " s");
-
-  // 4. ¿Llegó a la meta?
-  if (digitalRead(META) == LOW) {
-    jugando = false;
-    unsigned long t = millis() - inicio;
-    tone(BUZZER, 1500, 800);
-    String s = String(t / 1000.0, 1) + " s";
-    if (record == 0 || t < record) {
-      record = t;
-      mostrar("RECORD!", s);
-    } else {
-      mostrar("Meta", s);
-    }
-    angX = CENTRO;  angY = CENTRO;
-    servoX.write(CENTRO);
-    servoY.write(CENTRO);
-    delay(3000);
-  }
-  delay(20);
-}
-```
-
-Presionen **Play**. Para jugar: clic en el joystick para presionar su botón (empieza el tiempo), muevan la palanca y, cuando quieran "llegar a la meta", presionen el botón. Guarden con **Save**.
-
-## Parte 3 · Jugar en el simulador (15 min)
-
-Hagan cada prueba y marquen si funciona. Para ver el ángulo de los servos, pasen el mouse sobre ellos o miren su brazo.
-
-| Prueba | ¿Funciona? | Observaciones |
-| --- | --- | --- |
-| Al presionar el joystick empieza el tiempo | | |
-| Los servos se mueven entre 75° y 105° | | |
-| Al presionar el botón de meta suena el buzzer | | |
-| La primera vez aparece "RECORD!" | | |
-| Si tardo más, aparece "Meta" | | |
-
-:::pregunta id="g3-p1"
-¿Qué variable guarda el récord? ¿Por qué empieza en 0?
-:::
-
-## Parte 4 · Terminar el tablero y probar la holgura (30 min)
-
-1. Abre **equipo_NOMBRE_laberinto** en Tinkercad y termina todas las paredes.
-   - **Diseños → Codeblocks** → `equipo_NOMBRE_laberinto`. Si están en otra computadora, entren con la misma cuenta.
-   - Sigan su dibujo en papel y las reglas de la Guía 2: cada pared es un **Cubo** con su **Mover** (Z = 7.5; posiciones múltiplos de 12.5).
-2. En la casilla de la meta haz un **agujero de 8 mm**: ahí mirará el sensor desde abajo.
-   - Debajo de la última pared, un **Cilindro** con **Radio = 4** (8 ÷ 2), **A = 10**, **Lados = 32**, marcado como **hueco** (toca el **círculo rayado**: el círculo de color se pone gris).
-   - Debajo, **Mover** con la **X** y la **Y** de la casilla de la meta (su respuesta de la Guía 2) y **Z = 0**.
-3. **Agrupar** todo para que el agujero se reste.
-   - De **Modificar**, arrastra **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección").
-   - Ejecuta con **▷**. **✔ Revisa:** desde arriba debe verse el agujero en la meta, y ninguna pared encima de él.
-4. Exporta el tablero como **equipo_NOMBRE_tablero.stl**.
-   - **Compartir** → en **Descargar un archivo**, toca **.STL**. Queda en la carpeta **Descargas**. Si no se llama así, cámbiale el nombre (clic derecho → **Cambiar nombre**).
-5. **Pieza de prueba:** antes de imprimir el tablero entero (¡tarda horas!), imprimimos una pieza pequeña: un trozo de tablero de 80 × 30 mm con **tres pasillos** de 18, 20 y 22 mm de ancho.
-   - Va en **otro diseño**, porque al exportar se guarda todo lo que hay en el diseño: **+ Crear → Codeblocks**, con el nombre `equipo_NOMBRE_prueba`.
-   - **Base:** **Cubo** con primer **A = 80**, **L = 30**, segundo **A = 3**.
-   - **Cuatro paredes:** cuatro **Cubos** con primer **A = 3**, **L = 30**, segundo **A = 12**, cada uno con su **Mover** en **Z = 7.5** y con estas **X**: **−34.5**, **−13.5**, **9.5** y **34.5** (Y = 0). Así quedan pasillos de 18, 20 y 22 mm entre ellas.
-   - Ejecuta con **▷** y exporta como **equipo_NOMBRE_prueba.stl** (**Compartir → .STL**).
-
-[IMAGEN 3.2: pieza de prueba de holgura con tres pasillos de 18, 20 y 22 mm junto a una canica]
-
-[IMAGEN 3.3T: tablero completo del laberinto en Tinkercad Codeblocks con todas las paredes y el agujero de la meta]
-
-:::pregunta id="g3-p2"
-¿Por qué conviene imprimir primero una pieza de prueba pequeña?
-:::
-
-## Parte 5 · Cronograma (10 min)
-
-Escriban un responsable principal para cada meta (el que se asegura de que se cumpla; el equipo ayuda).
-
-:::tabla id="g3-cronograma"
-| Sábado | Meta | Responsable principal |
-| --- | --- | --- |
-| 4 | Soporte cardán en Tinkercad + servos reales con joystick | |
-| 5 | Tablero montado e inclinándose | |
-| 6 | Sensor de meta, pantalla y juego completo | |
-| 7 | Récord, tabla de tiempos y ficha técnica | |
-| 8 | Reglas del torneo y presentación | |
+:::pregunta id="g3t-p2"
+El tablero queda a unos 11 cm de la base. ¿Qué pasaría si lo ponemos más bajo, sabiendo que el sensor de la meta cuelga debajo del tablero?
 :::
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g3-logramos"
-- [ ] Completamos el pseudocódigo.
-- [ ] El juego funciona completo en Wokwi.
-- [ ] El tablero está terminado con el agujero de la meta.
-- [ ] Exportamos la pieza de prueba y el tablero.
+:::checklist id="g3t-logramos"
+- [ ] El tablero está terminado y exportado.
+- [ ] El marco está exportado.
+- [ ] Las dos torres están exportadas.
+- [ ] Sabemos dónde va cada pieza.
 :::
 
 ## Reto extra
 
-Haz que en la pantalla aparezca también el récord mientras juegas, en letra pequeña debajo del tiempo.
+Marca la **salida** del laberinto con una letra **S** en relieve.
 
-Pista: la función `mostrar()` escribe dos líneas grandes. Pueden escribir en el `loop()`, después de `mostrar("Tiempo", …)`, otras líneas con `pantalla.setTextSize(1);`, `pantalla.print(…)` y al final `pantalla.display();`.
+Pista: en el tablero, antes del último **Seleccionar todo**, agrega de **Formas** el bloque **Texto** y escribe **S** en su casilla. Debajo, de **Modificar**, **Definir tamaño** con **X = 12**, **Y = 12**, **Z = 1**, y **Mover: X −75, Y −75, Z 2** (queda apoyada sobre la placa en la casilla A1). Exporta otra vez el tablero.
 
-## Bitácora (15 min)
+## Bitácora (5 min)
 
-:::pregunta id="g3-b1"
-¿Qué hace `millis()` y por qué la usamos para el cronómetro en vez de `delay()`?
+:::pregunta id="g3t-b1"
+¿Qué pieza fue la más difícil de diseñar? ¿Por qué?
 :::
 
-Antes de irse, suban juntos en un `.zip` los dos `.stl` y el proyecto de Wokwi descargado (menú de la flecha junto a **Save** → **Download project zip**). Para el `.zip`: selecciónenlos → clic derecho → **Comprimir en archivo ZIP**.
+Antes de irse, junten los 4 `.stl` en un `.zip` (selecciónenlos, clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí. El docente los imprimirá para el próximo sábado.
 
 :::archivo id="g3-archivo"
-**Archivo de trabajo:** antes de irse, suban los .stl, su proyecto de Wokwi (descárguenlo como .zip) y su código de Arduino (.ino). Los diseños de bloques quedan guardados en Tinkercad. La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** suban aquí el .zip con los .stl que exportaron. Sus diseños de bloques quedan guardados en Tinkercad (**Diseños → Codeblocks**). Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- Durante la semana: imprimir primero las piezas de prueba (≈20 min) y después los tableros (≈3-4 h).
-- Si la canica no pasa bien por el pasillo de 22 mm, ajustar la cuadrícula o conseguir canicas más pequeñas.
-- `millis()` cuenta los milisegundos desde que se encendió el Arduino; restar `inicio` da el tiempo de juego.
-- g3-p1: `record` en 0 significa "todavía no hay récord".
-- Tiempo total: 15 + 30 + 15 + 30 + 10 + 5 + 15 = 120 minutos.
+- **Versión Tinkercad, reestructurada el 21 de octubre:** el pseudocódigo, el juego en Wokwi, la pieza de prueba y el cronograma salen de esta versión; el código del juego se escribe directamente en la Guía 6. El soporte cardán de antes (base de 240 mm y marco de 220 mm) no se podía hacer: el **Cubo de Codeblocks llega como máximo a 200 mm**. Campos propios (g3t-…).
+- **Medidas** (probadas en Tinkercad el 21 de octubre): marco de 198 × 206 × 19 mm con lados de 6 mm, y torres de 134 mm de alto. Cabe en una cama de 220 × 220. Los ejes de giro del marco y del tablero quedan a **120 mm** de la base: así, aunque la meta esté en una esquina y se incline 15° (o 20°) en diagonal, el sensor que cuelga del tablero no choca con la base (quedan unos 13 mm a 15° y 5 mm a 20°).
+- **Servo usado:** SG90 de 22,8 × 12,2 mm, con pestañas de 32,2 mm y el eje a unos 6 mm de un extremo. Por eso la ventana del marco está corrida 5,4 mm: el eje del servo cae justo en el centro del marco (X = 0) si el servo entra con el eje hacia la derecha. En la torre, el servo va parado con el eje arriba, a 120 mm. **Antes de imprimir para todos, conviene probar un marco y una torre con un servo de la academia.**
+- Los agujeros de 4 mm son para **palitos de pincho** de unos 3 mm (o un clavo): giran libres en el marco y en la torre, y se pegan con silicona en la bisagra y en el lado izquierdo del marco.
+- Impresión: el tablero y el marco tal como salen (planos); las torres **acostadas sobre la placa** (la cara sin aletas en la cama), sin soportes. Tiempos aproximados: tablero 3-4 h, marco 3 h, cada torre 1,5 h.
+- g3t-p1: holgura; la impresora no es perfecta y el servo no entraría o quedaría muy apretado.
+- g3t-p2: el sensor chocaría con la base cuando el tablero se inclina hacia la meta, y el tablero no podría inclinarse del todo.
+- Tiempo total: 25 + 35 + 35 + 15 + 5 + 5 = 120 minutos.
 :::

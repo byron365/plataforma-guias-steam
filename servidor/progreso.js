@@ -3,6 +3,7 @@
 //   bloqueada · proximamente (sin archivo) · disponible · en_progreso · completada
 // ============================================================
 const db = require('./db');
+const { guiasDeVersion } = require('./contenido');
 
 // Guías desbloqueadas para un equipo: las de todo el proyecto (equipo_id = 0) + las suyas
 function guiasDesbloqueadas(proyectoId, equipoId) {
@@ -16,8 +17,10 @@ function estadosDeGuias(equipoId, proyecto) {
   const progreso = new Map(db.prepare(
     'SELECT guia, estado FROM progreso WHERE equipo_id = ?'
   ).all(equipoId).map((f) => [f.guia, f.estado]));
+  // Solo las guías de la versión del equipo (un curso corto tiene menos)
+  const equipo = db.prepare('SELECT version FROM equipos WHERE id = ?').get(equipoId);
 
-  return proyecto.guias.map((g) => {
+  return guiasDeVersion(proyecto, (equipo && equipo.version) || '').map((g) => {
     let estado = 'disponible';
     if (!desbloqueadas.has(g.numero)) estado = 'bloqueada';
     else if (!g.existe) estado = 'proximamente';

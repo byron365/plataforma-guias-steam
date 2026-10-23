@@ -1,111 +1,67 @@
 ---
-titulo: Un soporte que se inclina en dos ejes
+titulo: Armar el laberinto impreso
 guia: 4
 sabado: 4
 sesion: Construcción del prototipo
 duracion: 120
 ---
 
-# Guía 4 · Un soporte que se inclina en dos ejes
+# Guía 4 · Armar el laberinto impreso
 
 ## Objetivo del día
 
-Diseñar el soporte tipo **cardán** que permite inclinar el tablero en dos direcciones y conectar el joystick real con los dos servos.
+Armar las piezas impresas sobre la base, conectar el joystick y los dos servos reales, y hacer que el tablero se mueva.
 
-**Al terminar tendremos:** las piezas del soporte listas para imprimir y los dos servos reales moviéndose con el joystick.
+**Al terminar tendremos:** el laberinto armado y el tablero inclinándose con el joystick.
 
 ## Materiales del equipo
 
-- Computadora con internet (cuenta de Tinkercad) y Arduino IDE
-- Arduino UNO + cable USB
-- Módulo joystick
-- 2 servos SG90 o MG90S
-- Portapilas de 4 pilas AA
-- Protoboard y cables
-- Pieza de prueba impresa y canica
+- Piezas impresas: tablero, marco, torre del servo y torre del eje
+- Base de MDF o cartón grueso de unos 30 × 25 cm, 4 tornillos para madera pequeños (o pegamento caliente)
+- 2 palitos de pincho (o clavos de 3 mm) y tijeras o alicate para cortarlos
+- 2 servos SG90 con sus brazos y sus tornillos
+- Arduino UNO + cable USB, módulo joystick, portapilas de 4 pilas AA, protoboard y cables
+- Pegamento caliente (silicona), destornillador pequeño, regla y lápiz
+- Computadora con Arduino IDE
 
-## Parte 1 · Resultado de la pieza de prueba (10 min)
+**Seguridad con el pegamento caliente:** la punta de la pistola y el pegamento recién puesto queman. Esperen unos segundos antes de tocarlo y dejen la pistola parada en su base.
 
-Pasa la canica por los tres pasillos e inclina la pieza:
+## Parte 1 · Revisar las piezas (10 min)
 
-Inclinen la pieza despacio hacia un lado y hacia el otro, con la canica dentro de cada pasillo. "Rueda libre" significa que pasa sin tocar las paredes; "roza" que las toca o se frena.
+Prueben cada cosa **sin pegar nada** y marquen:
 
-| Pasillo | ¿Pasa la canica? | ¿Rueda libre o roza? |
-| --- | --- | --- |
-| 18 mm | | |
-| 20 mm | | |
-| 22 mm | | |
-
-:::pregunta id="g4-p1"
-¿Qué ancho de pasillo es el mejor para nuestra canica? ¿Hay que cambiar algo del tablero?
+:::checklist id="g4t-piezas"
+- [ ] El servo entra en la ventana del marco y en la ventana de la torre del servo, sin forzarlo.
+- [ ] El palito de pincho pasa por el agujero de la torre del eje y por los dos agujeros del marco.
+- [ ] El palito entra en la bisagra del tablero.
+- [ ] El tablero cabe dentro del marco sin tocarlo.
 :::
 
-## Parte 2 · ¿Qué es un cardán? (10 min)
+Si algo no entra, avisen al docente antes de seguir: a veces basta con limpiar los bordes con una lija o pasar un clavo por el agujero.
 
-Un **cardán** son dos marcos, uno dentro del otro, que giran sobre ejes perpendiculares. El marco de afuera gira hacia adelante y atrás (eje X), y el de adentro gira a los lados (eje Y). Así el tablero puede inclinarse hacia cualquier lado. Los estabilizadores de cámara y las brújulas de los barcos funcionan igual.
+## Parte 2 · Las torres en la base (15 min)
 
-En nuestro laberinto, el "marco de adentro" es el propio tablero. Muevan los controles de la animación y miren qué parte gira con cada eje:
+1. Con regla y lápiz, tracen en la base una **línea de lado a lado por el centro**.
+2. Pongan las dos torres sobre esa línea, una frente a la otra, con las **caras lisas (sin aletas) mirando hacia adentro**.
+   - Mirando la base desde adelante (desde donde jugarán), la **torre del servo** va a la **derecha** y la **torre del eje** a la **izquierda**.
+   - La distancia entre las dos caras lisas debe ser de **21,3 cm**. Cada torre a la misma distancia del centro.
+   - Los agujeros de las torres deben quedar a la misma altura y uno frente al otro.
+3. Atornillen cada pie con dos tornillos (con el docente) o péguenlo con bastante pegamento caliente.
 
-:::animacion tipo="cardan"
-:::
+## Parte 3 · El circuito y los servos en 90° (25 min)
 
-[IMAGEN 4.1: foto de un estabilizador de cámara (gimbal) mostrando sus ejes de giro]
-
-## Parte 3 · Modelar el soporte (40 min)
-
-El soporte tiene dos piezas que se imprimen aparte: la **base con sus torres** y el **marco**. Cada una va en su propio diseño de Codeblocks (al agrupar, los huecos se restan de todo lo que hay en el diseño).
-
-Recuerda: cada forma nace **centrada** (en X = 0, Y = 0, Z = 0), **Mover** mueve la última forma que agregaste y **Girar alrededor** (de Modificar) la gira desde su centro.
-
-| Pieza | Medidas |
-| --- | --- |
-| Base | 240 × 240 × 5 mm |
-| Torres (2) | 20 × 10 × 70 mm, en los lados izquierdo y derecho de la base |
-| Marco exterior | Cuadro de 220 × 220 mm por fuera, 200 × 200 por dentro, 8 mm de grosor |
-| Ejes | Cilindros de 5 mm de diámetro y 15 mm de largo |
-| Agujeros para ejes | Cilindros huecos de **5,4 mm** de diámetro (Radio 2.7) |
-| Ventana para servo | 23 × 12,5 mm en una torre y en un lado del marco |
-
-1. **Diseño de la base:** **+ Crear → Codeblocks**, con el nombre `equipo_NOMBRE_base`.
-   - **Base:** **Cubo** con primer **A = 240**, **L = 240**, segundo **A = 5**. Debajo, **Mover: X 0, Y 0, Z 2.5**.
-   - **Torres:** dos **Cubos** con primer **A = 10**, **L = 20**, segundo **A = 70** (de lado se ven delgadas). Uno con **Mover: X −116, Y 0, Z 40** y el otro con **Mover: X 116, Y 0, Z 40**. Quedan paradas en las orillas izquierda y derecha de la base, con 1 mm de holgura respecto al marco.
-   - **Agujeros en las torres** (para los ejes del marco): dos **Cilindros** huecos con **Radio = 2.7**, **A = 20**, **Lados = 32**. A cada uno, debajo, **Girar alrededor** con **Eje y** y **90** grados (queda acostado), y luego **Mover: X −116, Y 0, Z 60** para el primero y **Mover: X 116, Y 0, Z 60** para el segundo.
-   - **Ventana para el servo:** un **Cubo** hueco de 23 × 12,5 mm que atraviese **una** de las torres. Ubíquenla de forma que el **eje del servo** quede alineado con el eje que va a mover (a la altura Z = 60): usen un servo real para ver dónde queda su eje dentro de su cuerpo.
-   - Al final, **Seleccionar todo** y **Group Selection**. Ejecuta con **▷** y revisa.
-2. **Diseño del marco:** otro diseño, `equipo_NOMBRE_marco`.
-   - **Marco:** **Cubo** con primer **A = 220**, **L = 220**, segundo **A = 8** y **Mover: X 0, Y 0, Z 60**. Debajo, otro **Cubo** hueco con primer **A = 200**, **L = 200**, segundo **A = 10** y **Mover: X 0, Y 0, Z 60**: deja el centro vacío.
-3. **Ejes y agujeros del marco** (en el mismo diseño del marco):
-   - **Ejes del marco** (izquierda y derecha): dos **Cilindros** sólidos con **Radio = 2.5**, **A = 15**. A cada uno, **Girar alrededor** con **Eje y** y **90**, y **Mover: X −117.5, Y 0, Z 60** el primero y **Mover: X 117.5, Y 0, Z 60** el segundo. Salen del marco y entran en las torres.
-   - **Agujeros del tablero** (adelante y atrás): dos **Cilindros** huecos con **Radio = 2.7**, **A = 20**. A cada uno, **Girar alrededor** con **Eje x** y **90**, y **Mover: X 0, Y −105, Z 60** el primero y **Mover: X 0, Y 105, Z 60** el segundo.
-   - **Ventana para el otro servo:** un **Cubo** hueco de 23 × 12,5 mm en el lado de **adelante o atrás** del marco, alineado con el eje que va a mover.
-   - Al final, **Seleccionar todo** y **Group Selection**. Ejecuta con **▷** y revisa que los ejes salgan por los lados.
-   - **Ejes del tablero:** el tablero también necesita dos ejes (uno adelante y otro atrás) que entren en esos agujeros. Pregunten al docente cómo los harán: si el tablero todavía no está impreso, se agregan en su diseño `equipo_NOMBRE_laberinto`, antes del último Seleccionar todo (**Cilindros** de **Radio 2.5** y **A = 15**, con **Girar alrededor Eje x 90** y **Mover** en X = 0, Y = −97.5 y 97.5, Z = 0); si ya está impreso, se imprimen aparte y se pegan, o se usan palitos de pincho.
-
-[IMAGEN 4.2T: soporte cardán en Tinkercad Codeblocks con base, torres, marco exterior y ventanas para los servos]
-
-:::pregunta id="g4-p2"
-El eje mide 5 mm y su agujero 5,4 mm. ¿Para qué sirven esos 0,4 mm de diferencia?
-:::
-
-4. Exporta cada pieza desde su diseño: **equipo_NOMBRE_base.stl** y **equipo_NOMBRE_marco.stl**.
-   - En cada diseño: **Compartir** → **.STL**, y cámbiale el nombre si hace falta.
-
-## Parte 4 · Servos reales con el joystick (30 min)
-
-Los servos usan **pilas aparte** y todas las tierras se unen (**GND común**):
-
-Hagan todo con el USB desconectado y **sin pilas** en el portapilas. En la protoboard usen las filas largas de los bordes: **arriba** para las pilas y **abajo** para el Arduino.
+Hagan todo con el USB desconectado y **sin pilas**. En la protoboard usen las filas largas de los bordes: **arriba** para las pilas y **abajo** para el Arduino.
 
 1. **Energía:** cable rojo del portapilas → fila **+** de arriba; cable negro → fila **−** de arriba. Del Arduino: **5V** → fila **+** de abajo; **GND** → fila **−** de abajo.
 2. **GND común:** un cable de la fila **−** de arriba a la fila **−** de abajo. (¡Nunca unan las dos filas **+**!)
-3. **Joystick** (módulo real, pines con su nombre impreso): **+5V** → fila **+** de abajo; **GND** → fila **−** de abajo; **VRx** → **A0**; **VRy** → **A1**; **SW** → **D2**.
-4. **Servos** (con tres cables macho–macho en cada conector): rojo → fila **+** de **arriba** (pilas); café → fila **−** de arriba; naranja → **D9** (servo X) y **D10** (servo Y).
+3. **Joystick** (los pines tienen su nombre impreso): **+5V** → fila **+** de abajo; **GND** → fila **−** de abajo; **VRx** → **A0**; **VRy** → **A1**; **SW** → **D2**.
+4. **Servos** (con tres cables macho–macho en cada conector): rojo → fila **+** de **arriba** (pilas); café → fila **−** de arriba; naranja → **D9** (servo del marco) y **D10** (servo del tablero). Marquen cada servo con un papelito: "D9 marco" y "D10 tablero".
 
 | Componente | Conexión |
 | --- | --- |
 | Joystick | +5V → 5V Arduino · VRx → A0 · VRy → A1 · SW → D2 · GND → GND |
-| Servo X | Naranja → D9 · Rojo → + pilas · Café → − pilas |
-| Servo Y | Naranja → D10 · Rojo → + pilas · Café → − pilas |
+| Servo del marco | Naranja → D9 · Rojo → + pilas · Café → − pilas |
+| Servo del tablero | Naranja → D10 · Rojo → + pilas · Café → − pilas |
 | GND común | − pilas ↔ GND Arduino |
 
 Miren en la animación por qué el GND común es necesario:
@@ -115,11 +71,65 @@ Miren en la animación por qué el GND común es necesario:
 
 [IMAGEN 4.3: circuito real con joystick, dos servos y portapilas con el GND común señalado]
 
-Sube este código de prueba:
+**Servos en 90°:** antes de pegar los brazos, los dos servos deben estar en **90°** (tablero plano).
 
-1. Conecta el USB, abre **Arduino IDE** y elige **Arduino Uno** y su puerto en **Seleccionar placa**.
-2. **Archivo → Nuevo boceto**, borra lo que trae y escribe el código. Guárdalo como `equipo_NOMBRE_prueba_servos`.
-3. Verifica (✓), sube (→) y **después** pon las pilas.
+1. Conecten el USB, abran **Arduino IDE** y elijan **Arduino Uno** y su puerto en **Seleccionar placa**.
+2. **Archivo → Nuevo boceto**, borren lo que trae y escriban este código. Súbanlo (→).
+3. Pongan las pilas: los dos servos giran a 90° y se quedan quietos. **No giren sus ejes con la mano después de esto.**
+
+```cpp
+#include <Servo.h>
+Servo servoX, servoY;
+
+void setup() {
+  servoX.attach(9);
+  servoY.attach(10);
+  servoX.write(90);
+  servoY.write(90);
+}
+
+void loop() {
+}
+```
+
+4. Saquen las pilas otra vez para el montaje.
+
+## Parte 4 · El montaje (45 min)
+
+Sigan el orden. Miren la imagen del laberinto completo para ver dónde va cada cosa:
+
+[IMAGEN 2.1T: laberinto diseñado en Tinkercad, con etiquetas: tablero con el laberinto, canica, agujero de la meta, marco, servo del tablero, servo del marco, torre del eje, torre del servo, base de MDF o cartón, soporte de la pantalla y base del joystick]
+
+1. **El servo del tablero en el marco** (servo D10).
+   - Miren el marco **desde adelante** (desde afuera, con la ventana frente a ustedes).
+   - Metan el servo por la ventana desde afuera, con el **eje hacia la derecha**: el eje debe quedar justo en el centro del marco. Las pestañas se apoyan en la cara de afuera.
+   - Atornillen las pestañas con los tornillos del servo (o pónganles una gota de silicona).
+2. **El servo del marco en la torre** (servo D9).
+   - Metan el servo por la ventana de la torre del servo **desde afuera** (desde el lado de las aletas), **parado y con el eje arriba**. El eje queda mirando hacia el centro de la base.
+   - Atornillen sus pestañas a la torre.
+3. **Los brazos:** pongan un brazo largo en el eje de cada servo, **acostado** (horizontal). No hace falta el tornillo del centro.
+4. **El marco entre las torres.**
+   - Pongan el marco entre las torres: su **lado izquierdo** (el del agujero) junto a la torre del eje y su **lado derecho** junto al brazo del servo.
+   - Corten un palito de unos 3 cm. Pásenlo por el agujero de la torre del eje y métanlo en el agujero del marco.
+   - Con el marco **plano** (horizontal), peguen el brazo del servo al lado derecho del marco con silicona. Si queda un espacio entre el brazo y el marco, rellénenlo con silicona.
+   - Pongan una gota de silicona donde el palito entra en el marco (por dentro), para que el palito gire junto con el marco.
+5. **El tablero dentro del marco.**
+   - Pongan el tablero dentro del marco con la **bisagra atrás** (junto al agujero de atrás del marco).
+   - Pasen otro palito de unos 3 cm por el agujero de atrás del marco y métanlo en la bisagra. Una gota de silicona donde entra en la bisagra.
+   - Con el tablero **plano**, peguen el brazo del servo del tablero al borde de adelante del tablero.
+6. Esperen un minuto a que la silicona enfríe y revisen:
+
+:::checklist id="g4t-montaje"
+- [ ] El marco gira sobre su palito y el brazo del servo, sin rozar las torres.
+- [ ] El tablero gira dentro del marco sin rozarlo.
+- [ ] Con la canica en el centro, el tablero está casi plano (la canica no sale rodando).
+- [ ] Ningún cable estorba el movimiento.
+:::
+
+## Parte 5 · ¡El joystick mueve el tablero! (15 min)
+
+1. **Archivo → Nuevo boceto**, borren lo que trae y escriban este código. Guárdenlo como `equipo_NOMBRE_prueba_servos`.
+2. Verifiquen (✓), suban (→) y **después** pongan las pilas.
 
 ```cpp
 #include <Servo.h>
@@ -146,49 +156,49 @@ void loop() {
 }
 ```
 
-4. Abre el **Monitor serie** (lupa, arriba a la derecha) a **9600 baudios**: verás los dos ángulos separados por una coma. Mueve el joystick y anota.
+3. Abran el **Monitor serie** (lupa, arriba a la derecha) a **9600 baudios**: verán los dos ángulos separados por una coma. Muevan el joystick **despacio** y anoten:
 
-| Prueba | Ángulo X | Ángulo Y |
-| --- | --- | --- |
-| Joystick en el centro | | |
-| Todo a la derecha | | |
-| Todo hacia arriba | | |
+:::tabla id="g4t-angulos"
+| Prueba | Ángulo X | Ángulo Y | ¿Se movió el tablero? |
+| --- | --- | --- | --- |
+| Joystick en el centro | | | |
+| Todo a la derecha | | | |
+| Todo hacia arriba | | | |
+:::
+
+:::pregunta id="g4t-p1"
+Con el joystick en el centro, ¿qué ángulo tienen los servos? ¿Por qué pegamos los brazos con los servos en ese ángulo?
+:::
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g4-logramos"
-- [ ] Probamos la pieza de holgura.
-- [ ] El soporte cardán está modelado y exportado.
+:::checklist id="g4t-logramos"
+- [ ] Las torres están fijas en la base.
+- [ ] El marco y el tablero giran libres.
 - [ ] Los servos usan pilas con GND común.
-- [ ] Los dos servos se mueven con el joystick.
+- [ ] El tablero se inclina con el joystick.
 :::
 
-## Reto extra
+## Bitácora (5 min)
 
-En el joystick real el centro casi nunca da exactamente 512. Haz que si la lectura está entre 490 y 530 el servo quede exactamente en `CENTRO` (esto se llama **zona muerta**).
-
-Pista: guarden la lectura en una variable antes del `map` y usen un `if` que pregunte si está entre 490 y 530 (`lectura > 490 && lectura < 530`); en ese caso, el ángulo es `CENTRO`.
-
-## Bitácora (15 min)
-
-:::foto id="g4-foto"
-Foto de la pieza de prueba y del circuito con los servos.
+:::foto id="g4t-foto"
+Foto del laberinto armado.
 :::
 
-:::pregunta id="g4-b1"
-Explica con tus palabras cómo un cardán logra inclinar en dos direcciones.
-:::
-
-Antes de irse: saquen las pilas. Guarden juntos en un `.zip` los `.stl` y el programa `equipo_NOMBRE_prueba_servos` (clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí.
+Antes de irse: **saquen las pilas** y suban aquí `equipo_NOMBRE_prueba_servos`.
 
 :::archivo id="g4-archivo"
-**Archivo de trabajo:** antes de irse, suban los .stl y su código de Arduino (.ino). Los diseños de bloques quedan guardados en Tinkercad. La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- Durante la semana: imprimir base y marco de cada equipo (≈4-5 h en total). El tablero ya debe estar impreso para el sábado 5.
-- Si el tablero no cabe junto con el marco en la cama de impresión, imprimir el marco en dos mitades unidas con tornillos.
-- Opción rápida si falta tiempo de impresión: marco de cartón grueso o madera MDF con ejes de palitos de pincho.
-- g4-p2: holgura para que el eje gire sin trabarse (las impresoras agregan un poco de material).
-- Tiempo total: 10 + 10 + 40 + 30 + 5 + 15 = 110 minutos (10 de margen).
+- **Versión Tinkercad, nueva el 21 de octubre:** junta el circuito real de la Guía 4 normal con el centrado y el montaje de la Guía 5 normal, adaptados a las piezas impresas de las guías 2T y 3T. Campos propios (g4t-…).
+- Distancia entre torres: las caras lisas quedan a 212,6 mm (21,3 cm). Entre la torre y el marco quedan unos 7 mm para el brazo del servo; si el brazo no alcanza el marco, se rellena con silicona.
+- El servo del marco está parado con el eje a 120 mm de la base, igual que el agujero de la torre del eje: los dos deben quedar alineados. Si el marco queda torcido, revisar que las torres estén a la misma distancia del centro.
+- El servo del tablero entra con el eje hacia la derecha (mirando desde adelante); si entra al revés, el eje queda 1 cm corrido y el tablero roza.
+- La unión brazo–pieza es el punto débil: si se despega, limpiar y volver a pegar con más silicona, o atornillar el brazo con los tornillos pequeños del servo.
+- Si el Arduino se reinicia al mover el joystick, revisar que los servos estén en las pilas y no en el 5V del Arduino.
+- g4t-p1: 90°. Así el tablero queda plano en el centro y puede inclinarse lo mismo hacia los dos lados.
+- Si un equipo no termina el montaje, sigue al inicio del sábado 5 (Guía 5, Parte 1).
+- Tiempo total: 10 + 15 + 25 + 45 + 15 + 5 + 5 = 120 minutos.
 :::

@@ -353,8 +353,12 @@ router.get('/exportar/:tipo', (req, res) => {
       const proyecto = proyectos.find((p) => p.id === e.proyecto);
       if (!proyecto) continue;
       const estados = estadosDeGuias(e.id, proyecto);
+      // Las guías que no están en la versión del equipo (versión corta) salen como "No aplica"
       lineas.push(filaCSV([proyecto.nombre, e.nombre, estados.filter((g) => g.estado === 'completada').length,
-        ...estados.map((g) => TEXTO_ESTADO[g.estado] || g.estado)]));
+        ...proyecto.guias.map((guia) => {
+          const g = estados.find((x) => x.numero === guia.numero);
+          return g ? TEXTO_ESTADO[g.estado] || g.estado : 'No aplica';
+        })]));
     }
   } else if (req.params.tipo === 'respuestas.csv') {
     lineas.push(filaCSV(['Proyecto', 'Equipo', 'Guía', 'Título de la guía', 'Campo', 'Pregunta o tabla', 'Estudiante', 'Respuesta', 'Fecha']));

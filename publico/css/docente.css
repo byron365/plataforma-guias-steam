@@ -69,6 +69,8 @@
 .estado-disponible .leyenda-muestra, .celda-estado.estado-disponible { background: var(--azul-suave); color: var(--azul-texto); }
 .estado-en_progreso .leyenda-muestra, .celda-estado.estado-en_progreso { background: #FDE68A; color: #92400E; }
 .estado-completada .leyenda-muestra, .celda-estado.estado-completada { background: #22C55E; color: var(--blanco); }
+/* Guía que no está en la versión corta del equipo */
+.celda-no-aplica { color: var(--borde-fuerte); }
 .total-completadas { font-weight: 700; white-space: nowrap; padding: 0 12px !important; }
 
 /* ---------- Equipos ---------- */

@@ -23,6 +23,10 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > Guía 4 para armar lo impreso; la programación empieza en la Guía 5 (sección 2.1.6).
 > **Mini fútbol (versión Tinkercad)** reestructurado igual: 2T portería, 3T soporte del marcador (pieza nueva), 4T cancha +
 > marcador en Wokwi, 5T sensores reales (sección 2.1.6). Corregida la escena de la Guía 13T (el Cubo no pasa de 200 mm).
+> **Laberinto (versión Tinkercad)** reestructurado: 2T tablero, 3T marco y torres (soporte cardán rediseñado: el de
+> antes pedía cubos de 240 y 220 mm), 4T armar, 5T control + 3 piezas pequeñas, 6T con el código del juego (sección 2.1.6).
+> **23 de octubre:** **Robot con mando** con versión nueva **"Práctica (6 sábados)"** (guías 2 a 6 nuevas, chasis y mando
+> impresos). Las versiones ahora pueden tener menos guías que el proyecto (`"guias"` en `proyecto.json`; sección 2.1.6).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
 
@@ -293,6 +297,80 @@ pieza nueva = soporte del marcador; sin escaneo 3D en esta versión. La Guía 1 
 - [ ] Guía 7 (normal) dice "medidas y escala en la Guía 2": en la versión Tinkercad están en la Guía 4.
 - [ ] Probar en la academia: que el vidrio de la pantalla tape la ventana de 25 × 14 y que los ojitos del sensor quepan
   en la ventana de 12 mm de la portería.
+
+**Laberinto inclinable, versión Tinkercad reestructurada (21 de octubre)**, a pedido de Bairon ("los chicos son un poco
+más lentos": menos teoría, más práctica, y diseñar en 3D lo que faltaba). Decisiones de Bairon: impresora de 220 × 220 o
+más; base de MDF o cartón (solo se imprimen las torres); las tres piezas extra (soporte del sensor, soporte de la pantalla
+y base del joystick); sin el juego en Wokwi (el código va en la Guía 6); torres altas con el sensor parado.
+- **Problemas del soporte anterior (Guía 4T vieja):** base de 240 mm y marco de 220 mm (el Cubo de Codeblocks llega a
+  200), ventana del servo de 23 mm en una torre de 20 mm de ancho, y la ubicación de los servos y de los ejes del tablero
+  quedaba "pregunten al docente".
+- **Diseño nuevo** (todo probado en Codeblocks): ejes de giro a **120 mm** de la base; marco de 198 × 206 × 19 mm (lados de
+  6 mm) con ventana para el servo del tablero (23,4 × 12,8, corrida 5,4 mm para que el eje caiga en el centro) y agujeros
+  de 4 mm atrás y a la izquierda; torres de 6 × 40 × 134 mm con dos aletas, pie de 30 × 70 con dos agujeros, una con
+  ventana (servo parado, eje arriba) y otra con agujero; tablero con **bisagra** atrás (12 × 6 × 12 con agujero de 4 mm).
+  Los ejes son palitos de pincho; los brazos de los servos se pegan con silicona al lado derecho del marco y al borde de
+  adelante del tablero. Caras lisas de las torres a 21,3 cm. Holgura comprobada con un script: con el sensor colgando
+  65 mm bajo la meta en una esquina, el punto más bajo queda a 13 mm de la base a 15° y a 5 mm a 20°.
+- **Guías:** 2T (piezas, laberinto en papel, coordenadas, Codeblocks, tablero con paredes) · 3T (terminar el tablero con la
+  meta y la bisagra, marco, torres, dónde va cada pieza) · 4T nueva (torres en la base, circuito, servos a 90°, montaje,
+  `prueba_servos`) · 5T nueva (control, inclinación y las 3 piezas pequeñas; el soporte de la pantalla es el del mini
+  fútbol) · 6T nueva (igual que la normal con las piezas impresas y el código del juego completo, con `INPUT`) · 13T con
+  la escena del soporte nuevo (base con Escala 2). Campos propios g2t- a g5t-; la 6T mantiene los de la normal
+  (comparar-versiones ✔ en 1, 6, 11 y 13; verificar.js OK).
+- Diseños en el Tinkercad del docente: "Laberinto inclinable - propuesta completa" y "Laberinto - modelo tablero / marco /
+  torres / piezas pequenas". Imágenes 2.1T, 2.2T, 3.1T, 3.2T, 3.3T y 5.1T con etiquetas.
+- [ ] Probar en la academia antes de imprimir para todos: un marco y una torre con un servo SG90 real (que el eje caiga
+  alineado y que el brazo llegue al marco, unos 7 mm), y el soporte del sensor con un FC-51.
+- **STL de las piezas pequeñas** (21 de octubre): `..\Laberinto - STL para imprimir\` (fuera de esta carpeta):
+  `laberinto_soporte_sensor.stl` (30 × 24 × 14 mm, 2,5 cm³, tapa en la cama), `laberinto_base_joystick.stl`
+  (60 × 50 × 10 mm, 14,1 cm³) y `laberinto_soporte_pantalla.stl` (70 × 45 × 52 mm, 24,5 cm³, igual al del mini fútbol).
+  Con las medidas de ejemplo de la Guía 5T; sólidos cerrados y volúmenes iguales a las cuentas a mano. Se generan con
+  `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/laberinto_stl.py -- "<carpeta de salida>"`.
+- [ ] Generar los STL del marco y las torres si Bairon los pide (el tablero depende de cada equipo).
+- [ ] Imagen 6.1T: foto real del sensor en su soporte.
+- **Imagen 2.1 (23 de octubre)**, la usan la Guía 2 normal y la 2T: laberinto de ejemplo a lápiz sobre papel cuadriculado
+  (casillas de 2 × 2 cuadritos, letras A–G arriba, números 1–7 con el 1 abajo, salida en A1 y meta en G7). Es un laberinto
+  "perfecto" revisado con un script: un solo camino de 19 casillas (A1 → A5 → B5 → B3 → C3 → C5 → D5 → D6 → C6 → C7 → G7),
+  5 callejones sin salida y 13 paredes rectas.
+- [ ] El laberinto del tablero de referencia en Tinkercad (y de las imágenes 2.1T, 2.2T y 3.1T) tiene la salida encerrada:
+  A1, B1 y C1 quedan cerradas por la pared horizontal A–C entre las filas 1 y 2 y la vertical C|D de las filas 1 y 2.
+  No afecta a los estudiantes (cada equipo dibuja el suyo), pero conviene cambiarlo por el de la imagen 2.1 si Bairon quiere.
+
+**Robot con mando, versión "Práctica (6 sábados)" (23 de octubre)**, a pedido de Bairon ("más prácticas y no tanto
+teóricas… no es necesario que sean 14, entre se termine más rápido mejor"). Decisiones de Bairon: versión nueva (las 14
+guías quedan como "Completa (14 sábados)"), 6 sábados, el chasis se diseña e imprime (no tienen chasis de kit; sí motores
+TT, ruedas y rueda loca) y se diseñan las cuatro piezas propuestas.
+- **Servidor:** una versión puede traer `"guias": [1, 2, …]` en `proyecto.json`. `guiasDeVersion()` (contenido.js) filtra
+  las guías del equipo y pone el título del archivo de la versión; `estadosDeGuias()` (progreso.js) la usa, así que la
+  lista del estudiante, el permiso para abrir una guía, el panel y el CSV respetan la versión. En el panel, las guías que
+  no están en la versión salen con "—" y el CSV dice "No aplica". De paso, las listas de guías ahora muestran el título de
+  la versión (por ejemplo "El laberinto en 3D (1): el tablero"). **Hay que reiniciar el servidor del 3000** para que tome
+  el cambio. Probado en el 3001 con datos temporales: un equipo "practica" ve 6 guías y la 9 da "Guía no encontrada".
+- **Guías** (`guia-NN.practica.md`, campos propios gNp-; la Guía 1 es la normal):
+  2P chasis + soporte del HC-SR04 (medir motor, rueda y rueda loca; X de la oreja y alto de la columna calculados) ·
+  3P poste, bandeja y caja + tapa del mando, más el ajuste del LM2596 · 4P armar (piso de abajo, bandeja, potencia,
+  TB6612, sensor, divisor, prueba de motores) · 5P HC-05 en modo AT, mando armado en su caja y prueba UART inalámbrica con
+  `equipo_NOMBRE_uart` · 6P mezcla diferencial, código del robot y del mando (copiados de la Guía 5 normal), prueba
+  integrada, tabla de motores y AJUSTE_DER (de la Guía 7 normal); reto: slalom de 4 conos (de la Guía 10).
+  Quedan fuera: arquitectura, comparación de puentes H, fusible calculado, pruebas con datos, rampa, freno, alerta de
+  batería, documentación, pista, presentación y evaluación.
+- **Diseño** (todo en mm; origen en el centro de cada pieza): chasis 120 × 160 × 4 con orejas 3 × 30 × 24 en X ±39.7,
+  Y −20 y ranura 3.4 × 20 (sirve para cualquier separación de agujeros del motor), columna de la rueda loca R12 × 24 en
+  Y 60 (frente = Y positiva), paso de cables 40 × 12 y agujeros de postes R1.8 en (±48, ±68). Se imprime con orejas y
+  columna arriba y se voltea al armar: motores debajo, con la cara de arriba contra la placa (chasis a 43,75 mm del piso con
+  ruedas de 65). Postes R5 × 40 con agujero para palito de pincho. Bandeja 120 × 160 × 3 con cerco para portabaterías
+  77 × 41 (+0,6) en Y 45. Soporte del HC-SR04: base 50 × 15 × 3 y panel 50 × 3 × 26 con ojos R9 a ±13. Caja del mando
+  126 × 66 × 33 (paredes de 3, agujero del USB en la pared izquierda) y tapa 126 × 66 × 3 con ventana de la OLED 25 × 14 y
+  cerco del joystick (el mismo de la base del laberinto).
+- Diseños en el Tinkercad del docente: "Robot con mando - propuesta completa" y "Robot - modelo chasis / soporte del
+  sensor / bandeja / caja y tapa del mando". Imágenes 2.1P, 2.2P, 2.3P, 3.1P y 3.2P con etiquetas.
+- **STL** en `..\Robot con mando - STL para imprimir\` (fuera de esta carpeta), generados con `herramientas/robot_stl.py`
+  (sólidos cerrados): chasis 89,5 cm³, poste 2,7, bandeja 59,8, soporte del sensor 4,6, caja 57,8 y tapa 25,5 cm³.
+- [ ] Probar con piezas reales antes de imprimir para todos: un motor TT en la oreja (tornillos M3 × 30 o cincho), el
+  alto de la columna con la rueda loca de la academia, el portabaterías en su cerco y el HC-SR04 en su soporte.
+- [ ] Imagen 5.1P: foto real del mando armado en su caja.
+- [ ] Revisar en el panel docente la tabla de avance con un equipo en versión Práctica (columnas 7 a 14 con "—").
 
 **Mini invernadero, imagen 1.3 (17 de octubre):** circuito del sensor de humedad armado en Tinkercad Circuits (diseño
 "Invernadero G1 - sensor de humedad" en la cuenta del docente) y probado con el código de la Guía 1 (0 en seco, 847

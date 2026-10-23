@@ -66,12 +66,15 @@ function obtenerProyecto(id) {
   // Versiones de las guías (por ejemplo Blender y Tinkercad). La primera es la normal.
   // "base" (opcional): versión que se usa en las guías que no tienen archivo propio
   // (por ejemplo "doble" se basa en "tinkercad").
+  // "guias" (opcional): números de las guías que tiene la versión, para un curso más corto
+  // (por ejemplo [1, 2, 3, 4, 5, 6]); sin "guias", la versión tiene todas las del proyecto.
   const versiones = (Array.isArray(datos.versiones) ? datos.versiones : [])
     .filter((v) => v && ID_VERSION.test(String(v.id)))
     .map((v) => ({
       id: String(v.id),
       nombre: String(v.nombre || v.id),
       base: v.base && ID_VERSION.test(String(v.base)) ? String(v.base) : '',
+      guias: Array.isArray(v.guias) ? v.guias.map(Number).filter((n) => n > 0) : null,
     }));
 
   const guias = (datos.guias || []).map((g, i) => {
@@ -79,11 +82,14 @@ function obtenerProyecto(id) {
     const nombreArchivo = g.archivo || `guia-${String(numero).padStart(2, '0')}.md`;
     const ruta = path.join(carpeta, path.basename(nombreArchivo));
     const existe = fs.existsSync(ruta);
+    // Versiones que tienen su propio archivo (guia-02.tinkercad.md); las demás usan el normal
+    const conArchivo = versiones.filter((v) => fs.existsSync(rutaDeVersion(ruta, v.id)));
     return {
       numero,
       archivo: path.basename(nombreArchivo),
-      // Versiones que tienen su propio archivo (guia-02.tinkercad.md); las demás usan el normal
-      versiones: versiones.filter((v) => fs.existsSync(rutaDeVersion(ruta, v.id))).map((v) => v.id),
+      versiones: conArchivo.map((v) => v.id),
+      // Título de cada versión (del encabezado de su archivo), para las listas de guías
+      titulosVersion: Object.fromEntries(conArchivo.map((v) => [v.id, tituloDesdeArchivo(rutaDeVersion(ruta, v.id))]).filter(([, t]) => t)),
       titulo: g.titulo || (existe && tituloDesdeArchivo(ruta)) || `Guía ${numero}`,
       sabado: Number(g.sabado) || null,
       sesion: g.sesion || '',
@@ -183,6 +189,20 @@ function obtenerGuia(proyectoId, numero, version = '') {
   return guia;
 }
 
+// Guías que ve un equipo según su versión: solo las de la versión (si tiene lista "guias")
+// y con el título del archivo de esa versión o de su base.
+function guiasDeVersion(proyecto, version = '') {
+  const datosVersion = proyecto.versiones.find((v) => v.id === version);
+  if (!datosVersion) return proyecto.guias;
+  const lista = datosVersion.guias;
+  return proyecto.guias
+    .filter((g) => !lista || lista.includes(g.numero))
+    .map((g) => {
+      const usada = [version, datosVersion.base].find((v) => v && g.titulosVersion[v]);
+      return usada ? { ...g, titulo: g.titulosVersion[usada] } : g;
+    });
+}
+
 // Crea la carpeta de un proyecto nuevo con su proyecto.json y la carpeta imagenes/.
 // Las guías (.md) las agrega el docente después. Devuelve el id del proyecto.
 function crearProyecto({ nombre, nivel, descripcion, totalGuias }) {
@@ -203,4 +223,4 @@ function crearProyecto({ nombre, nivel, descripcion, totalGuias }) {
   return id;
 }
 
-module.exports = { crearProyecto, listarProyectos, obtenerProyecto, obtenerGuia, carpetaProyecto, EXTENSIONES_IMAGEN, EXTENSIONES_ARCHIVO, ID_VALIDO };
+module.exports = { crearProyecto, listarProyectos, obtenerProyecto, obtenerGuia, guiasDeVersion, carpetaProyecto, EXTENSIONES_IMAGEN, EXTENSIONES_ARCHIVO, ID_VALIDO };
