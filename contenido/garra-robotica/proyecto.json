@@ -13,6 +13,19 @@
     {
       "id": "tinkercad",
       "nombre": "Tinkercad (bloques)"
+    },
+    {
+      "id": "practica",
+      "nombre": "Blender práctica (7 sábados)",
+      "guias": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
     }
   ],
   "guias": [

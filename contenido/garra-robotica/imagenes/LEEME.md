@@ -22,14 +22,14 @@ Si una imagen todavía no existe, la plataforma muestra un recuadro gris con la 
 | IMAGEN_3.3.png | eslabón del hombro con el agujero del eje y la ventana del servo |
 | IMAGEN_4.1.png | servo colocado dentro de la base, con las pestañas atornilladas |
 | IMAGEN_4.2.png | plato giratorio montado sobre la base, con la pared de soporte al frente |
-| IMAGEN_4.3.png | render de la pinza de engranes terminada, señalando engrane motriz y engrane seguidor |
+| IMAGEN 4.3.png ✅ | render de la pinza de engranes terminada, señalando engrane motriz y engrane seguidor |
 | IMAGEN_4.4.png | ventana de Preferencias con el complemento Extra Mesh Objects activado |
 | IMAGEN_4.5.png | panel de opciones del engranaje con 12 dientes, radio 10 y ancho 4 |
 | IMAGEN_5.1.png | brazo montado con base, hombro y codo, señalando cada servo |
-| IMAGEN_5.2.png | diagrama del circuito completo con los dos rieles, las 4 perillas, los 4 servos y la unión de GND |
+| IMAGEN 5.2.png ✅ | diagrama del circuito completo con los dos rieles, las 4 perillas, los 4 servos y la unión de GND |
 | IMAGEN_6.1.png | pinza montada en el eslabón del codo, señalando engrane motriz, seguidor y tornillo M3 |
 | IMAGEN_6.2.png | Monitor Serie mostrando las cuatro columnas de ángulos |
-| IMAGEN_7.1.png | diagrama del botón conectado entre el pin D2 y GND |
+| IMAGEN 7.1.png ✅ | diagrama del botón conectado entre el pin D2 y GND |
 | IMAGEN_8.1.png | ejemplo de distribución del cartel con sus cinco secciones |
 | IMAGEN_9.1.png | foto del grupo con todas las garras |
 | IMAGEN_10.1.png | ejemplo de gráfica de barras con los tiempos de cada equipo |
@@ -55,3 +55,5 @@ Si una imagen todavía no existe, la plataforma muestra un recuadro gris con la 
 | IMAGEN_11.1T.png | comparación en Tinkercad de la pinza versión 1 y versión 2, lado a lado |
 | IMAGEN_13.1T.png | maqueta de la garra en Tinkercad Codeblocks con piezas de colores |
 | IMAGEN_13.2T.png | ejemplo de imagen final de una garra en Tinkercad con piezas de colores |
+
+Las imágenes 4.3 (render de la pinza en Blender), 5.2 (circuito) y 7.1 (botón) se generan con `herramientas/garra_pinza_render.py` y `herramientas/garra_imagenes.py` (24 de octubre).

@@ -27,6 +27,7 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > antes pedía cubos de 240 y 220 mm), 4T armar, 5T control + 3 piezas pequeñas, 6T con el código del juego (sección 2.1.6).
 > **23 de octubre:** **Robot con mando** con versión nueva **"Práctica (6 sábados)"** (guías 2 a 6 nuevas, chasis y mando
 > impresos). Las versiones ahora pueden tener menos guías que el proyecto (`"guias"` en `proyecto.json`; sección 2.1.6).
+> **24 de octubre:** **Garra robótica** con versión nueva **"Blender práctica (7 sábados)"** (guías 2 a 7, sección 2.1.6).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
 
@@ -411,6 +412,21 @@ soporte del servo con desviador; 7 sábados; sin la simulación en Wokwi; motor 
 - [ ] Probar con piezas reales: el rodillo en el eje del TT, la banda tensa entre rodillos de 40 cm, que la pieza caiga por
   el agujero del puente sobre la canaleta y resbale hasta el contenedor (rampa de unos 24°), y el TIP41C con el TT.
 - [ ] La Guía 1 normal todavía habla de la fuente de 12 V, el regulador y el MOSFET (tabla de roles): ajustar si se quiere.
+
+**Garra robótica, versión "Blender práctica (7 sábados)" (24 de octubre)**, a pedido de Bairon ("centrémonos más en la
+práctica… el grupo trabaja la opción en Blender… guías más concisas para unos 6 o 7 sábados"). Tercera versión del proyecto
+(`"guias": [1..7]`); la Blender completa y la Tinkercad quedan igual. Archivos `guia-NN.practica.md`, campos gNp-; la Guía 1
+es la normal. Mismos programas que la versión completa (comprobado: los bloques de código son idénticos).
+- 2P base (con agujeros y plato de apoyo) y plato giratorio, sin boceto · 3P eslabones del hombro y del codo y pinza de
+  engranes (Extra Mesh Objects: instalar antes de la clase) · 4P centrar 3 servos, montar base, plato y brazo, y la base con
+  la perilla de la Guía 1 · 5P circuito por etapas con pilas y GND común, modo manual, montar la pinza (servo en 60°) y
+  límites seguros · 6P pruebas de agarre, posiciones, botón y rutina automática, práctica del reto y piloto · 7P revisión
+  técnica, presentación de 2 minutos, reto, rutina y tabla de resultados.
+- Quedan fuera: boceto, diagrama de flujo, cronograma, ficha técnica, cartel, guion largo, evaluación y versión 2.0.
+- Imágenes 4.3 (render de la pinza: los engranes se dibujan en el script, sin la extensión), 5.2 (circuito completo) y 7.1
+  (botón) hechas el 24 de octubre con `herramientas/garra_pinza_render.py` (Blender) y `herramientas/garra_imagenes.py`;
+  sirven también para la versión completa.
+- [ ] Siguen pendientes (fotos y capturas): 4.1, 4.2, 4.4, 4.5, 5.1, 6.1 y 6.2.
 
 **Mini invernadero, versión Tinkercad reestructurada (23 de octubre)**, a pedido de Bairon ("centrarla más en la práctica,
 comenzar con los diseños 3D y colocar las imágenes"). Sigue con 14 sábados (las guías 5 en adelante son las normales).
