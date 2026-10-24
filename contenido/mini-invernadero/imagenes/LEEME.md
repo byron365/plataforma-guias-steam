@@ -26,12 +26,14 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_13.1.png | render final del mini invernadero transparente con la planta, la maceta y la ventana abierta |
 | IMAGEN_14.1.png | invernadero simulado en Wokwi con DHT22, potenciómetro, servo y pantalla OLED mostrando los datos |
 
-**Versión Tinkercad (bloques)** de las guías 2, 3 y 13 (archivos `guia-NN.tinkercad.md`):
+**Versión Tinkercad (bloques)** de las guías 2, 3, 4 y 13 (archivos `guia-NN.tinkercad.md`). Las guías 2T a 4T se reestructuraron el 23 de octubre (más práctica) y sus imágenes están hechas, con etiquetas:
 
 | Archivo | Descripción |
 | --- | --- |
-| IMAGEN_2.2T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
-| IMAGEN_2.3T.png | soporte del servo terminado en Tinkercad Codeblocks |
-| IMAGEN_2.4T.png | hoja de bisagra en Tinkercad Codeblocks con su nudillo y el agujero para el pasador |
-| IMAGEN_3.1T.png | clip de manguera en Tinkercad Codeblocks con anillo abierto y pestaña para pegar |
+| IMAGEN 2.1T.png ✅ | mini invernadero completo en Tinkercad (sin la pared de adelante), con etiquetas: clip, manguera, planta, depósito con la bomba, maceta, ventana, palito, bisagra, servo en su soporte, sensores de temperatura y humedad, caja y compartimento seco (también en la Guía 3T) |
+| IMAGEN 2.2T.png ✅ | editor de Codeblocks con sus partes señaladas (la misma IMAGEN 2.3T del Dispensador) |
+| IMAGEN 2.3T.png ✅ | soporte del servo con etiquetas: hueco del servo y caja de 32 × 18 × 20 mm |
+| IMAGEN 2.4T.png ✅ | hoja de bisagra con etiquetas: hoja, nudillo y agujero del pasador |
+| IMAGEN 2.5T.png ✅ | clip de la manguera con etiquetas: anillo, abertura y pestaña (antes era la 3.1T) |
+| IMAGEN 4.1T.png ✅ | techo con etiquetas: ventana, bisagra con su palito, palito del servo, servo en su soporte y borde del corte |
 | IMAGEN_13.1T.png | escena final del mini invernadero en Tinkercad con la caja transparente, la planta, la maceta y la ventana abierta |

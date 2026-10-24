@@ -35,10 +35,11 @@ def agrupar(base, solidos=(), huecos=()):
 
 def chasis():
     # Placa de 120 × 160 × 4. Se imprime con las orejas y la columna hacia arriba; al armar se voltea.
-    # Orejas de 3 × 30 × 24 a X ±39.7 (60 − grosor del motor 18.8 − 1.5), con ranura de 3.4 × 20 para los tornillos
+    # Orejas de 3 × 30 × 24 a X ±39.7 (60 − grosor del motor 18.8 − 1.5), con ranura de 3.4 × 22 para los tornillos
+    # (agujeros del TT separados 17.6, a 2.4 mm de su cara de arriba)
     # Columna de la rueda loca: radio de la rueda 32.5 + medio motor 11.25 − rueda loca 20 = 23.75 → 24
     solidos = [cubo(3, 30, 24, 39.7, -20, 16), cubo(3, 30, 24, -39.7, -20, 16), cilindro(12, 24, 0, 60, 16)]
-    huecos = [cubo(10, 3.4, 20, 39.7, -20, 16), cubo(10, 3.4, 20, -39.7, -20, 16),   # ranuras
+    huecos = [cubo(10, 3.4, 22, 39.7, -20, 15.5), cubo(10, 3.4, 22, -39.7, -20, 15.5),   # ranuras
               cubo(40, 12, 10, 0, -10, 2)]                                          # paso de los cables
     huecos += [cilindro(1.8, 10, x, y, 2) for x in (-48, 48) for y in (-68, 68)]    # agujeros de los postes
     return agrupar(cubo(120, 160, 4, 0, 0, 2), solidos, huecos)

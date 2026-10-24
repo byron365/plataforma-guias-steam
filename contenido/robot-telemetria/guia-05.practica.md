@@ -47,7 +47,7 @@ El cable de D11 pasa por la resistencia de 1 kΩ y llega a RXD; desde RXD sale o
 
 [IMAGEN 4.2: conexión del HC-05 con el divisor de 1 kΩ y 2 kΩ en su pin RXD]
 
-Configuraremos los dos HC-05 **uno por uno** con el Arduino del robot (conectado por USB, con la batería apagada): primero el del robot y después el del mando. Programa nuevo, escriban el código, guárdenlo como `equipo_NOMBRE_puente_at` y súbanlo.
+Configuraremos los dos HC-05 **uno por uno** con el Arduino del robot (conectado por USB, con las dos baterías apagadas): primero el del robot y después el del mando. Programa nuevo, escriban el código, guárdenlo como `equipo_NOMBRE_puente_at` y súbanlo.
 
 ```cpp
 #include <SoftwareSerial.h>
@@ -160,7 +160,7 @@ Foto del mando armado.
 - **Versión Práctica (6 sábados), nueva el 23 de octubre:** la Parte 3 de la Guía 4 normal (HC-05), el montaje del mando de la Guía 5 normal dentro de la caja impresa y, como prueba, el reto de la Guía 4 normal (UART inalámbrica). Campos propios (g5p-…).
 - La dirección que da AT+ADDR? viene como 98d3:31:f5a1b2; en AT+BIND se escribe 98d3,31,f5a1b2.
 - Algunos HC-05 no responden a 38400 en modo AT si se entra con EN en alto desde el arranque: probar con el botón.
-- Para la Parte 4, el robot puede quedarse con la batería apagada: el USB alimenta su Arduino y su HC-05.
+- Para la Parte 4, el robot puede quedarse con las baterías apagadas: el USB alimenta su Arduino y su HC-05.
 - La OLED de 0,96" tiene la zona visible corrida hacia un lado de su placa: ubicarla mirando la ventana desde arriba antes de pegarla.
 - Tiempo total: 10 + 40 + 35 + 20 + 5 + 10 = 120 minutos.
 :::

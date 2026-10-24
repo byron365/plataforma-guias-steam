@@ -16,13 +16,15 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_11.1.png | robot recorriendo el slalom de la pista mientras el piloto mira la telemetría en el mando |
 | IMAGEN_14.1.png | app de terminal Bluetooth en un celular con botones configurados para enviar las órdenes M al robot |
 
-**Versión Práctica (6 sábados)** de las guías 2 a 6 (archivos `guia-NN.practica.md`), hechas el 23 de octubre con los diseños de Tinkercad Codeblocks y etiquetas. También usan IMAGEN_3.1, IMAGEN_4.1 e IMAGEN_4.2 de la versión completa.
+**Versión Práctica (6 sábados)** de las guías 2 a 6 (archivos `guia-NN.practica.md`), hechas el 23 de octubre con los diseños de Tinkercad Codeblocks y etiquetas. También usan IMAGEN_4.2 de la versión completa.
 
 | Archivo | Descripción |
 | --- | --- |
-| IMAGEN 2.1P.png ✅ | robot y mando diseñados en Tinkercad, con etiquetas: portabaterías, bandeja, poste, sensor HC-SR04 en su soporte, chasis, rueda loca, Arduino, TB6612, rueda y motor TT, joystick, pantalla OLED y caja del mando (también en la Guía 4P) |
-| IMAGEN 2.2P.png ✅ | chasis con etiquetas: placa, oreja del motor con su ranura, columna de la rueda loca, paso de los cables y agujero de un poste |
-| IMAGEN 2.3P.png ✅ | soporte del HC-SR04 con etiquetas: agujeros de los ojos, panel y base |
-| IMAGEN 3.1P.png ✅ | bandeja con etiquetas: cerco del portabaterías, paso de los cables, agujeros de los postes y lugar de la electrónica |
+| IMAGEN 2.1P.png ✅ | robot y mando diseñados en Tinkercad, con etiquetas: batería de los motores, bandeja, poste, pila de 9 V del Arduino, sensor HC-SR04 en su soporte, chasis, rueda loca, Arduino, puente H L298N, rueda y motor TT, joystick, pantalla OLED y caja del mando (también en la Guía 4P) |
+| IMAGEN 2.2P.png ✅ | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones (la misma IMAGEN 2.3T del Dispensador) |
+| IMAGEN 2.3P.png ✅ | chasis con etiquetas: placa, oreja del motor con su ranura, columna de la rueda loca, paso de los cables y agujero de un poste |
+| IMAGEN 2.4P.png ✅ | soporte del HC-SR04 con etiquetas: agujeros de los ojos, panel y base |
+| IMAGEN 3.1P.png ✅ | bandeja con etiquetas: cerco del portabaterías, paso de los cables, agujeros de los postes y lugar del Arduino, el L298N y la protoboard |
+| IMAGEN_4.1P.png | las dos fuentes del robot: batería 2S con fusible e interruptor al L298N, pila de 9 V con interruptor al jack del Arduino y el cable de GND común entre el L298N y el Arduino |
 | IMAGEN 3.2P.png ✅ | caja y tapa del mando con etiquetas: agujero del USB, cerco del joystick, salida de los cables y ventana de la pantalla |
 | IMAGEN_5.1P.png | mando armado en su caja impresa, con el joystick encima de la tapa y la pantalla asomada por su ventana (foto real) |

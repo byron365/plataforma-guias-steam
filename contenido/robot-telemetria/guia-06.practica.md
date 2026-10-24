@@ -52,7 +52,7 @@ Calculen cada fila con las dos fórmulas. Si un resultado pasa de 255, escriban 
 ## Parte 2 · Código del robot (25 min)
 
 1. Pongan el robot sobre una caja, con las ruedas en el aire.
-2. Conecten el Arduino del robot por USB. Programa nuevo, escriban el código y guárdenlo como `equipo_NOMBRE_robot`.
+2. Conecten el Arduino del robot por USB. Programa nuevo, escriban el código y guárdenlo como `equipo_NOMBRE_robot`. Es casi el mismo de la prueba de motores (Guía 4): las mismas líneas para el L298N, más el Bluetooth y los sensores.
 3. Verifiquen (✓) y suban (→).
 
 ```cpp
@@ -63,10 +63,9 @@ Calculen cada fila con las dos fórmulas. Si un resultado pasa de 255, escriban 
 #include <SoftwareSerial.h>
 SoftwareSerial bt(10, 11);  // RX, TX al HC-05
 
-// --- Puente H TB6612FNG ---
-const int PWMA = 5, AIN1 = 7, AIN2 = 8;  // izq.
-const int PWMB = 6, BIN1 = 4, BIN2 = 9;  // der.
-const int STBY = 12;
+// --- Puente H L298N ---
+const int PWMA = 5, AIN1 = 7, AIN2 = 8;  // izq. (ENA, IN1, IN2)
+const int PWMB = 6, BIN1 = 4, BIN2 = 9;  // der. (ENB, IN3, IN4)
 
 // --- Sensores ---
 const int TRIG = 2, ECHO = 3;
@@ -82,10 +81,9 @@ String buffer = "";
 
 void setup() {
   int pines[] = {PWMA, AIN1, AIN2, PWMB,
-                 BIN1, BIN2, STBY, TRIG};
+                 BIN1, BIN2, TRIG};
   for (int p : pines) pinMode(p, OUTPUT);
   pinMode(ECHO, INPUT);
-  digitalWrite(STBY, HIGH);  // activa el driver
   bt.begin(9600);
 }
 
@@ -282,7 +280,7 @@ Revisen si les pasa algo de esta tabla y cómo lo solucionaron:
 | --- | --- | --- | --- |
 | Un motor gira al revés | Cables del motor invertidos | | |
 | El robot gira cuando debería ir recto | Motores distintos o PWM igual a velocidades distintas | | |
-| Un motor no gira | STBY en LOW, cable suelto o pin PWM equivocado | | |
+| Un motor no gira | Cable suelto, pin equivocado o la batería de los motores apagada | | |
 | Los motores zumban pero no se mueven | PWM muy bajo para arrancar | | |
 :::
 
@@ -327,11 +325,12 @@ Antes de irse, suban los dos programas (robot y mando) juntos en un `.zip` (sele
 :::
 
 :::docente
-- **Versión Práctica (6 sábados), nueva el 23 de octubre:** la Guía 5 normal (protocolo, mezcla, código del robot y del mando, prueba integrada) más la tabla de motores y el ajuste de la Guía 7 normal. Es la última guía de esta versión. Campos propios (g6p-…).
+- **Versión Práctica (6 sábados), nueva el 23 de octubre:** la Guía 5 normal (protocolo, mezcla, código del robot y del mando, prueba integrada) más la tabla de motores y el ajuste de la Guía 7 normal. El código del robot es el de la Guía 5 normal sin STBY (puente H L298N). Es la última guía de esta versión. Campos propios (g6p-…).
 - Tabla de mezcla: (200, 200) adelante; (150, −150) gira a la derecha sobre su eje; (250→255, 50) curva a la derecha; (−200, −200) atrás.
 - g6p-p1: si el robot deja de recibir órdenes por 500 ms (mando apagado o fuera de alcance), detiene los motores. Sin ese bloque seguiría con la última orden y podría chocar.
 - El joystick da ≈512 en el centro; `/2 - 256` lo lleva a ≈0; la zona muerta elimina el temblor del centro.
-- Si con USB funciona y con batería no, casi siempre es la alimentación de la lógica (revisar el LM2596 y el GND común).
+- Si con USB funciona y con baterías no, revisar la pila de 9 V (que esté cargada y su interruptor encendido) y el GND común entre el L298N y el Arduino.
+- Con el L298N los motores reciben unos 2 V menos que con el TB6612: si con el joystick poco inclinado solo zumban, es normal.
 - El reto del slalom sale de la pista de la Guía 10 normal.
 - Tiempo total: 15 + 25 + 25 + 20 + 20 + 5 + 10 = 120 minutos.
 :::

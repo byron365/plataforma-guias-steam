@@ -23,9 +23,9 @@ Conocer las piezas de nuestro robot, medir los motores y las ruedas, y diseñar 
 
 ## Parte 1 · Nuestro robot (10 min)
 
-El robot tiene **dos pisos**. Abajo, el **chasis** lleva los dos motores con sus ruedas, la rueda loca y el sensor de distancia. Arriba, la **bandeja** lleva la batería, el Arduino y la electrónica. Cuatro **postes** unen los dos pisos. El **mando** es una caja con el joystick y la pantalla.
+El robot tiene **dos pisos**. Abajo, el **chasis** lleva los dos motores con sus ruedas, la rueda loca y el sensor de distancia. Arriba, la **bandeja** lleva la batería de los motores, el Arduino y el puente H. La pila de 9 V del Arduino va abajo, entre los postes. Cuatro **postes** unen los dos pisos. El **mando** es una caja con el joystick y la pantalla.
 
-[IMAGEN 2.1P: robot y mando diseñados en Tinkercad, con etiquetas: portabaterías, bandeja, poste, sensor HC-SR04 en su soporte, chasis, rueda loca, Arduino, TB6612 en la protoboard, rueda y motor TT, joystick, pantalla OLED y caja del mando]
+[IMAGEN 2.1P: robot y mando diseñados en Tinkercad, con etiquetas: batería de los motores, bandeja, poste, pila de 9 V del Arduino, sensor HC-SR04 en su soporte, chasis, rueda loca, Arduino, puente H L298N, rueda y motor TT, joystick, pantalla OLED y caja del mando]
 
 Las piezas que diseñamos e imprimimos:
 
@@ -33,10 +33,10 @@ Las piezas que diseñamos e imprimimos:
 | --- | --- | --- |
 | Chasis | Piso de abajo: sostiene los motores y la rueda loca | Hoy |
 | Soporte del sensor | Sostiene el HC-SR04 mirando hacia adelante | Hoy |
-| Bandeja y 4 postes | Piso de arriba: batería, Arduino y electrónica | Sábado 3 |
+| Bandeja y 4 postes | Piso de arriba: batería de los motores, Arduino y puente H | Sábado 3 |
 | Caja y tapa del mando | Guardan el Arduino del mando, con el joystick y la pantalla encima | Sábado 3 |
 
-Lo que **no** se imprime: los motores, las ruedas, la rueda loca, la batería, los Arduino, los módulos y los cables.
+Lo que **no** se imprime: los motores, las ruedas, la rueda loca, las baterías, los Arduino, los módulos y los cables.
 
 ## Parte 2 · Medir antes de diseñar (15 min)
 
@@ -99,6 +99,8 @@ Conoce el editor:
 | Hacer una forma **hueca** | Toca su **círculo rayado** (el círculo de color se pone gris). Al agrupar, lo hueco se resta |
 | Mirar la pieza | En la vista 3D, arrastra con el mouse para girarla (si no gira, con el botón derecho) y usa la rueda para acercar. La casita 🏠 vuelve a la vista inicial |
 
+[IMAGEN 2.2P: editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones]
+
 Tres reglas que vamos a usar siempre:
 
 - **Las medidas están en milímetros.**
@@ -109,7 +111,7 @@ Tres reglas que vamos a usar siempre:
 
 El chasis se diseña **como se imprime**: la placa sobre la cama de la impresora y las orejas y la columna hacia arriba. Al armar el robot **se voltea**: las orejas y la columna quedan abajo.
 
-[IMAGEN 2.2P: chasis en Tinkercad Codeblocks, con etiquetas: placa del chasis, oreja del motor con su ranura, columna de la rueda loca, paso de los cables y agujero para un poste]
+[IMAGEN 2.3P: chasis en Tinkercad Codeblocks, con etiquetas: placa del chasis, oreja del motor con su ranura, columna de la rueda loca, paso de los cables y agujero para un poste]
 
 Agreguen cada bloque **debajo** del anterior y ejecuten con **▷** después de cada paso.
 
@@ -117,7 +119,8 @@ Agreguen cada bloque **debajo** del anterior y ejecuten con **▷** después de 
    - El lado de **Y positiva** (Y = 80) es el **frente** del robot: ahí irán la rueda loca y el sensor.
 2. **La primera oreja:** un **Cubo** con primer **A = 3**, **L = 30**, segundo **A = 24**. Debajo, **Mover: X 39.7, Y −20, Z 16** (o su X de la oreja).
    - El motor se atornilla a esta oreja. Su cara lisa va contra la oreja y el eje queda hacia afuera.
-3. **La ranura de la oreja (hueco):** un **Cubo** con primer **A = 10**, **L = 3.4**, segundo **A = 20**, marcado como **hueco**. Debajo, **Mover: X 39.7, Y −20, Z 16** (la misma posición que la oreja).
+3. **La ranura de la oreja (hueco):** un **Cubo** con primer **A = 10**, **L = 3.4**, segundo **A = 22**, marcado como **hueco**. Debajo, **Mover: X 39.7, Y −20, Z 15.5**.
+   - La ranura llega casi hasta la placa: el agujero de arriba del motor queda a solo 2,4 mm de ella.
    - Por la ranura pasan los dos tornillos del motor (o un cincho). Es larga para que sirva aunque los agujeros del motor estén un poco más arriba o más abajo.
 4. **La segunda oreja y su ranura:** repitan los pasos 2 y 3 con **X −39.7** (con el signo menos) en los dos **Mover**.
    - **✔ Revisa:** dos orejas iguales, una frente a la otra, cada una con su ranura.
@@ -151,7 +154,7 @@ Agreguen cada bloque **debajo** del anterior y ejecuten con **▷** después de 
 
 El HC-SR04 tiene dos "ojos" redondos. El soporte es una **L**: una base que se pega sobre el chasis y un panel con dos agujeros por donde asoman los ojos.
 
-[IMAGEN 2.3P: soporte del HC-SR04 en Tinkercad, con etiquetas: agujeros para los ojos del sensor, panel que mira hacia adelante y base que se pega sobre el chasis]
+[IMAGEN 2.4P: soporte del HC-SR04 en Tinkercad, con etiquetas: agujeros para los ojos del sensor, panel que mira hacia adelante y base que se pega sobre el chasis]
 
 Creen otro diseño (**+ Crear → Codeblocks**) y llámenlo `equipo_NOMBRE_soporte_sensor`.
 
@@ -189,7 +192,7 @@ Antes de irse: suban los dos `.stl` juntos en un `.zip` (selecciónenlos → cli
 - **Versión Práctica (6 sábados), nueva el 23 de octubre:** reemplaza la arquitectura (diagrama de bloques, presupuesto de energía e intérprete en Wokwi) por el diseño 3D del robot. Campos propios (g2p-…).
 - Diseños de referencia en la cuenta del docente: "Robot con mando - propuesta completa" y "Robot - modelo chasis / soporte del sensor / bandeja / caja y tapa del mando", con los mismos bloques de las guías. STL de ejemplo: `herramientas/robot_stl.py`.
 - El chasis se imprime como sale (orejas y columna hacia arriba), sin soportes. Unas 3 h por chasis con relleno bajo.
-- El motor TT va **debajo** del chasis, con su cara de arriba pegada a la placa y el eje hacia afuera; la ranura de la oreja sirve para los dos tornillos M3 × 30 que atraviesan el motor (con tuerca afuera) o para un cincho delgado. Las medidas de ejemplo son de un TT común (18.8 × 22.5 mm de sección): revisar con un motor de la academia antes de imprimir para todos.
+- El motor TT va **debajo** del chasis, con su cara de arriba pegada a la placa y el eje hacia afuera; la ranura de la oreja sirve para los dos tornillos M3 × 30 que atraviesan el motor (con tuerca afuera) o para un cincho delgado. Las medidas de ejemplo son de un TT común (18.8 × 22.5 mm de sección): revisar con un motor de la academia antes de imprimir para todos. Plano de Adafruit (TT 3777): agujeros de 3 mm separados 17,6 mm (a 2,4 mm de cada borde), a 22,5 mm del eje; la ranura va de 0,5 a 22,5 mm bajo la placa.
 - g2p-p1: la columna deja el chasis horizontal (a la altura que le dan las ruedas). Si fuera más alta, el robot quedaría inclinado hacia atrás y las ruedas motrices patinarían o se levantarían.
 - Si la rueda loca es más alta que el chasis sobre el piso (cálculo negativo), no lleva columna: se atornilla directo a la placa.
 - Tiempo total: 10 + 15 + 15 + 50 + 15 + 5 + 10 = 120 minutos.

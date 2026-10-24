@@ -1,26 +1,26 @@
 ---
-titulo: Causas y efectos
+titulo: La casa y la ventana en la mesa
 guia: 3
 sabado: 3
-sesion: Planificación del proyecto
+sesion: Construcción del prototipo
 duracion: 120
 ---
 
-# Guía 3 · Causas y efectos
+# Guía 3 · La casa y la ventana en la mesa
 
 ## Objetivo del día
 
-Identificar las variables del invernadero, hacer el mapa de causa y efecto y el diagrama de flujo, y modelar las piezas que faltan.
+Preparar el cuerpo del invernadero (el compartimento seco y el corte de la ventana) y programar en la mesa el servo que abrirá la ventana.
 
-**Al terminar tendremos:** la tabla de variables, el diagrama de flujo, el clip de la manguera exportado y el cronograma del equipo.
+**Al terminar tendremos:** la caja lista para montar las piezas impresas y el programa de la ventana funcionando con un botón.
 
 ## Materiales del equipo
 
-- Bitácora
-- Computadora con internet y la cuenta de Tinkercad del sábado 2
-- Manguera de la bomba (para medirla)
-
-Si les toca otra computadora, descarguen el archivo del sábado 2 del recuadro "Archivo de trabajo" de la Guía 2 (o de "Archivos del equipo", en la página del proyecto). Si es un `.zip`, clic derecho → **Extraer todo**.
+- Caja transparente o de plástico reciclado
+- Cartón o plástico para el compartimento seco, regla y plumón
+- Cutter (lo usa el docente), silicona, cinta
+- Servo SG90 con su brazo, botón, Arduino UNO con cable USB, protoboard, cables
+- Computadora con Arduino IDE
 
 ## Parte 1 · Revisar las plantas (10 min)
 
@@ -33,135 +33,111 @@ Midan la altura con la regla parada en la tierra, hasta la punta de la planta m�
 | Control | | | |
 :::
 
-## Parte 2 · Variables del invernadero (20 min)
+## Parte 2 · Ponerse al día (10 min)
 
-Una **variable** es algo que cambia y podemos medir.
+Si el sábado 2 no terminaron alguna pieza (soporte, bisagra o clip), termínenla ahora con la **Guía 2** y expórtenla. El docente las imprime para el sábado 4.
 
-Completen los espacios vacíos. Para cada variable piensen: ¿con qué aparato la medimos?, ¿en qué unidad?, y si cambia, ¿qué hace el invernadero (regar, abrir la ventana, encender la luz…)?
+## Parte 3 · El cuerpo del invernadero (35 min)
 
-:::tabla id="g3-variables"
-| Variable | ¿Con qué la medimos? | Unidad | ¿Qué hace el invernadero si cambia? |
-| --- | --- | --- | --- |
-| Humedad de la tierra | Sensor de humedad | Número 0 a 1023 | |
-| Temperatura del aire | | °C | |
-| Luz | Temporizador | Minutos | |
-| Agua del depósito | | | |
+Miren la imagen del invernadero completo para ver dónde va cada cosa:
+
+[IMAGEN 2.1T: mini invernadero diseñado en Tinkercad, con etiquetas: clip de la manguera, manguera, planta, depósito de agua con la bomba, maceta, ventana del techo, palito que empuja la ventana, bisagra impresa, servo en su soporte impreso, sensor de temperatura, sensor de humedad, caja y compartimento seco]
+
+1. **Compartimento seco:** pega una caja pequeña o un separador de cartón a un lado del invernadero, **fuera** de la zona de la planta. Ahí irán el Arduino y la protoboard.
+   - Debe caber el Arduino con la protoboard al lado. Pruébenlo antes de pegar.
+   - Lo importante es que el agua de la maceta y del depósito no pueda llegar ahí.
+2. **La ventana:** con ayuda del docente, corta un rectángulo de **8 × 6 cm** en el techo. Ese pedazo será la ventana: guárdenlo.
+   - Ustedes marcan el rectángulo con regla y plumón; el docente corta con el cutter.
+   - Márquenlo cerca de un lado del techo, no en el centro: al lado de la ventana irá el servo.
+3. **El lugar de cada cosa:** marquen con plumón dónde irán la maceta, el depósito de agua y el soporte del servo (bajo el techo, junto al lado de la ventana que se abrirá).
+
+:::pregunta id="g3t-p1"
+¿Por qué la ventana va en el techo y no abajo?
 :::
 
-## Parte 3 · Mapa de causa y efecto (15 min)
+## Parte 4 · La ventana en la mesa (45 min)
 
-Un **mapa de causa y efecto** muestra qué provoca qué, como un círculo:
+Antes de montar nada en la caja, programamos el servo sobre la mesa. El sábado 4 solo habrá que montarlo.
 
-> Tierra seca → la bomba se enciende → la tierra se moja → la bomba se apaga → la planta usa el agua → tierra seca...
+Conecta el servo (**naranja → D9**, **rojo → 5V**, **café → GND**) y un botón entre **D2** y **GND**. Con el Arduino **desconectado**:
 
-Recorran el círculo en la animación, paso a paso:
+1. Cable del **5V** del Arduino a la fila **+** de la protoboard y de un **GND** a la fila **−**.
+2. **Servo:** con tres cables macho–macho en su conector: naranja → pin **9**, rojo → fila **+**, café → fila **−**.
+3. **Botón:** clávalo sobre la canaleta del centro de la protoboard (dos patas de cada lado). Usa dos patas en **diagonal** (esquinas opuestas): una → pin **2**; la otra → fila **−**.
+4. Conecta el USB, elige **Arduino Uno** y su puerto en **Seleccionar placa**, crea un programa nuevo (**Archivo → Nuevo boceto**), borra lo que trae y escribe:
 
-:::animacion tipo="causa-efecto"
+```cpp
+#include <Servo.h>
+Servo ventana;
+
+const int BOTON = 2;
+bool abierta = false;
+
+void setup() {
+  pinMode(BOTON, INPUT_PULLUP);   // botón suelto = HIGH
+  ventana.attach(9);
+  ventana.write(0);               // cerrada
+}
+
+void loop() {
+  if (digitalRead(BOTON) == LOW) {    // botón presionado
+    abierta = !abierta;               // cambiar: abierta <-> cerrada
+    if (abierta) {
+      ventana.write(60);
+    } else {
+      ventana.write(0);
+    }
+    delay(500);                       // evitar doble toque
+  }
+}
+```
+
+5. Verifica (✓) y sube (→). Pongan el brazo en el eje del servo y presionen el botón: el brazo gira a 60°; presiónenlo otra vez: vuelve a 0°.
+6. Guarden el programa: **Archivo → Guardar como** → `equipo_NOMBRE_ventana`.
+
+Muevan el servo en la animación: en 0° la ventana está cerrada.
+
+:::animacion tipo="servo" variable="ventana" inicial="0"
 :::
 
-Ahora hagan uno igual para la ventana: cada paso causa el siguiente, con flechas, hasta volver al inicio.
-
-:::pregunta id="g3-p1"
-Escribe el mapa de causa y efecto de la **ventana**, empezando por "Hace calor".
-:::
-
-## Parte 4 · Diagrama de flujo (20 min)
-
-Un diagrama de flujo muestra, con figuras y flechas, los pasos del programa en orden.
-
-| Figura | Significa |
-| --- | --- |
-| Óvalo | Inicio |
-| Rectángulo | Una acción |
-| Rombo | Una pregunta Sí / No |
-
-Completen los espacios con la acción que hace el invernadero cuando la respuesta es **Sí**:
-
-:::tabla id="g3-flujo"
-| Paso | ¿Qué hace el invernadero? |
-| --- | --- |
-| 1 | Leer la humedad de la tierra |
-| 2 | ¿Tierra seca o botón presionado? Sí → ______ |
-| 3 | Leer la temperatura |
-| 4 | ¿Más de 30 °C? Sí → ______ |
-| 5 | ¿Menos de 27 °C? Sí → ______ |
-| 6 | ¿Es hora de luz? Sí → ______ · No → apagar luz |
-| 7 | Enviar los datos a la computadora y volver al paso 1 |
-:::
-
-:::animacion tipo="diagrama-flujo" programa="invernadero" ocultar="si"
-:::
-
-Dibuja el diagrama en la bitácora: óvalo de Inicio, rectángulos para las acciones (pasos 1, 3 y 7), rombos para las preguntas (pasos 2, 4, 5 y 6) con sus flechas Sí y No, y una flecha del paso 7 de regreso al paso 1.
-
-## Parte 5 · Clip para la manguera (25 min)
-
-El clip sostiene la manguera sobre la maceta para que el agua caiga en la tierra.
-
-1. Mide el diámetro de la manguera: ______ mm.
-   - Mide lo ancho de la manguera por fuera, con el calibrador (o con la regla, con cuidado).
-2. Diseño nuevo para el clip. **Anillo:** un cilindro de 12 mm de diámetro y 8 mm de alto, con un hueco del diámetro de la manguera **+ 0,5 mm**.
-   - En Tinkercad: **+ Crear → Codeblocks**, con el nombre `equipo_NOMBRE_clip`.
-   - De **Formas**, un **Cilindro** con **Radio = 6** (12 ÷ 2), **A = 8**, **Lados = 32**, **arista = 0**.
-   - Debajo, otro **Cilindro** marcado como **hueco** (círculo rayado), con **A = 20** y **Radio** = (diámetro de la manguera + 0.5) ÷ 2. Por ejemplo, si la manguera mide 7 mm: 7 + 0.5 = 7.5, y la mitad es **3.75**. No lo muevas: queda en el centro del anillo.
-3. **Abertura:** un cubo pequeño hueco (4 mm de ancho) en un lado del anillo, para que la manguera entre a presión.
-   - Debajo, un **Cubo** hueco con primer **A = 4**, **L = 10**, segundo **A = 20**.
-   - Debajo, **Mover: X 0, Y 6, Z 0**: se "come" un pedacito del anillo de un lado.
-4. **Pestaña:** un cubo de 20 × 10 × 2 mm pegado al anillo, para fijarlo a la pared.
-   - Debajo, un **Cubo** (sólido) con primer **A = 20**, **L = 10**, segundo **A = 2**.
-   - Debajo, **Mover: X 0, Y −10, Z 0**, del lado contrario a la abertura.
-5. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
-   - **✔ Revisa:** mira desde arriba (cara **SUPERIOR** del cubito de vistas): el anillo debe quedar como una letra C, con la pestaña del otro lado.
-6. Exporta `equipo_NOMBRE_clip.stl`.
-   - **Compartir** → en **Descargar un archivo**, toca **.STL**. Cámbiale el nombre si hace falta.
-
-[IMAGEN 3.1T: clip de manguera en Tinkercad Codeblocks con anillo abierto y pestaña para pegar]
-
-## Parte 6 · Cronograma (15 min)
-
-Escriban un responsable principal para cada meta: quien se asegura de que salga (el equipo ayuda).
-
-:::tabla id="g3-cronograma"
-| Sábado | Meta | Responsable principal |
+:::tabla id="g3t-prueba"
+| Prueba | ¿Funciona? | Observación |
 | --- | --- | --- |
-| 4 | Caja, ventana y servo | |
-| 5 | Bomba y riego con botón | |
-| 6 | Calibrar el riego automático | |
-| 7 | Temperatura y registro de datos | |
-| 8 | Luz automática y presentación | |
+| Al encender, el brazo va a 0° | | |
+| Un toque al botón: el brazo gira a 60° | | |
+| Otro toque: vuelve a 0° | | |
+:::
+
+:::pregunta id="g3t-p2"
+¿Qué hace la línea `abierta = !abierta;`?
 :::
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g3-logramos"
-- [ ] Completamos la tabla de variables.
-- [ ] Hicimos los mapas de causa y efecto.
-- [ ] Completamos el diagrama de flujo.
-- [ ] Exportamos el clip de la manguera.
-- [ ] Tenemos cronograma.
+:::checklist id="g3t-logramos"
+- [ ] Revisamos las plantas.
+- [ ] El invernadero tiene compartimento seco.
+- [ ] La ventana está cortada en el techo.
+- [ ] El servo se mueve con el botón.
 :::
 
-## Reto extra
+## Bitácora (15 min)
 
-Diseña una **bandeja** para poner debajo de la maceta y recoger el agua que sobra.
-
-Pista: mide el fondo de tu maceta. En un diseño nuevo, haz un **Cilindro** un poco más ancho y bajo, y debajo otro **Cilindro** hueco un poco más angosto con **Mover Z 2** (subido 2 mm), para que quede con fondo y borde. Agrupa con **Seleccionar todo** y **Group Selection**.
-
-## Bitácora (10 min)
-
-:::pregunta id="g3-b1"
+:::pregunta id="g3t-b1"
 ¿Qué diferencia hay entre un control **manual** y uno **automático**? Da un ejemplo del invernadero.
 :::
 
-Antes de irse, suban aquí el `.stl` del clip. El diseño de bloques queda guardado en Tinkercad.
+Antes de irse, suban aquí `equipo_NOMBRE_ventana`.
 
 :::archivo id="g3-archivo"
-**Archivo de trabajo:** suban aquí el .stl que exportaron. Sus diseños de bloques quedan guardados en Tinkercad (**Diseños → Codeblocks**). Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- Flujo: 2 regar; 4 abrir ventana; 5 cerrar ventana; 6 encender luz.
-- Variables: temperatura con DHT11; agua del depósito con sensor de nivel (se ve en el sábado 11).
-- Imprimir los clips esta semana (≈10 min cada uno).
-- Tiempo total: 10 + 20 + 15 + 20 + 25 + 15 + 5 + 10 = 120 minutos.
+- **Versión Tinkercad, reestructurada el 23 de octubre:** se quitan las variables, los mapas de causa y efecto, el diagrama de flujo y el cronograma; entran el cuerpo del invernadero y el programa de la ventana de la Guía 4 normal (en la mesa, mientras se imprimen las piezas). Campos propios (g3t-…); la tabla de plantas mantiene su campo.
+- El docente corta con el cutter; los estudiantes marcan con regla.
+- g3t-p1: el aire caliente sube; por arriba sale mejor.
+- g3t-p2: cambia el valor de verdadero a falso o al revés (`!` significa "lo contrario").
+- g3t-b1: manual = la persona presiona el botón para abrir; automático = el sensor de temperatura abre la ventana solo (sábado 7).
+- Tiempo total: 10 + 10 + 35 + 45 + 5 + 15 = 120 minutos.
 :::

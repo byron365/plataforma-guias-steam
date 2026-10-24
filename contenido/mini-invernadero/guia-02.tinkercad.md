@@ -1,24 +1,23 @@
 ---
-titulo: Diseñar la casa de la planta
+titulo: Las piezas del invernadero en 3D
 guia: 2
 sabado: 2
-sesion: Ideación y diseño
+sesion: Diseño 3D
 duracion: 120
 ---
 
-# Guía 2 · Diseñar la casa de la planta
+# Guía 2 · Las piezas del invernadero en 3D
 
 ## Objetivo del día
 
-Dibujar el invernadero con medidas y dar los primeros pasos en Tinkercad Codeblocks (diseño 3D con bloques) modelando el soporte del servo y la bisagra de la ventana.
+Conocer cómo será nuestro invernadero y diseñar en Tinkercad Codeblocks sus tres piezas impresas: el **soporte del servo**, la **bisagra** de la ventana y el **clip** de la manguera.
 
-**Al terminar tendremos:** el boceto del invernadero y dos piezas exportadas para imprimir: el soporte del servo y la bisagra.
+**Al terminar tendremos:** las tres piezas exportadas en STL y listas para imprimir.
 
 ## Materiales del equipo
 
-- Bitácora, lápiz, regla
-- La caja que usaremos (para medirla)
-- 1 servo SG90 (para medirlo)
+- Un servo SG90 y la manguera de la bomba (para medirlos)
+- Regla o calibrador
 - Computadora con internet y mouse con rueda
 - Cuenta de Tinkercad (la del equipo o la que indique el docente)
 
@@ -37,37 +36,19 @@ Cada sábado empezamos revisando las dos macetas:
 | Control | | | |
 :::
 
-## Parte 2 · El boceto (25 min)
+## Parte 2 · Nuestro invernadero (10 min)
 
-Mide la caja del equipo y dibuja el invernadero **de frente** y **de lado**:
+El invernadero es una caja con la **maceta** adentro. Un **depósito** con una **bomba** riega la tierra por una **manguera**; una **ventana** en el techo se abre con un **servo** cuando hace calor; y el Arduino va en un **compartimento seco**, lejos del agua.
 
-Midan con la regla por fuera de la caja: **largo** es el lado más grande de la base, **ancho** el más corto y **alto** desde la mesa hasta arriba.
+[IMAGEN 2.1T: mini invernadero diseñado en Tinkercad, con etiquetas: clip de la manguera, manguera, planta, depósito de agua con la bomba, maceta, ventana del techo, palito que empuja la ventana, bisagra impresa, servo en su soporte impreso, sensor de temperatura, sensor de humedad, caja y compartimento seco]
 
-| Medida de la caja | Valor (cm) |
-| --- | --- |
-| Largo | |
-| Ancho | |
-| Alto | |
+Las piezas que diseñamos hoy (el docente las imprime para los sábados 4 y 5):
 
-En el boceto marca:
-
-1. La **maceta** en el centro.
-2. La **ventana** en el techo (por ahí sale el aire caliente, porque el aire caliente sube).
-3. El **servo** que empuja la ventana.
-4. El **depósito de agua**, la **bomba** y la **manguera** que llega a la maceta.
-5. Un **compartimento seco**, separado, para el Arduino y la protoboard.
-
-Hagan dos dibujos en la misma hoja: "de frente" (como si miraran la caja de cara) y "de lado" (desde un costado). Escriban las medidas de la caja junto a cada lado.
-
-[IMAGEN 2.1: boceto del invernadero de frente y de lado con la ventana en el techo, el depósito y el compartimento seco]
-
-:::foto id="g2-boceto"
-Foto del boceto del equipo.
-:::
-
-:::pregunta id="g2-p1"
-¿Por qué el Arduino debe ir en un compartimento separado?
-:::
+| Pieza | ¿Para qué sirve? | ¿Cuántas se imprimen? |
+| --- | --- | --- |
+| Soporte del servo | Sostiene el servo bajo el techo, junto a la ventana | 1 |
+| Bisagra | La ventana gira sobre ella; dos hojas unidas por un palito de pincho | 2 hojas |
+| Clip de la manguera | Sostiene la manguera sobre la maceta | 1 |
 
 ## Parte 3 · Conociendo Tinkercad Codeblocks (15 min)
 
@@ -77,23 +58,12 @@ En **Codeblocks** no se dibuja con el mouse: se arma un programa con bloques (co
    - Abre el navegador, entra a **tinkercad.com** e inicia sesión con la cuenta que indique el docente.
    - Si la página está en inglés: baja hasta el final y en la lista de idiomas elige **Español**.
 2. Crea un diseño de Codeblocks.
-   - Arriba a la derecha, botón **+ Crear** → **Codeblocks**.
-   - Se abre el editor. Si aparece una ventana de bienvenida o un tutorial, ciérrala.
+   - Arriba a la derecha, botón **+ Crear** → **Codeblocks**. Si aparece una ventana de bienvenida o un tutorial, ciérrala.
 3. Ponle nombre al diseño.
-   - Arriba a la izquierda aparece un nombre inventado (por ejemplo "Tremendous Jaiks-Esboo"). Haz clic sobre él, bórralo y escribe `equipo_NOMBRE_soporte` (cambia NOMBRE por el de tu equipo). Presiona **Enter**.
+   - Arriba a la izquierda aparece un nombre inventado. Haz clic sobre él, bórralo y escribe `equipo_NOMBRE_soporte` (cambia NOMBRE por el de tu equipo). Presiona **Enter**.
    - El diseño se guarda solo mientras trabajas. Lo encuentras otra vez en Tinkercad: **Diseños → Codeblocks**.
 
-Conoce las partes del editor:
-
-| Parte | Dónde está y para qué sirve |
-| --- | --- |
-| Categorías | Columna de círculos de colores a la izquierda: **Formas**, **Modificar**, **Controlar**, **Matemáticas**, **Variables**, **Plantillas**, **Marcar** |
-| Bloques | Junto a las categorías. Al tocar una categoría se ven sus bloques |
-| Área de programa | El espacio oscuro del centro: ahí se arrastran y se unen los bloques |
-| Vista 3D | El recuadro de la derecha con el **Plano de trabajo**: ahí aparece la pieza |
-| Botones de abajo | **▷** ejecuta el programa; **↻** borra la pieza para volver a empezar |
-
-Aprende a usar los bloques. Prueba cada acción:
+[IMAGEN 2.2T: editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones]
 
 | Acción | Cómo se hace |
 | --- | --- |
@@ -102,95 +72,103 @@ Aprende a usar los bloques. Prueba cada acción:
 | Borrar un bloque | Arrástralo de vuelta a la columna de bloques de la izquierda |
 | Ver las medidas de una forma | Toca la flecha **›** del bloque. Para ocultarlas, toca **‹** |
 | Cambiar un número | Haz clic en el número, borra, escribe el nuevo y haz clic afuera. Usa **punto** para decimales (23.4) |
-| Ver la pieza | Botón **▷** de abajo. En la vista 3D: arrastra con el mouse para girarla (si no gira, prueba arrastrando con el botón derecho) y usa la rueda para acercar |
+| Ver la pieza | Botón **▷** de abajo. En la vista 3D: arrastra con el mouse para girarla (si no gira, prueba con el botón derecho) y usa la rueda para acercar |
 | Deshacer | Flecha **↶** de arriba a la izquierda del área de programa |
 
 - **Las medidas están en milímetros.** Si escribes 32, la pieza mide 32 mm.
-- Cada forma nueva aparece **centrada**: su centro queda en X = 0, Y = 0, Z = 0, así que la mitad queda arriba del plano de trabajo y la mitad abajo. Con **Mover** la llevan a su lugar.
+- Cada forma nueva aparece **centrada**: su centro queda en X = 0, Y = 0, Z = 0. Con **Mover** la llevan a su lugar.
+- Un **hueco** es una forma que se resta: se marca tocando su **círculo rayado** (el círculo de color se pone gris) y se resta al **agrupar**.
 - **¿Te perdiste en la vista 3D?** Toca la casita 🏠 que está a la izquierda de la vista.
 
-[IMAGEN 2.2T: editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones]
+## Parte 4 · El soporte del servo (20 min)
 
-## Parte 4 · El soporte del servo (25 min)
+El soporte es una caja con un **hueco** donde entra el servo, un poco más grande que él (la **holgura**).
 
-El soporte es una caja con un **hueco** donde entra el servo. En Tinkercad, un hueco es una forma marcada como **hueco**: al **agrupar**, se resta de las formas sólidas y deja el espacio vacío.
+[IMAGEN 2.3T: soporte del servo en Tinkercad Codeblocks, con etiquetas: hueco del servo de 23.4 × 12.8 mm y caja de 32 × 18 × 20 mm]
 
-1. **Caja exterior:** un Cubo de 32 × 18 × 20 mm.
-   - En el diseño `equipo_NOMBRE_soporte`, toca la categoría **Formas** y arrastra el bloque **Cubo** al área de programa. Ahora dice **Añadir**.
-   - Toca su flecha **›**: el primer **A** es el **ancho** (X): **32**. **L** es el **largo** (Y): **18**. El segundo **A** es el **alto** (Z): **20**. **arista** = **0**.
-2. **Hueco:** otro Cubo de 23.4 × 12.8 × 18 mm, marcado como hueco (un poco más grande que el servo: la **holgura**).
-   - Arrastra otro **Cubo** justo debajo del primero, toca su **›** y escribe: primer A = **23.4**, L = **12.8**, segundo A = **18**, arista = **0**.
-   - Toca su **círculo rayado**: el círculo de color se pone gris. Eso significa que es un **hueco**.
+1. **Caja exterior:** en el diseño `equipo_NOMBRE_soporte`, de **Formas** arrastra un **Cubo**. Toca su **›**: primer **A = 32** (ancho), **L = 18** (largo), segundo **A = 20** (alto), **arista = 0**.
+2. **Hueco:** debajo, otro **Cubo** con primer **A = 23.4**, **L = 12.8**, segundo **A = 18**, **arista = 0**. Toca su **círculo rayado** para que sea hueco.
    - De **Modificar**, arrastra **Mover:** debajo y escribe **X: 0**, **Y: 0**, **Z: 2**. El hueco sube 2 mm: abajo queda un piso de 3 mm y arriba el hueco sale de la caja.
-3. **Agrupar:** de **Modificar**, arrastra **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección").
-   - Ejecuta con **▷**. **✔ Revisa:** gira la vista 3D: la caja debe tener el hueco arriba. Si sale sólida, revisa que el segundo cubo tenga el círculo de color en gris.
-4. Exporta `equipo_NOMBRE_soporte.stl`.
-   - Arriba a la derecha, **Compartir** → en **Descargar un archivo**, toca **.STL**. El archivo queda en **Descargas**.
-   - Si no se llama `equipo_NOMBRE_soporte.stl`, cámbiale el nombre: clic derecho → **Cambiar nombre**.
-
-[IMAGEN 2.3T: soporte del servo terminado en Tinkercad Codeblocks]
+3. **Agrupar:** de **Modificar**, **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección").
+   - Ejecuta con **▷**. **✔ Revisa:** gira la vista 3D: la caja debe tener el hueco arriba. Si sale sólida, revisa que el segundo cubo tenga el círculo en gris.
+4. **Exporta** `equipo_NOMBRE_soporte.stl`: arriba a la derecha, **Compartir** → **.STL**. Si en **Descargas** no se llama así, cámbiale el nombre (clic derecho → **Cambiar nombre**).
 
 ## Parte 5 · La bisagra (25 min)
 
-La bisagra tiene dos **hojas** que giran sobre un **pasador** (un palito de pincho). Va en **otro diseño**, porque al exportar se guarda todo lo que hay en el diseño.
+Cada hoja de la bisagra es una placa con un **nudillo** (un cilindro acostado) con un agujero para el **pasador** (un palito de pincho). Se imprimen dos hojas iguales.
 
-Recuerda: cada forma nace **centrada** (en X = 0, Y = 0, Z = 0), **Mover** mueve la última forma que agregaste y **Girar alrededor** (de Modificar) la gira desde su centro.
+[IMAGEN 2.4T: hoja de bisagra en Tinkercad Codeblocks, con etiquetas: hoja de 30 × 20 × 3 mm, nudillo y agujero del pasador]
+
+Recuerda: **Girar alrededor** (de Modificar) gira la última forma desde su centro.
 
 1. Diseño nuevo: **+ Crear → Codeblocks**, con el nombre `equipo_NOMBRE_bisagra`.
 2. **Hoja:** un **Cubo** con primer **A = 30**, **L = 20**, segundo **A = 3**, **arista = 0**. No lo muevas.
-3. **Nudillo:** un cilindro de 6 mm de diámetro y 30 mm de largo, acostado en el borde de la hoja.
-   - Debajo, un **Cilindro** con **Radio = 3** (6 ÷ 2), **A = 30**, **Lados = 32**, **arista = 0**.
-   - **Acostarlo:** de **Modificar**, arrastra **Girar alrededor** debajo. Cambia **Eje x** por **Eje y** y escribe **90** grados. Ahora va a lo largo de la hoja.
+3. **Nudillo:** un **Cilindro** con **Radio = 3**, **A = 30**, **Lados = 32**.
+   - **Acostarlo:** debajo, **Girar alrededor** con **Eje y** y **90** grados.
    - Debajo, **Mover: X 0, Y 10, Z 0**. (La hoja mide 20 en Y, así que su borde está en Y = 10.)
-4. **Agujero del pasador:** un cilindro de **3 mm** de diámetro y 40 mm de largo, hueco, en el mismo lugar.
-   - Debajo, otro **Cilindro** con **Radio = 1.5**, **A = 40**, **Lados = 32**, marcado como **hueco** (círculo rayado).
-   - Debajo, **Girar alrededor** con **Eje y** y **90** grados, y luego **Mover: X 0, Y 10, Z 0**.
-5. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
-   - **✔ Revisa** mirando de lado: debe verse un círculo con agujero en el borde de la hoja.
-   - Esa es una hoja de la bisagra; se imprimen **dos** y se unen con el palito.
+4. **Agujero del pasador:** otro **Cilindro** con **Radio = 1.5**, **A = 40**, **Lados = 32**, marcado como **hueco**. Debajo, **Girar alrededor** con **Eje y** y **90**, y **Mover: X 0, Y 10, Z 0**.
+5. **Seleccionar todo**, **Group Selection** y ejecuta. **✔ Revisa** mirando de lado: un círculo con agujero en el borde de la hoja.
+6. **Exporta** `equipo_NOMBRE_bisagra.stl`. Solo se exporta **una** hoja: el docente imprime dos.
 
-[IMAGEN 2.4T: hoja de bisagra en Tinkercad Codeblocks con su nudillo y el agujero para el pasador]
-
-:::pregunta id="g2-p2"
+:::pregunta id="g2t-p1"
 El palito mide unos 2,5 mm. ¿Por qué el agujero mide 3 mm?
 :::
 
-6. Exporta `equipo_NOMBRE_bisagra.stl`.
-   - **Compartir** → **.STL**, y cámbiale el nombre si hace falta.
-   - Solo se exporta **una** hoja: el docente imprime dos copias.
+## Parte 6 · El clip de la manguera (20 min)
+
+El clip se pega en la pared, encima de la maceta, y sostiene la manguera para que el agua caiga en la tierra. Tiene un **anillo** abierto donde la manguera entra a presión y una **pestaña** para pegarlo.
+
+[IMAGEN 2.5T: clip de la manguera en Tinkercad Codeblocks, con etiquetas: anillo con el hueco de la manguera, abertura y pestaña para pegar]
+
+Primero midan el diámetro de la manguera **por fuera**, con el calibrador o la regla:
+
+:::tabla id="g2t-manguera"
+| Medida | Ejemplo (mm) | Nuestra medida (mm) |
+| --- | --- | --- |
+| Diámetro de la manguera | 7 | |
+| Radio del hueco = (diámetro + 0.5) ÷ 2 | 3.75 | |
+:::
+
+1. Diseño nuevo: `equipo_NOMBRE_clip`.
+2. **Anillo:** un **Cilindro** con **Radio = 6**, **A = 8**, **Lados = 32**.
+3. **Hueco de la manguera:** otro **Cilindro** hueco con **Radio = 3.75** (o el de su tabla) y **A = 20**. No lo muevas: queda en el centro del anillo.
+4. **Abertura:** un **Cubo** hueco con primer **A = 4**, **L = 10**, segundo **A = 20**. Debajo, **Mover: X 0, Y 6, Z 0**: se "come" un pedacito del anillo.
+5. **Pestaña:** un **Cubo** (sólido) con primer **A = 20**, **L = 10**, segundo **A = 2**. Debajo, **Mover: X 0, Y −10, Z 0**, del lado contrario a la abertura.
+6. **Seleccionar todo**, **Group Selection** y ejecuta. **✔ Revisa** desde arriba (cara **SUPERIOR** del cubito de vistas): el anillo como una letra C, con la pestaña del otro lado.
+7. **Exporta** `equipo_NOMBRE_clip.stl`.
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g2-logramos"
+:::checklist id="g2t-logramos"
 - [ ] Revisamos las plantas.
-- [ ] El boceto tiene medidas y todas sus partes.
-- [ ] Modelamos el soporte del servo.
-- [ ] Modelamos la bisagra.
-- [ ] Exportamos las dos piezas en STL.
+- [ ] Exportamos el soporte del servo.
+- [ ] Exportamos la bisagra.
+- [ ] Exportamos el clip de la manguera.
 :::
 
 ## Reto extra
 
-Agrega dos agujeros de 3 mm en cada hoja de la bisagra para atornillarla o coserla a la caja.
+Agrega dos agujeros de 3 mm en la hoja de la bisagra para atornillarla o coserla a la caja.
 
-Pista: en el diseño de la bisagra, antes de **Seleccionar todo**, agrega dos **Cilindros** huecos con **Radio = 1.5** y **A = 10** (parados, sin girar), en la parte plana de la hoja y lejos del nudillo (por ejemplo **Mover: X −8, Y −4, Z 0** y **Mover: X 8, Y −4, Z 0**). Ejecuta y vuelve a exportar.
+Pista: antes de **Seleccionar todo**, dos **Cilindros** huecos con **Radio = 1.5** y **A = 10** (parados, sin girar), en la parte plana de la hoja y lejos del nudillo (por ejemplo **Mover: X −8, Y −4, Z 0** y **Mover: X 8, Y −4, Z 0**). Ejecuta y vuelve a exportar.
 
 ## Bitácora (15 min)
 
-:::pregunta id="g2-b1"
-¿Qué bloque de Tinkercad nos pareció más útil?
+:::pregunta id="g2t-b1"
+¿Qué bloque de Tinkercad nos pareció más útil y por qué?
 :::
 
-Antes de irse, guarden juntos en un `.zip` los dos `.stl` (selecciónenlos → clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí. Los diseños de bloques quedan guardados en Tinkercad (**Diseños → Codeblocks**).
+Antes de irse, guarden juntos en un `.zip` los tres `.stl` (selecciónenlos → clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí.
 
 :::archivo id="g2-archivo"
 **Archivo de trabajo:** suban aquí los .stl que exportaron (o el .zip). Sus diseños de bloques quedan guardados en Tinkercad: en cualquier computadora entran con la misma cuenta y los abren en **Diseños → Codeblocks**. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- Imprimir esta semana: 1 soporte y 2 hojas de bisagra por equipo (≈1 h en total).
-- Si la caja es de plástico delgado, la bisagra se puede pegar con silicona; si es de cartón, también sirve una bisagra de cinta.
-- g2-p2: holgura para que el pasador gire sin trabarse.
-- **Versión Tinkercad (Codeblocks):** mismas piezas y medidas que la versión Blender, en dos diseños (soporte y bisagra). Las formas nacen centradas en el origen, como en Blender. Tinkercad necesita internet y una cuenta por equipo (o una clase de Tinkercad).
-- Tiempo total: 10 + 25 + 15 + 25 + 25 + 5 + 15 = 120 minutos.
+- **Versión Tinkercad, reestructurada el 23 de octubre** (más práctica, como el Puente y el Laberinto): se quita el boceto y se diseñan aquí las tres piezas (el clip venía en la Guía 3). Campos propios (g2t-…); la tabla de plantas mantiene su campo.
+- Diseños de referencia en la cuenta del docente: "Mini invernadero - propuesta completa" (caja sin la pared de adelante, de 30 × 20 × 20 cm de ejemplo) e "Invernadero - modelo piezas".
+- Imprimir esta semana: 1 soporte, 2 hojas de bisagra y 1 clip por equipo (≈ 1 h 10 min en total).
+- g2t-p1: holgura para que el pasador gire sin trabarse.
+- Si la caja es de plástico delgado, la bisagra se pega con silicona; si es de cartón, también sirve una bisagra de cinta.
+- Tiempo total: 10 + 10 + 15 + 20 + 25 + 20 + 5 + 15 = 120 minutos.
 :::

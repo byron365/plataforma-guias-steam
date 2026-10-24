@@ -349,8 +349,8 @@ TT, ruedas y rueda loca) y se diseñan las cuatro piezas propuestas.
   el cambio. Probado en el 3001 con datos temporales: un equipo "practica" ve 6 guías y la 9 da "Guía no encontrada".
 - **Guías** (`guia-NN.practica.md`, campos propios gNp-; la Guía 1 es la normal):
   2P chasis + soporte del HC-SR04 (medir motor, rueda y rueda loca; X de la oreja y alto de la columna calculados) ·
-  3P poste, bandeja y caja + tapa del mando, más el ajuste del LM2596 · 4P armar (piso de abajo, bandeja, potencia,
-  TB6612, sensor, divisor, prueba de motores) · 5P HC-05 en modo AT, mando armado en su caja y prueba UART inalámbrica con
+  3P poste, bandeja y caja + tapa del mando · 4P armar (piso de abajo, bandeja, dos baterías,
+  L298N, sensor, divisor, prueba de motores) · 5P HC-05 en modo AT, mando armado en su caja y prueba UART inalámbrica con
   `equipo_NOMBRE_uart` · 6P mezcla diferencial, código del robot y del mando (copiados de la Guía 5 normal), prueba
   integrada, tabla de motores y AJUSTE_DER (de la Guía 7 normal); reto: slalom de 4 conos (de la Guía 10).
   Quedan fuera: arquitectura, comparación de puentes H, fusible calculado, pruebas con datos, rampa, freno, alerta de
@@ -364,13 +364,66 @@ TT, ruedas y rueda loca) y se diseñan las cuatro piezas propuestas.
   126 × 66 × 33 (paredes de 3, agujero del USB en la pared izquierda) y tapa 126 × 66 × 3 con ventana de la OLED 25 × 14 y
   cerco del joystick (el mismo de la base del laberinto).
 - Diseños en el Tinkercad del docente: "Robot con mando - propuesta completa" y "Robot - modelo chasis / soporte del
-  sensor / bandeja / caja y tapa del mando". Imágenes 2.1P, 2.2P, 2.3P, 3.1P y 3.2P con etiquetas.
+  sensor / bandeja / caja y tapa del mando". Imágenes 2.1P, 2.3P, 2.4P, 3.1P y 3.2P con etiquetas; la 2.2P es el
+  editor de Codeblocks con sus partes (la misma IMAGEN 2.3T del Dispensador).
 - **STL** en `..\Robot con mando - STL para imprimir\` (fuera de esta carpeta), generados con `herramientas/robot_stl.py`
   (sólidos cerrados): chasis 89,5 cm³, poste 2,7, bandeja 59,8, soporte del sensor 4,6, caja 57,8 y tapa 25,5 cm³.
 - [ ] Probar con piezas reales antes de imprimir para todos: un motor TT en la oreja (tornillos M3 × 30 o cincho), el
   alto de la columna con la rueda loca de la academia, el portabaterías en su cerco y el HC-SR04 en su soporte.
+- **Dos fuentes y L298N (23 de octubre, decisión de Bairon):** batería 2S → fusible → interruptor → +12V del L298N; pila de
+  9 V → interruptor → jack del Arduino (regulador interno); GND del L298N unido al del Arduino; el borne 5V del L298N queda
+  libre (con su puente puesto) y se quitan los puentes de ENA/ENB. Sin LM2596: la Guía 3P ya no ajusta regulador (la caja
+  del mando pasa a 45 min). Mismos pines que la versión completa (ENA D5, IN1 D7, IN2 D8, ENB D6, IN3 D4, IN4 D9); el código
+  de la 4P y la 6P solo pierde STBY (compilado con arduino-cli). La pila de 9 V va sobre el chasis, entre los postes. Imagen
+  2.1P y diseño "propuesta completa" actualizados (L298N y pila de 9 V); la 2.2P es el editor de Codeblocks (la 2.3T del
+  Dispensador) y el chasis y el soporte pasaron a 2.3P y 2.4P.
 - [ ] Imagen 5.1P: foto real del mando armado en su caja.
+- [ ] Imagen 4.1P: esquema de las dos fuentes con el GND común.
 - [ ] Revisar en el panel docente la tabla de avance con un equipo en versión Práctica (columnas 7 a 14 con "—").
+- Ranura del chasis alargada a 22 mm (Z 15.5) el 23 de octubre: según el plano de Adafruit del TT (producto 3777), los
+  agujeros están a 2,4 mm de la cara de arriba del motor y la ranura de 20 mm empezaba a 2 mm. Guía 2P, `robot_stl.py`, el
+  STL y el diseño "Robot - modelo chasis" actualizados.
+
+**Banda clasificadora, versión "Práctica (7 sábados)" (23 de octubre)**, a pedido de Bairon ("más prácticas… 6 o 7 guías
+comenzando desde la 2, vamos con el diseño"). Decisiones de Bairon: imprimir rodillos y soportes, túnel del sensor y
+soporte del servo con desviador; 7 sábados; sin la simulación en Wokwi; motor **TT** (no el de 12 V) con **TIP41C** y un
+**cargador de celular de 5 V** (≥ 2 A) en lugar de la fuente de 12 V, el LM2596 y el IRLZ44N.
+- **Guías** (`guia-NN.practica.md`, campos gNp-; la Guía 1 es la normal): 2P rodillos (del motor con hueco del eje TT
+  3.9 × 5.6, libre con agujero R2), soporte del rodillo (×3), soporte del motor (ranura 3.4 × 22 a 55 mm) y soporte del
+  servo · 3P túnel (TCS34725 arriba, ventana del IR en la pared), puente de salida (agujero 26 × 28, tope, patas solo del
+  lado de la banda) y canaleta (Cuña 20³ con Escala 1.5 × 2.75 × 1.25 y dos paredes) · 4P armar la banda, TIP41C con LED y
+  con motor (diodo, capacitor de 470–1000 µF), túnel, IR, puente y servo · 5P la Guía 5 normal (mismos programas) con la
+  canaleta pegada con el servo en 90° y el servo en los 5 V del cargador · 6P la Guía 6 normal (calibrar, RECORRIDO hasta el
+  agujero del puente, lote de 15) · 7P luz ambiente con proporciones, ángulos de la canaleta, antirrebote y lote final de
+  30 piezas (de la Guía 10).
+- **Desviador:** canaleta giratoria debajo del final (una paleta con un solo servo solo da dos salidas). El puente de salida
+  recibe la pieza al final de la banda y la deja caer sobre el eje del servo; la canaleta (55 mm, rampa de 25 mm) gira a
+  30/90/150° sin tocar el rodillo (las patas del puente están en X 218–230 y la canaleta barre desde X 216).
+- **Medidas del armado** (origen en el centro de la banda, X a lo largo, base en Z 0): ejes de los rodillos a 55 mm, rodillo
+  libre en X −200 y del motor en X 200 (40 cm), banda arriba a 70 mm; túnel centrado en X 110 (sensor a 12 cm del agujero);
+  agujero del puente y eje del servo en X 233; servo con el horn a unos 32 mm; contenedores a 65–70 mm del eje del servo,
+  de menos de 3 cm de alto. Base de unos 60 × 22 cm.
+- **La Cuña de Codeblocks** no tiene medidas: 20 × 20 × 20 mm, centrada, lado alto en Y negativa; se ajusta con Escala.
+- Diseños en el Tinkercad del docente: "Banda clasificadora - propuesta completa", "Banda - modelo rodillos y soportes" y
+  "Banda - modelo tunel, puente y canaleta". Imágenes 2.1P, 2.3P y 3.1P con etiquetas; la 2.2P es el editor de Codeblocks.
+- **STL** en `..\Banda clasificadora - STL para imprimir\` (fuera de esta carpeta), generados con `herramientas/banda_stl.py`
+  (sólidos cerrados). El túnel y el puente se imprimen volteados.
+- [ ] Probar con piezas reales: el rodillo en el eje del TT, la banda tensa entre rodillos de 40 cm, que la pieza caiga por
+  el agujero del puente sobre la canaleta y resbale hasta el contenedor (rampa de unos 24°), y el TIP41C con el TT.
+- [ ] La Guía 1 normal todavía habla de la fuente de 12 V, el regulador y el MOSFET (tabla de roles): ajustar si se quiere.
+
+**Mini invernadero, versión Tinkercad reestructurada (23 de octubre)**, a pedido de Bairon ("centrarla más en la práctica,
+comenzar con los diseños 3D y colocar las imágenes"). Sigue con 14 sábados (las guías 5 en adelante son las normales).
+- **2T** "Las piezas del invernadero en 3D": las tres piezas impresas (soporte del servo, bisagra y clip de la manguera,
+  que venía en la 3T), con la imagen del conjunto, el editor y cada pieza. Sin boceto.
+- **3T** "La casa y la ventana en la mesa": compartimento seco, corte de la ventana (8 × 6 cm) y el programa de la ventana
+  con servo y botón (de la Guía 4 normal) en la mesa, mientras se imprimen las piezas. Sin variables, causa y efecto,
+  diagrama de flujo ni cronograma.
+- **4T** "Montar la ventana" (nueva): bisagra, soporte y palito del servo en el techo y ajuste del ángulo (la Guía 7 usa
+  ese ángulo).
+- Campos propios g2t-/g3t-/g4t-; las tablas de plantas, la foto y la bitácora de la Guía 4 mantienen sus campos.
+- Diseños en el Tinkercad del docente: "Mini invernadero - propuesta completa" (caja de 30 × 20 × 20 cm sin la pared de
+  adelante) e "Invernadero - modelo piezas". Imágenes 2.1T, 2.3T, 2.4T, 2.5T y 4.1T con etiquetas; la 2.2T es el editor.
 
 **Mini invernadero, imagen 1.3 (17 de octubre):** circuito del sensor de humedad armado en Tinkercad Circuits (diseño
 "Invernadero G1 - sensor de humedad" en la cuenta del docente) y probado con el código de la Guía 1 (0 en seco, 847

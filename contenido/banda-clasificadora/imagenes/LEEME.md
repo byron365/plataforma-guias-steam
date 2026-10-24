@@ -16,3 +16,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_11.1.png | banda clasificadora en la demostración con las piezas cayendo en los tres contenedores de colores |
 | IMAGEN_13.1.png | máquina clasificadora de granos de café por color en una planta procesadora |
 | IMAGEN_14.1.png | celular mostrando los mensajes PIEZA con el conteo de la banda en una app de terminal Bluetooth |
+
+**Versión Práctica (7 sábados)** de las guías 2 a 7 (archivos `guia-NN.practica.md`), hechas el 23 de octubre con los diseños de Tinkercad Codeblocks y etiquetas. También usan IMAGEN_5.1 de la versión completa.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN 2.1P.png ✅ | banda clasificadora completa en Tinkercad, con etiquetas: banda, pieza, rodillo libre, soporte del rodillo, base, puente de salida, túnel, sensor de color, canaleta giratoria, motor TT, contenedores, sensor IR y soporte del motor (también en la Guía 4P) |
+| IMAGEN 2.2P.png ✅ | editor de Codeblocks con sus partes señaladas (la misma IMAGEN 2.3T del Dispensador) |
+| IMAGEN 2.3P.png ✅ | rodillos y soportes con etiquetas: agujero del palito, rodillo del motor, rodillo libre, soporte del rodillo, ranura del motor, soporte del motor, soporte del servo y pie con agujeros |
+| IMAGEN 3.1P.png ✅ | túnel, puente de salida y canaleta con etiquetas: ventanas de los sensores, agujero por donde cae la pieza, tope, pata y rampa de la canaleta |

@@ -10,15 +10,14 @@ duracion: 120
 
 ## Objetivo del día
 
-Diseñar los postes, la bandeja (el piso de arriba del robot) y la caja del mando, y dejar el regulador LM2596 ajustado a 5 V para la próxima semana.
+Diseñar los postes, la bandeja (el piso de arriba del robot) y la caja del mando.
 
-**Al terminar tendremos:** todas las piezas del robot y del mando exportadas en STL y el regulador entregando 5,0 V.
+**Al terminar tendremos:** todas las piezas del robot y del mando exportadas en STL y listas para imprimir.
 
 ## Materiales del equipo
 
-- El portabaterías del robot y el joystick, con una regla o calibrador
+- El portabaterías de los motores y el joystick, con una regla o calibrador
 - Computadora con internet y la cuenta de Tinkercad
-- Regulador LM2596, batería (o fuente de 7–8 V), multímetro y destornillador pequeño
 
 ## Parte 1 · Ponerse al día (10 min)
 
@@ -52,7 +51,7 @@ Creen un diseño nuevo (**+ Crear → Codeblocks**) llamado `equipo_NOMBRE_poste
 
 La bandeja es el piso de arriba. Tiene los mismos cuatro agujeros que el chasis (para los postes), un paso para los cables y un cerco donde encaja el portabaterías.
 
-[IMAGEN 3.1P: bandeja en Tinkercad Codeblocks, con etiquetas: cerco del portabaterías, paso de los cables, agujeros de los postes, placa de la bandeja y el lugar del Arduino, la protoboard y el LM2596]
+[IMAGEN 3.1P: bandeja en Tinkercad Codeblocks, con etiquetas: cerco del portabaterías, paso de los cables, agujeros de los postes, placa de la bandeja y el lugar del Arduino, el L298N y la protoboard]
 
 Diseño nuevo: `equipo_NOMBRE_bandeja`.
 
@@ -66,7 +65,7 @@ Diseño nuevo: `equipo_NOMBRE_bandeja`.
 6. **Seleccionar todo** y **Group Selection**. **✔ Revisa:** el cerco está del lado del frente (Y positiva) y tiene fondo.
 7. **Exporta** `equipo_NOMBRE_bandeja.stl`.
 
-## Parte 5 · La caja del mando (35 min)
+## Parte 5 · La caja del mando (45 min)
 
 El Arduino del mando, su protoboard y el HC-05 van **dentro** de la caja. La **tapa** lleva el joystick encima (en su cerco) y la pantalla debajo, asomada por una ventana.
 
@@ -95,41 +94,18 @@ El Arduino del mando, su protoboard y el HC-05 van **dentro** de la caja. La **t
 Si nuestro portabaterías midiera 2 mm más de largo, ¿qué números de la bandeja tendríamos que cambiar?
 :::
 
-## Parte 6 · El regulador a 5 V (15 min)
-
-El **LM2596** baja el voltaje de la batería (unos 7,4 V) a **5 V** para el Arduino. Viene sin ajustar: hay que ajustarlo **antes** de conectarlo.
-
-1. Conecta la batería (o fuente) a la entrada IN+ / IN−.
-   - Positivo (rojo) a **IN+** y negativo (negro) a **IN−**. Revisen dos veces antes de conectar: al revés se puede dañar.
-2. Con el multímetro en la salida, gira el tornillo del potenciómetro azul hasta leer **5,0 V**.
-   - Multímetro en **voltaje de corriente directa** (V con una línea recta, escala 20 V). Punta roja en **OUT+**, negra en **OUT−**.
-   - Anoten en la tabla la entrada y la salida **antes** de girar.
-   - Giren el tornillo con un destornillador pequeño, poco a poco, y miren si el voltaje sube o baja. Puede necesitar muchas vueltas.
-3. Pongan una etiqueta de cinta al regulador: "5,0 V". **No lo conecten todavía al Arduino:** eso es el sábado 4.
-
-[IMAGEN 3.1: regulador LM2596 con el multímetro midiendo 5,0 V en la salida mientras se ajusta el tornillo]
-
-:::tabla id="g3p-regulador"
-| Medición | Voltaje |
-| --- | --- |
-| Entrada del regulador | |
-| Salida antes de ajustar | |
-| Salida ajustada | |
-:::
-
-:::pregunta id="g3p-p2"
-¿Qué pasaría si conectamos el regulador al Arduino sin ajustarlo antes?
-:::
-
 ## ¿Lo logramos? (5 min)
 
 :::checklist id="g3p-logramos"
 - [ ] Exportamos el poste y la bandeja.
 - [ ] Exportamos la caja y la tapa del mando.
-- [ ] El regulador entrega 5,0 V.
 :::
 
-## Bitácora (5 min)
+## Bitácora (10 min)
+
+:::pregunta id="g3p-b1"
+¿Qué medida de nuestras piezas fue la más importante para que todo encaje? ¿Por qué?
+:::
 
 Antes de irse: suban los `.stl` de hoy juntos en un `.zip`. El docente imprimirá todo para el sábado 4.
 
@@ -138,11 +114,10 @@ Antes de irse: suban los `.stl` de hoy juntos en un `.zip`. El docente imprimir�
 :::
 
 :::docente
-- **Versión Práctica (6 sábados), nueva el 23 de octubre:** reemplaza la comparación de puentes H, el fusible y el divisor de la Guía 3 normal por el diseño de la bandeja y del mando; se conserva el ajuste del regulador (Parte 3 de la normal). Campos propios (g3p-…).
+- **Versión Práctica (6 sábados), nueva el 23 de octubre:** reemplaza la Guía 3 normal (comparación de puentes H, batería, fusible, regulador y divisor) por el diseño de la bandeja y del mando. Desde el 23 de octubre el robot usa dos fuentes (batería 2S para los motores y pila de 9 V al jack del Arduino) y puente H L298N: no hay regulador que ajustar. Campos propios (g3p-…).
 - Impresión: 4 postes (≈ 15 min cada uno), bandeja (≈ 2 h), caja del mando (≈ 2,5 h) y tapa (≈ 1 h), sin soportes. La tapa se imprime con el cerco hacia arriba.
-- Portabaterías de ejemplo: 2 celdas 18650 (77 × 41 mm). Si usan 6 pilas AA (ver la nota de la Guía 3 normal), medir su portapilas.
+- Portabaterías de los motores de ejemplo: 2 celdas 18650 (77 × 41 mm). Si usan 6 pilas AA (ver la nota de la Guía 3 normal), medir su portapilas.
 - La tapa se apoya sobre las paredes de la caja; se sujeta con cinta por un lado (como bisagra) para poder abrirla. El joystick se pega en su cerco con una gota de silicona y la pantalla, por debajo de la ventana.
 - g3p-p1: el largo del hueco (77.6 → 79.6) y el del cerco (83.6 → 85.6). Las posiciones no cambian.
-- g3p-p2: si sale con más de 5 V (por ejemplo, el voltaje de la batería) puede quemar el Arduino.
-- Tiempo total: 10 + 10 + 10 + 30 + 35 + 15 + 5 + 5 = 120 minutos.
+- Tiempo total: 10 + 10 + 10 + 30 + 45 + 5 + 10 = 120 minutos.
 :::
