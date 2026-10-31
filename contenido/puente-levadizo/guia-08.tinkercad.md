@@ -66,8 +66,8 @@ Repartan las partes (una persona puede tener dos) y escriban en **¿Qué se dice
 | Parte | Tiempo | ¿Qué se dice o se muestra? | Quién |
 | --- | --- | --- | --- |
 | ¿Qué es un puente levadizo y para qué sirve? | 1 min | | |
-| La escala y el diseño en Tinkercad | 1 min | | |
-| Las torres con triángulos y la prueba de carga | 1 min | | |
+| El diseño de las piezas en Tinkercad | 1 min | | |
+| El armado del puente y la prueba de carga | 1 min | | |
 | El circuito, el sensor y el diagrama de flujo | 1 min | | |
 | Demostración en vivo con el barco | 1 min | | |
 :::
@@ -79,14 +79,14 @@ Ensayen una vez con cronómetro. Tiempo del ensayo: ______
 El cartel debe tener:
 
 - Nombre del equipo y del puente.
-- Foto o render del puente.
-- El cálculo de la escala.
+- Foto del puente armado.
+- Las piezas impresas y para qué sirve cada una.
 - El diagrama de flujo.
 - El resultado de la prueba de carga.
 
-Consejos: primero repartan el espacio a lápiz y luego pasen a marcador; título grande (que se lea a tres pasos) y frases cortas. Los datos están en las Guías 2, 3 y 7.
+Consejos: primero repartan el espacio a lápiz y luego pasen a marcador; título grande (que se lea a tres pasos) y frases cortas. Los datos están en las Guías 2, 3, 5 y 7.
 
-[IMAGEN 8.2: ejemplo de cartel del puente con foto, escala, diagrama de flujo y prueba de carga]
+[IMAGEN 8.2T: ejemplo de cartel del puente con foto, piezas impresas, diagrama de flujo y prueba de carga]
 
 ## ¿Lo logramos? (5 min)
 
@@ -115,7 +115,7 @@ Antes de irse, suban aquí `equipo_NOMBRE_barco.stl`. El diseño de bloques qued
 
 :::docente
 - Imprimir los barcos esta semana (≈40 min cada uno).
-- **Versión Tinkercad (Codeblocks):** la punta del casco es un cilindro (proa redondeada) en vez de juntar vértices como en Blender; el resto usa las mismas medidas y posiciones.
+- **Versión Tinkercad (Codeblocks):** la punta del casco es un cilindro (proa redondeada) en vez de juntar vértices como en Blender; el resto usa las mismas medidas y posiciones. El guion y el cartel no llevan escala (se quitó en la Guía 2) y el diagrama de flujo es el de la Guía 5.
 - Si un barco no detecta bien con el sensor, agregarle una "vela" plana de cartón al frente: el ultrasonido rebota mejor en superficies planas.
 - Pedir que el cartel quede terminado para el sábado 9.
 - Tiempo total: 45 + 35 + 25 + 5 + 10 = 120 minutos.

@@ -61,13 +61,13 @@ def soporte_sensor():
     return agrupar(cubo(50, 15, 3, 0, 0, 1.5), [cubo(50, 3, 26, 0, 6, 16)], huecos)
 
 def caja_mando():
-    # Caja de 126 × 66 × 33 con paredes y piso de 3; agujero del USB en la pared izquierda
-    return agrupar(cubo(126, 66, 33, 0, 0, 16.5), huecos=[cubo(120, 60, 40, 0, 0, 23), cubo(10, 16, 14, -61.5, 15, 12)])
+    # Caja de 150 × 66 × 45 con paredes y piso de 3; agujero del USB en la pared izquierda (alta para la LCD 16 × 2)
+    return agrupar(cubo(150, 66, 45, 0, 0, 22.5), huecos=[cubo(144, 60, 50, 0, 0, 28), cubo(10, 16, 14, -73.5, 15, 12)])
 
 def tapa_mando():
-    # Tapa de 126 × 66 × 3 con la ventana de la pantalla y el cerco del joystick (como la base del laberinto)
-    huecos = [cubo(25, 14, 10, 30, 0, 1.5), cubo(26.6, 34.6, 10, -30, 0, 8), cubo(16, 10, 20, -30, 18.8, 5)]
-    return agrupar(cubo(126, 66, 3, 0, 0, 1.5), [cubo(32.6, 40.6, 6, -30, 0, 6)], huecos)
+    # Tapa de 150 × 66 × 3 con la ventana de la LCD 16 × 2 y el cerco del joystick (como la base del laberinto)
+    huecos = [cubo(66, 17, 10, 27, 0, 1.5), cubo(26.6, 34.6, 10, -45, 0, 8), cubo(16, 10, 20, -45, 18.8, 5)]
+    return agrupar(cubo(150, 66, 3, 0, 0, 1.5), [cubo(32.6, 40.6, 6, -45, 0, 6)], huecos)
 
 PIEZAS = {'robot_chasis': chasis, 'robot_poste': poste, 'robot_bandeja': bandeja,
           'robot_soporte_sensor': soporte_sensor, 'robot_caja_mando': caja_mando, 'robot_tapa_mando': tapa_mando}

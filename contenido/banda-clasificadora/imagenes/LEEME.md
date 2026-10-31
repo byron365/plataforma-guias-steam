@@ -25,3 +25,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN 2.2P.png ✅ | editor de Codeblocks con sus partes señaladas (la misma IMAGEN 2.3T del Dispensador) |
 | IMAGEN 2.3P.png ✅ | rodillos y soportes con etiquetas: agujero del palito, rodillo del motor, rodillo libre, soporte del rodillo, ranura del motor, soporte del motor, soporte del servo y pie con agujeros |
 | IMAGEN 3.1P.png ✅ | túnel, puente de salida y canaleta con etiquetas: ventanas de los sensores, agujero por donde cae la pieza, tope, pata y rampa de la canaleta |
+
+**Versión Práctica de 10 sábados (30 de octubre):** simulaciones en Tinkercad Circuits (guías 4 a 6). La 5.1 (Guía 8) ahora debe mostrar la pantalla LCD 16 × 2 I2C en lugar del MAX7219.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_4.1S.png | editor de Tinkercad Circuits con sus partes señaladas *(lista, copia de la del Dispensador)* |
+| IMAGEN_4.2S.png | nodo banda simulado: fuente de 5 V, transistor NPN con sus resistencias, LED y perilla en A0 *(lista)* |
+| IMAGEN_5.1S.png | nodo clasificador simulado: tres perillas como sensor de color, servo de la canaleta, pantalla LCD 16 × 2 I2C y botón de paro |
+| IMAGEN_6.1S.png | banda completa simulada: los dos nodos unidos por A4, A5 y GND |

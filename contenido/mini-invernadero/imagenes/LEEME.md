@@ -37,3 +37,13 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN 2.5T.png ✅ | clip de la manguera con etiquetas: anillo, abertura y pestaña (antes era la 3.1T) |
 | IMAGEN 4.1T.png ✅ | techo con etiquetas: ventana, bisagra con su palito, palito del servo, servo en su soporte y borde del corte |
 | IMAGEN_13.1T.png | escena final del mini invernadero en Tinkercad con la caja transparente, la planta, la maceta y la ventana abierta |
+
+**Versión práctica con Wokwi (8 sábados, 30 de octubre):** simulaciones en Wokwi (guías 3 y 5) y en Tinkercad Circuits (Guía 4, el riego). Las guías 6 y 8 reutilizan 2.1T, 4.1T y 10.1.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_3.1P.png | editor de Wokwi con sus partes señaladas: código, dibujo del circuito, botón + para agregar piezas, Play y Save *(lista)* |
+| IMAGEN_3.2P.png | luz y ventana simuladas en Wokwi: LED blanco con su resistencia en el pin 6, servo en el pin 9 y botón en el pin 2 *(lista)* |
+| IMAGEN_4.1P.png | riego simulado en Tinkercad Circuits: sensor de humedad del suelo en A0, pulsador en D2, relé en D8 y el motor de la bomba con la fuente de 5 V |
+| IMAGEN_5.1P.png | invernadero completo simulado en Wokwi: luz, botón, servo, potenciómetro, relé con el LED de la bomba y sensor DHT22 |
+| IMAGEN_7.1P.png | circuito completo del invernadero real: relé con la bomba y la fuente de 5 V en su jack, sensor de humedad, DHT11, luz, servo y botón |

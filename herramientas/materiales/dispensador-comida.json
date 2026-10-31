@@ -1,0 +1,40 @@
+{
+  "proyecto": "Dispensador de comida para mascotas",
+  "nivel": "Básico",
+  "versiones": {
+    "practica": {
+      "nombre": "Tinkercad práctica",
+      "sabados": 8,
+      "materiales": [
+        {"imagen": "arduino", "componente": "Arduino UNO R3 con su cable USB", "cantidad": "1", "uso": "Cerebro del dispensador (desde la Guía 1)"},
+        {"imagen": "protoboard400", "componente": "Protoboard de 400 puntos", "cantidad": "1", "uso": "Armar el circuito sin soldar"},
+        {"imagen": "cables_mm", "componente": "Cables Dupont macho–macho (juego de 40)", "cantidad": "1 juego", "uso": "Conexiones en la protoboard y el servo"},
+        {"imagen": "servo", "componente": "Servomotor SG90 (con brazos y tornillos)", "cantidad": "1", "uso": "Mueve la compuerta (Guías 1 y 7)"},
+        {"imagen": "boton1", "componente": "Botón pulsador de 4 patas", "cantidad": "1", "uso": "Servir a mano (Guías 1 y 7)"},
+        {"imagen": "leds", "componente": "LED de 5 mm", "cantidad": "2 (uno de repuesto)", "uso": "Aviso de que está sirviendo (Guía 1)"},
+        {"imagen": "resistencia", "componente": "Resistencia de 220 Ω", "cantidad": "1", "uso": "Para el LED"},
+        {"imagen": "buzzer", "componente": "Buzzer (zumbador) pasivo de 5 V", "cantidad": "1", "uso": "Llamar a la mascota (Guía 7)"}
+      ],
+      "no_comprar": "El filamento y la impresora 3D, la pistola y las barras de silicona, la lija y la cinta los pone la academia. Del hogar: una botella plástica pequeña (unos 600 ml) vacía, un plato y croquetas para probar. También se usan la computadora con Arduino IDE e internet y la cuenta de Tinkercad (para diseñar y simular)."
+    },
+    "doble-practica": {
+      "nombre": "Doble práctica",
+      "sabados": 8,
+      "materiales": [
+        {"imagen": "arduino", "componente": "Arduino UNO R3 con su cable USB", "cantidad": "1", "uso": "Cerebro del dispensador (desde la Guía 1)"},
+        {"imagen": "protoboard400", "componente": "Protoboard de 400 puntos", "cantidad": "1", "uso": "Armar el circuito sin soldar"},
+        {"imagen": "cables_mm", "componente": "Cables Dupont macho–macho (juego de 40)", "cantidad": "1 juego", "uso": "Conexiones en la protoboard, el servo y el relé"},
+        {"imagen": "servo", "componente": "Servomotor SG90 (con brazos y tornillos)", "cantidad": "1", "uso": "Mueve la compuerta del cereal (Guías 1 y 7)"},
+        {"imagen": "boton1", "componente": "Botón pulsador de 4 patas", "cantidad": "2", "uso": "Un botón para el cereal y otro para el líquido (Guía 7)"},
+        {"imagen": "leds", "componente": "LED de 5 mm", "cantidad": "2 (uno de repuesto)", "uso": "Aviso de que está sirviendo (Guía 1)"},
+        {"imagen": "resistencia", "componente": "Resistencia de 220 Ω", "cantidad": "1", "uso": "Para el LED"},
+        {"imagen": "buzzer", "componente": "Buzzer (zumbador) pasivo de 5 V", "cantidad": "1", "uso": "Avisos del cereal y del líquido (Guía 7)"},
+        {"imagen": "bomba", "componente": "Mini bomba de agua sumergible de 5 V con su manguera", "cantidad": "1", "uso": "Sirve el líquido (Guía 7)"},
+        {"imagen": "rele", "componente": "Módulo relé de 5 V de un canal", "cantidad": "1", "uso": "Interruptor con el que el Arduino enciende la bomba (Guía 7)"},
+        {"imagen": "eliminador", "componente": "Fuente (cargador) de 5 V y 1 A, con plug de 5,5 × 2,1 mm", "cantidad": "1", "uso": "Energía de la bomba (Guía 7)"},
+        {"imagen": "jack", "componente": "Conector jack hembra de 5,5 × 2,1 mm con bornera de tornillos", "cantidad": "1", "uso": "Recibe la fuente y deja atornillar los cables que van al relé y a la bomba"}
+      ],
+      "no_comprar": "El filamento y la impresora 3D, la pistola y las barras de silicona, la lija y la cinta aislante los pone la academia. Del hogar: una botella plástica pequeña (unos 600 ml) vacía, un recipiente para el agua, un vaso, un plato y cereal para probar. También se usan la computadora con Arduino IDE e internet y la cuenta de Tinkercad (para diseñar y simular)."
+    }
+  }
+}

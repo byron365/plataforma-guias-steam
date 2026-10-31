@@ -154,8 +154,21 @@ function rutaDeVersion(ruta, version) {
   return ruta.replace(/\.md$/i, `.${version}.md`);
 }
 
+// Versión del equipo seguida de sus bases, en orden: "doble-practica" → ["doble-practica", "doble", "tinkercad"].
+// Se detiene si una base se repite, para no quedar en un ciclo.
+function cadenaDeVersiones(proyecto, version) {
+  const cadena = [];
+  let actual = version;
+  while (actual && !cadena.includes(actual)) {
+    cadena.push(actual);
+    const datos = proyecto.versiones.find((v) => v.id === actual);
+    actual = datos ? datos.base : '';
+  }
+  return cadena;
+}
+
 // version: la que usa el equipo ("" o la primera = la normal). Si la guía no tiene archivo de esa versión,
-// se usa el de su versión base (si tiene) y, si tampoco existe, el normal.
+// se usa el de su versión base (o la base de la base) y, si ninguna tiene, el normal.
 function obtenerGuia(proyectoId, numero, version = '') {
   const proyecto = obtenerProyecto(proyectoId);
   if (!proyecto) return null;
@@ -163,8 +176,7 @@ function obtenerGuia(proyectoId, numero, version = '') {
   if (!info || !info.existe) return null;
 
   const carpeta = carpetaProyecto(proyectoId);
-  const datosVersion = proyecto.versiones.find((v) => v.id === version);
-  const usada = [version, datosVersion && datosVersion.base].find((v) => v && info.versiones.includes(v)) || '';
+  const usada = cadenaDeVersiones(proyecto, version).find((v) => info.versiones.includes(v)) || '';
   const usaVersion = Boolean(usada);
   const ruta = usaVersion ? rutaDeVersion(path.join(carpeta, info.archivo), usada) : path.join(carpeta, info.archivo);
   // Si cambia la guía o se agrega una imagen, se vuelve a procesar
@@ -198,7 +210,7 @@ function guiasDeVersion(proyecto, version = '') {
   return proyecto.guias
     .filter((g) => !lista || lista.includes(g.numero))
     .map((g) => {
-      const usada = [version, datosVersion.base].find((v) => v && g.titulosVersion[v]);
+      const usada = cadenaDeVersiones(proyecto, version).find((v) => g.titulosVersion[v]);
       return usada ? { ...g, titulo: g.titulosVersion[usada] } : g;
     });
 }

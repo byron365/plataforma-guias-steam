@@ -1,0 +1,44 @@
+{
+  "proyecto": "Puente levadizo",
+  "nivel": "Básico",
+  "versiones": {
+    "tinkercad": {
+      "nombre": "Tinkercad (bloques)",
+      "sabados": 14,
+      "materiales": [
+        {"imagen": "arduino", "componente": "Arduino UNO R3 con su cable USB", "cantidad": "1", "uso": "Cerebro del puente (desde la Guía 1)"},
+        {"imagen": "protoboard400", "componente": "Protoboard de 400 puntos", "cantidad": "1", "uso": "Armar el circuito sin soldar"},
+        {"imagen": "cables_mm", "componente": "Cables Dupont macho–macho (juego de 40)", "cantidad": "1 juego", "uso": "Conexiones en la protoboard"},
+        {"imagen": "cables_mh", "componente": "Cables Dupont macho–hembra (juego de 40)", "cantidad": "1 juego", "uso": "Cables de los LEDs y el buzzer dentro de las torres, y el sensor HC-SR04 (Guías 4 y 6)"},
+        {"imagen": "leds", "componente": "LEDs de 5 mm: rojo, amarillo y verde", "cantidad": "6 (2 de cada color: uno de repuesto)", "uso": "Semáforo del puente (Guía 1)"},
+        {"imagen": "resistencia", "componente": "Resistencias de 220 Ω", "cantidad": "3", "uso": "Una por cada LED del semáforo"},
+        {"imagen": "servo", "componente": "Servomotor SG90 (con brazos y tornillos)", "cantidad": "2", "uso": "Las dos hojas del puente (Guía 4)"},
+        {"imagen": "buzzer", "componente": "Buzzer (zumbador) pasivo de 5 V", "cantidad": "1", "uso": "Alarma antes de abrir el puente"},
+        {"imagen": "boton1", "componente": "Botón pulsador de 4 patas", "cantidad": "1", "uso": "Modo manual: el puente sube con un botón (Guía 5)"},
+        {"imagen": "hcsr04", "componente": "Sensor ultrasónico HC-SR04", "cantidad": "1", "uso": "Detectar el barco (Guía 6)"},
+        {"imagen": "eliminador", "componente": "Eliminador (cargador) de 9 V y 1 A, con plug de 5,5 × 2,1 mm y centro positivo", "cantidad": "1", "uso": "Alimentar el Arduino por el jack para que los servos tengan suficiente corriente"},
+        {"imagen": "mdf", "componente": "Base de MDF delgado o cartón grueso de 50 × 30 cm", "cantidad": "1", "uso": "Solo sostiene la maqueta: el río y las orillas (Guía 4)"}
+      ],
+      "no_comprar": "El filamento y la impresora 3D, la pistola y las barras de silicona, los palitos, la cinta, la cartulina y los marcadores los pone la academia. También se usan la computadora con Arduino IDE e internet, la cuenta de Tinkercad, regla, tijeras, y una báscula de cocina con monedas para la prueba de carga (Guía 7)."
+    },
+    "practica": {
+      "nombre": "Tinkercad práctica",
+      "sabados": 8,
+      "materiales": [
+        {"imagen": "arduino", "componente": "Arduino UNO R3 con su cable USB", "cantidad": "1", "uso": "Cerebro del puente (desde la Guía 1)"},
+        {"imagen": "protoboard400", "componente": "Protoboard de 400 puntos", "cantidad": "1", "uso": "Armar el circuito sin soldar"},
+        {"imagen": "cables_mm", "componente": "Cables Dupont macho–macho (juego de 40)", "cantidad": "1 juego", "uso": "Conexiones en la protoboard"},
+        {"imagen": "cables_mh", "componente": "Cables Dupont macho–hembra (juego de 40)", "cantidad": "1 juego", "uso": "Cables de los LEDs y el buzzer dentro de las torres, y el sensor HC-SR04 (Guía 7)"},
+        {"imagen": "leds", "componente": "LEDs de 5 mm: rojo, amarillo y verde", "cantidad": "6 (2 de cada color: uno de repuesto)", "uso": "Semáforo del puente (Guías 1 y 7)"},
+        {"imagen": "resistencia", "componente": "Resistencias de 220 Ω", "cantidad": "3", "uso": "Una por cada LED del semáforo"},
+        {"imagen": "servo", "componente": "Servomotor SG90 (con brazos y tornillos)", "cantidad": "2", "uso": "Las dos hojas del puente (Guía 7)"},
+        {"imagen": "buzzer", "componente": "Buzzer (zumbador) pasivo de 5 V", "cantidad": "1", "uso": "Alarma antes de abrir el puente"},
+        {"imagen": "boton1", "componente": "Botón pulsador de 4 patas", "cantidad": "1", "uso": "Botón del puente (Guía 7)"},
+        {"imagen": "hcsr04", "componente": "Sensor ultrasónico HC-SR04", "cantidad": "1", "uso": "Detectar el barco (Guía 7)"},
+        {"imagen": "eliminador", "componente": "Eliminador (cargador) de 9 V y 1 A, con plug de 5,5 × 2,1 mm y centro positivo", "cantidad": "1", "uso": "Alimentar el Arduino por el jack para que los servos tengan suficiente corriente"},
+        {"imagen": "mdf", "componente": "Base de MDF delgado o cartón grueso de 50 × 30 cm", "cantidad": "1", "uso": "Solo sostiene la maqueta: el río y las orillas (Guía 7)"}
+      ],
+      "no_comprar": "El filamento y la impresora 3D, la pistola y las barras de silicona, y la cinta los pone la academia. También se usan la computadora con Arduino IDE e internet y la cuenta de Tinkercad (para diseñar y simular), regla y tijeras."
+    }
+  }
+}

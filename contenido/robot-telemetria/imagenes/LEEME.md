@@ -28,3 +28,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_4.1P.png | las dos fuentes del robot: batería 2S con fusible e interruptor al L298N, pila de 9 V con interruptor al jack del Arduino y el cable de GND común entre el L298N y el Arduino |
 | IMAGEN 3.2P.png ✅ | caja y tapa del mando con etiquetas: agujero del USB, cerco del joystick, salida de los cables y ventana de la pantalla |
 | IMAGEN_5.1P.png | mando armado en su caja impresa, con el joystick encima de la tapa y la pantalla asomada por su ventana (foto real) |
+
+**Versión Práctica de 9 sábados (30 de octubre):** simulaciones en Tinkercad Circuits (guías 4 a 6). La 3.2P muestra la caja del mando anterior (126 × 66, para la OLED): rehacerla con la caja de 150 × 66 × 45 y la ventana de la LCD.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_4.1S.png | editor de Tinkercad Circuits con sus partes señaladas *(lista, copia de la del Dispensador)* |
+| IMAGEN_4.2S.png | robot simulado en Tinkercad Circuits: Arduino, chip L293D en la protoboard, dos motores y la pila de 9 V *(lista)* |
+| IMAGEN_4.3S.png | sensor HC-SR04 y divisor de la batería en Tinkercad Circuits: el sensor en D2 y D3, y las dos resistencias de 10 kΩ entre el + de la pila y GND, con su punto medio en A0 *(lista)* |
+| IMAGEN_5.1S.png | robot y mando simulados: el mando con dos potenciómetros y la pantalla LCD 16 × 2 I2C, unido al robot por D10, D11 y GND |

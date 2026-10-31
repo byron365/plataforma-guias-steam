@@ -16,7 +16,7 @@ Diseñar los postes, la bandeja (el piso de arriba del robot) y la caja del mand
 
 ## Materiales del equipo
 
-- El portabaterías de los motores y el joystick, con una regla o calibrador
+- El portabaterías de los motores, el joystick y la pantalla LCD 16 × 2, con una regla o calibrador
 - Computadora con internet y la cuenta de Tinkercad
 
 ## Parte 1 · Ponerse al día (10 min)
@@ -67,26 +67,28 @@ Diseño nuevo: `equipo_NOMBRE_bandeja`.
 
 ## Parte 5 · La caja del mando (45 min)
 
-El Arduino del mando, su protoboard y el HC-05 van **dentro** de la caja. La **tapa** lleva el joystick encima (en su cerco) y la pantalla debajo, asomada por una ventana.
+El Arduino del mando, su protoboard y el HC-05 van **dentro** de la caja. La **tapa** lleva el joystick encima (en su cerco) y la pantalla LCD 16 × 2 debajo, con su vidrio asomado por una ventana.
 
 [IMAGEN 3.2P: caja y tapa del mando en Tinkercad, con etiquetas: agujero para el USB, caja del mando, salida de los cables del joystick, cerco del joystick, ventana de la pantalla y tapa]
 
 **La caja** (diseño `equipo_NOMBRE_caja_mando`):
 
-1. **El bloque:** un **Cubo** con primer **A = 126**, **L = 66**, segundo **A = 33**. Debajo, **Mover: X 0, Y 0, Z 16.5**.
-2. **El interior (hueco):** un **Cubo** hueco con primer **A = 120**, **L = 60**, segundo **A = 40**. Debajo, **Mover: X 0, Y 0, Z 23**.
+1. **El bloque:** un **Cubo** con primer **A = 150**, **L = 66**, segundo **A = 45**. Debajo, **Mover: X 0, Y 0, Z 22.5**.
+   - Es alta para que quepan, uno sobre otro, el Arduino abajo y la pantalla con su módulo I2C colgando de la tapa.
+2. **El interior (hueco):** un **Cubo** hueco con primer **A = 144**, **L = 60**, segundo **A = 50**. Debajo, **Mover: X 0, Y 0, Z 28**.
    - Así quedan paredes de 3 mm y un piso de 3 mm.
-3. **El agujero del USB (hueco):** un **Cubo** hueco con primer **A = 10**, **L = 16**, segundo **A = 14**. Debajo, **Mover: X −61.5, Y 15, Z 12**.
+3. **El agujero del USB (hueco):** un **Cubo** hueco con primer **A = 10**, **L = 16**, segundo **A = 14**. Debajo, **Mover: X −73.5, Y 15, Z 12**.
    - Atraviesa la pared izquierda. El Arduino se pone pegado a esa pared, con su conector USB frente al agujero.
 4. **Seleccionar todo**, **Group Selection** y **exporta** `equipo_NOMBRE_caja_mando.stl`.
 
 **La tapa** (diseño `equipo_NOMBRE_tapa_mando`):
 
-1. **La placa:** un **Cubo** con primer **A = 126**, **L = 66**, segundo **A = 3**. Debajo, **Mover: X 0, Y 0, Z 1.5**.
-2. **La ventana de la pantalla (hueco):** un **Cubo** hueco con primer **A = 25**, **L = 14**, segundo **A = 10**. Debajo, **Mover: X 30, Y 0, Z 1.5**.
-3. **El cerco del joystick:** un **Cubo** con primer **A = 32.6**, **L = 40.6**, segundo **A = 6**. Debajo, **Mover: X −30, Y 0, Z 6**.
-4. **El hueco del joystick:** un **Cubo** hueco con primer **A = 26.6**, **L = 34.6** (los de su tabla), segundo **A = 10**. Debajo, **Mover: X −30, Y 0, Z 8**.
-5. **La salida de los cables (hueco):** un **Cubo** hueco con primer **A = 16**, **L = 10**, segundo **A = 20**. Debajo, **Mover: X −30, Y 18.8, Z 5**.
+1. **La placa:** un **Cubo** con primer **A = 150**, **L = 66**, segundo **A = 3**. Debajo, **Mover: X 0, Y 0, Z 1.5**.
+2. **La ventana de la pantalla (hueco):** un **Cubo** hueco con primer **A = 66**, **L = 17**, segundo **A = 10**. Debajo, **Mover: X 27, Y 0, Z 1.5**.
+   - Es un poco más grande que la parte del vidrio donde salen las letras (unos 64,5 × 14,5 mm): el marco negro de la pantalla queda escondido debajo de la tapa.
+3. **El cerco del joystick:** un **Cubo** con primer **A = 32.6**, **L = 40.6**, segundo **A = 6**. Debajo, **Mover: X −45, Y 0, Z 6**.
+4. **El hueco del joystick:** un **Cubo** hueco con primer **A = 26.6**, **L = 34.6** (los de su tabla), segundo **A = 10**. Debajo, **Mover: X −45, Y 0, Z 8**.
+5. **La salida de los cables (hueco):** un **Cubo** hueco con primer **A = 16**, **L = 10**, segundo **A = 20**. Debajo, **Mover: X −45, Y 18.8, Z 5**.
    - Atraviesa el cerco y la tapa: por ahí bajan los cables del joystick hacia el Arduino.
 6. **Seleccionar todo**, **Group Selection** y **exporta** `equipo_NOMBRE_tapa_mando.stl`.
 
@@ -115,7 +117,8 @@ Antes de irse: suban los `.stl` de hoy juntos en un `.zip`. El docente imprimir�
 
 :::docente
 - **Versión Práctica (6 sábados), nueva el 23 de octubre:** reemplaza la Guía 3 normal (comparación de puentes H, batería, fusible, regulador y divisor) por el diseño de la bandeja y del mando. Desde el 23 de octubre el robot usa dos fuentes (batería 2S para los motores y pila de 9 V al jack del Arduino) y puente H L298N: no hay regulador que ajustar. Campos propios (g3p-…).
-- Impresión: 4 postes (≈ 15 min cada uno), bandeja (≈ 2 h), caja del mando (≈ 2,5 h) y tapa (≈ 1 h), sin soportes. La tapa se imprime con el cerco hacia arriba.
+- **30 de octubre:** el mando usa una pantalla **LCD 16 × 2 con módulo I2C** en lugar de la OLED (decisión de Bairon). La caja y la tapa crecieron a 150 × 66 mm y la caja a 45 mm de alto; ventana de 66 × 17 mm en X 27 y joystick en X −45. La LCD (placa de 80 × 36 mm) queda entre X −13 y X 67, lejos de la salida de los cables del joystick. La imagen 3.2P todavía muestra la caja anterior.
+- Impresión: 4 postes (≈ 15 min cada uno), bandeja (≈ 2 h), caja del mando (≈ 3,5 h) y tapa (≈ 1,5 h), sin soportes. La tapa se imprime con el cerco hacia arriba.
 - Portabaterías de los motores de ejemplo: 2 celdas 18650 (77 × 41 mm). Si usan 6 pilas AA (ver la nota de la Guía 3 normal), medir su portapilas.
 - La tapa se apoya sobre las paredes de la caja; se sujeta con cinta por un lado (como bisagra) para poder abrirla. El joystick se pega en su cerco con una gota de silicona y la pantalla, por debajo de la ventana.
 - g3p-p1: el largo del hueco (77.6 → 79.6) y el del cerco (83.6 → 85.6). Las posiciones no cambian.

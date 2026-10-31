@@ -1,172 +1,185 @@
 ---
-titulo: Luz, ángulos y el lote final
+titulo: Armar la banda y la etapa de potencia
 guia: 7
 sabado: 7
-sesion: Corrección de fallos y prueba final
+sesion: Construcción y electrónica
 duracion: 120
 ---
 
-# Guía 7 · Luz, ángulos y el lote final
+# Guía 7 · Armar la banda y la etapa de potencia
 
 ## Objetivo del día
 
-Hacer que el color se lea bien aunque cambie la luz, ajustar los ángulos de la canaleta, evitar piezas contadas dos veces y probar la banda con un lote de 30 piezas.
+Armar las piezas impresas sobre la base, controlar el motor TT con un transistor (probando primero con un LED) e instalar el túnel, el sensor IR, el puente y el servo.
 
-**Al terminar tendremos:** la banda clasificando mejor y el porcentaje de aciertos del lote final.
+**Al terminar tendremos:** la banda moviéndose con la velocidad de la perilla y los sensores en su lugar.
 
 ## Materiales del equipo
 
-- Banda completa, 10 piezas de cada color, tablas del sábado 6
-- Cartulina negra, cinta, linterna del celular
-- Computadora con Arduino IDE (y hoja de cálculo, si quieren)
+- Piezas impresas: 2 rodillos, 3 soportes del rodillo, soporte del motor, soporte del servo, túnel y puente de salida
+- Base de MDF o cartón grueso de unos 60 × 22 cm, banda de tela o goma de 6 cm de ancho cerrada en lazo (unos 90 cm de largo), 3 palitos de pincho
+- Motor TT con 2 tornillos M3 de 25–30 mm y sus tuercas (o un cincho delgado), servo, sensor IR, TCS34725
+- Transistor TIP41C, diodo 1N4007, capacitor de 470–1000 µF (10 V o más), resistencias de 220 Ω (2) y 10 kΩ, LED, potenciómetro
+- Fuente (cargador) de 5 V y **2 A o más** con plug de 5,5 × 2,1 mm, y un conector jack hembra con bornera de tornillos
+- Arduino UNO de la banda, protoboard, cables, multímetro, regla, tornillos pequeños para madera o pegamento caliente
 
-## Parte 1 · La luz ambiente (35 min)
+**Seguridad:** conecten y desconecten cables **siempre con la fuente desenchufada**, y pidan al docente que revise antes de enchufarla. La pistola de silicona y el pegamento recién puesto queman.
 
-Prueba el mismo color con luz distinta:
+## Parte 1 · Revisar las piezas (10 min)
 
-Usen el programa de prueba de color (Guía 5, Parte 2) con una misma pieza bajo el sensor. Cambien solo la luz en cada fila (cerrando o abriendo el túnel con la cartulina negra, o alumbrando con la linterna del celular).
+Prueben cada cosa **sin pegar nada** y marquen:
 
-:::tabla id="g7p-luz"
-| Condición | R | G | B | C | ¿Detecta bien? |
-| --- | --- | --- | --- | --- | --- |
-| Túnel cerrado | | | | | |
-| Túnel abierto, luz del salón | | | | | |
-| Linterna del celular encima | | | | | |
+:::checklist id="g7p-piezas"
+- [ ] El rodillo del motor entra en el eje del TT y no patina.
+- [ ] El palito de pincho entra apretado en el soporte y el rodillo libre gira sobre él.
+- [ ] Los tornillos (o el cincho) pasan por la ranura del soporte y por los agujeros del motor.
+- [ ] El servo entra parado en su soporte, con las pestañas encima.
 :::
 
-Comparar R, G y B directamente falla cuando cambia la luz. Mejor usar **proporciones**: qué parte de la luz total es roja, verde o azul.
+Si algo no entra, avisen al docente antes de seguir: a veces basta con limpiar el agujero con una lija o con un clavo caliente (con el docente).
 
-En su programa `equipo_NOMBRE_clasificador`, **reemplacen** toda la función `leerColor()` (desde `int leerColor() {` hasta su llave de cierre `}`) por esta:
+## Parte 2 · Armar la banda (35 min)
+
+Miren la imagen de la banda completa para ver dónde va cada cosa:
+
+[IMAGEN 2.1P: banda clasificadora diseñada en Tinkercad, con etiquetas: banda, pieza, rodillo libre, soporte del rodillo, base de MDF o cartón, puente de salida, túnel del sensor, sensor de color, canaleta giratoria, motor TT, contenedores, sensor IR de llegada y soporte del motor]
+
+1. **La línea central:** con regla y lápiz, tracen una línea a lo largo de la base, por el centro. Marquen el **inicio** a 7 cm de un extremo y el **final** a 40 cm del inicio.
+2. **El rodillo libre** (en el inicio):
+   - Pasen un palito por un soporte, por el rodillo libre y por otro soporte. Las caras de adentro de los soportes quedan a **72 mm**, una a cada lado de la línea.
+   - Corten lo que sobre del palito y pongan una gota de silicona donde entra en cada soporte.
+3. **El motor** (en el final):
+   - Atornillen el motor al soporte del motor: los tornillos pasan por la ranura y por los dos agujeros del motor, con las tuercas del otro lado.
+   - Metan el rodillo del motor en el eje del TT (por el lado del hueco plano). En la otra punta del rodillo, un palito que entra en el tercer soporte del rodillo.
+   - El soporte del motor va del lado contrario al tercer soporte, con el motor por **dentro** (entre el soporte y el rodillo).
+4. **La banda:** pongan el lazo de la banda alrededor de los dos rodillos **antes** de fijar el final. Corran el motor con su rodillo hasta que la banda quede **tensa** y fijen los soportes del final (tornillos o silicona).
+   - Los dos rodillos deben quedar paralelos y a la misma altura: mídanlo con la regla.
+
+✔ **Revisa:** giren el rodillo libre con la mano: la banda avanza sin patinar ni irse hacia un lado.
+
+## Parte 3 · Primero con un LED (20 min)
+
+El Arduino da unos 20 mA por pin; el motor necesita cientos. El **transistor TIP41C** es un interruptor electrónico: una corriente pequeña en su **base** deja pasar una corriente grande entre **colector** y **emisor**. Con PWM en la base, controlamos la velocidad.
+
+Antes del motor, probamos con una carga que no se daña: un LED.
+
+**El TIP41C:** mirándolo de frente (con las letras hacia ustedes y las patas hacia abajo), las patas son, de izquierda a derecha: **Base**, **Colector** y **Emisor**.
+
+| Conexión | Destino |
+| --- | --- |
+| D9 del Arduino | 220 Ω → base del TIP41C |
+| Base | 10 kΩ → GND |
+| Emisor | GND común (Arduino y fuente) |
+| Colector | Cátodo del LED (pata corta) |
+| +5 V de la fuente | 220 Ω → ánodo del LED |
+
+- Clava el transistor en la protoboard con cada pata en una fila distinta.
+- **La fuente:** se enchufa en el **jack hembra**, que tiene dos tornillos marcados **+** y **−**. Aflojen cada tornillo, metan la punta de un cable y aprieten.
+- Usa una fila larga de la protoboard para el **GND común**: ahí van un GND del Arduino, un cable del tornillo **−** del jack, el emisor y la resistencia de 10 kΩ.
+- Usa la otra fila larga para los **+5 V de la fuente**: un cable del tornillo **+** del jack.
+- **Potenciómetro** (la perilla): pata izquierda → 5V del Arduino, centro → **A0**, pata derecha → GND.
+
+Programa de prueba: conecten el Arduino de la banda por USB, creen un programa nuevo, escriban el código y súbanlo. Después enchufen la fuente.
 
 ```cpp
-int leerColor() {
-  uint16_t r, g, b, c;
-  color.getRawData(&r, &g, &b, &c);
-  if (c < 50) return -1;                 // muy oscuro: no hay pieza
-  float pr = (float)r / c;               // proporción de rojo
-  float pg = (float)g / c;
-  float pb = (float)b / c;
-  if (pr > 0.45) return 0;               // rojo  (calibrar)
-  if (pg > 0.40) return 1;               // verde (calibrar)
-  if (pb > 0.38) return 2;               // azul  (calibrar)
-  return -1;                             // desconocido
+void setup() {
+  pinMode(9, OUTPUT);
+}
+
+void loop() {
+  int vel = analogRead(A0) / 4;   // perilla: 0 a 255
+  analogWrite(9, vel);
 }
 ```
 
-Muevan la luz en la animación y comparen los valores crudos con las proporciones:
+Para medir el voltaje entre colector y emisor: multímetro en voltaje continuo (**V** con línea recta), punta roja en el **colector** y negra en el **emisor**.
 
-:::animacion tipo="proporcion-color"
+:::tabla id="g7p-led"
+| Perilla | Brillo del LED | Voltaje entre colector y emisor (V) |
+| --- | --- | --- |
+| Mínimo | | |
+| Mitad | | |
+| Máximo | | |
 :::
 
-Calcula las proporciones con tu tabla de calibración y ajusta los límites:
+## Parte 4 · Ahora el motor (20 min)
 
-1. Para cada medición de la tabla de calibración de la Guía 6, dividan R ÷ C, G ÷ C y B ÷ C (en una hoja de cálculo es más rápido: por ejemplo `=B2/E2`).
-2. Promedien las tres mediciones de cada color y escríbanlas en la tabla.
-3. **Límite elegido:** un número un poco **menor** que el promedio del color de esa fila, pero **mayor** que lo que dan los otros colores en esa misma columna. Escríbanlo en la última columna.
-4. Pongan sus tres límites en el código, en lugar de 0.45, 0.40 y 0.38.
+1. Desenchufa la fuente. Cambia el LED por el **motor**: un cable del motor a los **+5 V** y el otro al **colector**.
+   - Quiten el LED y su resistencia de 220 Ω. El motor va en su lugar (sin resistencia).
+2. Coloca el **diodo** en paralelo con el motor: **franja (cátodo) hacia +5 V**.
+   - Una pata del diodo en la misma fila que el cable del motor que va a +5 V (el lado de la franja) y la otra en la fila del colector.
+3. Coloca el **capacitor** entre las dos filas largas: la pata **larga** (+) en **+5 V** y la del lado de la franja (−) en **GND**. Evita que el voltaje caiga cuando el motor arranca.
+4. Revisa todo con el docente y enchufa la fuente.
 
-:::tabla id="g7p-proporciones"
-| Pieza | Promedio R/C | Promedio G/C | Promedio B/C | Límite elegido |
-| --- | --- | --- | --- | --- |
-| Roja | | | | pr > ____ |
-| Verde | | | | pg > ____ |
-| Azul | | | | pb > ____ |
+:::checklist id="g7p-revision"
+- [ ] El diodo tiene la franja hacia +5 V.
+- [ ] El capacitor tiene su franja (−) hacia GND.
+- [ ] La resistencia de 10 kΩ está entre la base y GND.
+- [ ] El GND del Arduino está unido al − del jack de la fuente.
 :::
 
-> Si `leerColor()` puede devolver −1, en `clasificar()` hay que decidir qué hacer: no contarla y no mover la canaleta.
+Pongan la perilla en cada posición, déjenla 2 minutos y toquen el transistor **con cuidado y solo un instante**: anoten frío, tibio o caliente.
 
-**¡Importante!** Si `leerColor()` devuelve −1 y el programa hace `cuenta[c]++`, escribe fuera de la lista (no existe `cuenta[-1]`) y el Arduino puede hacer cosas raras. Por ahora, en `clasificar()`, justo después de la línea `int c = leerColor();`, agreguen la línea `if (c < 0) return;` (si el color es desconocido, no la cuenta ni mueve la canaleta).
-
-Verifiquen (✓) y suban el programa.
+:::tabla id="g7p-motor"
+| Perilla | ¿Se mueve la banda? | Temperatura del TIP41C después de 2 min |
+| --- | --- | --- |
+| 25 % | | |
+| 50 % | | |
+| 100 % | | |
+:::
 
 :::pregunta id="g7p-p1"
-¿Por qué las proporciones funcionan mejor que los valores crudos cuando cambia la luz?
+Con el motor y la perilla al máximo, ¿qué voltaje mide entre colector y emisor? Entonces, ¿cuántos voltios le llegan al motor?
 :::
 
-## Parte 2 · Los ángulos de la canaleta (20 min)
+## Parte 5 · Túnel, sensor IR, puente y servo (20 min)
 
-:::tabla id="g7p-desvio"
-| Síntoma | Causa probable | ¿Nos pasó? | Solución |
-| --- | --- | --- | --- |
-| La canaleta gira tarde: la pieza cae al contenedor anterior | RECORRIDO muy largo | | |
-| La canaleta gira antes: la pieza anterior cae mal | RECORRIDO muy corto | | |
-| La pieza cae al borde del contenedor | Ángulos mal ajustados | | |
-| Dos piezas muy juntas: la segunda va mal | La canaleta no alcanza a girar | | |
-:::
+1. **El túnel:** sobre la banda, con su centro a **31 cm** del rodillo libre. La pared con la ventana del IR va del lado del motor y la ventana, hacia el inicio.
+2. **El sensor IR:** pegado por fuera de esa pared, con sus dos LEDs mirando por la ventana. Conéctalo al Arduino de la banda: OUT → **D2**, VCC → 5V, GND → GND.
+3. **El TCS34725:** sobre el techo, con el sensor y su LED mirando hacia abajo por la ventana. Péguenlo por las esquinas de su placa. (Se conecta el sábado 8.)
+4. **El puente de salida:** justo después del rodillo del motor, con las patas del lado de la banda. La placa queda a 3 mm del final de la banda.
+5. **El servo:** dentro de su soporte, parado y con el eje hacia arriba **justo debajo del centro del agujero** del puente. Peguen el soporte a la base. (La canaleta se pone el sábado 8, con el servo en 90°.)
 
-Ajusten los ángulos `ANG[3]` probando cada contenedor: cambien los números de la línea `const int ANG[3] = {30, 90, 150};` de 5 en 5, suban el código y pasen una pieza de cada color hasta que caiga en el centro de su contenedor.
+Con el programa de la Parte 3, prueben:
 
-:::tabla id="g7p-angulos"
-| Contenedor | Ángulo inicial | Ángulo ajustado |
+:::tabla id="g7p-pruebas"
+| Prueba | ¿Funciona? | Observación |
 | --- | --- | --- |
-| Rojo | 30 | |
-| Verde | 90 | |
-| Azul | 150 | |
-:::
-
-## Parte 3 · Piezas no detectadas o dobles (15 min)
-
-| Síntoma | Causa probable | Solución |
-| --- | --- | --- |
-| Pieza no detectada | Sensor IR muy lejos o pieza oscura | Ajustar el tornillo del sensor |
-| Pieza contada dos veces | La pieza "rebota" frente al IR | Ignorar nuevas llegadas por 300 ms en el nodo banda |
-
-Pistas para el antirrebote (en el programa de la **banda**): una variable `unsigned long ultimoAviso = 0;` arriba; y en la línea `if (ahora && !antes) pieza = true;`, solo aceptar el aviso si `millis() - ultimoAviso > 300`, y en ese caso guardar `ultimoAviso = millis();`.
-
-## Parte 4 · El lote final de 30 piezas (35 min)
-
-- 10 piezas rojas, 10 verdes y 10 azules, mezcladas al azar en una caja. Pidan a alguien de otro equipo que las mezcle.
-- Se ponen en la banda **de una en una**, a ritmo constante (por ejemplo, una cada 3 segundos), sacándolas sin mirar.
-
-Para cada ensayo:
-
-1. Vacíen los contenedores y reinicien el display (botón de reset del Arduino clasificador: el conteo vuelve a cero).
-2. Pongan la perilla en la velocidad media de la Guía 6 y anoten su valor.
-3. Una persona pone las piezas, otra cronometra desde la primera pieza hasta que cae la última.
-4. Al terminar, cuenten las piezas que quedaron en el contenedor correcto y anoten lo que dice el display (R-V-A).
-
-:::tabla id="g7p-ensayos"
-| Ensayo | Velocidad | Tiempo total (s) | Aciertos de 30 | Aciertos (%) | Display: R-V-A |
-| --- | --- | --- | --- | --- | --- |
-| 1 | | | | | |
-| 2 | | | | | |
-:::
-
-> Aciertos (%) = piezas en el contenedor correcto ÷ 30 × 100
-
-:::pregunta id="g7p-p2"
-¿Cumplimos el requisito R1 de la Guía 1 (al menos 90 % de aciertos)? Si no, ¿qué cambiaríamos primero?
+| La banda avanza sin patinar | | |
+| La perilla cambia la velocidad | | |
+| Con la perilla al mínimo la banda se detiene | | |
+| El LED del sensor IR se enciende al pasar una pieza | | |
 :::
 
 ## ¿Lo logramos? (5 min)
 
 :::checklist id="g7p-logramos"
-- [ ] El color se lee con proporciones y nuestros límites.
-- [ ] Ajustamos los ángulos de la canaleta.
-- [ ] Probamos un lote de 30 piezas.
-- [ ] Calculamos el porcentaje de aciertos.
+- [ ] La banda está armada y tensa.
+- [ ] Probamos el transistor con un LED.
+- [ ] El motor gira con la velocidad de la perilla.
+- [ ] El túnel, los sensores, el puente y el servo están en su lugar.
 :::
 
-## Bitácora (10 min)
+## Bitácora (5 min)
 
 :::foto id="g7p-foto"
-Video corto de la banda clasificando piezas.
+Foto de la banda armada.
 :::
 
-:::pregunta id="g7p-b1"
-¿Qué parte de la banda les costó más: el diseño 3D, el armado, la electrónica o la programación? ¿Por qué?
-:::
-
-Antes de irse: desenchufen el cargador y suban los dos programas finales (`equipo_NOMBRE_banda` y `equipo_NOMBRE_clasificador`) juntos en un `.zip`.
+Antes de irse: desenchufen la fuente.
 
 :::archivo id="g7-archivo"
-**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- **Versión Práctica (7 sábados), nueva el 23 de octubre:** la luz ambiente y las piezas dobles de la Guía 7 normal, el ajuste de ángulos (con la canaleta) y el lote de 30 piezas de la Guía 10 normal. Es la última guía de esta versión. Campos propios (g7p-…).
-- Los límites de proporción del código son ejemplos: cada equipo debe calcular los suyos con la tabla de calibración.
-- Antirrebote en el nodo banda: guardar `millis()` del último aviso y no aceptar otro antes de 300 ms.
-- g7p-p2: si no llegan al 90 %, revisar primero el tipo de error más frecuente (tabla de errores de la Guía 6): color → límites; desvío → RECORRIDO o ángulos; detección → sensor IR.
-- Tiempo total: 35 + 20 + 15 + 35 + 5 + 10 = 120 minutos.
+- **Versión Práctica (10 sábados):** antes era la Guía 4; ahora va después de las tres simulaciones (guías 4 a 6), donde ya armaron este mismo circuito con el transistor NPN de Tinkercad.
+- **Desde el 23 de octubre:** la Guía 4 normal con el armado de las piezas impresas. Por decisión del docente, el motor es un **TT** (3–6 V) controlado con un **TIP41C** y la energía sale de una **fuente de 5 V y 2 A o más con jack hembra de bornera** (desde el 30 de octubre, en lugar del cargador de celular con el cable USB pelado; decisión de Bairon): no hay fuente de 12 V, LM2596 ni fusible. Campos propios (g7p-…).
+- TIP41C: 220 Ω en la base dan unos (5 − 0,9) ÷ 220 ≈ 19 mA, seguros para el pin y suficientes para el TT (≈ 0,2 A andando, menos de 1 A al arrancar). Patas mirando de frente: B, C, E.
+- g7p-p1: el TIP41C saturado deja unos 0,2–1 V entre colector y emisor (más que el MOSFET de la versión completa); al motor le llegan unos 4–4,8 V, suficiente para el TT.
+- El capacitor de 470–1000 µF junto al motor y el servo evita que caiga el voltaje cuando arrancan (y que se reinicien los Arduino si también toman energía de la fuente).
+- Lazo de la banda: unos 2 × 400 + π × 30 ≈ 895 mm; coser o pegar las puntas con pegamento de contacto, sin que quede un bulto grueso.
+- Revisar cada etapa de potencia **antes** de enchufar: diodo o capacitor al revés y colector/emisor invertidos son los errores más comunes.
+- Si el motor arranca solo al encender el Arduino, falta la resistencia de 10 kΩ entre la base y GND.
+- Tiempo total: 10 + 35 + 20 + 20 + 20 + 5 + 5 = 115 minutos (5 de margen para las pruebas).
 :::

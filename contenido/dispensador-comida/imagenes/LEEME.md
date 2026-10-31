@@ -33,11 +33,11 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | Archivo | Descripción |
 | --- | --- |
 | IMAGEN_2.1T.png | dispensador diseñado en Tinkercad, con etiquetas: botella, embudo con cuello, torre, compuerta, servo, plato, Arduino y protoboard con el botón, el LED y el buzzer *(lista)* |
-| IMAGEN_2.3T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones |
+| IMAGEN_2.3T.png | editor de Codeblocks con sus partes señaladas: categorías, bloques, área de programa, vista 3D y botones *(lista)* |
 | IMAGEN_4.1T.png | acercamiento del dispensador en Tinkercad: salida del embudo, compuerta boca abajo, servo colgando de sus pestañas en su repisa y plato abajo *(lista)* |
-| IMAGEN_2.4T.png | soporte del servo terminado en Tinkercad Codeblocks *(ya no se usa)* |
-| IMAGEN_3.1T.png | embudo hueco en Tinkercad Codeblocks con el cuello para la botella *(ya no se usa)* |
-| IMAGEN_3.2T.png | compuerta en Tinkercad Codeblocks: paleta con el encastre para el servo *(ya no se usa)* |
+| IMAGEN_2.4T.png | soporte del servo terminado en Tinkercad Codeblocks *(ya no se usa)* *(lista)* |
+| IMAGEN_3.1T.png | embudo hueco en Tinkercad Codeblocks con el cuello para la botella *(ya no se usa)* *(lista)* |
+| IMAGEN_3.2T.png | compuerta en Tinkercad Codeblocks: paleta con el encastre para el servo *(ya no se usa)* *(lista)* |
 | IMAGEN_13.1T.png | escena final del dispensador en Tinkercad con la botella transparente, el embudo, la compuerta y las croquetas en el plato |
 
 **Versión "Doble: cereal y líquido (Tinkercad)"** de las guías 2, 3 y 5 (archivos `guia-NN.doble.md`; el editor usa `IMAGEN_2.3T.png`):
@@ -50,3 +50,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_3.1D.png | embudo con tapa ancha y cuello en Tinkercad Codeblocks *(lista)* |
 | IMAGEN_3.2D.png | torre del líquido en Tinkercad Codeblocks: pie, pared y brazo con el agujero de la manguera *(lista)* |
 | IMAGEN_5.1D.png | circuito del dispensador doble: servo, dos botones, LED, buzzer y relé con la bomba y las pilas |
+
+**Versiones prácticas de 8 sábados** (`guia-NN.practica.md` = sencillo y `guia-NN.doble-practica.md` = doble). Las guías 7 reutilizan 1.3, 4.1T y 5.1D:
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_4.1P.png | editor de Tinkercad Circuits con sus partes señaladas *(lista)* |
+| IMAGEN_4.2P.png | dispensador sencillo simulado en Tinkercad Circuits: servo, pulsador, LED y piezo *(lista)* |
+| IMAGEN_4.2DP.png | dispensador doble simulado: servo, dos pulsadores (cereal y líquido), LED y piezo *(lista)* |
+| IMAGEN_5.1DP.png | dispensador doble simulado con el relé, el motor que hace de bomba y la pila de 9 V *(lista)* |

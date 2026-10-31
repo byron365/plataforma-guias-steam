@@ -25,7 +25,7 @@ Conocer las piezas de nuestro robot, medir los motores y las ruedas, y diseñar 
 
 El robot tiene **dos pisos**. Abajo, el **chasis** lleva los dos motores con sus ruedas, la rueda loca y el sensor de distancia. Arriba, la **bandeja** lleva la batería de los motores, el Arduino y el puente H. La pila de 9 V del Arduino va abajo, entre los postes. Cuatro **postes** unen los dos pisos. El **mando** es una caja con el joystick y la pantalla.
 
-[IMAGEN 2.1P: robot y mando diseñados en Tinkercad, con etiquetas: batería de los motores, bandeja, poste, pila de 9 V del Arduino, sensor HC-SR04 en su soporte, chasis, rueda loca, Arduino, puente H L298N, rueda y motor TT, joystick, pantalla OLED y caja del mando]
+[IMAGEN 2.1P: robot y mando diseñados en Tinkercad, con etiquetas: batería de los motores, bandeja, poste, pila de 9 V del Arduino, sensor HC-SR04 en su soporte, chasis, rueda loca, Arduino, puente H L298N, rueda y motor TT, joystick, pantalla y caja del mando]
 
 Las piezas que diseñamos e imprimimos:
 

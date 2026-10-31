@@ -1,0 +1,27 @@
+{
+  "proyecto": "Mini invernadero inteligente",
+  "nivel": "Básico",
+  "versiones": {
+    "practica": {
+      "nombre": "Práctica con Wokwi",
+      "sabados": 8,
+      "materiales": [
+        {"imagen": "arduino", "componente": "Arduino UNO R3 con su cable USB", "cantidad": "1", "uso": "Cerebro del invernadero (desde la Guía 1)"},
+        {"imagen": "protoboard400", "componente": "Protoboard de 400 puntos", "cantidad": "1", "uso": "Armar el circuito sin soldar"},
+        {"imagen": "cables_mm", "componente": "Cables Dupont macho–macho (juego de 40)", "cantidad": "1 juego", "uso": "Conexiones en la protoboard y el servo"},
+        {"imagen": "cables_mh", "componente": "Cables Dupont macho–hembra (juego de 40)", "cantidad": "1 juego", "uso": "Conectar los sensores y el relé (Guía 7)"},
+        {"imagen": "leds", "componente": "LED blanco de 5 mm", "cantidad": "2 (uno de repuesto)", "uso": "Luz de crecimiento (Guías 1 y 7)"},
+        {"imagen": "resistencia", "componente": "Resistencia de 220 Ω", "cantidad": "1", "uso": "Para el LED"},
+        {"imagen": "sensor_humedad", "componente": "Sensor de humedad de suelo capacitivo", "cantidad": "1", "uso": "Mide si la tierra está seca (Guías 1 y 7)"},
+        {"imagen": "dht11", "componente": "Sensor de temperatura y humedad DHT11 (módulo)", "cantidad": "1", "uso": "Mide la temperatura para abrir la ventana (Guía 7)"},
+        {"imagen": "servo", "componente": "Servomotor SG90 (con brazos y tornillos)", "cantidad": "1", "uso": "Abre la ventana del techo (Guía 6)"},
+        {"imagen": "boton1", "componente": "Botón pulsador de 4 patas", "cantidad": "1", "uso": "Ventana (Guía 6) y riego manual (Guía 7)"},
+        {"imagen": "bomba", "componente": "Mini bomba de agua sumergible de 5 V con su manguera", "cantidad": "1", "uso": "Riega la planta (Guía 7)"},
+        {"imagen": "rele", "componente": "Módulo relé de 5 V de un canal", "cantidad": "1", "uso": "Interruptor con el que el Arduino enciende la bomba (Guía 7)"},
+        {"imagen": "eliminador", "componente": "Fuente (cargador) de 5 V y 1 A, con plug de 5,5 × 2,1 mm", "cantidad": "1", "uso": "Energía de la bomba (Guía 7)"},
+        {"imagen": "jack", "componente": "Conector jack hembra de 5,5 × 2,1 mm con bornera de tornillos", "cantidad": "1", "uso": "Recibe la fuente y deja atornillar los cables que van al relé y a la bomba"}
+      ],
+      "no_comprar": "Las piezas impresas (bisagra, soporte del servo y clip de la manguera), la pistola y las barras de silicona, los palitos de pincho y de paleta, la cinta aislante y el destornillador los pone la academia (el cutter lo usa solo el docente). Del hogar: 2 macetas pequeñas o vasos con agujero abajo, tierra, semillas de crecimiento rápido (rábano o frijol), una caja transparente o de plástico reciclado, un poco de cartón y una botella grande para el depósito de agua. También se usan la computadora con Arduino IDE e internet, la cuenta de Tinkercad (para diseñar) y la de Wokwi (para simular)."
+    }
+  }
+}

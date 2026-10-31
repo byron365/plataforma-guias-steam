@@ -1,35 +1,28 @@
 ---
-titulo: ¡A manejar!
+titulo: Simulamos el sistema completo
 guia: 6
 sabado: 6
-sesion: Programación y pruebas
+sesion: Simulación (3)
 duracion: 120
 ---
 
-# Guía 6 · ¡A manejar!
+# Guía 6 · Simulamos el sistema completo
 
 ## Objetivo del día
 
-Programar los dos Arduino: el mando convierte el joystick en órdenes `M,izq,der` y muestra la telemetría; el robot obedece, se detiene si pierde la señal y responde con `T,bat,dist`. Después, salir a manejar y ajustar lo que falte.
+Escribir el programa final del robot para que obedezca al mando, se detenga si pierde la señal y responda con la telemetría, y manejarlo en el simulador.
 
-**Al terminar tendremos:** el robot manejado con el mando y la batería y la distancia visibles en la pantalla.
+**Al terminar tendremos:** el robot y el mando funcionando juntos en el simulador, con los dos programas finales guardados para subirlos a los Arduinos reales.
 
 ## Materiales del equipo
 
-- Robot y mando armados, con los HC-05 emparejados (sábado 5)
-- Computadora con Arduino IDE y las librerías Adafruit SSD1306 y Adafruit GFX
-- Espacio libre en el piso y una caja o pared como obstáculo
+- Computadora con internet y la cuenta de Tinkercad del equipo
+- Diseño `equipo_NOMBRE_robot_sim` con el robot y el mando (sábado 5)
+- Bitácora
 
 ## Parte 1 · Del joystick a dos motores (15 min)
 
-El mando y el robot se hablan con mensajes de texto que terminan con salto de línea:
-
-| Mensaje | Dirección | Significado | Ejemplo |
-| --- | --- | --- | --- |
-| `M,izq,der` | Mando → Robot | Velocidad de cada motor (−255 a 255) | `M,150,-80` |
-| `T,bat,dist` | Robot → Mando | Batería (V) y distancia (cm) | `T,7.4,32` |
-
-El joystick da dos valores: **avance** (Y) y **giro** (X). El robot tiene dos motores. Se combinan así (**mezcla diferencial**):
+El joystick da dos valores: **avance** (Y) y **giro** (X). El robot tiene dos motores. El mando los combina así (**mezcla diferencial**):
 
 > izquierdo = avance + giro  derecho = avance − giro
 
@@ -49,11 +42,9 @@ Calculen cada fila con las dos fórmulas. Si un resultado pasa de 255, escriban 
 | −200 | 0 | | | |
 :::
 
-## Parte 2 · Código del robot (25 min)
+## Parte 2 · El programa final del robot (35 min)
 
-1. Pongan el robot sobre una caja, con las ruedas en el aire.
-2. Conecten el Arduino del robot por USB. Programa nuevo, escriban el código y guárdenlo como `equipo_NOMBRE_robot`. Es casi el mismo de la prueba de motores (Guía 4): las mismas líneas para el L298N, más el Bluetooth y los sensores.
-3. Verifiquen (✓) y suban (→).
+Abran el diseño. Toquen **Código**, elijan **1 (Arduino Uno R3)** (el robot), borren todo y escriban. Junta lo que ya probaron: los motores de la Guía 4 y la telemetría de la Guía 5, más tres cosas nuevas: leer la orden `M,izq,der`, mover los motores con ella y detenerse si no llegan órdenes.
 
 ```cpp
 // Robot con mando y telemetría - Intermedio II
@@ -151,186 +142,78 @@ void loop() {
 }
 ```
 
-:::pregunta id="g6p-p1"
-Explica qué hace el bloque "Seguridad: sin señal, detener". ¿Qué podría pasar si no estuviera?
-:::
-
-## Parte 3 · Código del mando (25 min)
-
-1. Instalen las librerías: en Arduino IDE abran el **Gestor de bibliotecas** (icono de los libros, a la izquierda), busquen **Adafruit SSD1306** e instálenla. Si pregunta por otras librerías que necesita (como *Adafruit GFX Library*), elijan **Instalar todo**.
-2. Conecten el Arduino del mando por USB (por el agujero de la caja). Programa nuevo, escriban el código y guárdenlo como `equipo_NOMBRE_mando`.
-3. El bloque del final, entre `/*` y `*/`, es solo un recordatorio de los comandos AT de la Guía 5: el Arduino no lo lee. Pueden copiarlo o no.
-4. Verifiquen (✓) y suban (→).
-
-```cpp
-// Robot con mando y telemetría - Intermedio II
-// Docente: Bairon Alas - STEAM Robotics Academy
-// Programa del MANDO
-// Librerías: Adafruit SSD1306, Adafruit GFX
-
-#include <SoftwareSerial.h>
-#include <Wire.h>
-#include <Adafruit_SSD1306.h>
-SoftwareSerial bt(10, 11);  // RX, TX al HC-05
-Adafruit_SSD1306 pantalla(128, 64, &Wire, -1);
-
-const int JOY_X = A0, JOY_Y = A1;
-const int ZONA_MUERTA = 20;
-String buffer = "";
-unsigned long ultimoEnvio = 0;
-
-void setup() {
-  pantalla.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-  pantalla.setTextColor(SSD1306_WHITE);
-  bt.begin(9600);
-}
-
-void loop() {
-  // 1. Enviar una orden cada 100 ms
-  if (millis() - ultimoEnvio > 100) {
-    int y = analogRead(JOY_Y) / 2 - 256;  // avance
-    int x = analogRead(JOY_X) / 2 - 256;  // giro
-    if (abs(y) < ZONA_MUERTA) y = 0;
-    if (abs(x) < ZONA_MUERTA) x = 0;
-    int izq = constrain(y + x, -255, 255);
-    int der = constrain(y - x, -255, 255);
-    bt.print("M,");
-    bt.print(izq);
-    bt.print(",");
-    bt.println(der);
-    ultimoEnvio = millis();
-  }
-
-  // 2. Recibir telemetría "T,bat,dist"
-  while (bt.available()) {
-    char c = bt.read();
-    if (c == '\n') {
-      mostrar(buffer);
-      buffer = "";
-    } else buffer += c;
-  }
-}
-
-// Muestra batería y distancia en la OLED
-void mostrar(String m) {
-  if (m[0] != 'T') return;
-  int c1 = m.indexOf(',');
-  int c2 = m.indexOf(',', c1 + 1);
-  float bat = m.substring(c1 + 1, c2).toFloat();
-  int dist = m.substring(c2 + 1).toInt();
-  pantalla.clearDisplay();
-  pantalla.setTextSize(2);
-  pantalla.setCursor(0, 0);
-  pantalla.print(bat, 1);
-  pantalla.println(" V");
-  pantalla.print(dist);
-  pantalla.println(" cm");
-  if (bat < 6.8) pantalla.println("BATERIA!");
-  pantalla.display();
-}
-
-/*
-// Configuración única de los HC-05
-// Modo AT: mantener el botón del módulo
-// al encenderlo. Puente AT de la guía 5 (HC-05 a 38400),
-// "Ambos NL & CR".
-
-// En el ROBOT (esclavo):
-AT+ROLE=0
-AT+ADDR?        // anotar la dirección
-AT+UART=9600,0,0
-
-// En el MANDO (maestro):
-AT+ROLE=1
-AT+CMODE=0
-AT+BIND=[dirección del esclavo]
-AT+UART=9600,0,0
-*/
-```
+- `indexOf(',')` busca dónde está cada coma; `substring` corta el texto entre las comas y `toInt()` lo convierte en número.
+- El código del **mando** (Arduino 2) es el de la Guía 5: no hay que cambiarlo.
 
 Miren en la animación cómo viajan los mensajes `M` y `T` letra por letra:
 
 :::animacion tipo="protocolo" sistema="robot"
 :::
 
-## Parte 4 · ¡A manejar! (20 min)
+## Parte 3 · ¡A manejar en el simulador! (30 min)
 
-Enciendan el robot (en el piso, con espacio libre) y el mando. Esperen a que los LEDs de los HC-05 parpadeen dos veces cada 2 segundos. Luego hagan cada prueba:
+1. **Iniciar simulación.** Dejen las dos perillas en el centro: los motores deben quedarse quietos.
+2. Giren las perillas y miren las RPM de cada motor. Muevan el objeto del sensor y miren la pantalla del mando.
 
-- **Apagar el mando:** desconecten su cable USB con el robot avanzando despacio.
-- Si el robot avanza cuando el joystick va hacia atrás, en el código del mando cambien `int y = analogRead(JOY_Y) / 2 - 256;` por `int y = 256 - analogRead(JOY_Y) / 2;` y súbanlo de nuevo.
-
-:::tabla id="g6p-integracion"
-| Prueba | ¿Funciona? | Observación |
+:::tabla id="g6p-pruebas"
+| Prueba | ¿Funciona? | Lo que se ve |
 | --- | --- | --- |
-| Joystick adelante → el robot avanza | | |
-| Joystick a un lado → gira | | |
-| Joystick suelto → se detiene | | |
-| La pantalla muestra la batería | | |
-| La pantalla muestra la distancia | | |
-| Apagar el mando → el robot se detiene | | |
+| Perilla Y hacia un lado: los dos motores giran igual (avanza) | | |
+| Perilla Y hacia el otro lado: los dos giran al revés (retrocede) | | |
+| Perilla X hacia un lado: un motor adelante y el otro atrás (gira) | | |
+| Perillas en el centro: los motores se detienen | | |
+| La pantalla muestra la batería y la distancia | | |
 :::
 
-## Parte 5 · Ajustes finales (20 min)
-
-Revisen si les pasa algo de esta tabla y cómo lo solucionaron:
-
-:::tabla id="g6p-motores"
-| Síntoma | Causa probable | ¿Nos pasó? | Solución |
-| --- | --- | --- | --- |
-| Un motor gira al revés | Cables del motor invertidos | | |
-| El robot gira cuando debería ir recto | Motores distintos o PWM igual a velocidades distintas | | |
-| Un motor no gira | Cable suelto, pin equivocado o la batería de los motores apagada | | |
-| Los motores zumban pero no se mueven | PWM muy bajo para arrancar | | |
+:::pregunta id="g6p-p1"
+Si avanzan con la perilla Y y además giran un poco la X, ¿qué motor va más rápido? ¿Hacia dónde gira el robot?
 :::
 
-Para un robot que se desvía, compensa en el código:
+## Parte 4 · Seguridad sin señal (15 min)
 
-1. La línea `const float AJUSTE_DER = 0.92;` va en `// --- Ajustes del equipo ---`.
-2. En `procesar()`, cambien la línea `motor(PWMB, BIN1, BIN2, der);` por la del recuadro.
-3. Prueben con el joystick al frente. Si sigue desviándose, cambien 0.92 por otro número (0.95, 0.90…). Si el más rápido es el **izquierdo**, hagan lo mismo con el motor izquierdo: una constante `AJUSTE_IZQ` y la línea `motor(PWMA, AIN1, AIN2, izq * AJUSTE_IZQ);` (y dejen el derecho como estaba).
+Si el robot real pierde la señal del mando (se acaba la batería del mando o se aleja demasiado), debe detenerse solo. Vamos a probarlo "cortando el Bluetooth":
 
-```cpp
-const float AJUSTE_DER = 0.92;   // si el derecho es más rápido
-motor(PWMB, BIN1, BIN2, der * AJUSTE_DER);
-```
+1. Con la simulación andando, giren la perilla Y para que los motores avancen.
+2. **Detengan la simulación** y borren el cable que va del **D11 del mando** al **D10 del robot** (por ahí viajan las órdenes).
+3. **Iniciar simulación** y giren la perilla Y: los motores **no deben moverse**.
+4. Detengan la simulación y vuelvan a poner el cable.
+
+:::pregunta id="g6p-p2"
+Explica qué hace el bloque "Seguridad: sin señal, detener". ¿Qué podría pasar si no estuviera?
+:::
 
 ## ¿Lo logramos? (5 min)
 
 :::checklist id="g6p-logramos"
-- [ ] El código del robot y el del mando están cargados.
-- [ ] El robot obedece al joystick.
-- [ ] La telemetría llega a la pantalla del mando.
-- [ ] El robot se detiene si se apaga el mando.
+- [ ] El robot simulado obedece a las perillas del mando.
+- [ ] La pantalla del mando muestra la telemetría.
+- [ ] Sin el cable de las órdenes, el robot se queda quieto.
+- [ ] Guardamos los dos programas.
 :::
 
 ## Reto extra
 
-Armen con conos (o vasos) un **slalom** de 4 conos y midan cuánto tarda cada piloto en recorrerlo ida y vuelta sin tocar ninguno.
+Haz que el robot **no avance** si hay un obstáculo a menos de 15 cm (pero que sí pueda retroceder y girar).
 
-## Bitácora (10 min)
+Pista: en `procesar()`, antes de mover los motores, si `izq` y `der` son positivos y `distancia()` es menor que 15, pongan los dos en 0.
+
+## Bitácora (15 min)
 
 :::pregunta id="g6p-b1"
-¿Qué parte del proyecto les costó más: el diseño 3D, el armado o la programación? ¿Por qué?
+¿Qué creen que será distinto cuando armen el robot real?
 :::
 
-:::foto id="g6p-foto"
-Video corto del robot manejado con el mando.
-:::
-
-Antes de irse, suban los dos programas (robot y mando) juntos en un `.zip` (selecciónenlos → clic derecho → **Comprimir en archivo ZIP**).
+**Muy importante:** estos son los programas que van a subir a los Arduinos reales el sábado 9. Copien cada uno completo (**Ctrl + A** y **Ctrl + C** en el panel Código), péguenlo en un bloc de notas y guárdenlos como `equipo_NOMBRE_robot.txt` (Arduino 1) y `equipo_NOMBRE_mando.txt` (Arduino 2). Súbanlos aquí juntos en un `.zip`.
 
 :::archivo id="g6-archivo"
-**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** suban aquí el `.zip` con `equipo_NOMBRE_robot.txt` y `equipo_NOMBRE_mando.txt`. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí.
 :::
 
 :::docente
-- **Versión Práctica (6 sábados), nueva el 23 de octubre:** la Guía 5 normal (protocolo, mezcla, código del robot y del mando, prueba integrada) más la tabla de motores y el ajuste de la Guía 7 normal. El código del robot es el de la Guía 5 normal sin STBY (puente H L298N). Es la última guía de esta versión. Campos propios (g6p-…).
+- **Versión Práctica (9 sábados):** el programa del robot es el mismo de la Guía 9 (antes Guía 6 Práctica); en el simulador corre con el L293D porque usa los mismos pines. Campos propios (g6p-…). Las respuestas de la Guía 6 anterior (¡A manejar!) pasaron a la Guía 9 (g9p-…).
 - Tabla de mezcla: (200, 200) adelante; (150, −150) gira a la derecha sobre su eje; (250→255, 50) curva a la derecha; (−200, −200) atrás.
-- g6p-p1: si el robot deja de recibir órdenes por 500 ms (mando apagado o fuera de alcance), detiene los motores. Sin ese bloque seguiría con la última orden y podría chocar.
-- El joystick da ≈512 en el centro; `/2 - 256` lo lleva a ≈0; la zona muerta elimina el temblor del centro.
-- Si con USB funciona y con baterías no, revisar la pila de 9 V (que esté cargada y su interruptor encendido) y el GND común entre el L298N y el Arduino.
-- Con el L298N los motores reciben unos 2 V menos que con el TB6612: si con el joystick poco inclinado solo zumban, es normal.
-- El reto del slalom sale de la pista de la Guía 10 normal.
-- Tiempo total: 15 + 25 + 25 + 20 + 20 + 5 + 10 = 120 minutos.
+- g6p-p1: el izquierdo (avance + giro); el robot hace una curva hacia la derecha (si la X positiva es la derecha).
+- g6p-p2: si el robot deja de recibir órdenes por 500 ms, detiene los motores. Sin ese bloque seguiría con la última orden y podría chocar.
+- Si al centrar las perillas los motores siguen girando despacio, la perilla no está justo en el centro: la zona muerta del mando es de ±20; se puede subir a 30.
+- Tiempo total: 15 + 35 + 30 + 15 + 5 + 15 = 115 minutos (5 de margen para cambiar entre los dos Arduinos).
 :::

@@ -87,6 +87,7 @@ PUERTO=3000                       ← puerto (si lo cambias, cambia también la 
 | `respaldos/` | Copias de seguridad de la base de datos y espejo de `subidas/` |
 | `subidas/` | Fotos de la bitácora y archivos de trabajo de los equipos |
 | `servidor/` | Código del servidor |
+| `herramientas/` | Scripts del docente: STL de las piezas (Blender) y listas de materiales en Word (`lista_materiales.py` y `materiales/`) |
 
 Los datos de los estudiantes **nunca salen de tu PC**: todo queda en `datos/` y `subidas/`.
 
@@ -115,12 +116,30 @@ Notas:
   se queda en Blender: la hace el docente o un equipo con Blender. Puedes cambiarla en cualquier
   momento: **las respuestas se conservan**. En el visor de una guía, sin equipo elegido, el menú **Versión** muestra cada una.
   Tinkercad necesita internet y una cuenta de Tinkercad para cada equipo (o una clase de Tinkercad).
+- **Versiones prácticas (más cortas):** varios proyectos tienen además una versión que, después del diseño 3D, **simula el
+  circuito por partes** (Tinkercad Circuits o Wokwi) mientras se imprimen las piezas, y luego **arma todo en físico**:
+  Puente (8 sábados), Dispensador sencillo y doble (8), Robot con mando (9), Banda clasificadora (10) y Mini invernadero (8, con
+  Wokwi). Una versión puede usar los archivos de otra como base (por ejemplo, la doble práctica toma las guías 2 y 3 de la doble,
+  y la guía 1 de la Tinkercad). Las respuestas de las guías que cambian no se ven al pasar de una versión a otra.
 - En el visor de respuestas, la casilla **"Solo notas del docente"** deja solo tus notas de esa guía.
 - Una guía abierta para todo el proyecto no se puede cerrar para un solo equipo; al revés sí
   (abrir una guía solo para un equipo que va adelantado).
 
 Para empezar de cero (borra equipos, respuestas y progreso): apaga el servidor y borra
 los archivos `datos/plataforma.db*` y la carpeta `subidas/`.
+
+## Listas de materiales en Word
+
+Para cada grupo se puede generar un documento de Word con lo que debe comprar, según la versión de sus guías:
+
+```
+python herramientas/lista_materiales.py <proyecto> "<carpeta de salida>" [nombre del grupo]
+```
+
+- La lista de cada versión está en `herramientas/materiales/<proyecto>.json` (componente, cantidad, para qué y la imagen).
+- Las imágenes y sus créditos van en `<carpeta de salida>/imagenes/` (`imagenes.json` y `logo.png` para la esquina del documento).
+- Lee los grupos de `datos/plataforma.db` solo para consultar; los documentos se guardan en la carpeta de salida, fuera del repositorio.
+- Sin el nombre del grupo, genera un documento por cada grupo del proyecto. Si un documento está abierto en Word, avisa y sigue con los demás.
 
 ## Fotos y videos de la bitácora
 

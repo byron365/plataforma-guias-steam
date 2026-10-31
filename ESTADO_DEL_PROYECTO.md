@@ -16,7 +16,7 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > el docente elige la versión de cada equipo (sección 2.1.6).
 > **17 de octubre:** imagen 1.3 del Mini invernadero (sensor de humedad) hecha y probada en Tinkercad Circuits.
 > **20 de octubre:** guías 2 y 3 del Puente (versión Tinkercad) reestructuradas: diseño 3D completo del puente en
-> piezas imprimibles (sección 2.1.6). Pendiente: adaptar las guías 4 a 8 del Puente al puente impreso.
+> piezas imprimibles (sección 2.1.6). Guías 4 a 8 adaptadas al puente impreso el 30 de octubre.
 > **21 de octubre:** Dispensador con una tercera versión, **"Doble: cereal y líquido (Tinkercad)"** (guías 2, 3 y 5),
 > para un grupo que hace un dispensador doble con bomba (sección 2.1.6). Nuevo campo `"base"` en las versiones.
 > También el **dispensador sencillo (versión Tinkercad)**: guías 2 y 3 reestructuradas con la misma torre impresa y nueva
@@ -28,6 +28,16 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > **23 de octubre:** **Robot con mando** con versión nueva **"Práctica (6 sábados)"** (guías 2 a 6 nuevas, chasis y mando
 > impresos). Las versiones ahora pueden tener menos guías que el proyecto (`"guias"` en `proyecto.json`; sección 2.1.6).
 > **24 de octubre:** **Garra robótica** con versión nueva **"Blender práctica (7 sábados)"** (guías 2 a 7, sección 2.1.6).
+> **30 de octubre:** listas de materiales en Word por grupo (`herramientas/lista_materiales.py` + `herramientas/materiales/<proyecto>.json`; salida e imágenes de Wikimedia Commons en `..\Listas de materiales\`). Hecho: Puente levadizo (2 grupos, versión Tinkercad).
+> Guías **4 a 8 del Puente (versión Tinkercad)** adaptadas al puente impreso (sección 2.1.6). Lista del puente revisada por Bairon
+> (protoboard de 400, 2 servos, eliminador de 9 V, sin consumibles de la academia) y guías **11 y 12 Tinkercad** con mejoras sin comprar piezas.
+> **30 de octubre (resumen):** versiones prácticas con **simulación primero y armado después**: Puente y Dispensador
+> (sencillo y doble) en 8 sábados con Tinkercad Circuits; Robot con mando en 9 y Banda en 10 (LCD 16 × 2 I2C en vez de
+> OLED/MAX7219); Mini invernadero en 8 con Wokwi (y la Guía 4 en Tinkercad). Fuente de 5 V con jack hembra en lugar de
+> pilas o cargador pelado. `servidor/contenido.js` sigue la cadena de versiones base. Listas de materiales en Word para
+> Puente, Dispensador, Banda (Samuel y Grecia) e Invernadero (`herramientas/lista_materiales.py`, acepta un grupo).
+> **Pendiente (30 de octubre):** lista de materiales del **Robot con mando** (Bairon quiere revisarla con calma; cambia por la LCD 16 × 2 I2C y los cables macho–hembra).
+> **Pendiente (30 de octubre):** revisar el proyecto del **Laberinto** y ver cómo simplificarlo (a pedido de Bairon).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
 
@@ -274,6 +284,76 @@ electrónica en la protoboard y adaptar también la Guía 4).
 - [ ] Guía 5 (normal) dice "pegar la protoboard en el frente de la base": con la torre no hay base aparte (nota al docente en la 4T).
 - [ ] Guía 13T: la escena final todavía menciona el soporte suelto del servo; adaptarla a la torre.
 
+**Mini invernadero: versión nueva "Práctica con Wokwi (8 sábados)" (30 de octubre, a pedido de Bairon).** `practica`,
+base `tinkercad`: guías 1 y 2 = Tinkercad (sembrar y piezas 3D); **3P** simular en **Wokwi** la luz con temporizador y la
+ventana con botón; **4P** riego en **Tinkercad Circuits** (Sensor de humedad del suelo con `1023 - analogRead` porque el de Tinkercad sube con el
+agua, Relé SPDT en D8, Motor de CC + Fuente de alimentación en 5 V, umbral; decisión de Bairon); en la **5P** el riego se agrega en
+Wokwi con potenciómetro, **Relay Module** y LED azul; **5P** DHT22 (en Wokwi; DHT11 en el real), histéresis y **programa final** (el de la Guía 8 normal con
+`ANGULO_ABIERTA`), se guarda como .txt; **6P** armar la casa y la ventana (3T + 4T); **7P** circuito real completo con la
+**fuente de 5 V con jack hembra** para la bomba (decisión de Bairon), cambiar `DHT22` → `DHT11`, calibrar el umbral con tierra;
+**8P** grupo control, gráfica de los datos del Monitor y demostración. Campos propios g3p-… a g8p-….
+- Simulación en Wokwi y no en Tinkercad por decisión de Bairon (Tinkercad no tiene DHT11 ni módulo relé).
+- Los 5 programas compilan con arduino-cli (DHT con copia mínima).
+- Equipo Lucas, Sofía ya en la versión nueva. [ ] Imágenes 4.1P (Tinkercad), 5.1P y 7.1P; la 3.1P y la 3.2P ya están.
+- Lista de materiales (14 materiales) generada para Lucas, Sofía: `herramientas/materiales/mini-invernadero.json` (sensor de humedad = ilustración propia; DHT11 de Wikimedia Commons).
+
+**Banda clasificadora: versión Práctica ahora de 10 sábados (30 de octubre, a pedido de Bairon).** Guías 1 a 3
+iguales; **4P** simular el nodo banda en Tinkercad (Fuente de alimentación en 5 V = cargador, **Transistor NPN** en lugar
+del TIP41C, primero con LED y luego con el Motor de CC y el diodo, perilla en A0, **pulsador = sensor IR**, multímetro);
+**5P** simular el nodo clasificador (**tres potenciómetros = TCS34725**, servo D6, **LCD 16 × 2 I2C**, botón de paro);
+**6P** sistema completo por I2C (los programas de la Guía 8; el clasificador solo cambia `leerColor()`; prueba de
+"ERROR: sin banda" quitando el cable A4; se guardan los dos .txt); **7P** = antigua 4P (armar banda y potencia);
+**8P** = antigua 5P (los dos nodos, ahora con la LCD); **9P** = antigua 6P (calibrar); **10P** = antigua 7P (luz,
+ángulos y lote final). Campos renombrados g4p→g7p … g7p→g10p (los equipos van en las guías 1 y 2).
+- **Pantalla LCD 16 × 2 I2C en vez del MAX7219** (decisión de Bairon; el MAX7219 no existe en Tinkercad). Comparte el bus
+  I2C (0x27) con el TCS34725 (0x29) y el nodo banda (0x08). Conteo "R:3 V:2 A:4" arriba y "ERROR: sin banda" abajo.
+- Nodo banda con `INPUT_PULLUP` en el sensor (sirve para el pulsador y para el módulo IR). Comentario corregido: el PWM va a
+  la base del TIP41C, no a un MOSFET.
+- Los 11 programas de las guías 4 a 10 compilan con arduino-cli (TCS34725 y LCD con copias mínimas, sin instalar nada),
+  incluida la `leerColor()` con proporciones de la Guía 10 dentro del clasificador.
+- [ ] Imágenes 5.1S y 6.1S (simulación) y la 5.1 con la LCD. La 4.2S ya está (Bairon), con el emisor a GND.
+- **Fuente de 5 V con jack hembra de bornera** en lugar del cargador con cable USB pelado (decisión de Bairon): guías 4, 5 y 7 a 10 actualizadas (en la 7, los cables salen de los tornillos + y − del jack a las filas largas).
+- Lista de materiales (versión Práctica, 21 materiales) generada solo para **Samuel y Grecia**: `herramientas/materiales/banda-clasificadora.json`. El generador acepta ahora un tercer dato con el nombre del grupo. Ilustraciones propias del motor TT, el sensor IR y el TCS34725.
+
+**Robot con mando: versión Práctica ahora de 9 sábados (30 de octubre, a pedido de Bairon).** Guías 1 a 3 iguales;
+**4P** simular el robot en Tinkercad Circuits (chip **L293D** en lugar del L298N, mismos pines; **Motor de aficionado**;
+pila de 9 V; HC-SR04; divisor 10k/10k en A0); **5P** simular el mando (segundo Arduino, **dos potenciómetros** como
+joystick, **LCD 16 × 2 I2C** tipo PCF8574 en 0x27; el Bluetooth se reemplaza por cables D10 ↔ D11 y GND; el robot solo
+escucha y manda telemetría); **6P** sistema completo (programa final del robot, manejar con las perillas, parada de
+seguridad cortando el cable de las órdenes; se guardan los dos .txt); **7P** = antigua 4P (armar el robot); **8P** =
+antigua 5P (HC-05 y mando, ahora con la LCD; HC-05 acostado con cables macho–hembra); **9P** = antigua 6P (¡a manejar!,
+código del mando con `LiquidCrystal_I2C`, dirección 0x27 o 0x3F). Los campos de las guías movidas se renombraron
+(g4p → g7p, g5p → g8p, g6p → g9p); el equipo iba en la Guía 2, sin respuestas en esas guías.
+- **Pantalla LCD 16 × 2 I2C en vez de la OLED** (decisión de Bairon, más barata): Tinkercad tiene la LCD con
+  "Tipo: Basado en PCF8574" y la librería **LiquidCrystal I2C**; compila con `init()` y `backlight()` (comprobado).
+- Caja del mando para la LCD: 150 × 66 × 45 (antes 126 × 66 × 33); tapa de 150 × 66 con ventana de 66 × 17 en X 27 y
+  joystick en X −45. Guía 3P y `herramientas/robot_stl.py` actualizados; STL regenerados en `..\Robot con mando - STL para imprimir\`.
+- Los 9 programas de las guías 4 a 9 compilan con arduino-cli (la LCD con una copia mínima de la librería, sin instalar nada).
+- [ ] Imagen 5.1S (simulación) y rehacer la 3.2P (caja nueva). La 4.1S, 4.2S y 4.3S ya están. Siguen pendientes las de antes: 4.1P, 4.2 y 5.1P.
+- [ ] La versión Completa (14 sábados) sigue con la OLED.
+
+**Dispensador: versiones prácticas de 8 sábados (30 de octubre, a pedido de Bairon).** Igual que el Puente: guías 4-6
+simulan por partes en Tinkercad Circuits, 7 arma en físico y 8 prueba y presenta.
+- `practica` = "Tinkercad práctica (8 sábados)", base `tinkercad` (sencillo): 4P compuerta + botón + LED + piezo con
+  `servir()`; 5P porciones con la constante `MASCOTA` (1 gato, 2 perro pequeño, 3 perro grande = 1, 2 y 4 veces
+  `TIEMPO_GATO`; sin perilla); 6P horario con `millis()` + contador (programa final, se guarda como .txt); 7P armar
+  (piezas, circuito copiado, servo en 0° con el programa de la Guía 1, compuerta, botella, programa final); 8P comparar
+  con el simulador, pruebas con croquetas y ajuste **a ojo** (sin báscula) y demostración.
+- `doble-practica` = "Doble práctica (8 sábados)", base `doble` (que a su vez usa `tinkercad`): 4DP compuerta + dos
+  botones; 5DP **Relé SPDT + Motor de CC + Pila de 9 V** en el simulador (bobina directo a D8 solo en Tinkercad; el
+  módulo real lleva VCC, GND e IN); 6DP porciones para cereal y líquido (`TIEMPO_GATO`, `BOMBA_GATO`) + horario +
+  `anotar()`; 7DP armar con el módulo relé y la bomba; 8DP pruebas con cereal y agua y demostración. Campos g4p-…/g4dp-….
+- **`servidor/contenido.js`:** las versiones ahora siguen la cadena completa de bases (`cadenaDeVersiones`).
+  Reiniciar el servidor del puerto 3000 para que lo tome.
+- Los 6 programas compilan con arduino-cli. Equipos ya reasignados (Jesús-Eduardo → doble-practica; Mateo, Miguel y
+  Dani → practica). Imágenes 4.1P, 4.2P, 4.2DP y 5.1DP hechas por Bairon y revisadas.
+- Listas de materiales: `herramientas/materiales/dispensador-comida.json` (bomba = ilustración propia hecha con Blender;
+  relé = Wikimedia Commons). Generadas y revisadas para los dos grupos.
+- **Doble: la bomba usa una fuente de 5 V con jack hembra de bornera** en lugar del portapilas de 4 AA (decisión de
+  Bairon). Guías 5DP (texto), 7DP y 8DP actualizadas: jack + → COM, NO → bomba +, bomba − → jack −; el simulador sigue
+  con la Pila de 9 V. Imagen del jack = ilustración propia (Blender).
+- [ ] Imagen 5.1D (circuito real del doble) sigue pendiente; la usa la Guía 7 doble.
+
 **Mini fútbol, versión Tinkercad reestructurada (21 de octubre, a pedido de Bairon).** Más práctica: primero el diseño
 y luego la programación. Decisiones de Bairon: 2-3 diseño y 4 armar; escala corta al trazar la cancha (sin boceto);
 pieza nueva = soporte del marcador; sin escaneo 3D en esta versión. La Guía 1 (Wokwi) no cambia.
@@ -480,10 +560,43 @@ piezas imprimibles** (Tinkercad Codeblocks). Solo cambió la **versión Tinkerca
   `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/puente_stl.py -- "<carpeta de salida>"`.
   Para ajustar una medida (por ejemplo el cajón del servo), se cambia en `PIEZAS` del script y en la guía.
 - [ ] Probar un servo SG90 de la academia en la orilla impresa (cajón 32,8 × 19; brazo a 7 mm de la cara del servo).
-- [ ] **Pendiente para otra tanda:** adaptar la Guía 4 (hoy: torres de palitos, base de 50 cm, río de 30,5 cm) al
-  armado de las piezas impresas; la Parte 1 de la Guía 5 (montar el servo en la orilla y el brazo en la oreja); la
-  Guía 6 (el sensor mira de una orilla a la otra); la Guía 7 (compara con el diagrama de flujo de la Guía 3 y usa la
-  escala de la Guía 2) y el cartel de la Guía 8 (escala y diagrama).
+- **Guías 4 a 8 adaptadas al puente impreso (30 de octubre, a pedido de Bairon):**
+  - **4T "Armamos el puente"** (campos g4t-…): revisar las 7 piezas, base de **50 × 30 cm** con el río de 16,4 cm,
+    centrar los servos (programa `equipo_NOMBRE_centrar`, izquierdo 0° y derecho 180°; la animación `espejo-servos`
+    pasó aquí desde la Guía 5), servo acostado en el cajón, brazo de un lado pegado a la oreja con la hoja cerrada,
+    LEDs y buzzer por dentro de las torres con cables macho–hembra, soporte del sensor pegado delante de la orilla A.
+    Las torres **no se pegan** hasta la Guía 5. Sin experimento del triángulo ni torres de palitos (quedan en el reto).
+  - **5T:** circuito completo (cables de la orilla B cruzan el río por el borde de atrás), **diagrama de flujo**
+    (tomado de la Guía 3 normal, `g5t-secuencia` + foto `g5t-diagrama`), mismo programa del botón, pegar las torres.
+  - **6T:** igual a la 6 normal (mismos campos), con el sensor en su soporte (pines hacia arriba) y prueba con el río vacío.
+  - **7T:** prueba de carga con el programa encendido (las hojas cuelgan de los servos), diagrama de la Guía 5 y ficha
+    técnica sin escala (`g7t-ficha`).
+  - **8T:** guion y cartel sin escala ni torres de palitos.
+  - Imágenes nuevas pendientes: 4.1T, 4.2T, 4.3T, 6.1T, 7.1T y 8.2T (en el LEEME de imágenes).
+  - **11T:** contador de barcos (Monitor serie + parpadeos del verde) o botón de emergencia con el mismo botón del pin 6.
+    **12T:** tabla de aplicaciones igual; sin barrera (tercer servo): rojo intermitente con pitidos mientras el puente
+    está arriba (cruce de tren) y `bajarConCuidado()`, que vuelve a subir si llega otro barco (puerta automática).
+    Código de la 6T + 11T + 12T compilado con arduino-cli (en `%LOCALAPPDATA%\Programs\Arduino IDE\resources\app\lib\backend\resources\`,
+esourcespp\libackend
+esources\`,
+    con `--libraries %LOCALAPPDATA%\Arduino15\libraries` para Servo.h).
+- **Versión nueva "Tinkercad práctica (8 sábados)"** (`practica`, base `tinkercad`, guías 1-8; 30 de octubre, a pedido de
+  Bairon): guías 1-3 = las de Tinkercad; **4P** simular semáforo + piezo + pulsador en Tinkercad Circuits y diagrama de
+  flujo; **5P** dos microservomotores en espejo + secuencia con botón + VELOCIDAD; **6P** HC-SR04 + puente automático +
+  ajustes (el código final se guarda como .txt); **7P** armar en físico (piezas + centrar servos + circuito copiado del
+  simulador); **8P** comparar real con simulado, 5 pasadas, pegar torres y demostración final (barco = cualquier objeto;
+  sin prueba de carga, ficha ni cartel). Campos propios g4p-… a g8p-….
+  - Comprobado en Tinkercad Circuits (30 de octubre): componentes de **Básico** (Arduino Uno R3, Placa de pruebas pequeña,
+    LED, Resistencia, Pulsador, Piezo, Microservomotor); el sensor de Básico es el **PING de 3 pines**; el **HC-SR04** de
+    4 pines (Vcc, Trig, Echo, GND) aparece en **Otros componentes** al buscar "ultras". Código → Bloques → **Texto** pide
+    confirmar ("¿Está seguro?" → Continuar). El programa automático de la Guía 6 compila y corre en el simulador.
+    Al hacer clic en el sensor durante la simulación aparece el objeto con su distancia.
+  - [ ] Imágenes 5.1P y 6.1P (las hace Bairon); la 4.1P y la 4.2P ya están. Quedó empezado el diseño **"Puente - simulacion completa"**
+    (circuito de la Guía 4 armado y con el código, pero al simular se enciende el LED rojo en vez del verde: revisar a qué
+    pines llegan los cables de D2/D3/D4). El diseño de prueba "Smooth Uusam-Maimu" se puede borrar.
+  - Los dos grupos del puente ya están en la versión nueva; listas de materiales regeneradas y revisadas (30 de octubre).
+  - [ ] La Guía 9 (pregunta "¿por qué triángulos?") y la rúbrica de la Guía 10 (escala, triángulos) no tienen versión
+    Tinkercad: mencionan cosas que esta versión ya no hace.
 
 **Importante (comprobado en Tinkercad):** en Codeblocks las formas nacen **centradas en el origen** (también en Z), como
 en Blender, y **Girar alrededor** gira la forma desde su centro. Por eso los números de **Mover** son las mismas
