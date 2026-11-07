@@ -44,6 +44,10 @@ function cargarEnv() {
 
 cargarEnv();
 
+// Carpeta con las listas de materiales en Word/PDF (herramientas/lista_materiales.py).
+// Está fuera del repositorio porque los archivos llevan el nombre del grupo.
+RUTAS.listas = path.resolve(process.env.LISTAS_DIR || path.join(RAIZ, '..', 'Listas de materiales'));
+
 module.exports = {
   RUTAS,
   PUERTO: parseInt(process.env.PUERTO, 10) || 3000,

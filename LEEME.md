@@ -76,6 +76,10 @@ DOCENTE_CLAVE=cambia-esta-clave   ← contraseña del panel del docente
 PUERTO=3000                       ← puerto (si lo cambias, cambia también la regla del firewall)
 ```
 
+Opcionales (están comentados en `.env.ejemplo`): `LISTAS_DIR`, la carpeta de las listas de materiales que se ofrecen
+en **Descargas** (si no se escribe, es `Listas de materiales`, junto a `Plataforma-guias`), y `NAVEGADOR_PDF`, el
+navegador que crea los PDF de las guías (si no se escribe, se usa Microsoft Edge o Google Chrome).
+
 ## Carpetas
 
 | Carpeta | Qué contiene |
@@ -142,6 +146,9 @@ python herramientas/lista_materiales.py <proyecto> "<carpeta de salida>" [nombre
 - Lee los grupos de `datos/plataforma.db` solo para consultar; los documentos se guardan en la carpeta de salida, fuera del repositorio.
 - Con la versión al final, usa esa lista aunque el equipo todavía tenga otra versión asignada en la plataforma.
 - Sin el nombre del grupo, genera un documento por cada grupo del proyecto. Si un documento está abierto en Word, avisa y sigue con los demás.
+- Al terminar crea también el **PDF** de cada Word con Microsoft Word (`listas_a_pdf.py`): ese PDF es el que el equipo
+  descarga en la plataforma. Si cambias un Word a mano, vuelve a crear su PDF con
+  `python herramientas/listas_a_pdf.py "<carpeta de las listas>"` (solo convierte los que cambiaron).
 
 ## Fotos y videos de la bitácora
 
@@ -183,6 +190,19 @@ Abre un panel con las notas del equipo para anotar ideas, fallos o medidas en cu
 - El docente las ve en el panel, pestaña **Equipos** → "Bitácora" de cada equipo, y el CSV de
   respuestas trae una fila por nota.
 - **Reiniciar el progreso NO borra la bitácora.** Solo se borra si borras el equipo.
+
+## Descargas del equipo (guías en PDF y lista de materiales)
+
+Arriba del panel de la **📓 Bitácora** está el apartado **⬇ Descargas: guías y materiales**, para repasar o imprimir en casa:
+
+- **Guías en PDF:** solo las que ese equipo tiene desbloqueadas, en su versión. Salen **en blanco** (sin respuestas,
+  fotos ni archivos del equipo) y **sin las notas del docente**. Las animaciones se cambian por un aviso para verlas en la
+  plataforma, y el código sale con fondo claro para gastar menos tinta.
+- El PDF lo crea **Microsoft Edge** (viene con Windows), sin abrir ventanas y sin internet (`servidor/pdf.js`). La primera
+  vez tarda 1 o 2 segundos; después se guarda en la carpeta temporal de Windows y sale al instante, hasta que la guía cambie.
+- **Lista de materiales:** el archivo `<proyecto> - <nombre del equipo>.pdf` (o `.docx`) de la carpeta de listas. Si hay
+  varias versiones (por ejemplo `… - Ana y Luis2.docx`), se usa la más nueva. Si el equipo no tiene lista, no aparece.
+- Para que la lista aparezca, el nombre del equipo en la plataforma debe ser el mismo del archivo.
 
 ## Respaldos
 

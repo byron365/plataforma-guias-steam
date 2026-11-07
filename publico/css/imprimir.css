@@ -1,0 +1,60 @@
+/* ============================================================
+   Guías en PDF (servidor/pdf.js): se suma a estilos.css al imprimir.
+   Hoja carta, fondo blanco y los cuadros de respuesta vacíos.
+   ============================================================ */
+@page { size: letter; margin: 16mm 15mm; }
+
+body.pdf { background: #FFFFFF; color: #0E1015; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+body.pdf * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+/* Portada */
+.pdf-portada { border-bottom: 3px solid #38BDF8; padding-bottom: 10px; margin-bottom: 6px; }
+.pdf-portada h1 { margin: .1em 0 .2em; font-size: 22pt; }
+.pdf-proyecto { margin: 0; font-size: 9pt; color: #4A4F5C; }
+.pdf-nota { margin: 4px 0 0; font-size: 8.5pt; color: #4A4F5C; }
+
+/* Partes: una tras otra, sin tarjetas ni sombras */
+.pdf-parte { margin-top: 14px; }
+.pdf-parte > h2 { font-size: 14pt; margin: 0 0 4px; break-after: avoid; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pdf-parte > h2 .tiempo { font-size: 8.5pt; font-weight: 600; }
+.pdf .contenido-guia { background: none; box-shadow: none; border-radius: 0; padding: 0; margin: 0; }
+.pdf .contenido-guia > :first-child { margin-top: 4px; }
+.pdf h3 { break-after: avoid; }
+
+/* Que no se corten a la mitad */
+.pdf figure, .pdf .bloque-codigo, .pdf tr, .pdf .pregunta, .pdf .recuadro, .pdf .opciones,
+.pdf .casilla, .pdf .pdf-aviso, .pdf .foto-bitacora, .pdf .archivo-equipo { break-inside: avoid; }
+.pdf .imagen-guia img { max-height: 16cm; width: auto; }
+
+/* Código: fondo claro (gasta menos tinta), sin botón Copiar y con las líneas largas cortadas */
+.pdf .boton-copiar { display: none; }
+.pdf .bloque-codigo { background: #F9F7F2; border: 1px solid #DCD5C8; }
+.pdf .bloque-codigo-barra { background: #E9E4DA; color: #4A4F5C; }
+.pdf .bloque-codigo pre { white-space: pre-wrap; overflow: visible; font-size: 8.5pt; }
+.pdf .bloque-codigo code { color: #0E1015; }
+.pdf .c-comentario { color: #5F6675; }
+.pdf .c-cadena { color: #15803D; }
+.pdf .c-numero { color: #B45309; }
+.pdf .c-control { color: #B91C1C; }
+.pdf .c-tipo { color: #1D4ED8; }
+.pdf .c-constante { color: #92400E; }
+.pdf .c-funcion { color: #0F766E; }
+.pdf .c-pre { color: #7E22CE; }
+
+/* Cuadros de respuesta en blanco */
+.pdf textarea.respuesta {
+  display: block; width: 100%; min-height: 6em; resize: none; overflow: hidden;
+  border: 1px solid #8D8A84; border-radius: 6px; background: #FFFFFF;
+}
+.pdf textarea.respuesta-linea { min-height: 3.4em; }
+.pdf input.respuesta-corta { width: 7em; border: 0; border-bottom: 1px solid #0E1015; border-radius: 0; background: none; }
+.pdf .tabla-editable td.celda-editable { background: #FFFFFF !important; height: 2.2em; }
+.pdf .tabla-editable input { border: 0; background: none; }
+.pdf .tabla-contenedor { overflow: visible; }
+
+/* Fotos y archivos se suben en la plataforma: aquí solo queda el texto */
+.pdf .foto-galeria, .pdf .archivo-versiones { display: none; }
+
+/* Avisos del PDF */
+.pdf-aviso { margin: 12px 0; padding: 10px 14px; border: 1px dashed #8D8A84; border-radius: 10px; background: #F9F7F2; font-size: 9.5pt; }
+.pdf-aviso-chico { display: inline-block; padding: 4px 10px; border: 1px solid #DCD5C8; border-radius: 999px; font-size: 9pt; }

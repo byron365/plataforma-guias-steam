@@ -4,6 +4,7 @@
 # Uso: python lista_materiales.py <id del proyecto> <carpeta de salida> [nombre del grupo] [versión]
 # Con el nombre del grupo (o parte de él), solo se genera el documento de ese grupo.
 # Con la versión, se usa esa lista aunque el equipo todavía tenga otra versión asignada en la plataforma.
+# Al final crea también el PDF de cada Word (listas_a_pdf.py), que es el que descargan los equipos.
 import sys, os, json, sqlite3
 from docx import Document
 from docx.shared import Cm, Pt, RGBColor
@@ -143,6 +144,7 @@ def documento(grupo, version_id):
 con = sqlite3.connect('file:' + os.path.join(RAIZ, 'datos', 'plataforma.db') + '?mode=ro', uri=True)
 equipos = con.execute('SELECT nombre, version FROM equipos WHERE proyecto = ? ORDER BY nombre', (proyecto_id,)).fetchall()
 con.close()
+guardados = []
 for nombre, version in equipos:
     if solo_grupo and solo_grupo not in nombre.lower():
         continue
@@ -154,6 +156,12 @@ for nombre, version in equipos:
     try:
         documento(nombre, version).save(archivo)
         print('OK', archivo)
+        guardados.append(archivo)
     except PermissionError:
         # Pasa cuando el documento está abierto en Word: hay que cerrarlo y volver a ejecutar
         print('NO SE PUDO GUARDAR (¿está abierto en Word?):', archivo)
+
+# El PDF de cada lista es el que los equipos descargan en la plataforma (Descargas de la bitácora)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from listas_a_pdf import convertir
+convertir(guardados)

@@ -5,6 +5,7 @@
 // Cada nota se guarda sola mientras escriben (como las respuestas).
 // ============================================================
 import { api, el } from './comun.js';
+import { crearDescargas } from './descargas.js';
 
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
@@ -45,6 +46,7 @@ export function montarBitacora({ guia = null, equipo = '' } = {}) {
     el('button', { class: 'panel-bitacora-icono', type: 'button', title: 'Ver las notas nuevas de mis compañeros', 'aria-label': 'Actualizar', onclick: cargar }, '↻'),
     el('button', { class: 'panel-bitacora-icono', type: 'button', title: 'Cerrar', 'aria-label': 'Cerrar la bitácora', onclick: () => { cerrar(); boton.focus(); } }, '×')),
   el('div', { class: 'panel-bitacora-cuerpo' },
+    crearDescargas(),
     el('p', { class: 'texto-suave' }, 'Anoten ideas, fallos, medidas o lo que quieran recordar. Todo el equipo ve estas notas y se guardan solas.'),
     el('button', { class: 'boton boton-nueva-nota', type: 'button', onclick: nuevaNota }, '+ Nueva nota'),
     estado,

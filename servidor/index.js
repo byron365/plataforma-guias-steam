@@ -16,6 +16,7 @@ const { carpetaProyecto, EXTENSIONES_IMAGEN, EXTENSIONES_ARCHIVO } = require('./
 const { procesarGuia } = require('./markdown');
 const { router: apiDocente, esDocente } = require('./api-docente');
 const { direccionesLocales } = require('./util');
+const { router: descargas } = require('./descargas');
 
 // Carpetas que deben existir
 for (const carpeta of [RUTAS.contenido, RUTAS.respaldos, RUTAS.subidas]) {
@@ -51,6 +52,7 @@ app.get('/api/archivos-equipo/:id', (req, res) => {
 
 // ---------- API ----------
 app.use('/api/docente', apiDocente);
+app.use('/api/descargas', descargas); // guías en PDF y lista de materiales del equipo
 app.use('/api', apiEstudiantes);
 
 // ---------- Imágenes de las guías ----------

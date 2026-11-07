@@ -1,6 +1,6 @@
 # Estado del proyecto · Plataforma de guías STEAM
 
-*Última actualización: 6 de noviembre de 2026*
+*Última actualización: 7 de noviembre de 2026*
 
 Este documento resume qué está hecho, qué falta y cómo retomar el trabajo.
 Para usar la plataforma, ver `LEEME.md`. Para escribir guías, ver `COMO_AGREGAR_PROYECTOS.md`.
@@ -65,6 +65,8 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > **6 de noviembre (visor y pruebas):** botón **Ampliar** en todas las imágenes de las guías y del panel docente
 > (`publico/js/visor-imagen.js`). **Mini invernadero:** Guía 5 práctica probada en Wokwi, imágenes 5.1P y 5.2P y circuito en
 > `herramientas/wokwi/`. **Banda:** simulador de perillas de color (Guía 5) y paro y pantalla corregidos (guías 6 y 8).
+> **7 de noviembre (descargas):** apartado **Descargas** en la bitácora: cada equipo baja en PDF sus guías desbloqueadas
+> (en blanco, sin notas del docente; `servidor/pdf.js` con Edge) y su lista de materiales (PDF del Word, `listas_a_pdf.py`).
 
 ---
 
@@ -308,6 +310,8 @@ electrónica en la protoboard y adaptar también la Guía 4).
   el lado del líquido y con un solo botón). STL: los de la torre del cereal, compuerta y embudo del doble.
 - [ ] Guía 5 (normal) dice "pegar la protoboard en el frente de la base": con la torre no hay base aparte (nota al docente en la 4T).
 - [ ] Guía 13T: la escena final todavía menciona el soporte suelto del servo; adaptarla a la torre.
+
+**Descargas del equipo (7 de noviembre, a pedido de Bairon):** apartado **⬇ Descargas** arriba del panel de la bitácora (`publico/js/descargas.js`, rutas en `servidor/descargas.js`). Decisiones de Bairon: guías **en blanco**, lista de materiales desde **los Word ya hechos** y el botón **en la bitácora**. Las guías se imprimen a PDF con Microsoft Edge sin ventanas (`servidor/pdf.js` + `publico/css/imprimir.css`; caché en la carpeta temporal de Windows); las listas, con Word (`herramientas/listas_a_pdf.py`, que `lista_materiales.py` llama solo). Las 9 listas existentes ya tienen su PDF. Probado: las 90 guías de las versiones en uso salen en PDF sin errores (1 a 2 s cada una, máx. 1,9 MB); cada equipo ve solo sus guías desbloqueadas; las bloqueadas y sin sesión se rechazan; se ve bien a 390 px y en los dos temas. Mini fútbol no tiene lista de materiales y un equipo de la banda tampoco tiene la suya: a esos no les aparece. Hay que reiniciar el servidor para que funcione.
 
 **Visor de imágenes (6 de noviembre, a pedido de Bairon):** cada imagen de las guías lleva un botón **Ampliar** (`publico/js/visor-imagen.js`, sin librerías). Abre la imagen a pantalla completa; se acerca con − y +, rueda, doble clic o pellizco, se mueve arrastrando o con las flechas, y se cierra con ✕, Esc o tocando el fondo. Funciona en las guías de los estudiantes y en la vista de guía del panel docente. Clases `ampliador-…` (`visor-…` ya la usa el panel). Probado en Chrome con mouse y teclado, a 390 px de ancho y en los dos temas; el pellizco, con eventos simulados.
 
