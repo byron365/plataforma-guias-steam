@@ -125,7 +125,7 @@ const int SENSOR_IR = 2;  // llegada de pieza
 
 volatile bool pieza = false;  // aviso al maestro
 volatile bool detenida = false;
-bool antes = false;
+bool antes = true;   // evita contar una pieza al encender
 int velocidad = 0;
 
 void setup() {
@@ -171,7 +171,7 @@ void recibir(int n) {
 
 ## Parte 4 · Nodo clasificador (35 min)
 
-Este programa va en el Arduino **clasificador**. Es el del simulador (Guía 6) con una diferencia: `leerColor()` ahora lee el sensor TCS34725 en lugar de las tres perillas. Copien el de esta guía. Conecten ese por USB (elijan su puerto: puede ser otro número COM), creen un programa nuevo, guárdenlo como `equipo_NOMBRE_clasificador`, verifiquen y súbanlo.
+Este programa va en el Arduino **clasificador**. Es el del simulador (Guía 6) con dos diferencias: `leerColor()` ahora lee el sensor TCS34725 en lugar de las tres perillas, y la pantalla solo muestra el conteo. Copien el de esta guía. Conecten ese por USB (elijan su puerto: puede ser otro número COM), creen un programa nuevo, guárdenlo como `equipo_NOMBRE_clasificador`, verifiquen y súbanlo.
 
 Después conecten los dos Arduino (cada uno con su USB) y enchufen la fuente.
 
@@ -200,6 +200,7 @@ const unsigned long RECORRIDO = 1200;  // ms
 int cuenta[3] = {0, 0, 0};
 int anguloPendiente = -1, fallos = 0;
 unsigned long moverEn = 0, ultimaPieza = 0;
+bool parado = false, botonAntes = false;
 
 void setup() {
   pinMode(PARO, INPUT_PULLUP);
@@ -245,9 +246,12 @@ void clasificar() {
 }
 
 void loop() {
-  // 1. Paro de emergencia: orden al nodo banda
+  // 1. Paro de emergencia: un toque detiene y otro reanuda
+  bool boton = digitalRead(PARO) == LOW;
+  if (boton && !botonAntes) parado = !parado;
+  botonAntes = boton;
   Wire.beginTransmission(8);
-  Wire.write(digitalRead(PARO) == LOW ? 'S' : 'G');
+  Wire.write(parado ? 'S' : 'G');
   Wire.endTransmission();
 
   // 2. Preguntar al nodo banda (2 bytes)
@@ -309,7 +313,7 @@ Pongan la perilla a una velocidad media y coloquen las piezas en la banda **de u
 - [ ] El nodo banda responde al maestro.
 - [ ] La pantalla muestra el conteo.
 - [ ] La canaleta gira según el color.
-- [ ] El botón de paro detiene la banda.
+- [ ] El botón de paro detiene la banda y otro toque la reanuda.
 :::
 
 ## Bitácora

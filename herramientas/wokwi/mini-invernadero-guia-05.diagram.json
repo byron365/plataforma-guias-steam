@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "author": "STEAM Robotics Academy",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "ventana",
+      "top": -165,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -190,
+      "left": 235,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -30,
+      "left": 330,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "luz",
+      "top": -85,
+      "left": 430,
+      "attrs": {
+        "color": "white",
+        "label": "Luz"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "boton",
+      "top": 60,
+      "left": 350,
+      "attrs": {
+        "color": "green",
+        "label": "Riego manual"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "suelo",
+      "top": 245,
+      "left": 20,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "rele",
+      "top": 265,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 290,
+      "left": 435,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "bomba",
+      "top": 235,
+      "left": 530,
+      "attrs": {
+        "color": "blue",
+        "label": "Bomba"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "uno:6",
+      "r1:1",
+      "orange",
+      [
+        "*",
+        "v-12"
+      ]
+    ],
+    [
+      "r1:2",
+      "luz:A",
+      "orange",
+      [
+        "*"
+      ]
+    ],
+    [
+      "luz:C",
+      "uno:GND.3",
+      "black",
+      [
+        "v12",
+        "*",
+        "v38"
+      ]
+    ],
+    [
+      "ventana:PWM",
+      "uno:9",
+      "orange",
+      [
+        "h-10",
+        "*",
+        "v-34"
+      ]
+    ],
+    [
+      "ventana:GND",
+      "uno:GND.1",
+      "black",
+      [
+        "h-18",
+        "*",
+        "v-22"
+      ]
+    ],
+    [
+      "ventana:V+",
+      "uno:5V",
+      "red",
+      [
+        "h-28",
+        "*",
+        "v30"
+      ]
+    ],
+    [
+      "dht:SDA",
+      "uno:7",
+      "green",
+      [
+        "v12",
+        "*",
+        "v-24"
+      ]
+    ],
+    [
+      "dht:GND",
+      "uno:GND.1",
+      "black",
+      [
+        "v24",
+        "*",
+        "v-46"
+      ]
+    ],
+    [
+      "dht:VCC",
+      "uno:5V",
+      "red",
+      [
+        "v6",
+        "h66",
+        "*",
+        "v22"
+      ]
+    ],
+    [
+      "boton:1.l",
+      "uno:2",
+      "green",
+      [
+        "h-14",
+        "*",
+        "v-14"
+      ]
+    ],
+    [
+      "boton:2.r",
+      "uno:GND.3",
+      "black",
+      [
+        "h10",
+        "*",
+        "v30"
+      ]
+    ],
+    [
+      "suelo:VCC",
+      "uno:5V",
+      "red",
+      [
+        "v10",
+        "h24",
+        "*",
+        "v14"
+      ]
+    ],
+    [
+      "suelo:SIG",
+      "uno:A0",
+      "green",
+      [
+        "v18",
+        "h50",
+        "*",
+        "v14"
+      ]
+    ],
+    [
+      "suelo:GND",
+      "uno:GND.2",
+      "black",
+      [
+        "v26",
+        "h66",
+        "*",
+        "v22"
+      ]
+    ],
+    [
+      "rele:VCC",
+      "uno:5V",
+      "red",
+      [
+        "h-14",
+        "*",
+        "v14"
+      ]
+    ],
+    [
+      "rele:GND",
+      "uno:GND.2",
+      "black",
+      [
+        "h-22",
+        "*",
+        "v22"
+      ]
+    ],
+    [
+      "rele:IN",
+      "uno:8",
+      "purple",
+      [
+        "h-30",
+        "*",
+        "v-14"
+      ]
+    ],
+    [
+      "rele:COM",
+      "uno:5V",
+      "red",
+      [
+        "h12",
+        "v60",
+        "*",
+        "v6"
+      ]
+    ],
+    [
+      "rele:NO",
+      "r2:1",
+      "blue",
+      [
+        "*"
+      ]
+    ],
+    [
+      "r2:2",
+      "bomba:A",
+      "blue",
+      [
+        "*"
+      ]
+    ],
+    [
+      "bomba:C",
+      "uno:GND.3",
+      "black",
+      [
+        "v24",
+        "*",
+        "v46"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}

@@ -32,7 +32,7 @@ En cada vuelta, el maestro hace dos cosas:
 
 | Paso | Quién habla | Qué dice |
 | --- | --- | --- |
-| 1 | Clasificador → banda | Una letra: **S** (detener) si el botón de paro está presionado, **G** (avanzar) si no |
+| 1 | Clasificador → banda | Una letra: **S** (detener) si el paro está activado, **G** (avanzar) si no |
 | 2 | Banda → clasificador | Dos números: ¿llegó una pieza? (1 o 0) y la velocidad actual |
 
 Avancen mensaje por mensaje en la animación para ver qué se dicen los dos nodos en cada vuelta:
@@ -56,6 +56,8 @@ Con la simulación detenida, unan los dos Arduinos con tres cables:
 
 La pantalla del clasificador sigue en su A4 y A5: el bus es compartido.
 
+**Revisen el nodo banda:** debe seguir teniendo el **pulsador** de la Guía 4, con una pata en **D2** y la pata en diagonal en la fila **−**. Sin él nunca llega una pieza y el clasificador no cuenta.
+
 [IMAGEN 6.1S: banda clasificadora completa simulada en Tinkercad Circuits: nodo banda con el motor y el nodo clasificador con las perillas, el servo y la pantalla, unidos por A4, A5 y GND]
 
 ## Parte 3 · Los dos programas finales (40 min)
@@ -76,7 +78,7 @@ const int SENSOR_IR = 2;  // llegada de pieza
 
 volatile bool pieza = false;  // aviso al maestro
 volatile bool detenida = false;
-bool antes = false;
+bool antes = true;   // evita contar una pieza al encender
 int velocidad = 0;
 
 void setup() {
@@ -137,10 +139,13 @@ const int PARO = 7;
 const int PERILLA_R = A0, PERILLA_G = A1, PERILLA_B = A2;
 const int ANG[3] = {30, 90, 150};  // R, V, A
 const unsigned long RECORRIDO = 1200;  // ms
+const char* AVISO[4] = {"Color: ROJO     ", "Color: VERDE    ",
+                        "Color: AZUL     ", "PARO            "};
 
 int cuenta[3] = {0, 0, 0};
-int anguloPendiente = -1, fallos = 0;
+int anguloPendiente = -1, fallos = 0, avisoEnPantalla = -1;
 unsigned long moverEn = 0, ultimaPieza = 0;
+bool parado = false, botonAntes = false;
 
 void setup() {
   pinMode(PARO, INPUT_PULLUP);
@@ -173,6 +178,15 @@ void mostrarCuentas() {
   pantalla.print("   ");     // borra lo que sobraba
 }
 
+// Fila de abajo: el color que ven las perillas, o PARO
+void mostrarAviso() {
+  int a = parado ? 3 : leerColor();
+  if (a == avisoEnPantalla) return;  // solo si cambió
+  avisoEnPantalla = a;
+  pantalla.setCursor(0, 1);
+  pantalla.print(AVISO[a]);
+}
+
 // Llega una pieza: leer, contar y programar
 void clasificar() {
   delay(150);  // centrar la pieza bajo el sensor
@@ -186,9 +200,12 @@ void clasificar() {
 }
 
 void loop() {
-  // 1. Paro de emergencia: orden al nodo banda
+  // 1. Paro de emergencia: un toque detiene y otro reanuda
+  bool boton = digitalRead(PARO) == LOW;
+  if (boton && !botonAntes) parado = !parado;
+  botonAntes = boton;
   Wire.beginTransmission(8);
-  Wire.write(digitalRead(PARO) == LOW ? 'S' : 'G');
+  Wire.write(parado ? 'S' : 'G');
   Wire.endTransmission();
 
   // 2. Preguntar al nodo banda (2 bytes)
@@ -196,10 +213,7 @@ void loop() {
   if (Wire.available() == 2) {
     bool hay = Wire.read();
     int vel = Wire.read();  // para registrar
-    if (fallos > 10) {      // volvió la comunicación
-      pantalla.setCursor(0, 1);
-      pantalla.print("                ");
-    }
+    if (fallos > 10) avisoEnPantalla = -1;  // volvió la comunicación
     fallos = 0;
     if (hay) clasificar();
   } else if (++fallos > 10) {
@@ -207,7 +221,10 @@ void loop() {
     pantalla.print("ERROR: sin banda");
   }
 
-  // 3. Mover el desviador en el momento justo
+  // 3. Color o paro en la pantalla
+  if (fallos <= 10) mostrarAviso();
+
+  // 4. Mover el desviador en el momento justo
   if (anguloPendiente >= 0 && millis() >= moverEn) {
     desviador.write(anguloPendiente);
     anguloPendiente = -1;
@@ -218,6 +235,8 @@ void loop() {
 
 - `Wire.begin(8)` en la banda la hace esclava número 8; `Wire.begin()` sin número en el clasificador lo hace maestro.
 - `RECORRIDO` es el tiempo que tarda la pieza en ir del sensor al final de la banda: la canaleta espera ese tiempo antes de girar.
+- `parado` recuerda si la banda está detenida. Cada toque al botón la cambia al contrario, así que no hay que mantenerlo presionado.
+- La fila de arriba de la pantalla cuenta las piezas ya clasificadas. La de abajo muestra en vivo el color que ven las perillas.
 
 :::pregunta id="g6p-p2"
 ¿Para qué sirve la variable `moverEn`? ¿Qué pasaría si la canaleta girara en el mismo instante en que se lee el color?
@@ -226,7 +245,7 @@ void loop() {
 ## Parte 4 · ¡A clasificar en el simulador! (30 min)
 
 1. **Iniciar simulación.** Pongan la perilla de velocidad de la banda a la mitad: el motor gira.
-2. Para cada pieza: formen su color con las tres perillas del clasificador, presionen el pulsador de la banda (llega la pieza) y miren la pantalla y el servo.
+2. Para cada pieza: formen su color con las tres perillas del clasificador (la fila de abajo de la pantalla dice qué color ven), presionen el pulsador de la banda (llega la pieza) y miren la pantalla y el servo.
 
 :::tabla id="g6p-pruebas"
 | Prueba | ¿Pasó? | Lo que se ve |
@@ -235,7 +254,9 @@ void loop() {
 | Un poco después, la canaleta gira a 30° | | |
 | Pieza verde: suma en V y la canaleta gira a 90° | | |
 | Pieza azul: suma en A y la canaleta gira a 150° | | |
-| Botón de paro presionado: el motor se detiene | | |
+| Un toque al botón de paro: el motor se detiene y la pantalla dice PARO | | |
+| Otro toque: el motor arranca otra vez | | |
+| Al girar las perillas, cambia el color de la fila de abajo | | |
 :::
 
 3. **Sin banda:** detengan la simulación, borren el cable de **A4** entre los dos Arduinos y vuelvan a iniciar: la pantalla debe decir **ERROR: sin banda**. Después vuelvan a poner el cable.
@@ -249,16 +270,16 @@ Cuando presionan el botón de paro, ¿quién apaga el motor: el clasificador o l
 :::checklist id="g6p-logramos"
 - [ ] Los dos Arduinos están unidos por A4, A5 y GND.
 - [ ] Cada pieza suma en su color y la canaleta gira a su contenedor.
-- [ ] El botón de paro detiene el motor.
+- [ ] El botón de paro detiene el motor y otro toque lo reanuda.
 - [ ] Sin el cable del bus, la pantalla muestra el error.
 - [ ] Guardamos los dos programas.
 :::
 
 ## Reto extra
 
-Muestra en la fila de abajo de la pantalla la **velocidad** que manda la banda (el número `vel`), por ejemplo `Vel: 128`.
+Muestra al final de la fila de abajo de la pantalla la **velocidad** que manda la banda (el número `vel`).
 
-Pista: en el `loop` del clasificador, justo después de leer `vel`, escriban en la pantalla con `setCursor(0, 1)` y `print`. Cuidado de no borrar el mensaje de error.
+Pista: en el `loop` del clasificador, justo después de leer `vel`, escriban en la pantalla con `setCursor(13, 1)` y `print`. Cuidado de no borrar el mensaje de error.
 
 ## Bitácora (20 min)
 
@@ -273,10 +294,12 @@ Pista: en el `loop` del clasificador, justo después de leer `vel`, escriban en 
 :::
 
 :::docente
-- **Versión Práctica (10 sábados):** los dos programas son los de la Guía 8 (antes Guía 5 Práctica); el clasificador del simulador solo cambia `leerColor()` (tres perillas en A0, A1 y A2 en lugar del TCS34725). Campos propios (g6p-…). Las respuestas de la Guía 6 anterior (calibrar y sincronizar) pasaron a la Guía 9 (g9p-…).
-- I2C en Tinkercad: maestro (clasificador) y esclavo 8 (banda) unidos por A4, A5 y GND; la LCD (0x27) comparte el bus. Conviene probarlo antes en el diseño de referencia del docente.
+- **Versión Práctica (10 sábados):** los dos programas son los de la Guía 8 (antes Guía 5 Práctica); el clasificador del simulador cambia `leerColor()` (tres perillas en A0, A1 y A2 en lugar del TCS34725) y además muestra el color en vivo en la fila de abajo. Campos propios (g6p-…). Las respuestas de la Guía 6 anterior (calibrar y sincronizar) pasaron a la Guía 9 (g9p-…).
+- I2C en Tinkercad: maestro (clasificador) y esclavo 8 (banda) unidos por A4, A5 y GND; la LCD (0x27) comparte el bus. Comprobado en Tinkercad el 6 de noviembre.
+- El paro tiene enclavamiento: un toque detiene y otro reanuda, porque un clic corto en el simulador no alcanzaba a notarse. `bool antes = true` evita contar una pieza falsa al encender.
+- Si un equipo dice que la pantalla no cuenta, revisar primero el pulsador de D2 en el nodo banda.
 - g6p-p1: en I2C solo el maestro inicia la conversación; el esclavo guarda el aviso (`pieza = true`) hasta que le preguntan.
 - g6p-p2: la canaleta espera a que la pieza recorra la distancia hasta el final de la banda; si girara al leer el color, mandaría a otro contenedor la pieza anterior que todavía va cayendo.
-- g6p-p3: la banda; el clasificador le manda la letra S en cada vuelta y la banda pone `detenida = true` y el PWM en 0.
+- g6p-p3: la banda; mientras el paro está activado, el clasificador le manda la letra S en cada vuelta y la banda pone `detenida = true` y el PWM en 0.
 - Tiempo total: 15 + 10 + 40 + 30 + 5 + 20 = 120 minutos.
 :::

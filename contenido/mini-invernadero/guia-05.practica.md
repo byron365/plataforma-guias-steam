@@ -160,8 +160,13 @@ void loop() {
 
 ## Parte 5 · Probar todo (20 min)
 
-1. **Play.** Con la simulación andando, hagan clic en el DHT22: aparece una barra para cambiar la temperatura (y otra para la humedad del aire, que no usamos).
+1. **Play.** Con la simulación andando, hagan clic en el DHT22: aparece una barra para cambiar la temperatura (y otra para la humedad del aire, que no usamos). Para moverla de a poco, hagan clic en la barra y usen las flechas del teclado.
+
+[IMAGEN 5.2P: simulación andando con el panel del DHT22 abierto, la barra de temperatura y el Monitor escribiendo los datos]
+
 2. Hagan cada prueba y anoten qué pasa.
+   - **Riego a mano:** mantengan presionado el botón **1 segundo**. El programa lo revisa una vez por vuelta, así que un clic rápido se le puede escapar.
+   - **Luz:** cuenten el minuto con el reloj de arriba a la derecha del simulador. Si la simulación va lenta, ese reloj avanza más despacio que uno de verdad.
 
 :::tabla id="g5p-ventana"
 | Temperatura | Estado de la ventana |
@@ -177,7 +182,7 @@ void loop() {
 | Prueba | ¿Funciona? |
 | --- | --- |
 | Con la perilla del sensor al máximo, la "bomba" riega sola | |
-| Con el botón, riega a mano | |
+| Manteniendo presionado el botón 1 segundo, riega a mano | |
 | La luz está encendida el primer minuto y luego se apaga | |
 | El Monitor escribe líneas como `350,24.00` | |
 :::
@@ -220,5 +225,10 @@ Pista: un `if` más en la parte 2 del `loop`, que llame a `regar()` si `temp > 3
 - g5p-p1: no; solo se cierra bajo 27 °C. Entre 27 y 30 °C se queda como estaba (histéresis).
 - g5p-p2: `ANGULO_ABIERTA` (de 60 a 45).
 - El DHT22 de Wokwi empieza en 24 °C; su barra permite subir hasta 80 °C.
+- **Probado en Wokwi el 6 de noviembre** con el código de esta guía, tal cual: compila con Servo y DHT sensor library, y pasan la ventana con histéresis, el riego automático, el riego con el botón y la luz (encendida el primer minuto y apagada después). El circuito de la imagen 5.1P está en `herramientas/wokwi/mini-invernadero-guia-05.diagram.json`: se pega en la pestaña `diagram.json` de un proyecto nuevo.
+- El botón se lee una sola vez por vuelta del `loop`, y la vuelta dura cerca de 1 segundo: un clic corto no se detecta. Tampoco se detecta durante un riego, que dura 8 segundos (3 de bomba y 5 de espera).
+- Si la perilla se queda sobre el umbral, el programa riega una y otra vez, cada 8 segundos: es lo esperado. Para terminar la prueba, bajen la perilla.
+- En una computadora lenta la simulación puede ir muy por debajo del 100 % (el porcentaje sale junto al reloj) y la prueba de la luz tarda más que un minuto real. Si no alcanza el tiempo, basta con ver la luz encendida y bajar `LUZ_ON` a 10000 para ver cómo se apaga.
+- En el plan gratuito de Wokwi los proyectos solo se guardan como **públicos**: el nombre del proyecto no debe llevar nombres de estudiantes.
 - Tiempo total: 10 + 10 + 25 + 40 + 20 + 5 + 10 = 120 minutos.
 :::

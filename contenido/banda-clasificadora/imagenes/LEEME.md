@@ -34,3 +34,5 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_4.2S.png | nodo banda simulado: fuente de 5 V, transistor NPN con sus resistencias, LED y perilla en A0 *(lista)* |
 | IMAGEN_5.1S.png | nodo clasificador simulado: tres perillas como sensor de color, servo de la canaleta, pantalla LCD 16 × 2 I2C y botón de paro |
 | IMAGEN_6.1S.png | banda completa simulada: los dos nodos unidos por A4, A5 y GND |
+
+**Pendiente (6 de noviembre):** rehacer la `IMAGEN 6.1S` con el pulsador de la Guía 4 en D2 del nodo banda; la imagen actual no lo muestra.

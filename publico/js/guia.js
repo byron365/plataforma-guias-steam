@@ -8,6 +8,7 @@ import { montarFotosEditables } from './fotos.js';
 import { montarArchivosEditables } from './archivos-equipo.js';
 import { dividirEnPasos, mostrarPaso } from './pasos.js';
 import { montarBitacora } from './bitacora.js';
+import { prepararImagenes } from './visor-imagen.js';
 
 const numeroGuia = parseInt(location.pathname.split('/').pop(), 10);
 const pagina = document.getElementById('pagina');
@@ -48,6 +49,7 @@ async function cargar() {
   montarFotosEditables(pagina, { fotos: guia.fotos, numeroGuia });
   montarArchivosEditables(pagina, { archivos: guia.archivos, numeroGuia });
   prepararCodigo(pagina);
+  prepararImagenes(pagina);
   cargarAnimaciones(pagina, {
     respuestas,
     guia: numeroGuia,

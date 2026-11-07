@@ -20,7 +20,7 @@ Agregar al simulador el segundo Arduino, el **clasificador**: lee el color de la
 - Diseño `equipo_NOMBRE_banda_sim` (sábado 4)
 - Bitácora
 
-## Parte 1 · ¿Cómo reconoce un color? (15 min)
+## Parte 1 · ¿Cómo reconoce un color? (20 min)
 
 El sensor de color de la banda real (TCS34725) mide cuánta luz **roja (R)**, **verde (G)** y **azul (B)** le llega de la pieza. Una pieza roja refleja más rojo que verde y azul; una verde, más verde; una azul, más azul.
 
@@ -39,6 +39,11 @@ Tinkercad no tiene ese sensor, así que lo imitamos con **tres perillas**: una d
 
 :::pregunta id="g5p-p1"
 En la última fila, R y G son iguales. ¿Qué color dice el programa? ¿Les parece correcto?
+:::
+
+Ahora compruébenlo: giren las tres perillas para formar cada fila de la tabla y miren qué decide el programa, hacia dónde gira la canaleta y qué línea del código se ilumina. Después inventen sus propios colores.
+
+:::animacion tipo="perillas-color"
 :::
 
 ## Parte 2 · El clasificador en el simulador (35 min)
@@ -134,7 +139,7 @@ void loop() {
 - `ANG[3]` es una **lista** de tres ángulos: `ANG[0]` es el del rojo, `ANG[1]` el del verde y `ANG[2]` el del azul. Por eso `ANG[c]` da el ángulo del color que se leyó.
 - `return` dentro del `loop` hace que, con el paro presionado, el resto del `loop` no se ejecute.
 
-## Parte 4 · Probar los colores (20 min)
+## Parte 4 · Probar los colores (15 min)
 
 1. **Iniciar simulación.** Hagan clic en cada perilla y gírenla arrastrando para formar cada color de la tabla.
 2. Miren hacia dónde apunta el brazo del servo y qué dice la pantalla.
@@ -182,11 +187,12 @@ Captura de pantalla del clasificador simulado con la pantalla mostrando un color
 :::
 
 :::docente
+- Simulador de las tres perillas (`perillas-color`, 6 de noviembre): usa la misma lógica de `leerColor()`. Sirve para comprobar la tabla g5p-colores antes de armar el circuito.
 - **Versión Práctica (10 sábados):** el clasificador se simula con un segundo Arduino en el mismo diseño. El TCS34725 se imita con **tres potenciómetros** (como la simulación en Wokwi de la Guía 2 completa); solo cambia `leerColor()`. Campos propios (g5p-…). Las respuestas de la Guía 5 anterior (los dos nodos) pasaron a la Guía 8 (g8p-…).
 - La pantalla es la **LCD 16 × 2 I2C** (decisión de Bairon, también en la banda real, en lugar del MAX7219). En Tinkercad: **Tipo: Basado en PCF8574**, **Dirección: 39 (0x27)**; la librería LiquidCrystal I2C ya está incluida en Tinkercad.
 - g5p-colores: rojo, verde, azul y azul (R y G empatan, ningún `if` se cumple y el programa responde azul).
 - g5p-p1: dice azul, aunque B es el más bajo: es un caso que el programa no resuelve bien. En la banda real casi no pasa con piezas rojas, verdes y azules; en la Guía 10 se mejora con proporciones.
 - g5p-p2: el 150 de `ANG[3]` (por ejemplo 160).
 - g5p-b1: los ángulos están juntos en un lugar fácil de ajustar, y el código elige con `ANG[c]` sin repetir líneas.
-- Tiempo total: 15 + 35 + 35 + 20 + 5 + 10 = 120 minutos.
+- Tiempo total: 20 + 35 + 35 + 15 + 5 + 10 = 120 minutos.
 :::

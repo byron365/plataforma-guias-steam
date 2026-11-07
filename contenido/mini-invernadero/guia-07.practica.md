@@ -116,7 +116,7 @@ Nuestro umbral: UMBRAL_SECO = ______
 
 :::checklist id="g7p-pruebas"
 - [ ] Con el sensor en la tierra seca del vaso, riega solo (con la manguera en otro vaso).
-- [ ] Con el botón, riega a mano.
+- [ ] Manteniendo presionado el botón 1 segundo, riega a mano.
 - [ ] La luz se enciende y se apaga cada minuto.
 - [ ] Con calor (lámpara, con el docente), la ventana se abre; al enfriarse, se cierra.
 :::

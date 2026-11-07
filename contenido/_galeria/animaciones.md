@@ -906,6 +906,16 @@ Lee los promedios de la tabla de calibración (pruébalo aquí, no se guarda):
 :::animacion tipo="proporcion-color"
 :::
 
+## Perillas que imitan al sensor de color
+
+```markdown
+:::animacion tipo="perillas-color"
+:::
+```
+
+:::animacion tipo="perillas-color"
+:::
+
 ## Gráfica de una tabla del equipo
 
 ```markdown

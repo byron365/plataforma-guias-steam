@@ -5,6 +5,7 @@
 // ============================================================
 import { api, el, local } from './comun.js';
 import { prepararCodigo, cargarAnimaciones } from './piezas-guia.js';
+import { prepararImagenes } from './visor-imagen.js';
 import { montarFotosLectura } from './fotos.js';
 import { montarArchivosLectura, listaArchivosEquipo } from './archivos-equipo.js';
 
@@ -696,6 +697,7 @@ async function abrirVisor(proyectoId, numero, equipoId, version = '') {
   montarFotosLectura(cuerpo, { fotos: guia.fotos, conEquipo: !!guia.equipo });
   montarArchivosLectura(cuerpo, { archivos: guia.archivos, conEquipo: !!guia.equipo });
   prepararCodigo(cuerpo);
+  prepararImagenes(cuerpo);
   cargarAnimaciones(cuerpo, {
     respuestas: guia.respuestas || {},
     guia: numero,

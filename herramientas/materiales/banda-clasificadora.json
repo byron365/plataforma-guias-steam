@@ -10,7 +10,7 @@
         {"imagen": "protoboard400", "componente": "Protoboard de 400 puntos", "cantidad": "2", "uso": "Una para cada Arduino"},
         {"imagen": "cables_mm", "componente": "Cables Dupont macho–macho (juego de 40)", "cantidad": "1 juego", "uso": "Conexiones en las protoboards y entre los dos Arduinos"},
         {"imagen": "cables_mh", "componente": "Cables Dupont macho–hembra (juego de 40)", "cantidad": "1 juego", "uso": "Conectar el sensor IR, el sensor de color y la pantalla (Guías 7 y 8)"},
-        {"imagen": "motor_tt", "componente": "Motor TT con 2 tornillos M3 de 25–30 mm y sus tuercas", "cantidad": "1", "uso": "Mueve la banda (Guía 7)"},
+        {"imagen": "motor_tt", "componente": "Motor TT con cables soldados, con 2 tornillos M3 de 25–30 mm y sus tuercas", "cantidad": "1", "uso": "Mueve la banda (Guía 7)"},
         {"imagen": "banda_goma", "componente": "Banda de tela o goma de 6 cm de ancho y unos 90 cm de largo, cerrada en lazo", "cantidad": "1", "uso": "Lleva las piezas por la banda (Guía 7)"},
         {"imagen": "mdf", "componente": "Base de MDF delgado o cartón grueso de unos 60 × 22 cm", "cantidad": "1", "uso": "Base de la banda (Guía 7)"},
         {"imagen": "tip41c", "componente": "Transistor TIP41C", "cantidad": "1", "uso": "Interruptor que deja pasar la corriente del motor (Guía 7)"},
@@ -21,14 +21,14 @@
         {"imagen": "leds", "componente": "LED de 5 mm", "cantidad": "2 (uno de repuesto)", "uso": "Primera prueba del transistor (Guías 1 y 7)"},
         {"imagen": "potenciometro", "componente": "Potenciómetro de 10 kΩ", "cantidad": "1", "uso": "Perilla de velocidad de la banda (Guías 1 y 7)"},
         {"imagen": "sensor_ir", "componente": "Sensor infrarrojo de obstáculos (módulo con salida digital)", "cantidad": "1", "uso": "Avisa cuando llega una pieza (Guía 7)"},
-        {"imagen": "tcs34725", "componente": "Sensor de color TCS34725 (módulo)", "cantidad": "1", "uso": "Lee el color de cada pieza (Guía 8)"},
+        {"imagen": "tcs34725", "componente": "Sensor de color TCS34725 (módulo con pines soldados)", "cantidad": "1", "uso": "Lee el color de cada pieza (Guía 8)"},
         {"imagen": "servo", "componente": "Servomotor SG90 (con brazos y tornillos)", "cantidad": "1", "uso": "Gira la canaleta hacia cada contenedor (Guía 8)"},
         {"imagen": "lcd16x2", "componente": "Pantalla LCD 16 × 2 con módulo I2C", "cantidad": "1", "uso": "Muestra el conteo de cada color (Guía 8)"},
         {"imagen": "boton1", "componente": "Botón pulsador de 4 patas", "cantidad": "1", "uso": "Botón de paro (Guía 8)"},
         {"imagen": "eliminador", "componente": "Fuente (cargador) de 5 V y 2 A o más, con plug de 5,5 × 2,1 mm", "cantidad": "1", "uso": "Energía del motor y del servo (Guía 7)"},
         {"imagen": "jack", "componente": "Conector jack hembra de 5,5 × 2,1 mm con bornera de tornillos", "cantidad": "1", "uso": "Recibe la fuente y deja atornillar los cables a la protoboard"}
       ],
-      "no_comprar": "El filamento y la impresora 3D (rodillos, soportes, túnel, puente, canaleta y piezas de colores), la pistola y las barras de silicona, los palitos de pincho, la cinta, la cartulina negra y el multímetro los pone la academia. Del hogar: 3 vasos o cajitas de menos de 3 cm de alto para los contenedores. También se usan la computadora con Arduino IDE e internet y la cuenta de Tinkercad (para diseñar y simular)."
+      "no_comprar": "El filamento y la impresora 3D (rodillos, soportes, túnel, puente, canaleta y piezas de colores), la pistola y las barras de silicona, los palitos de pincho, la cinta, la cartulina negra y el multímetro los pone la academia. Del hogar: 3 vasos o cajitas de menos de 3 cm de alto para los contenedores y un celular (cronómetro y linterna). También se usan la computadora con Arduino IDE e internet, con 2 puertos USB (o un cargador de celular para el segundo Arduino), y la cuenta de Tinkercad (para diseñar y simular)."
     }
   }
 }

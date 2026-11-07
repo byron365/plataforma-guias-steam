@@ -49,6 +49,8 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > app (`#define bt Serial`, fin de mensaje `\n` o `;`) · G6 y G7 la app · G8 armar · G9 HC-05, emparejar y manejar. Proyecto de referencia `equipo_robot_app`
 > en la cuenta del docente (141 bloques, sin errores, genera el APK). `protocolo.js` tiene `sistema="robot-app"`.
 > [ ] Probar la app con un celular y un HC-05 real. [ ] Decidir si el equipo del robot pasa a esta versión. Lista de materiales hecha (`herramientas/materiales/robot-telemetria.json`, con `lista_materiales.py robot-telemetria <carpeta> <grupo> app`).
+> **6 de noviembre:** animación nueva `perillas-color` en la Guía 5 práctica de la **Banda**: tres perillas que imitan al sensor de color, con la pantalla, la canaleta y la línea de `leerColor()` que decide. Probada en la galería.
+> **6 de noviembre:** **Banda**, guías 6 y 8: el I2C funcionaba; faltaba el pulsador en D2 y el paro solo actuaba mientras se presionaba. Paro con enclavamiento (un toque detiene y otro reanuda), `bool antes = true` y, en la Guía 6, color en vivo y PARO en la fila de abajo. Probado en Tinkercad en una copia del diseño. [ ] Rehacer la imagen 6.1S con el pulsador.
 > **Pendiente (30 de octubre):** lista de materiales del **Robot con mando** (Bairon quiere revisarla con calma; cambia por la LCD 16 × 2 I2C y los cables macho–hembra).
 > **6 de noviembre:** **Laberinto** con versión nueva **"Práctica con Wokwi (7 sábados)"** (base `tinkercad`), simplificada a pedido de Bairon:
 > solo los dos servos con el joystick, **sin sensor de meta, pantalla ni buzzer** (tiempos con el celular). Guías 1 a 3 propias (mismos campos que
@@ -304,6 +306,8 @@ electrónica en la protoboard y adaptar también la Guía 4).
 - [ ] Guía 5 (normal) dice "pegar la protoboard en el frente de la base": con la torre no hay base aparte (nota al docente en la 4T).
 - [ ] Guía 13T: la escena final todavía menciona el soporte suelto del servo; adaptarla a la torre.
 
+**Visor de imágenes (6 de noviembre, a pedido de Bairon):** cada imagen de las guías lleva un botón **Ampliar** (`publico/js/visor-imagen.js`, sin librerías). Abre la imagen a pantalla completa; se acerca con − y +, rueda, doble clic o pellizco, se mueve arrastrando o con las flechas, y se cierra con ✕, Esc o tocando el fondo. Funciona en las guías de los estudiantes y en la vista de guía del panel docente. Clases `ampliador-…` (`visor-…` ya la usa el panel). Probado en Chrome con mouse y teclado, a 390 px de ancho y en los dos temas; el pellizco, con eventos simulados.
+
 **Mini invernadero: versión nueva "Práctica con Wokwi (8 sábados)" (30 de octubre, a pedido de Bairon).** `practica`,
 base `tinkercad`: guías 1 y 2 = Tinkercad (sembrar y piezas 3D); **3P** simular en **Wokwi** la luz con temporizador y la
 ventana con botón; **4P** riego en **Tinkercad Circuits** (Sensor de humedad del suelo con `1023 - analogRead` porque el de Tinkercad sube con el
@@ -314,7 +318,8 @@ Wokwi con potenciómetro, **Relay Module** y LED azul; **5P** DHT22 (en Wokwi; D
 **8P** grupo control, gráfica de los datos del Monitor y demostración. Campos propios g3p-… a g8p-….
 - Simulación en Wokwi y no en Tinkercad por decisión de Bairon (Tinkercad no tiene DHT11 ni módulo relé).
 - Los 5 programas compilan con arduino-cli (DHT con copia mínima).
-- Equipo ya en la versión nueva. [ ] Imágenes 4.1P (Tinkercad), 5.1P y 7.1P; la 3.1P y la 3.2P ya están.
+- Equipo ya en la versión nueva. [ ] Imagen 7.1P; las 3.1P, 3.2P, 4.1P, 5.1P y 5.2P ya están.
+- **Guía 5P probada en Wokwi (6 de noviembre):** con el código exacto de la guía compilan Servo y DHT sensor library; pasan ventana con histéresis (30,5 °C abre a 60°, 28 °C sigue abierta, 26,9 °C cierra), riego automático (se apaga solo), riego con el botón, luz apagada al pasar 60 s (esto último con el primer cableado) y Monitor. Un clic corto en el botón no se detecta: hay que mantenerlo 1 segundo (nota en guías 5P y 7P). [ ] No comprobado: la luz encendiéndose otra vez a los 120 s. El proyecto no quedó guardado en Wokwi (el plan gratuito solo guarda públicos y Unlisted es de pago): el circuito está en `herramientas/wokwi/mini-invernadero-guia-05.diagram.json`.
 - Lista de materiales (14 materiales) generada para el equipo: `herramientas/materiales/mini-invernadero.json` (sensor de humedad = ilustración propia; DHT11 de Wikimedia Commons).
 
 **Banda clasificadora: versión Práctica ahora de 10 sábados (30 de octubre, a pedido de Bairon).** Guías 1 a 3

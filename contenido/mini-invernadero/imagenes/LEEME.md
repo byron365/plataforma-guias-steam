@@ -45,5 +45,6 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_3.1P.png | editor de Wokwi con sus partes señaladas: código, dibujo del circuito, botón + para agregar piezas, Play y Save *(lista)* |
 | IMAGEN_3.2P.png | luz y ventana simuladas en Wokwi: LED blanco con su resistencia en el pin 6, servo en el pin 9 y botón en el pin 2 *(lista)* |
 | IMAGEN_4.1P.png | riego simulado en Tinkercad Circuits: sensor de humedad del suelo en A0, pulsador en D2, relé en D8 y el motor de la bomba con la fuente de 5 V |
-| IMAGEN_5.1P.png | invernadero completo simulado en Wokwi: luz, botón, servo, potenciómetro, relé con el LED de la bomba y sensor DHT22 |
+| IMAGEN_5.1P.png | invernadero completo simulado en Wokwi: luz, botón, servo, potenciómetro, relé con el LED de la bomba y sensor DHT22 *(lista)* |
+| IMAGEN_5.2P.png | simulación andando en Wokwi con el panel del DHT22 abierto, la barra de temperatura y el Monitor escribiendo los datos *(lista)* |
 | IMAGEN_7.1P.png | circuito completo del invernadero real: relé con la bomba y la fuente de 5 V en su jack, sensor de humedad, DHT11, luz, servo y botón |
