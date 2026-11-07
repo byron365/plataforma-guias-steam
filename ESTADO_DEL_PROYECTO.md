@@ -1,6 +1,6 @@
 # Estado del proyecto · Plataforma de guías STEAM
 
-*Última actualización: 20 de octubre de 2026*
+*Última actualización: 6 de noviembre de 2026*
 
 Este documento resume qué está hecho, qué falta y cómo retomar el trabajo.
 Para usar la plataforma, ver `LEEME.md`. Para escribir guías, ver `COMO_AGREGAR_PROYECTOS.md`.
@@ -62,6 +62,9 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > cuarto argumento, para generar la lista antes de cambiar al equipo de versión).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
+> **6 de noviembre (visor y pruebas):** botón **Ampliar** en todas las imágenes de las guías y del panel docente
+> (`publico/js/visor-imagen.js`). **Mini invernadero:** Guía 5 práctica probada en Wokwi, imágenes 5.1P y 5.2P y circuito en
+> `herramientas/wokwi/`. **Banda:** simulador de perillas de color (Guía 5) y paro y pantalla corregidos (guías 6 y 8).
 
 ---
 
@@ -321,6 +324,7 @@ Wokwi con potenciómetro, **Relay Module** y LED azul; **5P** DHT22 (en Wokwi; D
 - Equipo ya en la versión nueva. [ ] Imagen 7.1P; las 3.1P, 3.2P, 4.1P, 5.1P y 5.2P ya están.
 - **Guía 5P probada en Wokwi (6 de noviembre):** con el código exacto de la guía compilan Servo y DHT sensor library; pasan ventana con histéresis (30,5 °C abre a 60°, 28 °C sigue abierta, 26,9 °C cierra), riego automático (se apaga solo), riego con el botón, luz apagada al pasar 60 s (esto último con el primer cableado) y Monitor. Un clic corto en el botón no se detecta: hay que mantenerlo 1 segundo (nota en guías 5P y 7P). [ ] No comprobado: la luz encendiéndose otra vez a los 120 s. El proyecto no quedó guardado en Wokwi (el plan gratuito solo guarda públicos y Unlisted es de pago): el circuito está en `herramientas/wokwi/mini-invernadero-guia-05.diagram.json`.
 - Lista de materiales (14 materiales) generada para el equipo: `herramientas/materiales/mini-invernadero.json` (sensor de humedad = ilustración propia; DHT11 de Wikimedia Commons).
+- [ ] Lista de materiales revisada el 6 de noviembre, con cuatro ajustes propuestos que esperan la decisión de Bairon (todavía no aplicados): avisar que el servo y la manguera se miden en la Guía 2; pedir la bomba con manguera; escribir la bomba como "de 3 a 6 V"; agregar a "No hace falta comprar" regla o calibrador, plumón, etiquetas, tijeras y 2 vasos más (falta definir si los pone la academia o el hogar).
 
 **Banda clasificadora: versión Práctica ahora de 10 sábados (30 de octubre, a pedido de Bairon).** Guías 1 a 3
 iguales; **4P** simular el nodo banda en Tinkercad (Fuente de alimentación en 5 V = cargador, **Transistor NPN** en lugar
