@@ -160,6 +160,8 @@ Pista: en el `loop()`, cuando `DURACION - pasado` sea menor que 10000, suenen tr
 - g6p-p2: si la pausa es larga, un gol rápido justo después no se cuenta (con 6000, el segundo clic no suma).
 - g6p-p3: hubo un gol del equipo ROJO en el segundo 37 del partido.
 - En Wokwi el Monitor serie se abre solo cuando el código usa `Serial`. En el Arduino real, el monitor se abre **antes** de presionar el botón de inicio (al abrirlo, el Arduino se reinicia).
+- **Probado en Wokwi el 7 de noviembre** con el código de la Guía 5 y los cambios de la Parte 2: el Monitor serie muestra `3,ROJO`, `6,AZUL`… y con `PAUSA_GOL = 1500` el botón presionado 6 segundos sumó 4 goles. Circuito en `herramientas/wokwi/mini-futbol-guia-06.diagram.json`.
+- Si en la computadora del equipo el simulador va lento (el % de la esquina queda muy por debajo de 100), los 6 segundos de la tabla se miden con el **reloj del simulador** (arriba a la derecha), no con el cronómetro del celular: si no, cuenta menos goles.
 - El reto necesita una variable `bool avisado` para que solo suene una vez.
 - Tiempo total: 35 + 35 + 30 + 5 + 15 = 120 minutos.
 :::

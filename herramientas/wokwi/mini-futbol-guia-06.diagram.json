@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "STEAM Robotics Academy",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": -122, "left": 77, "attrs": { "volume": "0.1" } },
+    { "type": "board-ssd1306", "id": "oled1", "top": 156, "left": 320, "attrs": { "i2cAddress": "0x3c" } },
+    { "type": "wokwi-pushbutton", "id": "btn1", "top": 60, "left": 375, "rotate": 90, "attrs": { "color": "green" } },
+    { "type": "wokwi-pushbutton", "id": "btn2", "top": 60, "left": 457, "rotate": 90, "attrs": { "color": "green" } },
+    { "type": "wokwi-pushbutton", "id": "btn3", "top": 60, "left": 540, "rotate": 90, "attrs": { "color": "green" } }
+  ],
+  "connections": [
+    [ "bz1:1", "uno:GND.1", "black", [ "v0" ] ],
+    [ "bz1:2", "uno:5", "orange", [ "v10", "h88" ] ],
+    [ "uno:2", "btn1:1.l", "green", [ "v-40", "h182" ] ],
+    [ "uno:3", "btn2:1.l", "green", [ "v-50", "h274" ] ],
+    [ "uno:4", "btn3:1.l", "green", [ "v-60", "h366" ] ],
+    [ "btn1:2.r", "btn2:2.r", "green", [ "v20", "h82" ] ],
+    [ "btn2:2.r", "btn3:2.r", "green", [ "v20", "h83" ] ],
+    [ "btn1:2.r", "uno:GND.3", "black", [ "v150", "h-180" ] ],
+    [ "oled1:GND", "uno:GND.2", "black", [ "v-25", "h-50", "v120", "h-200" ] ],
+    [ "oled1:VCC", "uno:5V", "red", [ "v-35", "h-70", "v140", "h-220" ] ],
+    [ "oled1:SCL", "uno:A5", "gold", [ "v-50", "h-125" ] ],
+    [ "oled1:SDA", "uno:A4", "blue", [ "v-58", "h-145" ] ]
+  ],
+  "dependencies": {}
+}

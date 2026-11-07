@@ -43,4 +43,4 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 
 | Archivo | Descripción |
 | --- | --- |
-| IMAGEN_6.1P.png | simulación en Wokwi con el Monitor serie mostrando cada gol con su segundo y su equipo |
+| IMAGEN_6.1P.png | simulación en Wokwi con el Monitor serie mostrando cada gol con su segundo y su equipo *(lista)* |

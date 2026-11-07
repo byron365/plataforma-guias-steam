@@ -69,6 +69,9 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > (en blanco, sin notas del docente; `servidor/pdf.js` con Edge) y su lista de materiales (PDF del Word, `listas_a_pdf.py`).
 > **Garra, guías 6 práctica y 7:** el programa final no compilaba en Tinkercad (`'Servo' was not declared`): se agregó la línea
 > `void mover(Servo &s, int &actual, int meta);` debajo de `Servo base…`. Probado en Tinkercad: compila y el pulsador hace la rutina.
+> **Mini fútbol:** Guía 6 práctica probada en Wokwi (Monitor serie y antirrebote), imagen 6.1P y circuito en `herramientas/wokwi/`.
+> Lista de materiales de la versión Práctica (`herramientas/materiales/mini-futbol.json`, 10 materiales, con eliminador de 9 V
+> para jugar sin computadora); la cancha se forra con cartulina verde (Guía 7 práctica). Faltan las imágenes 4.1, 5.1, 5.2, 5.3 y 9.1.
 
 ---
 

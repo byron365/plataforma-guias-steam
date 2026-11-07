@@ -20,7 +20,7 @@ Revisar que el sensor, la pantalla y el buzzer reales quepan en las piezas impre
 - 1 sensor infrarrojo de obstáculos, la pantalla OLED, el buzzer y la pelota
 - Regla o calibrador
 - Base de cartón grueso, cartón pluma o MDF de 60 × 40 cm
-- Fomi o cartulina verde, marcador o cinta blanca
+- Cartulina verde, marcador o cinta blanca
 - Tiras de cartón de 3 cm de alto para las bandas laterales
 - Compás, tijeras, pegamento caliente, calculadora
 - Computadora con internet y la cuenta de Tinkercad del equipo
@@ -79,8 +79,8 @@ Calculen las líneas que van a trazar. Pasen los metros a centímetros (× 100) 
 
 ## Parte 4 · La cancha (55 min)
 
-1. Corta la base y fórrala con el fomi verde.
-   - Si es MDF, el docente la corta. Peguen el fomi con pegamento en las orillas y en el centro, alisándolo con la mano para que no queden burbujas.
+1. Corta la base y fórrala con la cartulina verde.
+   - Si es MDF, el docente la corta. Peguen la cartulina con pegamento en las orillas y en el centro, alisándolo con la mano para que no queden burbujas.
 2. Traza las líneas con las medidas de su tabla:
    - El rectángulo de la cancha, de **52,5 × 34 cm**, va centrado en la base (sobran unos 3,75 cm a cada lado del largo y 3 cm a cada lado del ancho).
    - La línea central y el **círculo central**: abran el compás con el radio de su tabla y pinchen en el centro de la cancha.

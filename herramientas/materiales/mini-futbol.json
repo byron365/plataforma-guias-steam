@@ -1,0 +1,23 @@
+{
+  "proyecto": "Mini fútbol con marcador electrónico",
+  "nivel": "Básico II",
+  "versiones": {
+    "practica": {
+      "nombre": "Práctica con Wokwi",
+      "sabados": 9,
+      "materiales": [
+        {"imagen": "arduino", "componente": "Arduino UNO R3 con su cable USB", "cantidad": "1", "uso": "Cerebro del marcador (Guías 8 y 9)"},
+        {"imagen": "protoboard400", "componente": "Protoboard de 400 puntos", "cantidad": "1", "uso": "Armar el circuito del marcador sin soldar (Guía 8)"},
+        {"imagen": "cables_mm", "componente": "Cables Dupont macho–macho (juego de 40)", "cantidad": "1 juego", "uso": "Conexiones en la protoboard: 5V, GND, botón y buzzer (Guía 8)"},
+        {"imagen": "cables_mh", "componente": "Cables Dupont macho–hembra (juego de 40)", "cantidad": "1 juego", "uso": "Llevar los sensores de las porterías y la pantalla hasta la protoboard (Guía 8)"},
+        {"imagen": "sensor_ir", "componente": "Sensor infrarrojo de obstáculos FC-51 (o similar, con salida digital)", "cantidad": "2", "uso": "Uno detrás de cada portería: detecta el gol (Guías 7 y 8)"},
+        {"imagen": "oled", "componente": "Pantalla OLED de 0,96\" SSD1306 (128 × 64, I2C de 4 pines)", "cantidad": "1", "uso": "Muestra los goles y el tiempo del partido (Guías 7 y 8)"},
+        {"imagen": "buzzer", "componente": "Buzzer (zumbador) pasivo de 5 V, de 12 mm", "cantidad": "1", "uso": "Silbato de inicio y celebración de cada gol (Guías 7 y 8)"},
+        {"imagen": "boton1", "componente": "Botón pulsador de 4 patas", "cantidad": "1", "uso": "Botón de inicio del partido (Guía 8)"},
+        {"imagen": "eliminador", "componente": "Eliminador (cargador) de 9 V y 1 A, con plug de 5,5 × 2,1 mm y centro positivo", "cantidad": "1", "uso": "Alimentar el marcador por el jack del Arduino para jugar sin computadora (Guía 9)"},
+        {"imagen": "mdf", "componente": "Base de MDF delgado o cartón grueso de 60 × 40 cm", "cantidad": "1", "uso": "Base de la cancha (Guía 7)"}
+      ],
+      "no_comprar": "El filamento y la impresora 3D (las dos porterías y el soporte del marcador), la pistola y las barras de silicona, la cartulina verde, los marcadores, la cinta (blanca y doble cara), el compás, el calibrador y el destornillador pequeño los pone la academia. Del hogar: una pelota de ping pong blanca (las blancas se detectan mejor) y cartón para las tiras de las bandas laterales (3 cm de alto). También se usan la computadora con Arduino IDE e internet, la cuenta de Tinkercad (para diseñar), la de Wokwi (para simular), regla, tijeras, calculadora y un celular para cronometrar."
+    }
+  }
+}
