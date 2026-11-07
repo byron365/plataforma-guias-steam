@@ -67,6 +67,7 @@ En la Guía 9 corregirán estos números con la garra real y objetos de verdad.
 ```cpp
 #include <Servo.h>
 Servo base, hombro, codo, pinza;
+void mover(Servo &s, int &actual, int meta);  // aviso: mover() está más abajo
 const int BOTON = 2;
 const int VELOCIDAD = 15;  // ms por grado
 int pB = 90, pH = 90, pC = 90, pP = 60;  // posición actual
@@ -179,6 +180,7 @@ Captura o video de la pantalla con la rutina en el simulador.
 :::docente
 - **Versión Blender práctica (9 sábados), desde el 31 de octubre:** el botón, las posiciones y la rutina de la Guía 6 práctica anterior, ahora en Tinkercad Circuits. El programa final suma al modo manual el Monitor en serie, para que en las guías 8 y 9 sirva un solo programa para todo. Campos propios (g6p-…).
 - `rutina()` va antes del `loop()` para que el simulador no tenga problemas con el orden de las funciones.
+- **La línea `void mover(Servo &s, int &actual, int meta);` (debajo de `Servo base…`) es obligatoria.** Sin ella, Tinkercad pone su propio aviso de `mover()` antes de `#include <Servo.h>` y el programa no compila: `variable or field 'mover' declared void` y `'Servo' was not declared in this scope` en la línea 2 (comprobado el 7 de noviembre). Con esa línea compila, el pulsador hace la rutina y vuelve a las perillas. Si un equipo ya escribió el programa sin ella, basta con agregarla.
 - El pulsador del simulador se presiona con un clic. Si no responde, revisar que cruce la canaleta y que el cable vaya a la pata en diagonal.
 - El símbolo `&` en `mover()` se explica como "la función recuerda dónde quedó el servo".
 - Las posiciones del simulador son un plan: en la Guía 9 se corrigen con la garra real. Los límites de `leer()` también se cambian en la Guía 9.

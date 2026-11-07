@@ -65,5 +65,5 @@ Las imágenes 4.3 (render de la pinza en Blender), 5.2 (circuito) y 7.1 (botón)
 | IMAGEN 4.1S.png | editor de Tinkercad Circuits con sus partes señaladas *(lista, copia de la del Dispensador)* |
 | IMAGEN_4.2S.png | base y hombro simulados en Tinkercad Circuits: dos servos en D3 y D5 y dos potenciómetros en A0 y A1, con las filas de abajo en 5V y GND del Arduino *(lista)* |
 | IMAGEN_5.1S.png | garra simulada en Tinkercad Circuits: Fuente de alimentación de 5 V en las filas de arriba con los 4 servos, las 4 perillas en las filas de abajo con el 5V y el GND del Arduino, y el cable del GND común *(lista)* |
-| IMAGEN_6.1S.png | garra simulada con el pulsador sobre la canaleta, una pata en D2 y la pata en diagonal en la fila − de abajo |
+| IMAGEN_6.1S.png | garra simulada con el pulsador sobre la canaleta, una pata en D2 y la pata en diagonal en la fila − de abajo *(lista)* |
 | IMAGEN 5.2F.png | circuito completo con la fuente de 5 V en su jack hembra, los 4 servos, las 4 perillas, el botón y el GND común *(lista, hecha con `herramientas/garra_imagenes.py`)* |

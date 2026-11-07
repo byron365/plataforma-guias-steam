@@ -67,6 +67,8 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > `herramientas/wokwi/`. **Banda:** simulador de perillas de color (Guía 5) y paro y pantalla corregidos (guías 6 y 8).
 > **7 de noviembre (descargas):** apartado **Descargas** en la bitácora: cada equipo baja en PDF sus guías desbloqueadas
 > (en blanco, sin notas del docente; `servidor/pdf.js` con Edge) y su lista de materiales (PDF del Word, `listas_a_pdf.py`).
+> **Garra, guías 6 práctica y 7:** el programa final no compilaba en Tinkercad (`'Servo' was not declared`): se agregó la línea
+> `void mover(Servo &s, int &actual, int meta);` debajo de `Servo base…`. Probado en Tinkercad: compila y el pulsador hace la rutina.
 
 ---
 

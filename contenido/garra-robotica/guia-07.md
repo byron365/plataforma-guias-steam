@@ -72,6 +72,7 @@ Busquen su tabla de límites de la Guía 6 (pueden abrir esa guía en la platafo
 ```cpp
 #include <Servo.h>
 Servo base, hombro, codo, pinza;
+void mover(Servo &s, int &actual, int meta);  // aviso: mover() está más abajo
 const int BOTON = 2;
 const int VELOCIDAD = 15;  // ms por grado
 int pB = 90, pH = 90, pC = 90, pP = 60;  // posición actual
