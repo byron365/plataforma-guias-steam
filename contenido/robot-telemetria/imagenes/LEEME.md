@@ -37,3 +37,17 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_4.2S.png | robot simulado en Tinkercad Circuits: Arduino, chip L293D en la protoboard, dos motores y la pila de 9 V *(lista)* |
 | IMAGEN_4.3S.png | sensor HC-SR04 y divisor de la batería en Tinkercad Circuits: el sensor en D2 y D3, y las dos resistencias de 10 kΩ entre el + de la pila y GND, con su punto medio en A0 *(lista)* |
 | IMAGEN_5.1S.png | robot y mando simulados: el mando con dos potenciómetros y la pantalla LCD 16 × 2 I2C, unido al robot por D10, D11 y GND |
+
+**Versión Práctica con app (9 sábados, 6 de noviembre):** el mando físico se reemplaza por una app de Android hecha en MIT App Inventor (archivos `guia-NN.app.md`). Capturas del proyecto `equipo_robot_app` en la cuenta del docente, con App Inventor en español. Usa también las imágenes de la versión Práctica, salvo la 3.2P.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN 2.1A.png ✅ | la 2.1P sin el mando |
+| IMAGEN 6.1A.png ✅ | Diseñador de App Inventor con la pantalla de la app terminada |
+| IMAGEN 6.2A.png ✅ | bloques Conectar.AntesDeSelección y Conectar.DespuésDeSelección |
+| IMAGEN 6.3A.png ✅ | variables izq y der, procedimiento mover y Velocidad.PosiciónCambiada |
+| IMAGEN 6.4A.png ✅ | bloques Presionar y Soltar de los cuatro botones |
+| IMAGEN 7.1A.png ✅ | Reloj1.Temporizador que arma y envía la orden |
+| IMAGEN 7.2A.png ✅ | variables mensaje y datos y procedimiento leerTelemetria |
+| IMAGEN 7.3A.png ✅ | Reloj1.Temporizador final, con la lectura de la telemetría |
+| IMAGEN 7.4A.png ✅ | aviso de App Inventor al generar el APK (con el código QR tapado) |

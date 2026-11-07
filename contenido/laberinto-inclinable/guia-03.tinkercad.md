@@ -143,7 +143,7 @@ Pista: en el tablero, antes del último **Seleccionar todo**, agrega de **Formas
 ¿Qué pieza fue la más difícil de diseñar? ¿Por qué?
 :::
 
-Antes de irse, junten los 4 `.stl` en un `.zip` (selecciónenlos, clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí. El docente los imprimirá para el próximo sábado.
+Antes de irse, junten los 4 `.stl` en un `.zip` (selecciónenlos, clic derecho → **Comprimir en archivo ZIP**) y súbanlo aquí. El docente los imprimirá.
 
 :::archivo id="g3-archivo"
 **Archivo de trabajo:** suban aquí el .zip con los .stl que exportaron. Sus diseños de bloques quedan guardados en Tinkercad (**Diseños → Codeblocks**). Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).

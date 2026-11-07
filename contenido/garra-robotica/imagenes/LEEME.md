@@ -23,8 +23,8 @@ Si una imagen todavía no existe, la plataforma muestra un recuadro gris con la 
 | IMAGEN_4.1.png | servo colocado dentro de la base, con las pestañas atornilladas |
 | IMAGEN_4.2.png | plato giratorio montado sobre la base, con la pared de soporte al frente |
 | IMAGEN 4.3.png ✅ | render de la pinza de engranes terminada, señalando engrane motriz y engrane seguidor |
-| IMAGEN_4.4.png | ventana de Preferencias con el complemento Extra Mesh Objects activado |
-| IMAGEN_4.5.png | panel de opciones del engranaje con 12 dientes, radio 10 y ancho 4 |
+| IMAGEN_4.4.png | ventana de Preferencias con el complemento Extra Mesh Objects activado *(lista)* |
+| IMAGEN_4.5.png | panel de opciones del engranaje con 12 dientes, radio 10 y ancho 4 *(lista)* |
 | IMAGEN_5.1.png | brazo montado con base, hombro y codo, señalando cada servo |
 | IMAGEN 5.2.png ✅ | diagrama del circuito completo con los dos rieles, las 4 perillas, los 4 servos y la unión de GND |
 | IMAGEN_6.1.png | pinza montada en el eslabón del codo, señalando engrane motriz, seguidor y tornillo M3 |
@@ -57,3 +57,13 @@ Si una imagen todavía no existe, la plataforma muestra un recuadro gris con la 
 | IMAGEN_13.2T.png | ejemplo de imagen final de una garra en Tinkercad con piezas de colores |
 
 Las imágenes 4.3 (render de la pinza en Blender), 5.2 (circuito) y 7.1 (botón) se generan con `herramientas/garra_pinza_render.py` y `herramientas/garra_imagenes.py` (24 de octubre).
+
+**Versión Blender práctica de 9 sábados (31 de octubre):** simulación en Tinkercad Circuits (guías 4 a 6) y armado físico (guías 8 y 9). La Guía 8 usa también las imágenes 4.1, 4.2, 5.1 y 6.1, y la Guía 9 la 6.2.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN 4.1S.png | editor de Tinkercad Circuits con sus partes señaladas *(lista, copia de la del Dispensador)* |
+| IMAGEN_4.2S.png | base y hombro simulados en Tinkercad Circuits: dos servos en D3 y D5 y dos potenciómetros en A0 y A1, con las filas de abajo en 5V y GND del Arduino *(lista)* |
+| IMAGEN_5.1S.png | garra simulada en Tinkercad Circuits: Fuente de alimentación de 5 V en las filas de arriba con los 4 servos, las 4 perillas en las filas de abajo con el 5V y el GND del Arduino, y el cable del GND común *(lista)* |
+| IMAGEN_6.1S.png | garra simulada con el pulsador sobre la canaleta, una pata en D2 y la pata en diagonal en la fila − de abajo |
+| IMAGEN 5.2F.png | circuito completo con la fuente de 5 V en su jack hembra, los 4 servos, las 4 perillas, el botón y el GND común *(lista, hecha con `herramientas/garra_imagenes.py`)* |

@@ -34,7 +34,7 @@ Las piezas que diseñamos e imprimimos:
 | Tablero | El laberinto con sus paredes; la canica rueda encima | Hoy y el sábado 3 |
 | Marco | Sostiene el tablero y al servo que lo inclina a los lados | Sábado 3 |
 | Torre del servo y torre del eje | Sostienen el marco en el aire, a los lados | Sábado 3 |
-| Soporte del sensor, de la pantalla y base del joystick | Piezas pequeñas para que todo quede fijo | Sábado 5 |
+| Soporte del sensor, de la pantalla y base del joystick | Piezas pequeñas para que todo quede fijo | Más adelante |
 
 Lo que **no** se imprime: la base (una tabla de MDF o cartón grueso), los dos servos, los palitos de pincho que hacen de ejes, el Arduino y los cables.
 

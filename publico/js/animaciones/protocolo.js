@@ -6,6 +6,7 @@
 //
 // En la guía:
 //   :::animacion tipo="protocolo" sistema="banda"
+//   :::animacion tipo="protocolo" sistema="robot-app"
 //   :::
 // Sistemas listos: "banda" · "robot"
 // ============================================================
@@ -57,6 +58,34 @@ const SISTEMAS = {
           efecto: () => `El robot separa por las comas: motor izquierdo ${izq}, derecho ${der}. Guarda la hora del mensaje (para el TIMEOUT).` },
         { de: 1, texto: () => `T,${e.bat.toFixed(1)},${e.dist}\\n`, bytes: () => ['T', e.bat.toFixed(1), String(e.dist)],
           efecto: () => `El mando muestra ${e.bat.toFixed(1)} V y ${e.dist} cm en la OLED${e.bat < 6.8 ? ' y el aviso BATERIA!' : ''}.` },
+      ];
+    },
+  },
+  // Versión con app: el celular envía la orden del botón presionado y muestra la telemetría
+  'robot-app': {
+    nodos: ['App', 'Robot'],
+    estado: () => ({ boton: 'Adelante', velocidad: 180, bat: 7.6, dist: 42 }),
+    controles: (e, cambiar) => [
+      el('label', { class: 'anim-etiqueta' }, 'Botón presionado',
+        Object.assign(el('select', { 'aria-label': 'Botón presionado' },
+          ...['Adelante', 'Atrás', 'Izquierda', 'Derecha', 'Ninguno'].map((b) => el('option', { value: b }, b))),
+        { onchange: (ev) => cambiar(() => { e.boton = ev.target.value; }) })),
+      el('label', { class: 'anim-etiqueta' }, 'Velocidad',
+        Object.assign(el('input', { type: 'range', class: 'anim-deslizador', min: 100, max: 255, step: 5, value: e.velocidad, 'aria-label': 'Velocidad' }),
+          { oninput: (ev) => cambiar(() => { e.velocidad = Number(ev.target.value); }) })),
+      el('label', { class: 'anim-etiqueta' }, 'Distancia al obstáculo (cm)',
+        Object.assign(el('input', { type: 'range', class: 'anim-deslizador', min: 5, max: 200, step: 1, value: e.dist, 'aria-label': 'Distancia' }),
+          { oninput: (ev) => cambiar(() => { e.dist = Number(ev.target.value); }) })),
+    ],
+    vuelta: (e) => {
+      const signos = { Adelante: [1, 1], 'Atrás': [-1, -1], Izquierda: [-1, 1], Derecha: [1, -1], Ninguno: [0, 0] }[e.boton];
+      const izq = signos[0] * e.velocidad; const der = signos[1] * e.velocidad;
+      e.bat = Math.max(6.4, Number((e.bat - 0.1).toFixed(1)));   // la batería se gasta (rápido, para verlo)
+      return [
+        { de: 0, texto: `M,${izq},${der}\\n`, bytes: ['M', String(izq), String(der)],
+          efecto: () => `El robot separa por las comas: motor izquierdo ${izq}, derecho ${der}. Guarda la hora del mensaje (para el TIMEOUT).` },
+        { de: 1, texto: () => `T,${e.bat.toFixed(1)},${e.dist}\\n`, bytes: () => ['T', e.bat.toFixed(1), String(e.dist)],
+          efecto: () => `La app muestra ${e.bat.toFixed(1)} V y ${e.dist} cm${e.bat < 6.8 ? ' y el aviso BATERÍA BAJA' : ''}.` },
       ];
     },
   },

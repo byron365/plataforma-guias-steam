@@ -98,7 +98,7 @@ Miren el mini fútbol completo y ubiquen cada pieza:
 [IMAGEN 2.1T: mini fútbol diseñado en Tinkercad, con etiquetas: portería azul, portería roja, cancha a escala, bandas laterales, pelota, soporte del marcador, Arduino y protoboard con el botón]
 
 - Las **porterías**, una en el centro de cada lado corto, con la boca hacia la cancha y la **ventana del sensor mirando hacia la cancha**. Detrás de cada ventana va su sensor.
-- La **cancha** y las **bandas laterales** se arman con cartón el sábado 4, con un hueco de 10 cm en cada lado corto para la portería.
+- La **cancha** y las **bandas laterales** se arman con cartón más adelante, con un hueco de 10 cm en cada lado corto para la portería.
 - El **soporte del marcador**, a un lado de la cancha, mirando hacia los jugadores. La pantalla va por detrás de la ventana y el buzzer por detrás de su agujero.
 - El **Arduino** y la **protoboard** con el botón de inicio, junto al soporte.
 

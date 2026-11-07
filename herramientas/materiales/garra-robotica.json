@@ -1,0 +1,73 @@
+{
+  "proyecto": "Garra robótica",
+  "nivel": "Básico",
+  "versiones": {
+    "practica": {
+      "nombre": "Blender práctica",
+      "sabados": 9,
+      "materiales": [
+        {
+          "imagen": "arduino",
+          "componente": "Arduino UNO R3 con su cable USB",
+          "cantidad": "1",
+          "uso": "Cerebro de la garra (desde la Guía 1)"
+        },
+        {
+          "imagen": "protoboard400",
+          "componente": "Protoboard de 400 puntos",
+          "cantidad": "1",
+          "uso": "Armar el circuito sin soldar (Guías 1 y 8)"
+        },
+        {
+          "imagen": "cables_mm",
+          "componente": "Cables Dupont macho–macho (juego de 40)",
+          "cantidad": "1 juego",
+          "uso": "Conexiones de la protoboard, los servos y las perillas"
+        },
+        {
+          "imagen": "servo",
+          "componente": "Servomotor SG90 (con brazos y tornillos)",
+          "cantidad": "3",
+          "uso": "Mueven la base, el codo y la pinza (Guías 1 y 8)"
+        },
+        {
+          "imagen": "servo",
+          "componente": "Servomotor MG90S, de engranes metálicos (con brazos y tornillos)",
+          "cantidad": "1",
+          "uso": "Mueve el hombro, que es el que carga más peso (Guía 8)"
+        },
+        {
+          "imagen": "potenciometro",
+          "componente": "Potenciómetro de 10 kΩ con patas para protoboard",
+          "cantidad": "4",
+          "uso": "Las cuatro perillas que mueven la garra (Guías 1 y 8)"
+        },
+        {
+          "imagen": "boton1",
+          "componente": "Botón pulsador de 4 patas",
+          "cantidad": "1",
+          "uso": "Activa la rutina automática (Guías 8 y 9)"
+        },
+        {
+          "imagen": "eliminador",
+          "componente": "Fuente (cargador) de 5 V y 2 A, con plug de 5,5 × 2,1 mm",
+          "cantidad": "1",
+          "uso": "Energía de los cuatro servos (Guía 8)"
+        },
+        {
+          "imagen": "jack",
+          "componente": "Conector jack hembra de 5,5 × 2,1 mm con bornera de tornillos",
+          "cantidad": "1",
+          "uso": "Recibe la fuente y deja atornillar los cables que van a la protoboard"
+        },
+        {
+          "imagen": "tornillo_m3",
+          "componente": "Tornillo M3 de 12 a 16 mm con su tuerca",
+          "cantidad": "2 (uno de repuesto)",
+          "uso": "Eje del engrane seguidor de la pinza (Guía 8)"
+        }
+      ],
+      "no_comprar": "El filamento y la impresora 3D (base, plato giratorio, eslabones y pinza), los tornillos para unir la pinza al eslabón, la lija, la cinta para etiquetas, el calibrador y el destornillador los pone la academia. Del hogar: 5 objetos ligeros para el reto (pelota de esponja, dado, tapa de botella, borrador y vaso de papel), un vaso y unas ligas. También se usan la computadora con Arduino IDE e internet, Blender (para diseñar) y la cuenta de Tinkercad (para simular)."
+    }
+  }
+}

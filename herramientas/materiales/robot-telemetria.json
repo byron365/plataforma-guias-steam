@@ -1,0 +1,109 @@
+{
+  "proyecto": "Robot con app y telemetría",
+  "nivel": "Intermedio II",
+  "versiones": {
+    "app": {
+      "nombre": "Práctica con app",
+      "sabados": 9,
+      "materiales": [
+        {
+          "imagen": "arduino",
+          "componente": "Arduino UNO R3 con su cable USB",
+          "cantidad": "1",
+          "uso": "Cerebro del robot (desde la Guía 1)"
+        },
+        {
+          "imagen": "l298n",
+          "componente": "Puente H L298N",
+          "cantidad": "1",
+          "uso": "Controla los dos motores (Guía 8)"
+        },
+        {
+          "imagen": "motor_tt",
+          "componente": "Motor TT con caja reductora y su rueda",
+          "cantidad": "2",
+          "uso": "Mueven el robot (Guías 2 y 8)"
+        },
+        {
+          "imagen": "rueda_loca",
+          "componente": "Rueda loca",
+          "cantidad": "1",
+          "uso": "Tercer punto de apoyo del robot (Guías 2 y 8)"
+        },
+        {
+          "imagen": "tornillo_m3",
+          "componente": "Tornillo M3 × 30 con su tuerca",
+          "cantidad": "4",
+          "uso": "Sujetan los motores al chasis (Guía 8)"
+        },
+        {
+          "imagen": "hcsr04",
+          "componente": "Sensor ultrasónico HC-SR04",
+          "cantidad": "1",
+          "uso": "Mide la distancia a los obstáculos (Guías 2 y 8)"
+        },
+        {
+          "imagen": "hc05",
+          "componente": "Módulo Bluetooth HC-05",
+          "cantidad": "1",
+          "uso": "Conecta el robot con el celular (Guía 9)"
+        },
+        {
+          "imagen": "portabaterias",
+          "componente": "Portabaterías de 2 celdas 18650 con protección, con sus 2 baterías de 3,7 V",
+          "cantidad": "1 juego",
+          "uso": "Batería de 7,4 V de los motores (Guías 3 y 8)"
+        },
+        {
+          "imagen": "fusible",
+          "componente": "Portafusible con fusible de 2 A",
+          "cantidad": "1",
+          "uso": "Protege la batería de los motores (Guía 8)"
+        },
+        {
+          "imagen": "interruptor",
+          "componente": "Interruptor pequeño",
+          "cantidad": "2",
+          "uso": "Uno para cada batería (Guía 8)"
+        },
+        {
+          "imagen": "pila9v",
+          "componente": "Pila de 9 V",
+          "cantidad": "2 (una de repuesto)",
+          "uso": "Energía del Arduino (Guía 8)"
+        },
+        {
+          "imagen": "broche_jack",
+          "componente": "Broche para pila de 9 V con plug de 5,5 × 2,1 mm",
+          "cantidad": "1",
+          "uso": "Conecta la pila al jack del Arduino (Guía 8)"
+        },
+        {
+          "imagen": "protoboard_mini",
+          "componente": "Mini protoboard de 170 puntos",
+          "cantidad": "1",
+          "uso": "Divisores de voltaje, sobre la bandeja (Guías 8 y 9)"
+        },
+        {
+          "imagen": "resistencia",
+          "componente": "Resistencias: 2 de 10 kΩ, 1 de 1 kΩ y 1 de 2 kΩ",
+          "cantidad": "4 en total",
+          "uso": "Medir la batería (Guía 8) y proteger el HC-05 (Guía 9)"
+        },
+        {
+          "imagen": "cables_mm",
+          "componente": "Cables Dupont macho–macho (juego de 40)",
+          "cantidad": "1 juego",
+          "uso": "Conexiones en la protoboard"
+        },
+        {
+          "imagen": "cables_mh",
+          "componente": "Cables Dupont macho–hembra (juego de 40)",
+          "cantidad": "1 juego",
+          "uso": "Conectar el L298N, el HC-SR04 y el HC-05"
+        }
+      ],
+      "no_comprar": "El filamento y la impresora 3D (chasis, soporte del sensor, postes y bandeja), la pistola y las barras de silicona, los palitos de pincho, la cinta doble faz, el multímetro, la lija, el calibrador, las tijeras y el destornillador los pone la academia. Del hogar: un celular o tablet con Android (no sirve iPhone) para instalar la app. También se usan la computadora con Arduino IDE e internet, la cuenta de Tinkercad (para diseñar y simular) y una cuenta de Google (para App Inventor)."
+    }
+  }
+}

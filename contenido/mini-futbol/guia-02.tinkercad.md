@@ -34,7 +34,7 @@ Las piezas que diseñamos e imprimimos:
 | Portería (se imprimen 2: azul y roja) | Recibe la pelota; detrás de su ventana va el sensor | Hoy |
 | Soporte del marcador | Sostiene la pantalla y el buzzer a un lado de la cancha | Sábado 3 |
 
-Lo que **no** se imprime: la base con la cancha y las bandas (cartón, sábado 4), la pelota, el Arduino, la protoboard, los sensores y la pantalla.
+Lo que **no** se imprime: la base con la cancha y las bandas (cartón, más adelante), la pelota, el Arduino, la protoboard, los sensores y la pantalla.
 
 En los juegos de mesa la portería se **agranda** para que se pueda jugar. La nuestra medirá **10 cm de ancho**, **5 cm de alto** y **4 cm de fondo**.
 

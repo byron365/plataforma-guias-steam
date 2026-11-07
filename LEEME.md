@@ -118,8 +118,9 @@ Notas:
   Tinkercad necesita internet y una cuenta de Tinkercad para cada equipo (o una clase de Tinkercad).
 - **Versiones prácticas (más cortas):** varios proyectos tienen además una versión que, después del diseño 3D, **simula el
   circuito por partes** (Tinkercad Circuits o Wokwi) mientras se imprimen las piezas, y luego **arma todo en físico**:
-  Puente (8 sábados), Dispensador sencillo y doble (8), Robot con mando (9), Banda clasificadora (10) y Mini invernadero (8, con
-  Wokwi). Una versión puede usar los archivos de otra como base (por ejemplo, la doble práctica toma las guías 2 y 3 de la doble,
+  Puente (8 sábados), Dispensador sencillo y doble (8), Robot con mando (9), Banda clasificadora (10), Mini invernadero (8, con
+  Wokwi), Garra robótica (9), Mini fútbol (9, con Wokwi) y Laberinto (7, con Wokwi: solo los servos con el joystick, sin sensor
+  ni pantalla). El **Robot con app** (9) cambia el mando físico por una app de Android hecha en MIT App Inventor. Una versión puede usar los archivos de otra como base (por ejemplo, la doble práctica toma las guías 2 y 3 de la doble,
   y la guía 1 de la Tinkercad). Las respuestas de las guías que cambian no se ven al pasar de una versión a otra.
 - En el visor de respuestas, la casilla **"Solo notas del docente"** deja solo tus notas de esa guía.
 - Una guía abierta para todo el proyecto no se puede cerrar para un solo equipo; al revés sí
@@ -133,12 +134,13 @@ los archivos `datos/plataforma.db*` y la carpeta `subidas/`.
 Para cada grupo se puede generar un documento de Word con lo que debe comprar, según la versión de sus guías:
 
 ```
-python herramientas/lista_materiales.py <proyecto> "<carpeta de salida>" [nombre del grupo]
+python herramientas/lista_materiales.py <proyecto> "<carpeta de salida>" [nombre del grupo] [versión]
 ```
 
 - La lista de cada versión está en `herramientas/materiales/<proyecto>.json` (componente, cantidad, para qué y la imagen).
 - Las imágenes y sus créditos van en `<carpeta de salida>/imagenes/` (`imagenes.json` y `logo.png` para la esquina del documento).
 - Lee los grupos de `datos/plataforma.db` solo para consultar; los documentos se guardan en la carpeta de salida, fuera del repositorio.
+- Con la versión al final, usa esa lista aunque el equipo todavía tenga otra versión asignada en la plataforma.
 - Sin el nombre del grupo, genera un documento por cada grupo del proyecto. Si un documento está abierto en Word, avisa y sigue con los demás.
 
 ## Fotos y videos de la bitácora

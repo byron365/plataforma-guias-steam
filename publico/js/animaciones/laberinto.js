@@ -12,6 +12,7 @@
 //   :::animacion tipo="laberinto"
 //   :::
 // Opciones (todas opcionales, como los "Ajustes del equipo"): centro (90) · inclinacion (15) · suave (0.2)
+// pantalla="no": solo los servos con el joystick, sin pantalla, buzzer ni botón de inicio (versión práctica).
 // ============================================================
 import { svg, numero, limitar, mapArduino, pocoMovimiento } from './comun/svg.js';
 import { crearOLED } from './comun/oled.js';
@@ -83,6 +84,8 @@ export default function montar(contenedor, config) {
   const buzzer = el('span', { class: 'lab-buzzer', 'aria-hidden': 'true' }, '🔊');
   const botonJugar = el('button', { type: 'button', class: 'boton boton-chico' }, '🕹 Presionar el joystick (botón D2)');
   const botonSalida = el('button', { type: 'button', class: 'anim-boton' }, '🔵 Poner la canica en la salida');
+  const conPantalla = config.pantalla !== 'no';
+  const marcoPantalla = el('div', {}, el('div', { class: 'oled-marco chico' }, pantalla.lienzo), buzzer);
   const estado = el('p', { class: 'anim-estado', 'aria-live': 'polite' });
 
   contenedor.append(el('div', { class: 'anim-laberinto' },
@@ -90,10 +93,16 @@ export default function montar(contenedor, config) {
     el('div', { class: 'anim-controles' },
       el('div', { class: 'lab-panel' },
         el('div', { class: 'perilla-columna' }, pad, el('p', { class: 'anim-etiqueta' }, 'Joystick')),
-        el('div', {}, el('div', { class: 'oled-marco chico' }, pantalla.lienzo), buzzer)),
+        marcoPantalla),
       el('div', { class: 'anim-rapidos' }, botonJugar, botonSalida),
       estado,
       el('p', { class: 'texto-ayuda' }, `Ajustes: CENTRO = ${CENTRO} · INCLINACION = ${INCLINACION} · SUAVE = ${String(SUAVE).replace('.', ',')}. El laberinto es un ejemplo: el de ustedes lo diseñan en papel.`))));
+
+  if (!conPantalla) {
+    marcoPantalla.style.display = 'none';
+    botonJugar.style.display = 'none';
+    jugando = true;
+  }
 
   // mostrar(a, b) del código: dos líneas en tamaño 2
   function mostrar(a, b) {
@@ -140,6 +149,7 @@ export default function montar(contenedor, config) {
     mostrar('Tiempo', segundos(reloj - inicio));
     // ¿Llegó a la meta? (el sensor ve la canica sobre el agujero)
     if (Math.hypot(canica.x - META.x, canica.y - META.y) < 6) {
+      if (!conPantalla) { estado.textContent = '¡Llegó a la meta!'; return; }
       jugando = false;
       const t = reloj - inicio;
       sonar(800);
@@ -179,7 +189,10 @@ export default function montar(contenedor, config) {
     jugando = true; inicio = reloj; sonar(200);
     estado.textContent = '¡A jugar! Inclina el tablero con el joystick hasta la meta.';
   });
-  botonSalida.addEventListener('click', () => { canica = { ...SALIDA, vx: 0, vy: 0 }; });
+  botonSalida.addEventListener('click', () => {
+    canica = { ...SALIDA, vx: 0, vy: 0 };
+    if (!conPantalla) estado.textContent = '';
+  });
 
   let arrastrando = false;
   const moverPad = (e) => {

@@ -10,8 +10,8 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_2.1.png | boceto de la cancha en papel cuadriculado con medidas a escala, porterías y ubicación del marcador |
 | IMAGEN_2.2.png | media portería en Blender con el modificador Simetría generando la otra mitad |
 | IMAGEN_2.3.png | portería completa con la ventana para el sensor en el fondo |
-| IMAGEN_3.1.png | circuito completo del marcador en Wokwi con tres botones, buzzer y pantalla OLED |
-| IMAGEN_3.2.png | simulación en Wokwi con la pantalla mostrando el marcador 2 - 1 y el tiempo restante |
+| IMAGEN_3.1.png | circuito completo del marcador en Wokwi con tres botones, buzzer y pantalla OLED *(lista)* |
+| IMAGEN_3.2.png | simulación en Wokwi con la pantalla mostrando el marcador 2 - 1 y el tiempo restante *(lista)* |
 | IMAGEN_4.1.png | cancha armada con líneas blancas a escala, bandas laterales y las dos porterías pegadas |
 | IMAGEN_4.2.png | estudiante escaneando un trofeo pequeño con el celular girando a su alrededor |
 | IMAGEN_4.3.png | trofeo escaneado en Blender, limpio, escalado a 6 cm y con base cilíndrica |
@@ -38,3 +38,9 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_2.3T.png | portería completa con la ventana para el sensor en el fondo, en Tinkercad Codeblocks *(lista, con etiquetas)* |
 | IMAGEN_3.1T.png | soporte del marcador en Tinkercad Codeblocks, con etiquetas: panel inclinado, ventana de la pantalla, agujero del buzzer y base *(lista)* |
 | IMAGEN_13.1T.png | maqueta de la cancha de mini fútbol en Tinkercad con las porterías azul y roja y la pelota |
+
+**Versión Práctica con Wokwi (9 sábados, 31 de octubre):** guías 1 a 3 de la versión Tinkercad; 4 a 6 simulan el marcador en Wokwi, 7 revisa las piezas y arma la cancha, 8 el marcador real y 9 la prueba final y el torneo (archivos `guia-NN.practica.md`). Usa también las imágenes 3.1 y 3.2 (Wokwi), 4.1 (cancha), 5.1, 5.2 y 5.3 (marcador real) y 9.1 (torneo) de la versión completa.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_6.1P.png | simulación en Wokwi con el Monitor serie mostrando cada gol con su segundo y su equipo |

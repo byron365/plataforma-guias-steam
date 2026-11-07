@@ -43,3 +43,11 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_6.1T.png | sensor infrarrojo parado en su soporte impreso, pegado debajo del tablero bajo el agujero de la meta (foto real) |
 | IMAGEN_11.2T.png | laberinto versión 2 en Tinkercad Codeblocks con paredes curvas y obstáculos |
 | IMAGEN_13.1T.png | escena final del laberinto inclinado en Tinkercad con la canica, el soporte y el marco |
+
+**Versión Práctica con Wokwi (7 sábados, 6 de noviembre):** solo los servos con el joystick, sin sensor de meta, pantalla ni buzzer. Archivos `guia-NN.practica.md` (guías 1 a 7). Usa también la 1.1, la 1.2, la 1.3, la 2.1, la 2.2T, la 3.1T, la 3.2T, la 3.3T y la 9.1.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN 2.1P.png ✅ | la 2.1T sin el soporte de la pantalla y sin la nota del sensor en la meta |
+| IMAGEN 5.1P.png ✅ | recorte de la 5.1T: solo la base del joystick con la salida de los cables |
+| IMAGEN_6.1P.png | circuito real del laberinto con la fuente de 5 V en su jack hembra, joystick, dos servos y el GND común señalado |

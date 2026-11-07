@@ -1,6 +1,7 @@
 # Imágenes de la garra robótica hechas por programa:
 #   IMAGEN 4.3: etiquetas sobre el render de la pinza (herramientas/garra_pinza_render.py)
 #   IMAGEN 5.2: circuito completo (4 servos con pilas, 4 perillas, GND común)
+#   IMAGEN 5.2F: lo mismo con la fuente de 5 V en su jack hembra y el botón (versión práctica de 9 sábados)
 #   IMAGEN 7.1: botón entre D2 y GND
 # Uso: python garra_imagenes.py <render de la pinza .png> <carpeta de salida>
 import sys, os
@@ -97,56 +98,87 @@ def guardar(img, nombre):
     img.resize((img.width // K, img.height // K), Image.LANCZOS).save(os.path.join(salida, nombre))
     print('OK', nombre)
 
-# ---------- IMAGEN 5.2: circuito completo ----------
-W, H = 1460, 1010
-img = Image.new('RGB', (W * K, H * K), FONDO)
-d = ImageDraw.Draw(img)
-texto(d, (W / 2, 28), 'Circuito completo de la garra', f22)
-pin = arduino(d, 40, 330, 420, 640,
-              [('D9', 170), ('D6', 225), ('D5', 265), ('D3', 335)],
-              [('5V', 110), ('GND', 160), ('A0', 230), ('A1', 270), ('A2', 310), ('A3', 350)])
-X0, X1 = 480, 1420
-RP, RN, RP2, RN2 = 400, 428, 800, 828   # rieles: + y − de las pilas (arriba), + y − del Arduino (abajo)
-protoboard(d, X0, 375, X1, 850, [(RP, ROJO, '+'), (RN, AZUL_RIEL, '−'), (RP2, ROJO, '+'), (RN2, AZUL_RIEL, '−')])
-texto(d, (X1 - 8, RP - 24), 'filas de las PILAS', f13, (90, 90, 90), 'rm')
-texto(d, (X1 - 8, RN2 + 24), 'filas del ARDUINO (5V y GND)', f13, (90, 90, 90), 'rm')
+# ---------- IMAGEN 5.2 (pilas) y 5.2F (fuente de 5 V con jack y botón): circuito completo ----------
+def circuito_completo(con_fuente, archivo):
+    W, H = 1460, 1010
+    img = Image.new('RGB', (W * K, H * K), FONDO)
+    d = ImageDraw.Draw(img)
+    texto(d, (W / 2, 28), 'Circuito completo de la garra', f22)
+    pin = arduino(d, 40, 330, 420, 640,
+                  [('D9', 170), ('D6', 225), ('D5', 265), ('D3', 335)] + ([('D2', 380)] if con_fuente else []),
+                  [('5V', 110), ('GND', 160), ('A0', 230), ('A1', 270), ('A2', 310), ('A3', 350)])
+    X0, X1 = 480, 1420
+    RP, RN, RP2, RN2 = 400, 428, 800, 828   # rieles: + y − de las pilas (arriba), + y − del Arduino (abajo)
+    protoboard(d, X0, 375, X1, 850, [(RP, ROJO, '+'), (RN, AZUL_RIEL, '−'), (RP2, ROJO, '+'), (RN2, AZUL_RIEL, '−')])
+    if con_fuente:
+        texto(d, (1280, RP - 24), 'filas de la FUENTE', f13, (90, 90, 90), 'rm')
+    else:
+        texto(d, (X1 - 8, RP - 24), 'filas de las PILAS', f13, (90, 90, 90), 'rm')
+    texto(d, (X1 - 8, RN2 + 24), 'filas del ARDUINO (5V y GND)', f13, (90, 90, 90), 'rm')
 
-# Portapilas (4 AA) arriba a la derecha
-caja(d, 1220, 205, 1410, 275, (60, 60, 60), (30, 30, 30), radio=6)
-for i in range(4):
-    caja(d, 1232 + i * 44, 218, 1268 + i * 44, 262, (200, 160, 40), (120, 90, 20), radio=4)
-texto(d, (1315, 190), 'Portapilas 4 AA (6 V)', f15)
-cable(d, [(1235, 275), (1235, RP)], ROJO)
-cable(d, [(1395, 275), (1395, RN)], NEGRO)
+    if con_fuente:
+        # Fuente (cargador) de 5 V enchufada en el jack hembra con tornillos + y −
+        caja(d, 1180, 95, 1300, 160, (50, 50, 50), (25, 25, 25), radio=8)
+        texto(d, (1240, 127), 'Fuente 5 V', f15, (255, 255, 255))
+        cable(d, [(1300, 127), (1350, 127), (1350, 200)], NEGRO, 6)
+        caja(d, 1290, 200, 1410, 280, (40, 40, 40), (20, 20, 20), radio=6)
+        texto(d, (1350, 222), 'Jack hembra', f13, (255, 255, 255))
+        for x, signo in ((1315, '+'), (1385, '−')):
+            d.ellipse([(x - 11) * K, (257 - 11) * K, (x + 11) * K, (257 + 11) * K], fill=(190, 190, 190), outline=(90, 90, 90), width=K)
+            texto(d, (x, 257), signo, f15)
+        cable(d, [(1315, 280), (1315, RP)], ROJO)
+        cable(d, [(1385, 280), (1385, RN)], NEGRO)
+    else:
+        # Portapilas (4 AA) arriba a la derecha
+        caja(d, 1220, 205, 1410, 275, (60, 60, 60), (30, 30, 30), radio=6)
+        for i in range(4):
+            caja(d, 1232 + i * 44, 218, 1268 + i * 44, 262, (200, 160, 40), (120, 90, 20), radio=4)
+        texto(d, (1315, 190), 'Portapilas 4 AA (6 V)', f15)
+        cable(d, [(1235, 275), (1235, RP)], ROJO)
+        cable(d, [(1395, 275), (1395, RN)], NEGRO)
 
-# Servos: rojo y café a las pilas, naranja al pin del Arduino
-servos = [('Base', 'D3', 600), ('Hombro', 'D5', 760), ('Codo', 'D6', 920), ('Pinza', 'D9', 1080)]
-for i, (nombre, p, x) in enumerate(servos):
-    servo(d, x, 210, nombre)
-    cable(d, [(x - 8, 280), (x - 8, RP)], ROJO)
-    cable(d, [(x - 18, 280), (x - 18, RN)], CAFE)
-    alto = 160 - i * 22
-    cable(d, [(x + 10, 210), (x + 10, alto), (pin[p][0], alto), (pin[p][0], pin[p][1])], NARANJA)
+    # Servos: rojo y café a las pilas (o a la fuente), naranja al pin del Arduino
+    servos = [('Base', 'D3', 600), ('Hombro', 'D5', 760), ('Codo', 'D6', 920), ('Pinza', 'D9', 1080)]
+    for i, (nombre, p, x) in enumerate(servos):
+        servo(d, x, 210, nombre)
+        cable(d, [(x - 8, 280), (x - 8, RP)], ROJO)
+        cable(d, [(x - 18, 280), (x - 18, RN)], CAFE)
+        alto = 160 - i * 22
+        cable(d, [(x + 10, 210), (x + 10, alto), (pin[p][0], alto), (pin[p][0], pin[p][1])], NARANJA)
 
-# Arduino a las filas de abajo y GND común entre las dos filas −
-cable(d, [(pin['5V'][0], pin['5V'][1]), (pin['5V'][0], 700), (500, 700), (500, RP2)], ROJO)
-cable(d, [(pin['GND'][0], pin['GND'][1]), (pin['GND'][0], 740), (520, 740), (520, RN2)], NEGRO)
-cable(d, [(545, RN), (545, RN2)], NEGRO, 6)
-caja(d, 555, 590, 690, 622, (255, 235, 120), (200, 170, 40), radio=6)
-texto(d, (622, 606), 'GND común', f15)
+    # Arduino a las filas de abajo y GND común entre las dos filas −
+    cable(d, [(pin['5V'][0], pin['5V'][1]), (pin['5V'][0], 700), (500, 700), (500, RP2)], ROJO)
+    cable(d, [(pin['GND'][0], pin['GND'][1]), (pin['GND'][0], 740), (520, 740), (520, RN2)], NEGRO)
+    cable(d, [(545, RN), (545, RN2)], NEGRO, 6)
+    caja(d, 555, 590, 690, 622, (255, 235, 120), (200, 170, 40), radio=6)
+    texto(d, (622, 606), 'GND común', f15)
 
-# Perillas: lados a 5V y GND del Arduino, centro a A0–A3
-perillas = [('Base', 'A0', 720), ('Hombro', 'A1', 880), ('Codo', 'A2', 1040), ('Pinza', 'A3', 1200)]
-for i, (nombre, p, x) in enumerate(perillas):
-    perilla(d, x, 560, nombre)
-    cable(d, [(x - 14, 600), (x - 14, RP2)], ROJO)
-    cable(d, [(x + 14, 600), (x + 14, RN2)], NEGRO)
-    bajo = 875 + i * 16
-    cable(d, [(x, 600), (x, bajo), (pin[p][0], bajo), (pin[p][0], pin[p][1])], AMARILLO)
+    # Perillas: lados a 5V y GND del Arduino, centro a A0–A3
+    perillas = [('Base', 'A0', 720), ('Hombro', 'A1', 880), ('Codo', 'A2', 1040), ('Pinza', 'A3', 1200)]
+    for i, (nombre, p, x) in enumerate(perillas):
+        perilla(d, x, 560, nombre)
+        cable(d, [(x - 14, 600), (x - 14, RP2)], ROJO)
+        cable(d, [(x + 14, 600), (x + 14, RN2)], NEGRO)
+        bajo = 875 + i * 16
+        cable(d, [(x, 600), (x, bajo), (pin[p][0], bajo), (pin[p][0], pin[p][1])], AMARILLO)
 
-texto(d, (W / 2, 958), 'Servos: rojo y café → filas de las pilas · naranja → D3, D5, D6 y D9', f15, (70, 70, 70))
-texto(d, (W / 2, 984), 'Perillas: lados → + y − del Arduino · centro → A0, A1, A2 y A3 · ¡Nunca unir las dos filas +!', f15, (70, 70, 70))
-guardar(img, 'IMAGEN 5.2.png')
+    if con_fuente:
+        # Botón: una pata a D2 y la pata en diagonal a la fila − del Arduino
+        bx, by = 1330, 560
+        caja(d, bx - 30, by - 30, bx + 30, by + 30, (60, 60, 60), (30, 30, 30), radio=6)
+        d.ellipse([(bx - 15) * K, (by - 15) * K, (bx + 15) * K, (by + 15) * K], fill=(200, 40, 40))
+        texto(d, (bx - 40, by), 'Botón', f15, TINTA, 'rm')
+        cable(d, [(bx - 24, by - 30), (bx - 24, 490), (1440, 490), (1440, 60), (pin['D2'][0], 60), (pin['D2'][0], pin['D2'][1])], (40, 160, 90))
+        cable(d, [(bx + 24, by + 30), (bx + 24, RN2)], NEGRO)
+    filas = 'filas de la fuente' if con_fuente else 'filas de las pilas'
+    texto(d, (W / 2, 958), f'Servos: rojo y café → {filas} · naranja → D3, D5, D6 y D9', f15, (70, 70, 70))
+    abajo = 'Perillas: lados → + y − del Arduino · centro → A0, A1, A2 y A3'
+    abajo += ' · Botón: D2 y fila −' if con_fuente else ''
+    texto(d, (W / 2, 984), abajo + ' · ¡Nunca unir las dos filas +!', f15, (70, 70, 70))
+    guardar(img, archivo)
+
+circuito_completo(False, 'IMAGEN 5.2.png')
+circuito_completo(True, 'IMAGEN 5.2F.png')
 
 # ---------- IMAGEN 7.1: botón entre D2 y GND ----------
 W, H = 1060, 600

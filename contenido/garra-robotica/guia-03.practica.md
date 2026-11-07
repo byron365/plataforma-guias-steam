@@ -12,7 +12,7 @@ duracion: 120
 
 Modelar en Blender los dos **eslabones** del brazo (hombro y codo) y la **pinza de engranes**.
 
-**Al terminar tendremos:** las cinco piezas que faltan exportadas en STL; con las del sábado 2, toda la garra lista para imprimir.
+**Al terminar tendremos:** las cinco piezas que faltan modeladas y exportadas en STL; en la Guía 7 las revisamos antes de imprimirlas.
 
 ## Materiales del equipo
 
@@ -113,16 +113,16 @@ La pinza tiene dos engranes iguales que giran en sentidos opuestos. El servo mue
 ¿Por qué los dos engranes de la pinza deben ser iguales?
 :::
 
-Antes de irse, guarden juntos en un `.zip` los archivos `equipo_NOMBRE_brazo.blend` y `equipo_NOMBRE_pinza.blend` y los cinco `.stl`, y súbanlo aquí. El docente imprimirá todo para el sábado 4.
+Antes de irse, guarden juntos en un `.zip` los archivos `equipo_NOMBRE_brazo.blend` y `equipo_NOMBRE_pinza.blend` y los cinco `.stl`, y súbanlo aquí. En la Guía 7 los terminan y revisan, y después el docente los imprime.
 
 :::archivo id="g3-archivo"
 **Archivo de trabajo:** antes de irse, suban sus archivos de Blender (.blend) y los .stl en un .zip. La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- **Versión Blender práctica (7 sábados), nueva el 24 de octubre:** los eslabones de la Guía 3 normal y la pinza de la Guía 4 normal, sin diagrama de flujo ni cronograma. Campos propios (g3p-…).
+- **Versión Blender práctica (9 sábados desde el 31 de octubre; antes 7):** los eslabones de la Guía 3 normal y la pinza de la Guía 4 normal, sin diagrama de flujo ni cronograma. Campos propios (g3p-…).
 - La extensión Extra Mesh Objects (engranes) se instala con internet una sola vez por computadora: **instalarla antes de la clase**.
-- Imprimir eslabones y pinza esta semana. Revisar en el programa de impresión que las piezas midan lo correcto (si salen diminutas, la escala de exportación está mal). Los engranes pueden necesitar lijado ligero.
+- Los eslabones y la pinza se imprimen después de la Guía 7, donde se revisan con el servo real (las simulaciones de las guías 4 a 6 van en medio).
 - Los equipos más lentos pueden usar las piezas de referencia del docente.
 - g3p-p1: el servo del hombro carga todo lo que está más allá; un antebrazo corto pesa menos y hace menos palanca.
 - Tiempo total: 10 + 30 + 60 + 5 + 15 = 120 minutos.

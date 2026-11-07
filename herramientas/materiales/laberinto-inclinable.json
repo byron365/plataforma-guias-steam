@@ -1,0 +1,67 @@
+{
+  "proyecto": "Laberinto inclinable",
+  "nivel": "Básico II",
+  "versiones": {
+    "practica": {
+      "nombre": "Práctica con Wokwi",
+      "sabados": 7,
+      "materiales": [
+        {
+          "imagen": "arduino",
+          "componente": "Arduino UNO R3 con su cable USB",
+          "cantidad": "1",
+          "uso": "Cerebro del laberinto (Guías 5 y 6)"
+        },
+        {
+          "imagen": "protoboard400",
+          "componente": "Protoboard de 400 puntos",
+          "cantidad": "1",
+          "uso": "Armar el circuito sin soldar (Guías 5 y 6)"
+        },
+        {
+          "imagen": "cables_mm",
+          "componente": "Cables Dupont macho–macho (juego de 40)",
+          "cantidad": "1 juego",
+          "uso": "Conexiones en la protoboard y los servos"
+        },
+        {
+          "imagen": "cables_mh",
+          "componente": "Cables Dupont macho–hembra (juego de 40)",
+          "cantidad": "1 juego",
+          "uso": "Conectar el joystick, que queda lejos de la protoboard (Guía 6)"
+        },
+        {
+          "imagen": "servo",
+          "componente": "Servomotor SG90 (con brazos y tornillos)",
+          "cantidad": "2",
+          "uso": "Uno inclina el marco y el otro el tablero (Guías 5 y 6)"
+        },
+        {
+          "imagen": "joystick",
+          "componente": "Módulo joystick KY-023",
+          "cantidad": "1",
+          "uso": "Controla la inclinación del tablero (Guía 6)"
+        },
+        {
+          "imagen": "eliminador",
+          "componente": "Fuente (cargador) de 5 V y 1 A, con plug de 5,5 × 2,1 mm",
+          "cantidad": "1",
+          "uso": "Energía de los dos servos (Guía 5)"
+        },
+        {
+          "imagen": "jack",
+          "componente": "Conector jack hembra de 5,5 × 2,1 mm con bornera de tornillos",
+          "cantidad": "1",
+          "uso": "Recibe la fuente y deja atornillar los cables que van a la protoboard"
+        },
+        {
+          "imagen": "mdf",
+          "componente": "Base de MDF delgado o cartón grueso de 30 × 25 cm",
+          "cantidad": "1",
+          "uso": "Sostiene las dos torres (Guía 5)"
+        }
+      ],
+      "no_comprar": "El filamento y la impresora 3D (tablero, marco, torres y base del joystick), la pistola y las barras de silicona, los palitos de pincho, la lija, el calibrador y el destornillador los pone la academia. Del hogar: una canica de unos 16 mm (no más de 20 mm, para que pase por los pasillos). También se usan la computadora con Arduino IDE e internet, la cuenta de Wokwi (para simular), la de Tinkercad (para diseñar) y un celular para cronometrar."
+    }
+  }
+}

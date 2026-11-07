@@ -53,5 +53,5 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | --- | --- |
 | IMAGEN_4.1P.png | editor de Tinkercad Circuits con sus partes señaladas: área de trabajo, panel de componentes, botón Código e Iniciar simulación *(lista)* |
 | IMAGEN_4.2P.png | semáforo, piezo y pulsador armados en Tinkercad Circuits, con sus cables al Arduino *(lista)* |
-| IMAGEN_5.1P.png | circuito del puente en Tinkercad Circuits con los dos microservomotores agregados |
+| IMAGEN_5.1P.png | circuito del puente en Tinkercad Circuits con los dos microservomotores agregados *(lista)* |
 | IMAGEN_6.1P.png | circuito completo del puente en Tinkercad Circuits con el sensor HC-SR04, el objeto de prueba y la distancia en pantalla |

@@ -1,8 +1,9 @@
 # Genera las listas de materiales en Word (.docx), una por grupo, según la versión de guías asignada a cada equipo.
 # Lee los equipos de datos/plataforma.db (solo lectura; nada sale de la computadora) y la lista de cada versión de
 # herramientas/materiales/<proyecto>.json. Las imágenes y sus créditos están en <carpeta de salida>/imagenes/.
-# Uso: python lista_materiales.py <id del proyecto> <carpeta de salida> [nombre del grupo]
+# Uso: python lista_materiales.py <id del proyecto> <carpeta de salida> [nombre del grupo] [versión]
 # Con el nombre del grupo (o parte de él), solo se genera el documento de ese grupo.
+# Con la versión, se usa esa lista aunque el equipo todavía tenga otra versión asignada en la plataforma.
 import sys, os, json, sqlite3
 from docx import Document
 from docx.shared import Cm, Pt, RGBColor
@@ -14,6 +15,7 @@ from docx.oxml.ns import qn
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 proyecto_id, salida = sys.argv[1], sys.argv[2]
 solo_grupo = sys.argv[3].lower() if len(sys.argv) > 3 else ''
+version_pedida = sys.argv[4] if len(sys.argv) > 4 else ''
 datos = json.load(open(os.path.join(RAIZ, 'herramientas', 'materiales', proyecto_id + '.json'), encoding='utf-8'))
 proyecto_json = json.load(open(os.path.join(RAIZ, 'contenido', proyecto_id, 'proyecto.json'), encoding='utf-8'))
 imagenes = json.load(open(os.path.join(salida, 'imagenes', 'imagenes.json'), encoding='utf-8'))
@@ -144,7 +146,7 @@ con.close()
 for nombre, version in equipos:
     if solo_grupo and solo_grupo not in nombre.lower():
         continue
-    version = version or version_normal
+    version = version_pedida or version or version_normal
     if version not in datos['versiones']:
         print('FALTA la lista de la versión', version, 'para', nombre)
         continue

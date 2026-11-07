@@ -1,49 +1,43 @@
 ---
-titulo: La garra trabaja sola
+titulo: Simulamos la rutina automática
 guia: 6
 sabado: 6
-sesion: Pruebas y programación
+sesion: Simulación (3)
 duracion: 120
 ---
 
-# Guía 6 · La garra trabaja sola
+# Guía 6 · Simulamos la rutina automática
 
 ## Objetivo del día
 
-Probar qué objetos agarra la garra, enseñarle una rutina automática que se activa con un botón y practicar el reto final.
+Agregar el **botón** al circuito simulado, planear las **posiciones** de una rutina y escribir el **programa final** de la garra: modo manual con las perillas y rutina automática con el botón.
 
-**Al terminar tendremos:** la garra moviendo un objeto sola al presionar un botón y nuestros primeros tiempos del reto.
+**Al terminar tendremos:** la garra simulada haciendo sola los 9 pasos de la rutina al presionar el botón, y el programa final guardado para la garra real.
 
 ## Materiales del equipo
 
-- Garra completa con su circuito (sábado 5) y el programa `equipo_NOMBRE_limites`
-- 1 botón pulsador y 2 cables
-- 5 objetos ligeros (pelota de esponja, dado, tapa de botella, borrador y vaso de papel) y un vaso
-- Ligas o cinta de goma, cronómetro (celular)
+- Computadora con internet y la cuenta de Tinkercad del equipo
+- Diseño `equipo_NOMBRE_garra_sim` (sábado 5)
+- Bitácora y lápiz
 
-## Parte 1 · Pruebas de agarre (20 min)
+## Parte 1 · El botón (15 min)
 
-Conecten el circuito (revisen el GND común), suban `equipo_NOMBRE_limites` y conecten las pilas. Intenten mover cada objeto de la mesa al vaso, dos veces. Marquen ✓ si lo lograron o ✗ si falló.
+Abran `equipo_NOMBRE_garra_sim` en Tinkercad (**Diseños → Circuitos**).
 
-:::tabla id="g6p-agarre"
-| Objeto | Intento 1 | Intento 2 | ¿Qué falló? |
-| --- | --- | --- | --- |
-| Pelota de esponja | | | |
-| Dado | | | |
-| Tapa de botella | | | |
-| Borrador | | | |
-| Vaso de papel | | | |
-:::
+1. Arrastra un **Pulsador** sobre la canaleta del centro de la protoboard.
+2. Usa dos patas **en diagonal**: una → pin **D2**, la otra → fila **−** de **abajo** (GND del Arduino).
 
-**Ajustes:** si los objetos resbalan, pongan ligas o cinta de goma en las mandíbulas; si la garra se vuelca, agreguen peso en el plato de apoyo; si el hombro no levanta, acorten el movimiento o usen un servo MG90S.
+[IMAGEN 6.1S: garra simulada en Tinkercad Circuits con el pulsador sobre la canaleta, una pata en D2 y la pata en diagonal en la fila − de abajo]
 
-## Parte 2 · Grabar las posiciones (25 min)
+En el código, el botón usa `INPUT_PULLUP`: sin presionar, el pin lee **HIGH**; al presionarlo, la pata se une a GND y lee **LOW**. Por eso no necesita resistencia.
 
-Para que la garra trabaje sola necesita saber **a qué ángulo ir en cada paso**. Con `equipo_NOMBRE_limites` abierto, abran el **Monitor Serie** (9600 baudios): columnas **base, hombro, codo, pinza**.
+## Parte 2 · Planear las posiciones (30 min)
 
-1. Coloquen el objeto a un lado de la garra y el vaso al otro.
-2. Con las perillas, lleven la garra a cada posición, **un paso a la vez y en orden**. Cuando esté en la posición, dejen las perillas quietas y copien los cuatro números en esa fila.
-3. Pasen al siguiente paso **desde donde quedó la garra**. En cada paso solo cambia una articulación.
+Para que la garra trabaje sola necesita saber **a qué ángulo ir en cada paso**. Usen el modo manual de la semana pasada: **Iniciar simulación** y abran el **Monitor en serie** (columnas **base, hombro, codo, pinza**).
+
+1. Imaginen el objeto a un lado de la garra y el vaso al otro.
+2. Con las perillas, lleven los servos a cada posición, **un paso a la vez y en orden**. Cuando esté en la posición, dejen las perillas quietas y copien los cuatro números en esa fila.
+3. Pasen al siguiente paso **desde donde quedó**. En cada paso solo cambia una articulación.
 
 :::tabla id="g6p-posiciones"
 | Paso | Base | Hombro | Codo | Pinza |
@@ -59,13 +53,16 @@ Para que la garra trabaje sola necesita saber **a qué ángulo ir en cada paso**
 | 9. Volver al centro | | | | |
 :::
 
-## Parte 3 · Botón y rutina automática (40 min)
+En el simulador los servos no tienen brazo: para ver cómo se movería la garra, la animación toma los números de su tabla. Si la garra de la animación no llega al objeto o al vaso, cambien esos números.
 
-1. **Conecta el botón** (con el USB y las pilas desconectados): clávalo sobre la canaleta del centro de la protoboard y usa dos patas **en diagonal**: una → pin **D2**, la otra → fila **−** (GND) de abajo.
+:::animacion tipo="rutina" tabla="g6p-posiciones"
+:::
 
-[IMAGEN 7.1: diagrama del botón conectado entre el pin D2 y GND]
+En la Guía 9 corregirán estos números con la garra real y objetos de verdad.
 
-2. **Programa nuevo** (`equipo_NOMBRE_rutina`). Escribe todo el código con cuidado:
+## Parte 3 · El programa final (45 min)
+
+1. Toca **Código**, borra todo y escribe el programa final (`equipo_NOMBRE_rutina`) con cuidado:
 
 ```cpp
 #include <Servo.h>
@@ -87,12 +84,25 @@ void mover(Servo &s, int &actual, int meta) {
   }
 }
 
+void rutina() {
+  mover(pinza, pP, 90);    // 1. abrir         <- tu tabla
+  mover(base, pB, 30);     // 2. ir al objeto
+  mover(hombro, pH, 120);  // 3. bajar
+  mover(codo, pC, 85);     // 4. acercar
+  mover(pinza, pP, 30);    // 5. agarrar
+  mover(hombro, pH, 80);   // 6. levantar
+  mover(base, pB, 150);    // 7. ir al vaso
+  mover(pinza, pP, 90);    // 8. soltar
+  mover(base, pB, 90);     // 9. volver
+}
+
 void setup() {
   pinMode(BOTON, INPUT_PULLUP);
   base.attach(3);
   hombro.attach(5);
   codo.attach(6);
   pinza.attach(9);
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -107,87 +117,72 @@ void loop() {
     hombro.write(pH);
     codo.write(pC);
     pinza.write(pP);
-    delay(20);
+    // Ángulos en el Monitor: base, hombro, codo y pinza
+    Serial.print(pB);  Serial.print("  ");
+    Serial.print(pH);  Serial.print("  ");
+    Serial.print(pC);  Serial.print("  ");
+    Serial.println(pP);
+    delay(50);
   }
-}
-
-void rutina() {
-  mover(pinza, pP, 90);    // 1. abrir         <- tu tabla
-  mover(base, pB, 30);     // 2. ir al objeto
-  mover(hombro, pH, 120);  // 3. bajar
-  mover(codo, pC, 85);     // 4. acercar
-  mover(pinza, pP, 30);    // 5. agarrar
-  mover(hombro, pH, 80);   // 6. levantar
-  mover(base, pB, 150);    // 7. ir al vaso
-  mover(pinza, pP, 90);    // 8. soltar
-  mover(base, pB, 90);     // 9. volver
 }
 ```
 
-3. **Pon tus números:**
-   - En las cuatro líneas de `leer()` (las que dicen `<- tus límites`), el mínimo y el máximo seguros de la Guía 5.
-   - En `rutina()`, cada línea mueve **una** articulación; su último número es el ángulo de **tu** tabla de posiciones, en la fila del paso y la columna de esa articulación.
+2. **Pon tus números en `rutina()`:** cada línea mueve **una** articulación; su último número es el ángulo de **tu** tabla de posiciones, en la fila del paso y la columna de esa articulación.
+3. **Prueba:** **Iniciar simulación**, deja las perillas cerca del centro y haz clic en el pulsador una vez. Los servos deben hacer los 9 pasos, uno por uno. Al terminar, vuelven a la posición de las perillas.
 
-Para ver tu rutina antes de probarla, la animación toma los números de tu tabla de posiciones:
-
-:::animacion tipo="rutina" tabla="g6p-posiciones"
+:::tabla id="g6p-prueba"
+| Prueba | ¿Funciona? | Observaciones |
+| --- | --- | --- |
+| Sin presionar, las perillas mueven los servos (modo manual) | | |
+| El Monitor muestra los cuatro ángulos | | |
+| Un clic al pulsador: los servos hacen los 9 pasos en orden | | |
+| Al terminar, vuelven a seguir a las perillas | | |
 :::
 
-4. **Prueba:** sube el código, conecta las pilas, deja las perillas cerca del centro y presiona el botón una vez. La garra debe hacer los 9 pasos.
-5. **Ajusta:** si falla un paso, busca su línea en `rutina()`, cambia el número de 5 en 5 grados, súbelo y prueba otra vez.
+4. **Ajusta:** si un paso no queda como en tu tabla, busca su línea en `rutina()`, revisa el número y prueba otra vez.
 
 :::pregunta id="g6p-p1"
 ¿Qué pasa con el movimiento si cambias `VELOCIDAD` de 15 a 5? ¿Y a 30?
 :::
 
-## Parte 4 · Practicar el reto (20 min)
+## Parte 4 · Guardar el programa final (10 min)
 
-> **Reto final:** mover 5 objetos de la mesa al vaso en el menor tiempo posible, usando las perillas. Si un objeto cae fuera del vaso, se vuelve a colocar y el reloj sigue. Después se muestra la rutina automática con el botón.
+Este código es el que van a subir a la garra real en la Guía 8.
 
-Marquen con cinta dónde van los objetos y el vaso. El reloj empieza cuando el piloto toca la primera perilla y para cuando cae el quinto objeto en el vaso.
-
-:::tabla id="g6p-tiempos"
-| Integrante | Intento 1 (s) | Intento 2 (s) | Mejor tiempo |
-| --- | --- | --- | --- |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-:::
-
-:::pregunta id="g6p-piloto"
-¿Quién será nuestro piloto en el reto final y por qué?
-:::
+1. Al terminar las pruebas, dejen `VELOCIDAD = 15`.
+2. Cópienlo del panel Código (**Ctrl + A**, **Ctrl + C**) a un bloc de notas y guárdenlo como `equipo_NOMBRE_rutina.txt`.
+3. Súbanlo en el recuadro de abajo.
 
 ## ¿Lo logramos? (5 min)
 
 :::checklist id="g6p-logramos"
-- [ ] Probamos los 5 objetos.
+- [ ] El pulsador está en D2 y GND.
 - [ ] Anotamos las 9 posiciones de la rutina.
-- [ ] El botón activa la rutina automática.
-- [ ] Practicamos el reto y elegimos piloto.
+- [ ] El pulsador activa la rutina automática en el simulador.
+- [ ] Guardamos `equipo_NOMBRE_rutina.txt`.
 :::
 
-## Bitácora (10 min)
+## Bitácora (15 min)
 
 :::foto id="g6p-video"
-Video de la rutina automática.
+Captura o video de la pantalla con la rutina en el simulador.
 :::
 
 :::pregunta id="g6p-b1"
 ¿Qué diferencia hay entre el modo manual y el automático?
 :::
 
-Antes de irse, guarden `equipo_NOMBRE_rutina` y súbanlo aquí: es el programa del reto final.
-
 :::archivo id="g6-archivo"
-**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** suban aquí `equipo_NOMBRE_rutina.txt`: es el programa final de la garra. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla (.txt o .docx).
 :::
 
 :::docente
-- **Versión Blender práctica (7 sábados), nueva el 24 de octubre:** las pruebas de agarre de la Guía 6 normal, la rutina de la Guía 7 normal (sin la ficha técnica) y la práctica del reto de la Guía 8 normal. Campos propios (g6p-…).
-- Al terminar la rutina, los servos vuelven a la posición de las perillas: por eso conviene dejarlas cerca del centro.
+- **Versión Blender práctica (9 sábados), desde el 31 de octubre:** el botón, las posiciones y la rutina de la Guía 6 práctica anterior, ahora en Tinkercad Circuits. El programa final suma al modo manual el Monitor en serie, para que en las guías 8 y 9 sirva un solo programa para todo. Campos propios (g6p-…).
+- `rutina()` va antes del `loop()` para que el simulador no tenga problemas con el orden de las funciones.
+- El pulsador del simulador se presiona con un clic. Si no responde, revisar que cruce la canaleta y que el cable vaya a la pata en diagonal.
 - El símbolo `&` en `mover()` se explica como "la función recuerda dónde quedó el servo".
-- g6p-p1: con 5 va más rápido (y puede soltar el objeto); con 30, más lento y suave.
-- Tiempo total: 20 + 25 + 40 + 20 + 5 + 10 = 120 minutos.
+- Las posiciones del simulador son un plan: en la Guía 9 se corrigen con la garra real. Los límites de `leer()` también se cambian en la Guía 9.
+- g6p-p1: con 5 va más rápido (y en la garra real puede soltar el objeto); con 30, más lento y suave.
+- g6p-b1: en manual el piloto mueve cada articulación con su perilla; en automático la garra repite sola los pasos guardados en el código.
+- Tiempo total: 15 + 30 + 45 + 10 + 5 + 15 = 120 minutos.
 :::

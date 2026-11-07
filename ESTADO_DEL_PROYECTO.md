@@ -35,9 +35,29 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > (sencillo y doble) en 8 sábados con Tinkercad Circuits; Robot con mando en 9 y Banda en 10 (LCD 16 × 2 I2C en vez de
 > OLED/MAX7219); Mini invernadero en 8 con Wokwi (y la Guía 4 en Tinkercad). Fuente de 5 V con jack hembra en lugar de
 > pilas o cargador pelado. `servidor/contenido.js` sigue la cadena de versiones base. Listas de materiales en Word para
-> Puente, Dispensador, Banda (Samuel y Grecia) e Invernadero (`herramientas/lista_materiales.py`, acepta un grupo).
+> Puente, Dispensador, Banda e Invernadero (`herramientas/lista_materiales.py`, acepta un grupo).
+> **31 de octubre:** **Garra robótica** práctica pasa a **9 sábados**: simulación en Tinkercad Circuits (guías 4 a 6), piezas en
+> Blender (7) y armado físico (8 y 9), con fuente de 5 V con jack (sección de la versión práctica de la Garra).
+> **31 de octubre:** **Mini fútbol** con versión nueva **"Práctica con Wokwi (9 sábados)"** (base `tinkercad`): guías 1 a 3
+> iguales; 4 a 6 simulan el marcador en Wokwi (goles; tiempo del partido; antirrebote, estadísticas y programa final),
+> 7 revisa las piezas impresas y arma la cancha, 8 sensores, calibración y marcador real, 9 prueba de 20 goles, reglas y
+> torneo. Programas compilados con arduino-cli. [ ] Pasar al equipo a la versión nueva (desde el panel).
+> [ ] Imagen nueva 6.1P (Monitor serie en Wokwi) y las de la versión completa que faltan: 4.1, 5.1, 5.2, 5.3 y 9.1 (la 3.1 y la 3.2 ya están).
+> **6 de noviembre:** **Robot** con versión nueva **"Práctica con app (9 sábados)"** (id `app`, base `practica`): el mando físico se reemplaza por una
+> app de Android en **MIT App Inventor** (botones con velocidad y telemetría en la app). Salen el segundo Arduino, el segundo HC-05, el joystick, la LCD,
+> la caja del mando y los comandos AT. G1 un solo Arduino y Monitor serie · G2 y G3 sin caja · G4 igual · G5 programa final con el Monitor en serie como
+> app (`#define bt Serial`, fin de mensaje `\n` o `;`) · G6 y G7 la app · G8 armar · G9 HC-05, emparejar y manejar. Proyecto de referencia `equipo_robot_app`
+> en la cuenta del docente (141 bloques, sin errores, genera el APK). `protocolo.js` tiene `sistema="robot-app"`.
+> [ ] Probar la app con un celular y un HC-05 real. [ ] Decidir si el equipo del robot pasa a esta versión. Lista de materiales hecha (`herramientas/materiales/robot-telemetria.json`, con `lista_materiales.py robot-telemetria <carpeta> <grupo> app`).
 > **Pendiente (30 de octubre):** lista de materiales del **Robot con mando** (Bairon quiere revisarla con calma; cambia por la LCD 16 × 2 I2C y los cables macho–hembra).
-> **Pendiente (30 de octubre):** revisar el proyecto del **Laberinto** y ver cómo simplificarlo (a pedido de Bairon).
+> **6 de noviembre:** **Laberinto** con versión nueva **"Práctica con Wokwi (7 sábados)"** (base `tinkercad`), simplificada a pedido de Bairon:
+> solo los dos servos con el joystick, **sin sensor de meta, pantalla ni buzzer** (tiempos con el celular). Guías 1 a 3 propias (mismos campos que
+> las Tinkercad, sin mencionar el sensor); 4 simula en Wokwi y deja el programa final `equipo_NOMBRE_control`; 5 revisa piezas, diseña la base del
+> joystick, fija torres y deja los servos en 90° con fuente de 5 V con jack; 6 arma y ajusta; 7 práctica, reglas y torneo. La animación `laberinto`
+> acepta `pantalla="no"`. Imágenes 2.1P y 5.1P sacadas de la 2.1T y la 5.1T. Programas compilados.
+> [ ] Pasar al equipo a la versión nueva (desde el panel). [ ] Imágenes 6.1P y 9.1.
+> Lista de materiales hecha (`herramientas/materiales/laberinto-inclinable.json`; `lista_materiales.py` acepta la versión como
+> cuarto argumento, para generar la lista antes de cambiar al equipo de versión).
 > **Próximo paso:** probar en clase el modo paso a paso y la bitácora, revisar los puntos "Para revisar" de
 > `REVISION_GUIAS.md` y completar los pendientes del docente (sección 2.2).
 
@@ -294,8 +314,8 @@ Wokwi con potenciómetro, **Relay Module** y LED azul; **5P** DHT22 (en Wokwi; D
 **8P** grupo control, gráfica de los datos del Monitor y demostración. Campos propios g3p-… a g8p-….
 - Simulación en Wokwi y no en Tinkercad por decisión de Bairon (Tinkercad no tiene DHT11 ni módulo relé).
 - Los 5 programas compilan con arduino-cli (DHT con copia mínima).
-- Equipo Lucas, Sofía ya en la versión nueva. [ ] Imágenes 4.1P (Tinkercad), 5.1P y 7.1P; la 3.1P y la 3.2P ya están.
-- Lista de materiales (14 materiales) generada para Lucas, Sofía: `herramientas/materiales/mini-invernadero.json` (sensor de humedad = ilustración propia; DHT11 de Wikimedia Commons).
+- Equipo ya en la versión nueva. [ ] Imágenes 4.1P (Tinkercad), 5.1P y 7.1P; la 3.1P y la 3.2P ya están.
+- Lista de materiales (14 materiales) generada para el equipo: `herramientas/materiales/mini-invernadero.json` (sensor de humedad = ilustración propia; DHT11 de Wikimedia Commons).
 
 **Banda clasificadora: versión Práctica ahora de 10 sábados (30 de octubre, a pedido de Bairon).** Guías 1 a 3
 iguales; **4P** simular el nodo banda en Tinkercad (Fuente de alimentación en 5 V = cargador, **Transistor NPN** en lugar
@@ -313,7 +333,7 @@ del TIP41C, primero con LED y luego con el Motor de CC y el diodo, perilla en A0
   incluida la `leerColor()` con proporciones de la Guía 10 dentro del clasificador.
 - [ ] Imágenes 5.1S y 6.1S (simulación) y la 5.1 con la LCD. La 4.2S ya está (Bairon), con el emisor a GND.
 - **Fuente de 5 V con jack hembra de bornera** en lugar del cargador con cable USB pelado (decisión de Bairon): guías 4, 5 y 7 a 10 actualizadas (en la 7, los cables salen de los tornillos + y − del jack a las filas largas).
-- Lista de materiales (versión Práctica, 21 materiales) generada solo para **Samuel y Grecia**: `herramientas/materiales/banda-clasificadora.json`. El generador acepta ahora un tercer dato con el nombre del grupo. Ilustraciones propias del motor TT, el sensor IR y el TCS34725.
+- Lista de materiales (versión Práctica, 21 materiales) generada solo para un grupo: `herramientas/materiales/banda-clasificadora.json`. El generador acepta ahora un tercer dato con el nombre del grupo. Ilustraciones propias del motor TT, el sensor IR y el TCS34725.
 
 **Robot con mando: versión Práctica ahora de 9 sábados (30 de octubre, a pedido de Bairon).** Guías 1 a 3 iguales;
 **4P** simular el robot en Tinkercad Circuits (chip **L293D** en lugar del L298N, mismos pines; **Motor de aficionado**;
@@ -345,8 +365,7 @@ simulan por partes en Tinkercad Circuits, 7 arma en físico y 8 prueba y present
   `anotar()`; 7DP armar con el módulo relé y la bomba; 8DP pruebas con cereal y agua y demostración. Campos g4p-…/g4dp-….
 - **`servidor/contenido.js`:** las versiones ahora siguen la cadena completa de bases (`cadenaDeVersiones`).
   Reiniciar el servidor del puerto 3000 para que lo tome.
-- Los 6 programas compilan con arduino-cli. Equipos ya reasignados (Jesús-Eduardo → doble-practica; Mateo, Miguel y
-  Dani → practica). Imágenes 4.1P, 4.2P, 4.2DP y 5.1DP hechas por Bairon y revisadas.
+- Los 6 programas compilan con arduino-cli. Equipos ya reasignados. Imágenes 4.1P, 4.2P, 4.2DP y 5.1DP hechas por Bairon y revisadas.
 - Listas de materiales: `herramientas/materiales/dispensador-comida.json` (bomba = ilustración propia hecha con Blender;
   relé = Wikimedia Commons). Generadas y revisadas para los dos grupos.
 - **Doble: la bomba usa una fuente de 5 V con jack hembra de bornera** en lugar del portapilas de 4 AA (decisión de
@@ -506,7 +525,26 @@ es la normal. Mismos programas que la versión completa (comprobado: los bloques
 - Imágenes 4.3 (render de la pinza: los engranes se dibujan en el script, sin la extensión), 5.2 (circuito completo) y 7.1
   (botón) hechas el 24 de octubre con `herramientas/garra_pinza_render.py` (Blender) y `herramientas/garra_imagenes.py`;
   sirven también para la versión completa.
-- [ ] Siguen pendientes (fotos y capturas): 4.1, 4.2, 4.4, 4.5, 5.1, 6.1 y 6.2.
+- [ ] Siguen pendientes (fotos y capturas): 4.1, 4.2, 5.1, 6.1 y 6.2 (la 4.4 y la 4.5 ya están).
+
+**Garra robótica práctica, ahora de 9 sábados (31 de octubre)**, a pedido de Bairon ("a partir de la guía 4 comenzar con la
+simulación completa paso a paso del sistema en Tinkercad, luego terminar las piezas en Blender y por último seguir con el
+armado físico"). Misma versión `practica` (`"guias": [1..9]`, nombre "Blender práctica (9 sábados)"); guías 1 a 3 iguales.
+- **4P** Tinkercad Circuits: base y hombro con dos perillas (`leer()`), sentido del giro · **5P** cuatro servos y cuatro
+  perillas, **Fuente de alimentación** en 5 V en las filas de arriba, GND común, modo manual con el Monitor en serie y dónde
+  van los límites · **6P** pulsador en D2, posiciones planeadas (animación `rutina`) y **programa final** `equipo_NOMBRE_rutina`
+  (modo manual con Monitor en serie + rutina con el botón), guardado en .txt · **7P** Blender: probar el servo en la base y el
+  plato ya impresos, terminar eslabones y pinza, agrandar ventanas 0,3 mm si el servo entró justo, revisar medidas y exportar ·
+  **8P** centrar los 4 servos, montar base, plato, brazo y pinza, circuito copiado del simulador con la **fuente de 5 V con
+  jack hembra** (en lugar del portapilas 4 AA) y subir el programa final · **9P** límites reales, pruebas de agarre, rutina
+  corregida con objetos reales y el reto (presentación de 1 minuto).
+- Impresión: base y plato durante las simulaciones; eslabones y pinza después de la Guía 7, para el sábado 8.
+- Todos los programas compilados con arduino-cli. Imagen nueva **5.2F** (circuito con la fuente, el jack y el botón) con
+  `herramientas/garra_imagenes.py`; la **4.1S** es copia de la del Dispensador.
+- [ ] Imágenes que hace Bairon: 6.1S (Tinkercad); siguen las fotos 4.1, 4.2, 5.1, 6.1 y 6.2. La 4.2S, 5.1S, 4.4 y 4.5 ya están.
+- Lista de materiales en Word del grupo (31 de octubre, `herramientas/materiales/garra-robotica.json`): 3 SG90 +
+  1 MG90S (hombro), 4 potenciómetros, pulsador, fuente de 5 V y 2 A con jack hembra y tornillo M3 con tuerca (ilustración
+  propia `tornillo_m3.jpg`).
 
 **Mini invernadero, versión Tinkercad reestructurada (23 de octubre)**, a pedido de Bairon ("centrarla más en la práctica,
 comenzar con los diseños 3D y colocar las imágenes"). Sigue con 14 sábados (las guías 5 en adelante son las normales).
@@ -591,7 +629,7 @@ esources\`,
     4 pines (Vcc, Trig, Echo, GND) aparece en **Otros componentes** al buscar "ultras". Código → Bloques → **Texto** pide
     confirmar ("¿Está seguro?" → Continuar). El programa automático de la Guía 6 compila y corre en el simulador.
     Al hacer clic en el sensor durante la simulación aparece el objeto con su distancia.
-  - [ ] Imágenes 5.1P y 6.1P (las hace Bairon); la 4.1P y la 4.2P ya están. Quedó empezado el diseño **"Puente - simulacion completa"**
+  - [ ] Imagen 6.1P (la hace Bairon); la 4.1P, la 4.2P y la 5.1P ya están. Quedó empezado el diseño **"Puente - simulacion completa"**
     (circuito de la Guía 4 armado y con el código, pero al simular se enciende el LED rojo en vez del verde: revisar a qué
     pines llegan los cables de D2/D3/D4). El diseño de prueba "Smooth Uusam-Maimu" se puede borrar.
   - Los dos grupos del puente ya están en la versión nueva; listas de materiales regeneradas y revisadas (30 de octubre).

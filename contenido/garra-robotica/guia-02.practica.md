@@ -140,8 +140,8 @@ Antes de irse, suban aquí `equipo_NOMBRE_base.blend` y los dos `.stl` juntos en
 :::
 
 :::docente
-- **Versión Blender práctica (7 sábados), nueva el 24 de octubre:** la Guía 2 normal sin el boceto, más el plato giratorio de la Guía 3 normal. Campos propios (g2p-…).
-- Imprimir base y plato esta semana: se montan el sábado 4.
+- **Versión Blender práctica (9 sábados desde el 31 de octubre; antes 7):** la Guía 2 normal sin el boceto, más el plato giratorio de la Guía 3 normal. Campos propios (g2p-…).
+- Imprimir base y plato durante las simulaciones (sábados 4 a 6): en la Guía 7 se prueba el servo en ellos y se montan el sábado 8.
 - Si un equipo no termina, puede usar la base de referencia del archivo del docente.
 - Errores comunes: escribir medidas sin punto decimal, olvidar ocultar el cubo del hueco, exportar toda la escena en vez de la selección.
 - Tiempo total: 5 + 15 + 45 + 30 + 5 + 5 + 15 = 120 minutos.
