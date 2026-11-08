@@ -7,17 +7,27 @@ os.makedirs(salida, exist_ok=True)
 
 # Formas como en Codeblocks: nacen centradas y se mueven a (x, y, z). Medidas en mm.
 # ('c', ancho, largo, alto, x, y, z, hueco) cubo · ('y', radio, alto, x, y, z, hueco, girada_en_y) cilindro
+# Medidas revisadas el 7 de noviembre con el plano del SG90 (Addicore: cuerpo 22,5 × 11,8 × 22,7; pestañas de
+# 31,9 a 15,9 mm de la base y 2,5 de grueso; cable a 4,5 mm de la base, en la punta contraria al eje) y del HC-SR04
+# (Makerguides: placa 45 × 20, ojos de Ø16 y 12 de alto a 26 mm entre centros, cristal entre los dos ojos).
+# Orilla: el servo acostado queda 0,7 mm abajo del camino (antes sobresalía 3,8 mm y la torre no asentaba) y su cable
+# sale por un canal hacia atrás. La ranura es más honda, más larga y más ancha para que la oreja y la corona giren.
 PIEZAS = {
-    'orilla': [('c', 60, 88, 30, 0, 0, 15, 0), ('c', 22, 12, 12, -20, 10, 26, 1),
-               ('c', 23.4, 5, 10, -11.5, 17.5, 27, 1), ('c', 32.8, 19, 10, -11.5, 29.5, 27, 1)],
+    'orilla': [('c', 60, 88, 30, 0, 0, 15, 0),
+               ('c', 24, 14, 22, -19, 9, 21, 1),           # ranura (brazo y oreja)
+               ('c', 23.8, 5, 14, -11.5, 17.5, 24.5, 1),   # ventana (parte del eje)
+               ('c', 33.4, 19.4, 14, -11.5, 29.7, 24.5, 1),  # cajón del servo, piso a 17,5 mm
+               ('c', 7, 18, 14, 5.5, 37, 24.5, 1)],        # canal del cable, sale por atrás
     'hoja': [('c', 80, 40, 4, 0, 0, 6, 0), ('c', 72, 2, 6, -4, 19, 11, 0),
              ('c', 72, 2, 6, -4, -19, 11, 0), ('c', 38, 4, 8, 39, 21, 4, 0)],
     'torre_semaforo': [('c', 38, 26, 45, 0, 0, 22.5, 0), ('c', 34, 22, 44, 0, 0, 21, 1), ('c', 12, 4, 8, 0, 12, 4, 1),
-                       ('y', 2.6, 10, 18, 0, 34, 1, 1), ('y', 2.6, 10, 18, 0, 26, 1, 1), ('y', 2.6, 10, 18, 0, 18, 1, 1)],
+                       # LEDs de 5 mm: agujero de 5,4 (la impresora los deja un poco más chicos; la pestaña de 5,8 no pasa)
+                       ('y', 2.7, 10, 18, 0, 34, 1, 1), ('y', 2.7, 10, 18, 0, 26, 1, 1), ('y', 2.7, 10, 18, 0, 18, 1, 1)],
     'torre_buzzer': [('c', 38, 26, 45, 0, 0, 22.5, 0), ('c', 34, 22, 44, 0, 0, 21, 1), ('c', 12, 4, 8, 0, 12, 4, 1),
-                     ('y', 6.2, 10, 0, 0, 44, 1, 0)],
+                     ('y', 6.4, 10, 0, 0, 44, 1, 0)],    # buzzer de 12 mm: agujero de 12,8
     'soporte_sensor': [('c', 4, 48, 28, 0, 0, 14, 0), ('c', 20, 48, 3, 12, 0, 1.5, 0),
-                       ('y', 8.3, 10, 0, 13, 15, 1, 1), ('y', 8.3, 10, 0, -13, 15, 1, 1)],
+                       ('y', 8.5, 10, 0, 13, 15, 1, 1), ('y', 8.5, 10, 0, -13, 15, 1, 1),   # ojos de 16: agujeros de 17
+                       ('c', 6, 12.4, 6, 0, 0, 7, 1)],   # hueco del cristal: así la placa del sensor queda pegada
 }
 # Archivo → (pieza, espejo en X). El espejo es el mismo que Escala X −1 en Tinkercad.
 ARCHIVOS = {

@@ -109,7 +109,8 @@ Empiecen por la orilla A con el servo **D**:
 
 1. Mete el servo **acostado** en el cajón.
    - Las pestañas quedan dentro del cajón y la parte de arriba del servo (donde está el eje) entra en la ventana. El eje debe asomar dentro de la ranura.
-   - El cable del servo queda hacia atrás.
+   - El cable del servo queda hacia atrás, metido en el canal de la orilla: sale por la cara de atrás.
+   - **✔ Revisa:** el servo no sobresale del camino.
    - Pongan una gota de silicona en cada pestaña para que el servo no se mueva.
 2. Pon el brazo del servo.
    - Usen el brazo de **un solo lado** (el más largo). Pónganlo en el eje **acostado**, apuntando hacia el río, sin girar el eje.
@@ -134,9 +135,9 @@ Empiecen por la orilla A con el servo **D**:
    - Saquen los cables por la salida de atrás de la torre.
 3. Pon el buzzer en el agujero del techo de la torre del buzzer, también por dentro, con una gota de silicona.
    - Un cable macho–hembra en cada pata. Marquen con cinta el cable de la pata **+**.
-4. Pon cada torre encima de su orilla, tapando el servo.
+4. Pon cada torre encima de su orilla, tapando el servo, justo detrás de la ranura y con la pared del lado del río alineada con el borde de la orilla.
    - La del semáforo va sobre la orilla A, con los LEDs mirando hacia afuera (al lado contrario del río). La del buzzer va sobre la orilla B.
-   - La salida de los cables queda atrás. El cable del servo también sale por ahí.
+   - La salida de los cables queda atrás. La ranura queda libre: la oreja de la hoja tiene que poder subir.
    - **Todavía no las peguen:** se pegan en la Guía 5, cuando todo funcione.
 5. Pega el soporte del sensor a la base.
    - La placa va parada justo sobre la línea del río, tocando el frente de la orilla A. El pie queda hacia afuera del río.

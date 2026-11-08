@@ -64,7 +64,7 @@ void loop() {
 
 Empiecen por la orilla A con el servo **D**:
 
-1. Mete el servo **acostado** en el cajón: las pestañas dentro del cajón y la parte del eje en la ventana, con el eje asomando en la ranura. El cable queda hacia atrás. Una gota de silicona en cada pestaña.
+1. Mete el servo **acostado** en el cajón: las pestañas dentro del cajón y la parte del eje en la ventana, con el eje asomando en la ranura. El cable va en el canal de la orilla y sale por atrás; el servo no debe sobresalir del camino. Una gota de silicona en cada pestaña.
 2. Pon el brazo de **un solo lado** en el eje, acostado y apuntando al río, sin girar el eje (si no queda justo, en el diente más cercano). Pongan el tornillo del centro.
 3. Pon la hoja A **cerrada**: la oreja dentro de la ranura, pegada al brazo, y el tablero plano a la altura del camino. Sostengan la punta con un libro o una caja.
 4. Pega el brazo a la oreja con silicona y sostén hasta que enfríe. Nada de silicona en el eje ni en la ventana.
@@ -77,7 +77,7 @@ Empiecen por la orilla A con el servo **D**:
 1. LEDs en la torre del semáforo, **por dentro**: rojo arriba, amarillo en medio, verde abajo, con una gota de silicona.
 2. Buzzer en el agujero del techo de la torre del buzzer, también por dentro.
 3. Un cable macho–hembra en cada pata de los LEDs y del buzzer (la punta hembra en la pata). Marquen con cinta las patas largas y la **+** del buzzer, y saquen los cables por la salida de atrás de la torre.
-4. Pongan cada torre sobre su orilla, tapando el servo (semáforo en la A, con los LEDs hacia afuera; buzzer en la B). **Todavía no las peguen.**
+4. Pongan cada torre sobre su orilla, tapando el servo, justo detrás de la ranura sin taparla (semáforo en la A, con los LEDs hacia afuera; buzzer en la B). **Todavía no las peguen.**
 5. Pega el soporte del sensor a la base: la placa parada sobre la línea del río, tocando el frente de la orilla A, con el pie hacia afuera. Mete el sensor por detrás, con los pines hacia **arriba**, y fíjalo con una gota de silicona en las esquinas.
 
 [IMAGEN 4.3T: puente armado sobre la base: orillas pegadas a 16,4 cm, hojas cerradas, torres encima de cada orilla y soporte del sensor adelante de la orilla A]
@@ -135,7 +135,7 @@ Foto del puente armado con su circuito.
 
 :::docente
 - **Versión Tinkercad práctica:** junta el armado de la Guía 4 Tinkercad y el circuito de la Guía 5 Tinkercad en un solo sábado. Es una sesión apretada: conviene tener las piezas impresas revisadas (soportes quitados) y los componentes separados por equipo antes de empezar. Campos propios (g7p-…).
-- Si un servo no entra en el cajón, lijar las paredes o reimprimir la orilla con el cajón más grande (por ejemplo 33.4 × 19.5, ver Guía 2).
+- Si un servo no entra en el cajón, lijar las paredes. Las orillas impresas con las medidas anteriores al 7 de noviembre dejan el servo 3,8 mm afuera del camino y sin salida para el cable: hay que reimprimirlas con las medidas nuevas de la Guía 2 (STL de la academia en `..\STL\Puente levadizo - STL para imprimir`).
 - Si una hoja no queda plana, se saca el brazo del eje junto con la hoja y se pone un diente más allá; el ajuste fino se hace en la Guía 8.
 - Las torres se pegan en la Guía 8, cuando todo funcione.
 - Si no alcanza el tiempo, lo que falte del circuito se termina al inicio de la Guía 8.

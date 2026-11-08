@@ -4,6 +4,7 @@
 # Uso: python lista_materiales.py <id del proyecto> <carpeta de salida> [nombre del grupo] [versión]
 # Con el nombre del grupo (o parte de él), solo se genera el documento de ese grupo.
 # Con la versión, se usa esa lista aunque el equipo todavía tenga otra versión asignada en la plataforma.
+# Si el grupo está en <carpeta de salida>/integrantes.json, agrega la columna "¿Quién lo consigue?" (reparto_materiales.py).
 # Al final crea también el PDF de cada Word (listas_a_pdf.py), que es el que descargan los equipos.
 import sys, os, json, sqlite3
 from docx import Document
@@ -145,6 +146,9 @@ con = sqlite3.connect('file:' + os.path.join(RAIZ, 'datos', 'plataforma.db') + '
 equipos = con.execute('SELECT nombre, version FROM equipos WHERE proyecto = ? ORDER BY nombre', (proyecto_id,)).fetchall()
 con.close()
 guardados = []
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+ruta_integrantes = os.path.join(salida, 'integrantes.json')   # fuera del repositorio: tiene nombres de estudiantes
+integrantes = json.load(open(ruta_integrantes, encoding='utf-8')) if os.path.exists(ruta_integrantes) else {}
 for nombre, version in equipos:
     if solo_grupo and solo_grupo not in nombre.lower():
         continue
@@ -155,6 +159,10 @@ for nombre, version in equipos:
     archivo = os.path.join(salida, f"{datos['proyecto']} - {nombre}.docx".replace('/', '-'))
     try:
         documento(nombre, version).save(archivo)
+        # Columna "¿Quién lo consigue?" con las compras repartidas entre los integrantes (si están en integrantes.json)
+        if nombre in integrantes:
+            from reparto_materiales import procesar
+            procesar(archivo, integrantes[nombre])
         print('OK', archivo)
         guardados.append(archivo)
     except PermissionError:

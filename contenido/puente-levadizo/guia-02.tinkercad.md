@@ -87,13 +87,14 @@ Tres reglas que usaremos todo el día:
 
 ## Parte 3 · La orilla (45 min)
 
-La orilla es un bloque con el camino arriba y tres huecos en una esquina, donde va el servo:
+La orilla es un bloque con el camino arriba y cuatro huecos en una esquina, donde va el servo:
 
 | Hueco | ¿Para qué sirve? |
 | --- | --- |
-| Cajón | Ahí entra el servo **acostado**, con sus pestañas |
+| Cajón | Ahí entra el servo **acostado**, con sus pestañas, sin sobresalir del camino |
 | Ventana | Por ahí asoma la parte del servo que tiene el eje |
 | Ranura | Ahí gira el brazo del servo junto con la hoja |
+| Canal del cable | Por ahí sale el cable del servo hacia atrás |
 
 Trabajen en el diseño `equipo_NOMBRE_orilla`. Cada paso es un bloque de forma y, debajo, su bloque **Mover**.
 
@@ -103,21 +104,25 @@ Trabajen en el diseño `equipo_NOMBRE_orilla`. Cada paso es un bloque de forma y
    - El primer **A** es el **ancho** (X): escribe **60**. **L** es el **largo** (Y): **88**. El segundo **A** es el **alto** (Z): **30**. Deja **arista** en **0**.
    - Toca la categoría **Modificar** y arrastra **Mover:** debajo del cubo, hasta que encaje. Escribe **X: 0**, **Y: 0**, **Z: 15** (la mitad de 30, para que quede apoyado).
    - Ejecuta con **▷**: debe aparecer un bloque gris acostado sobre el plano.
-2. **La ranura (hueco):** un Cubo de 22 × 12 × 12 mm.
-   - Debajo de Mover, otro **Cubo** con primer A = **22**, L = **12**, segundo A = **12**, arista = **0**.
+2. **La ranura (hueco):** un Cubo de 24 × 14 × 22 mm.
+   - Debajo de Mover, otro **Cubo** con primer A = **24**, L = **14**, segundo A = **22**, arista = **0**.
    - Toca su **círculo rayado** para que sea hueco (el círculo de color se pone gris).
-   - Debajo, **Mover: X −20, Y 10, Z 26** (con el signo menos en el −20).
-3. **La ventana del servo (hueco):** un Cubo de 23.4 × 5 × 10 mm.
-   - Otro **Cubo** con primer A = **23.4**, L = **5**, segundo A = **10**, arista = **0**, marcado como **hueco**.
-   - Debajo, **Mover: X −11.5, Y 17.5, Z 27**.
-4. **El cajón del servo (hueco):** un Cubo de 32.8 × 19 × 10 mm.
-   - Otro **Cubo** con primer A = **32.8**, L = **19**, segundo A = **10**, arista = **0**, marcado como **hueco**.
-   - Debajo, **Mover: X −11.5, Y 29.5, Z 27**.
-5. **Agrupar:** así los huecos se restan del bloque.
+   - Debajo, **Mover: X −19, Y 9, Z 21** (con el signo menos en el −19).
+3. **La ventana del servo (hueco):** un Cubo de 23.8 × 5 × 14 mm.
+   - Otro **Cubo** con primer A = **23.8**, L = **5**, segundo A = **14**, arista = **0**, marcado como **hueco**.
+   - Debajo, **Mover: X −11.5, Y 17.5, Z 24.5**.
+4. **El cajón del servo (hueco):** un Cubo de 33.4 × 19.4 × 14 mm.
+   - Otro **Cubo** con primer A = **33.4**, L = **19.4**, segundo A = **14**, arista = **0**, marcado como **hueco**.
+   - Debajo, **Mover: X −11.5, Y 29.7, Z 24.5**.
+   - Es hondo para que el servo acostado quede **abajo del camino**: así la torre se apoya plana encima.
+5. **El canal del cable (hueco):** un Cubo de 7 × 18 × 14 mm.
+   - Otro **Cubo** con primer A = **7**, L = **18**, segundo A = **14**, arista = **0**, marcado como **hueco**.
+   - Debajo, **Mover: X 5.5, Y 37, Z 24.5**. Sale por la cara de atrás de la orilla.
+6. **Agrupar:** así los huecos se restan del bloque.
    - De **Modificar**, arrastra **Seleccionar todo** debajo del último Mover.
    - Después arrastra **Group Selection** debajo (en esta versión de Tinkercad ese bloque está en inglés: quiere decir "agrupar la selección").
    - Ejecuta con **▷** y gira la vista 3D.
-   - **✔ Revisa:** en una esquina de arriba deben verse los tres huecos juntos, como en la imagen. La ranura llega hasta el borde del bloque: ese borde es el que mira al río.
+   - **✔ Revisa:** en una esquina de arriba deben verse los cuatro huecos juntos, como en la imagen. La ranura llega hasta el borde del bloque: ese borde es el que mira al río. El canal llega hasta la cara de atrás.
    - Si los huecos salen como cajas transparentes, revisa que **Seleccionar todo** y **Group Selection** estén al final. Si algún hueco salió en otro lugar, revisa los números de su **Mover** (sobre todo los signos menos).
 
 [IMAGEN 2.3T: orilla terminada en Tinkercad Codeblocks, con la ranura en el borde del río y el cajón del servo detrás]
@@ -126,14 +131,14 @@ Trabajen en el diseño `equipo_NOMBRE_orilla`. Cada paso es un bloque de forma y
 Los huecos miden un poco más que el servo. ¿Por qué no los hacemos exactamente del mismo tamaño?
 :::
 
-6. **Exporta la primera orilla:** `equipo_NOMBRE_orilla_A.stl`.
+7. **Exporta la primera orilla:** `equipo_NOMBRE_orilla_A.stl`.
    - Arriba a la derecha, botón **Compartir**. Se abre la ventana **Exportar y compartir**.
    - En **Descargar un archivo**, toca **.STL**. El archivo se guarda en la carpeta **Descargas** de la computadora.
    - Cámbiale el nombre: clic derecho sobre él → **Cambiar nombre** → `equipo_NOMBRE_orilla_A.stl`.
-7. **La orilla en espejo:** agrega **Escala** al final y exporta otra vez.
+8. **La orilla en espejo:** agrega **Escala** al final y exporta otra vez.
    - De **Modificar**, arrastra **Escala** debajo de **Group Selection**. Escribe **X: −1**, **Y: 1**, **Z: 1**.
    - Ejecuta con **▷**: la ranura debe pasar al **otro lado** del bloque.
-   - Exporta igual que en el paso 6 y nombra el archivo `equipo_NOMBRE_orilla_B.stl`.
+   - Exporta igual que en el paso 7 y nombra el archivo `equipo_NOMBRE_orilla_B.stl`.
 
 ## Parte 4 · La hoja (30 min)
 
@@ -167,7 +172,7 @@ Si nuestro servo midiera 2 mm más de largo, ¿qué números de la orilla tendr�
 
 :::checklist id="g2t-logramos"
 - [ ] Sabemos usar los bloques de Tinkercad.
-- [ ] La orilla tiene sus tres huecos en una esquina.
+- [ ] La orilla tiene sus cuatro huecos en una esquina.
 - [ ] La hoja tiene sus barandas y su oreja.
 - [ ] Exportamos los 4 archivos: orilla A y B, hoja A y B.
 :::
@@ -193,11 +198,12 @@ Antes de irse, junten los 4 `.stl` en un `.zip` (selecciónenlos, clic derecho �
 :::docente
 - **Guía reestructurada (versión Tinkercad):** el sábado 2 y el 3 se dedican a diseñar el puente completo en piezas imprimibles. Se quitaron de esta versión la tabla de escala, el boceto y el soporte suelto del servo. Por eso esta guía tiene campos propios (g2t-…): si un equipo cambia de versión, no conserva estas respuestas.
 - Diseño completo de referencia en la cuenta del docente: "Puente levadizo - propuesta completa" y un diseño por pieza ("Puente - modelo orilla", "Puente - modelo hoja"…), con los mismos bloques de la guía.
-- Medidas del servo usadas: SG90 de 22,8 × 12,2 × 22,5 mm, con pestañas de 32,2 mm. El hueco deja unos 0,3 mm de holgura. La oreja de la hoja queda a 7 mm de la cara del servo, que es el espacio para el brazo. **Antes de imprimir las 2 orillas, conviene probar con un servo de la academia.** Si el cajón queda justo, se agrandan un poco sus medidas (por ejemplo 33.4 × 19.5).
+- **Medidas revisadas el 7 de noviembre** con el plano del SG90 (Addicore): cuerpo de 22,5 × 11,8 × 22,7 mm, pestañas de 31,9 mm de punta a punta (a 15,9 mm de la base y de 2,5 mm de grueso) y cable plano de 3,6 × 1,2 mm que sale por la punta contraria al eje, a 4,5 mm de la base. Con el diseño anterior (cajón de 10 mm de alto, piso a 22 mm) el servo sobresalía 3,8 mm del camino y la torre no asentaba, y el cable no tenía salida. Ahora el piso del cajón y de la ventana está a 17,5 mm (el servo queda 0,7 mm abajo del camino), el cajón deja 1 a 1,5 mm de holgura, el canal saca el cable por atrás y la ranura es más honda (piso a 10 mm), más larga y más ancha para que la oreja y la corona del engrane giren sin rozar. Comprobado en Blender con un modelo del servo, su cable y la torre: sin choques. La oreja de la hoja queda a unos 7 mm de la cara del servo, que es el espacio para el brazo.
+- Los STL de la academia se generan con `herramientas/puente_stl.py` (mismas medidas que esta guía).
 - Los servos quedan en espejo, como en las guías 5 a 7, así que el código `a` y `180 - a` funciona sin cambios.
 - La orilla A va a la derecha del río y la B a la izquierda, separadas 16,4 cm. La hoja A va con la orilla A.
 - Impresión: las orillas se imprimen tal como salen, con el camino hacia arriba. Las hojas necesitan **soportes** en el programa de impresión, porque la oreja queda debajo del tablero.
 - g2t-p1: si el hueco fuera exacto, el servo no entraría o quedaría muy apretado; la impresora no es perfecta (holgura).
-- g2t-p2: el primer A (el largo, en X) del cajón y de la ventana, 2 mm más cada uno (32.8 → 34.8 y 23.4 → 25.4). Las Y y Z no cambian.
+- g2t-p2: el primer A (el largo, en X) del cajón y de la ventana, 2 mm más cada uno (33.4 → 35.4 y 23.8 → 25.8). Las Y y Z no cambian.
 - Tiempo total: 10 + 20 + 45 + 30 + 5 + 10 = 120 minutos.
 :::

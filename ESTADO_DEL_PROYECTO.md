@@ -72,6 +72,19 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > **Mini fútbol:** Guía 6 práctica probada en Wokwi (Monitor serie y antirrebote), imagen 6.1P y circuito en `herramientas/wokwi/`.
 > Lista de materiales de la versión Práctica (`herramientas/materiales/mini-futbol.json`, 10 materiales, con eliminador de 9 V
 > para jugar sin computadora); la cancha se forra con cartulina verde (Guía 7 práctica). Faltan las imágenes 4.1, 5.1, 5.2, 5.3 y 9.1.
+> **Listas de materiales, columna "¿Quién lo consigue?"** en las 11 listas (la del segundo equipo de mini fútbol se hizo copiando
+> el Word del primero, que tiene imágenes cambiadas por Bairon; el segundo equipo de la banda queda sin lista por decisión de
+> Bairon): `herramientas/reparto_materiales.py` reparte las
+> compras para que cada integrante gaste parecido, sobre los Word ya existentes (conserva los cambios hechos a mano). Precios de
+> referencia en `herramientas/materiales/precios.json` (Steren en línea, 7 de noviembre; el resto estimados: Casa Rivas no
+> publica precios y Facebook pide sesión). Los integrantes están en `..\Listas de materiales\integrantes.json` y el resumen de
+> gastos en `reparto.md` (fuera del repositorio).
+> **STL del puente revisados y corregidos** contra los planos reales del SG90 y del HC-SR04 (detalle en la sección del puente).
+> Verificación en Blender: `herramientas/verificar_puente_stl.py` (carga los STL y los compara con modelos del servo, su cable,
+> la torre, los LEDs, el buzzer y el sensor; mide choques y saca dos imágenes).
+> **[ ] Pendiente para otra sesión: revisar los demás STL** de `..\STL\` con el mismo método (medidas reales de cada
+> componente con margen, salida de cables, que las piezas encajen entre sí): Dispensador doble, Banda clasificadora,
+> Laberinto, Mini fútbol y Robot con mando.
 
 ---
 
@@ -615,7 +628,12 @@ piezas imprimibles** (Tinkercad Codeblocks). Solo cambió la **versión Tinkerca
   Se generan con Blender, con las mismas formas y medidas que los bloques:
   `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/puente_stl.py -- "<carpeta de salida>"`.
   Para ajustar una medida (por ejemplo el cajón del servo), se cambia en `PIEZAS` del script y en la guía.
-- [ ] Probar un servo SG90 de la academia en la orilla impresa (cajón 32,8 × 19; brazo a 7 mm de la cara del servo).
+- [x] ~~Probar un servo SG90 en la orilla impresa~~ (Bairon, 7 de noviembre): el servo entraba, pero sobresalía y el cable no
+  tenía salida, así que las torres no asentaban. **STL corregidos el 7 de noviembre** con los planos del SG90 (Addicore) y del
+  HC-SR04 (Makerguides): cajón y ventana con piso a 17,5 mm (servo 0,7 mm abajo del camino), cajón 33,4 × 19,4, canal del
+  cable hacia atrás, ranura 24 × 14 con piso a 10 mm; LEDs Ø5,4, buzzer Ø12,8, ojos del sensor Ø17 y hueco del cristal.
+  Verificado en Blender con modelos de los componentes (sin choques). Guías 2T, 3T, 4T y 7 práctica actualizadas (medidas,
+  canal del cable y torre detrás de la ranura). Los STL anteriores quedaron en `..\STL\Puente levadizo - STL para imprimir\anteriores (20 de octubre)`.
 - **Guías 4 a 8 adaptadas al puente impreso (30 de octubre, a pedido de Bairon):**
   - **4T "Armamos el puente"** (campos g4t-…): revisar las 7 piezas, base de **50 × 30 cm** con el río de 16,4 cm,
     centrar los servos (programa `equipo_NOMBRE_centrar`, izquierdo 0° y derecho 180°; la animación `espejo-servos`

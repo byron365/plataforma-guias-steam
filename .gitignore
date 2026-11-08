@@ -12,3 +12,6 @@ respaldos/*
 
 # Librerías instaladas con npm install
 node_modules/
+
+# Archivos temporales de Python
+__pycache__/

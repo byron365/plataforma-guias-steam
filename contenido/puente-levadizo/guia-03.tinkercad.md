@@ -44,11 +44,11 @@ Diseño nuevo: **+ Crear → Codeblocks** y nómbrenlo `equipo_NOMBRE_torre_sema
 3. **Salida de los cables (hueco):** un Cubo de 12 × 4 × 8 mm en la pared de atrás, abajo.
    - Un **Cubo** con primer A = **12**, L = **4**, segundo A = **8**, marcado como **hueco**.
    - Debajo, **Mover: X 0, Y 12, Z 4**.
-4. **Agujero de la luz roja:** un cilindro hueco de 5,2 mm de diámetro, acostado, que atraviesa una pared.
-   - De **Formas**, arrastra un **Cilindro**. Toca su **›** y escribe **Radio = 2.6** (la mitad de 5.2), **A = 10**, **Lados = 32**. Márcalo como **hueco**.
+4. **Agujero de la luz roja:** un cilindro hueco de 5,4 mm de diámetro, acostado, que atraviesa una pared.
+   - De **Formas**, arrastra un **Cilindro**. Toca su **›** y escribe **Radio = 2.7** (la mitad de 5.4), **A = 10**, **Lados = 32**. Márcalo como **hueco**.
    - **Acostarlo:** de **Modificar**, arrastra **Girar alrededor** debajo del cilindro. Cambia el eje a **y** y escribe **90** en los grados.
    - Debajo, **Mover: X 18, Y 0, Z 34**. Queda en la pared angosta, arriba.
-5. **Agujero de la luz amarilla:** otro cilindro igual (Radio 2.6, A 10, Lados 32, hueco), con **Girar alrededor** (eje y, 90) y **Mover: X 18, Y 0, Z 26**.
+5. **Agujero de la luz amarilla:** otro cilindro igual (Radio 2.7, A 10, Lados 32, hueco), con **Girar alrededor** (eje y, 90) y **Mover: X 18, Y 0, Z 26**.
 6. **Agujero de la luz verde:** otro igual con **Mover: X 18, Y 0, Z 18**.
    - Entre agujero y agujero hay 8 mm: el semáforo queda pequeño, como un semáforo de verdad a escala.
 7. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
@@ -59,7 +59,7 @@ Diseño nuevo: **+ Crear → Codeblocks** y nómbrenlo `equipo_NOMBRE_torre_sema
 
 8. Exporta `equipo_NOMBRE_torre_semaforo.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
 
-Midan el LED con la regla: la cabecita mide unos 5 mm. El agujero es de 5,2 mm, así que el LED entra por dentro de la torre y se pega con una gota de silicona.
+Midan el LED con la regla: la cabecita mide unos 5 mm y el borde de abajo (la pestaña), casi 6. El agujero es de 5,4 mm: la cabecita pasa y la pestaña se queda adentro. El LED entra por dentro de la torre y se pega con una gota de silicona.
 
 :::pregunta id="g3t-p1"
 ¿Por qué la torre es hueca y está abierta por abajo?
@@ -71,7 +71,7 @@ Es la misma caja, pero con un agujero arriba para el buzzer en lugar de los tres
 
 1. Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_torre_buzzer`.
 2. Repitan los pasos **1, 2 y 3** de la torre del semáforo: la caja, el hueco de adentro y la salida de los cables, con los mismos números.
-3. **Agujero del buzzer:** un **Cilindro** con **Radio = 6.2**, **A = 10**, **Lados = 32**, marcado como **hueco**. Esta vez **no** se gira: va parado.
+3. **Agujero del buzzer:** un **Cilindro** con **Radio = 6.4**, **A = 10**, **Lados = 32**, marcado como **hueco**. Esta vez **no** se gira: va parado.
    - Debajo, **Mover: X 0, Y 0, Z 44**. Atraviesa el techo de la torre.
 4. **Agrupar** (Seleccionar todo y Group Selection) y ejecuta.
    - **✔ Revisa:** arriba de la torre debe verse un agujero redondo grande.
@@ -89,7 +89,7 @@ El sensor ultrasónico tiene dos "ojos" redondos. El soporte es una placa parada
 :::tabla id="g3t-sensor"
 | Medida del sensor | En el sensor real (mm) | En nuestro diseño (mm) |
 | --- | --- | --- |
-| Ancho de cada ojo (diámetro) | | 16.6 |
+| Ancho de cada ojo (diámetro) | | 17 |
 | Distancia entre el centro de un ojo y el centro del otro | | 26 |
 :::
 
@@ -102,16 +102,19 @@ Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_soporte_sensor`
 2. **El pie:** un Cubo de 20 × 48 × 3 mm.
    - Un **Cubo** con primer A = **20**, L = **48**, segundo A = **3**. Debajo, **Mover: X 12, Y 0, Z 1.5**.
 3. **Primer ojo (hueco):** un cilindro acostado que atraviesa la placa.
-   - Un **Cilindro** con **Radio = 8.3**, **A = 10**, **Lados = 32**, marcado como **hueco**.
+   - Un **Cilindro** con **Radio = 8.5**, **A = 10**, **Lados = 32**, marcado como **hueco**.
    - Debajo, **Girar alrededor** con eje **y** y **90**, igual que los agujeros de los LEDs.
    - Debajo, **Mover: X 0, Y 13, Z 15**.
 4. **Segundo ojo (hueco):** otro cilindro igual, con **Girar alrededor** (eje y, 90) y **Mover: X 0, Y −13, Z 15**.
-5. **Agrupar** y ejecuta.
-   - **✔ Revisa:** debe verse una pieza en forma de **L** con dos agujeros grandes en la parte parada.
+5. **Hueco del cristal:** entre los dos ojos, el sensor tiene una pieza plateada (el cristal) que sobresale. Este hueco la deja pasar para que el sensor quede pegado a la placa.
+   - Un **Cubo** con primer A = **6**, L = **12.4**, segundo A = **6**, marcado como **hueco**.
+   - Debajo, **Mover: X 0, Y 0, Z 7**.
+6. **Agrupar** y ejecuta.
+   - **✔ Revisa:** debe verse una pieza en forma de **L** con dos agujeros grandes en la parte parada y un hueco pequeño abajo, entre los dos.
 
 [IMAGEN 3.3T: soporte del sensor ultrasónico en Tinkercad Codeblocks: placa con dos agujeros y pie]
 
-6. Exporta `equipo_NOMBRE_soporte_sensor.stl`.
+7. Exporta `equipo_NOMBRE_soporte_sensor.stl`.
 
 ## Parte 5 · ¿Dónde va cada pieza? (15 min)
 
@@ -121,8 +124,8 @@ Miren otra vez el puente completo y ubiquen cada pieza:
 
 - **Orillas:** la A a la derecha y la B a la izquierda, con el río en medio (16,4 cm entre una y otra). Las ranuras miran al río.
 - **Hojas:** cada una con su orilla (la A con la A). Su oreja entra en la ranura.
-- **Torre del semáforo:** encima de la orilla A, tapando el servo. Los agujeros de los LEDs miran hacia afuera, hacia los carros que llegan.
-- **Torre del buzzer:** encima de la orilla B, tapando el otro servo.
+- **Torre del semáforo:** encima de la orilla A, tapando el servo, justo detrás de la ranura (sin taparla: por ahí sube la oreja de la hoja). Los agujeros de los LEDs miran hacia afuera, hacia los carros que llegan.
+- **Torre del buzzer:** encima de la orilla B, tapando el otro servo, también detrás de la ranura.
 - **Soporte del sensor:** pegado a la base, delante de la orilla A, con los ojos mirando al otro lado del río. Cuando un barco pase entre el sensor y la otra orilla, el sensor lo detecta.
 
 Revisen que tienen todos los archivos:
@@ -171,9 +174,9 @@ Antes de irse, junten los 3 `.stl` de hoy en un `.zip` (clic derecho → **Compr
 :::docente
 - **Guía reestructurada (versión Tinkercad):** termina el diseño del puente. Se quitaron de esta versión el diagrama de flujo, el servo que sube despacio con `for` y el cronograma (campos g3t-… propios). La Guía 7 compara el diagrama de flujo con el código: conviene hacer el diagrama antes, en la guía de programación (5 o 6).
 - Diseños de referencia en la cuenta del docente: "Puente - modelo torre semaforo", "Puente - modelo torre buzzer" y "Puente - modelo soporte sensor".
-- Medidas usadas: LED de 5 mm (agujero de 5,2), buzzer de 12 mm (agujero de 12,4) y HC-SR04 con ojos de unos 16 mm, a 26 mm entre centros (agujeros de 16,6). Si el sensor de la academia mide distinto, se cambian el Radio o la Y de los ojos.
+- **Medidas revisadas el 7 de noviembre:** LED de 5 mm con pestaña de unos 5,8 (agujero de 5,4: la impresora deja los agujeros unas décimas más chicos y la pestaña no pasa), buzzer de Ø12 × 8,5 mm (agujero de 12,8: entra holgado y se fija con silicona) y HC-SR04 según el plano de Makerguides: placa de 45 × 20 mm, ojos de Ø16 y 12 mm de alto a 26 mm entre centros (agujeros de 17) y el cristal entre los ojos, en el borde contrario a los pines. Con los pines hacia arriba el cristal queda abajo: sin su hueco, la placa del sensor quedaba separada unos 3,5 mm del soporte. Comprobado en Blender con modelos del LED, el buzzer y el sensor. Si el sensor de la academia mide distinto, se cambian el Radio o la Y de los ojos.
 - El sensor mira de una orilla a la otra, como una barrera, unos 3 cm antes de las hojas. Con el río de 16,4 cm, un barco en el centro queda a unos 8 cm, así que DISTANCIA_BARCO = 10 de la Guía 6 sirve. El texto de la Guía 6 (que el sensor mire "hacia donde vienen los barcos") se ajusta cuando se adapte esa guía.
 - Impresión: las torres se imprimen **boca abajo** (con el techo sobre la cama) para que no necesiten soportes. El soporte del sensor se imprime tal como sale.
-- g3t-p1: para que los cables de los LEDs, el buzzer y el servo pasen por adentro y salgan por atrás, y para tapar el servo; además gasta menos material.
+- g3t-p1: para que los cables de los LEDs y el buzzer pasen por adentro y salgan por atrás, y para tapar el servo; además gasta menos material. (El cable del servo sale por el canal de la orilla.)
 - Tiempo total: 5 + 40 + 20 + 25 + 15 + 5 + 10 = 120 minutos.
 :::
