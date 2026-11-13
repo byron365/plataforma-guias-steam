@@ -31,18 +31,29 @@ def agrupar(base, solidos=(), huecos=()):
         bpy.data.objects.remove(otro, do_unlink=True)
     return base
 
+# Revisado el 12 de noviembre con las medidas del FC-51 (placa de 31,3 × 14,2 × 6,6 mm; con los ojitos, 39 mm: los ojitos
+# de 5 mm sobresalen 7,7 mm de la placa y juntos miden unos 11 de ancho).
+# - Ventana de 12 → 14 mm: con 12 quedaban 0,5 mm por lado (la impresora deja los huecos un poco más chicos).
+# - Pie del sensor detrás del fondo: antes la placa se pegaba solo por su orilla contra la pared y, apoyada ahí, los ojitos
+#   asomaban 4,7 mm dentro de la portería, donde les pega la pelota. Con el pie, la placa queda acostada a la altura justa
+#   (ojitos a Z 23, la altura del centro de la pelota) y un tope deja la punta de los ojitos 1 mm adentro de la ventana.
 def porteria():
     # Media portería (X de 0 a 52.5) y su copia en espejo con Mover X −52.5: queda simétrica en X = 0
     partes = []
     for s in (1, -1):
         partes += [cubo(5, 5, 50, s * 50, 0, 25), cubo(50, 5, 5, s * 25, 0, 50),
                    cubo(50, 3, 50, s * 25, 40, 25), cubo(50, 40, 3, s * 25, 20, 1.5)]
-    ventana = cubo(12, 10, 25, 0, 40, 25)
+    partes += [cubo(16, 30, 18.4, 0, 56.5, 9.2),        # pie del sensor (la placa se apoya arriba, en Z 18.4)
+               cubo(16, 5.7, 1.5, 0, 44.35, 19.15)]     # tope: la orilla de la placa queda a 5,7 mm del fondo
+    ventana = cubo(14, 10, 25, 0, 40, 25)
     return agrupar(partes[0], partes[1:], [ventana])
 
 def soporte_marcador():
-    # Panel con la ventana de la pantalla y el agujero del buzzer, inclinado −15° en X (hacia atrás), sobre la base
-    panel = agrupar(cubo(70, 4, 50), huecos=[cubo(25, 10, 14, 0, 0, 8), cilindro(6.2, 10, 0, 0, -14, girado_x=90)])
+    # Panel con la ventana de la pantalla y el agujero del buzzer, inclinado −15° en X (hacia atrás), sobre la base.
+    # Buzzer de Ø12 × 8,5: agujero de 12,8 (antes 12,4; la impresora deja los agujeros unas décimas más chicos).
+    # Ventana de 25 → 23 mm de ancho: el vidrio de la OLED (26,7) la tapaba solo 0,85 mm por lado; la parte que se ilumina
+    # mide 21,7, así que se sigue viendo completa.
+    panel = agrupar(cubo(70, 4, 50), huecos=[cubo(23, 10, 14, 0, 0, 8), cilindro(6.4, 10, 0, 0, -14, girado_x=90)])
     panel.rotation_euler = (math.radians(-15), 0, 0)
     bpy.ops.object.select_all(action='DESELECT')
     panel.select_set(True)

@@ -112,10 +112,13 @@ La portería quedará con la boca hacia el frente (Y negativo) y el fondo hacia 
 
 [IMAGEN 2.2T: media portería en Tinkercad Codeblocks y su copia en espejo con el bloque Escala]
 
-5. En la pared del fondo dejen una **ventana de 12 × 25 mm**: ahí irá el sensor infrarrojo mirando hacia adentro.
-   - Debajo, un **Cubo** con primer **A = 12**, **L = 10**, segundo **A = 25**, marcado como **hueco** (toquen su círculo rayado: el círculo de color se pone gris).
+5. Detrás del fondo va el **pie del sensor**: ahí se acuesta el sensor, a la altura justa para ver la pelota.
+   - Debajo, un **Cubo** con primer **A = 16**, **L = 30**, segundo **A = 18.4** y **Mover: X 0, Y 56.5, Z 9.2**.
+   - **El tope:** un **Cubo** con primer **A = 16**, **L = 5.7**, segundo **A = 1.5** y **Mover: X 0, Y 44.35, Z 19.15**. Es un escalón encima del pie: la placa del sensor se empuja hasta él y así la punta de los ojitos no se sale de la ventana (la pelota no les pega).
+6. En la pared del fondo dejen una **ventana de 14 × 25 mm**: ahí asoman los ojitos del sensor, mirando hacia adentro.
+   - Debajo, un **Cubo** con primer **A = 14**, **L = 10**, segundo **A = 25**, marcado como **hueco** (toquen su círculo rayado: el círculo de color se pone gris).
    - **Mover: X 0, Y 40, Z 25** (en el centro del fondo).
-   - **Unir todo:** otra vez **Seleccionar todo** y **Group Selection**. Ejecuten con **▷**: la ventana queda abierta en el fondo.
+   - **Unir todo:** otra vez **Seleccionar todo** y **Group Selection**. Ejecuten con **▷**: la ventana queda abierta en el fondo, con el pie detrás.
    - **✔ Revisa:** si sale solo la mitad, revisa los bloques **Copiar**, **Escala** (X = −1) y **Mover** (X −52.5). Si la ventana no se abre, revisa que su cubo esté marcado como hueco.
 
 [IMAGEN 2.3T: portería completa con la ventana para el sensor en el fondo, en Tinkercad Codeblocks]
@@ -132,11 +135,11 @@ La portería quedará con la boca hacia el frente (Y negativo) y el fondo hacia 
 :::tabla id="g2t-medidas"
 | Medida | Ejemplo (mm) | Nuestra medida (mm) | ¿Cabe? |
 | --- | --- | --- | --- |
-| Los dos ojitos del sensor juntos (ancho) | 11 | | Debe ser menos de 12 (ventana) |
+| Los dos ojitos del sensor juntos (ancho) | 11 | | Debe ser menos de 14 (ventana) |
 | Pelota (lo ancho) | 40 | | Debe ser menos de 95 (entre los postes) |
 :::
 
-- Si los ojitos miden más de 12 mm, agranden el **A** del cubo de la ventana (por ejemplo a 14) y ejecuten otra vez.
+- Si los ojitos miden más de 13 mm, agranden el **A** del cubo de la ventana (por ejemplo a 16) y ejecuten otra vez.
 
 3. **Exporta** `equipo_NOMBRE_porteria.stl` (se imprimen dos: una azul y una roja).
    - Arriba a la derecha, botón **Compartir**. Se abre la ventana **Exportar y compartir**.
@@ -154,13 +157,13 @@ La portería quedará con la boca hacia el frente (Y negativo) y el fondo hacia 
 
 ## Reto extra
 
-Agrega a la portería una **red**: usa el bloque **Repetir** con un cilindro delgado (1 mm) para crear barras pegadas al fondo, por dentro. Las barras van a los dos lados de la ventana del sensor, que ocupa de X = −6 a X = 6.
+Agrega a la portería una **red**: usa el bloque **Repetir** con un cilindro delgado (1 mm) para crear barras pegadas al fondo, por dentro. Las barras van a los dos lados de la ventana del sensor, que ocupa de X = −7 a X = 7.
 
 **Truco:** si las barras de un lado se ponen **antes** del primer **Seleccionar todo**, el espejo del paso 4 hace solo las del otro lado.
 
 1. **Primera barra:** arrastren los bloques nuevos entre el **Mover** del piso y el primer **Seleccionar todo**.
    - Un **Cilindro** con **Radio = 0.5**, **A = 47**, **Lados = 16**.
-   - **Mover: X 12, Y 38, Z 26.5**. Así queda parada sobre el piso (que mide 3 mm), pegada a la cara de adentro del fondo y a 6 mm del borde de la ventana.
+   - **Mover: X 12, Y 38, Z 26.5**. Así queda parada sobre el piso (que mide 3 mm), pegada a la cara de adentro del fondo y a 5 mm del borde de la ventana.
 2. **Repetir las barras:** de **Controlar**, **Repetir** con **4** veces. **Dentro**, **Copiar** y debajo **Mover: X 8, Y 0, Z 0**.
    - Quedan barras en X = 12, 20, 28, 36 y 44 (la última, antes del poste, que empieza en 47.5).
 3. Ejecuten con **▷**: el espejo agrega las barras en X = −12 a −44.
@@ -183,7 +186,8 @@ Antes de irse, suban aquí `equipo_NOMBRE_porteria.stl`. El diseño de bloques q
 - La portería es la misma de antes (probada el 16 de octubre): espejo con Copiar + **Escala X = −1** (desde el centro) + **Mover X −52.5**.
 - Diseño completo de referencia en la cuenta del docente: "Mini futbol - propuesta completa" (cancha, porterías, bandas, soporte del marcador y electrónica).
 - Pelota sugerida: ping pong (4 cm) o pelota de esponja pequeña; la portería de 10 × 5 cm deja espacio.
-- Medidas de ejemplo del sensor: los dos ojitos del FC-51 ocupan unos 11 mm de ancho. Si su modelo es más ancho, se agranda la ventana.
+- **Revisado el 12 de noviembre** con las medidas del FC-51 (placa de 31,3 × 14,2 × 6,6 mm; con los ojitos, 39 mm: los ojitos de 5 mm sobresalen 7,7 mm y juntos miden unos 11 de ancho). Antes la ventana medía 12 (0,5 mm por lado) y el sensor se pegaba solo por la orilla de su placa contra el fondo: así los ojitos asomaban 4,7 mm dentro de la portería y la pelota les pegaba. Ahora la ventana mide 14 y el **pie** sostiene la placa acostada, con los ojitos a la altura del centro de la pelota (Z 23); el **tope** deja la punta de los ojitos 1 mm adentro de la ventana. Comprobado en Blender con el sensor y la pelota (`herramientas/verificar_futbol_stl.py`).
+- Con el pie, la portería mide 74 mm de fondo: queda unos 3,5 cm por fuera de la base de 60 cm (la cancha de 52,5 cm deja 3,75 cm a cada lado). Es normal: el pie y el sensor quedan al aire, detrás de la base.
 - Imprimir esta semana dos porterías por equipo (≈1,5 h cada una), de preferencia en azul y rojo, con el piso sobre la cama.
 - Tiempo total: 10 + 20 + 55 + 20 + 5 + 10 = 120 minutos.
 :::

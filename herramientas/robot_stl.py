@@ -38,8 +38,14 @@ def chasis():
     # Orejas de 3 × 30 × 24 a X ±39.7 (60 − grosor del motor 18.8 − 1.5), con ranura de 3.4 × 22 para los tornillos
     # (agujeros del TT separados 17.6, a 2.4 mm de su cara de arriba)
     # Columna de la rueda loca: radio de la rueda 32.5 + medio motor 11.25 − rueda loca 20 = 23.75 → 24
-    solidos = [cubo(3, 30, 24, 39.7, -20, 16), cubo(3, 30, 24, -39.7, -20, 16), cilindro(12, 24, 0, 60, 16)]
+    # Revisado el 12 de noviembre con el plano del TT (Einstronic): agujeros de Ø3 a 2,4 mm de su cara de arriba, así que
+    # la tuerca del tornillo de arriba (M3: 5,5 a 6,4 mm) chocaba 0,3 a 0,8 mm con la placa. Un rebaje de 1,5 mm la deja asentar.
+    # La caja de engranes del TT llega solo 11,65 mm más allá de sus agujeros; después viene el motor con su clip, que mide
+    # 22,4 de grueso (la caja 19) y sobresale 1,7 mm hacia la oreja. Con orejas de 30 (±15) el motor no quedaba plano:
+    # ahora miden 20 (±10), y sirven con el eje hacia adelante o hacia atrás.
+    solidos = [cubo(3, 20, 24, 39.7, -20, 16), cubo(3, 20, 24, -39.7, -20, 16), cilindro(12, 24, 0, 60, 16)]
     huecos = [cubo(10, 3.4, 22, 39.7, -20, 15.5), cubo(10, 3.4, 22, -39.7, -20, 15.5),   # ranuras
+              cubo(8, 10, 3, 34.2, -20, 4), cubo(8, 10, 3, -34.2, -20, 4),          # rebajes de las tuercas
               cubo(40, 12, 10, 0, -10, 2)]                                          # paso de los cables
     huecos += [cilindro(1.8, 10, x, y, 2) for x in (-48, 48) for y in (-68, 68)]    # agujeros de los postes
     return agrupar(cubo(120, 160, 4, 0, 0, 2), solidos, huecos)
@@ -52,12 +58,17 @@ def bandeja():
     # Placa de 120 × 160 × 3 con los agujeros de los postes, el cerco del portabaterías (77 × 41 + 0.6)
     # y el paso de los cables
     huecos = [cilindro(1.8, 10, x, y, 1.5) for x in (-48, 48) for y in (-68, 68)]
-    huecos += [cubo(77.6, 41.6, 10, 0, 45, 8), cubo(40, 12, 10, 0, -10, 1.5)]
+    # Paso de los cables en X −20, Y 5 (antes X 0, Y −10): con el Arduino atrás a la izquierda y el L298N y la protoboard
+    # a la derecha (Guía 8), el paso anterior quedaba tapado; ahí queda libre, entre el Arduino y el portabaterías.
+    huecos += [cubo(77.6, 41.6, 10, 0, 45, 8), cubo(40, 12, 10, -20, 5, 1.5)]
     return agrupar(cubo(120, 160, 3, 0, 0, 1.5), [cubo(83.6, 47.6, 8, 0, 45, 4)], huecos)
 
 def soporte_sensor():
-    # Base de 50 × 15 × 3 y panel de 50 × 3 × 26 con dos agujeros de radio 9 separados 26 mm (HC-SR04)
-    huecos = [cilindro(9, 10, x, 6, 13, girado_x=90) for x in (-13, 13)]
+    # Base de 50 × 15 × 3 y panel de 50 × 3 × 26 con dos agujeros de radio 8.5 separados 26 mm (HC-SR04: ojos de Ø16
+    # a 8,5 mm del borde de los pines, plano de Makerguides). Con los pines hacia arriba, el borde de abajo de la placa
+    # queda 11,5 mm debajo del centro de los ojos: con los ojos a Z 13 chocaba 1,5 mm con la base; ahora van a Z 15.
+    # Hueco del cristal (sobresale 3,5 mm entre los ojos): así la placa del sensor queda pegada al panel.
+    huecos = [cilindro(8.5, 10, x, 6, 15, girado_x=90) for x in (-13, 13)] + [cubo(12.4, 10, 6, 0, 6, 7.5)]
     return agrupar(cubo(50, 15, 3, 0, 0, 1.5), [cubo(50, 3, 26, 0, 6, 16)], huecos)
 
 def caja_mando():

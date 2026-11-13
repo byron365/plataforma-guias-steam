@@ -59,9 +59,12 @@ def soporte_rodillo():
     return agrupar(cubo(30, 4, 65, 0, 0, 32.5), [cubo(30, 20, 4, 0, -10, 2)], huecos)
 
 def soporte_motor():
-    # Oreja de 30 × 3 × 70 con pie; ranura de 3.4 × 22 centrada a 55 mm (agujeros del TT: separados 17.6)
+    # Oreja de 20 × 3 × 70 con pie de 30 × 20; ranura de 3.4 × 22 centrada a 55 mm (agujeros del TT: separados 17.6)
+    # Revisado el 12 de noviembre (plano del TT de Einstronic): la caja de engranes llega solo 11,65 mm más allá de los
+    # agujeros y después viene el motorcito con su clip, de 22,4 de grueso (la caja, 19), que sobresale 1,7 mm hacia la
+    # oreja. Con la oreja de 30 (±15) el motor no quedaba plano; con 20 (±10) sí.
     huecos = [cubo(3.4, 10, 22, 0, 0, 55), cilindro(2, 10, -9, -13, 2), cilindro(2, 10, 9, -13, 2)]
-    return agrupar(cubo(30, 3, 70, 0, 0, 35), [cubo(30, 20, 4, 0, -10, 2)], huecos)
+    return agrupar(cubo(20, 3, 70, 0, 0, 35), [cubo(30, 20, 4, 0, -10, 2)], huecos)
 
 def soporte_servo():
     # Bloque de 32 × 22 × 16 con el hueco del servo (23.4 × 12.8) de punta a punta y salida del cable

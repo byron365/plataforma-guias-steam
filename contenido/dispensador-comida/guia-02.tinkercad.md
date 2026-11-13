@@ -137,28 +137,37 @@ El servo mide 22,8 × 12,2 mm, pero su hueco mide 23,4 × 12,8 mm. ¿Por qué lo
 
 ## Parte 4 · La compuerta (25 min)
 
-La compuerta es una paleta que tapa la salida del embudo. En una punta tiene un **encastre**: un cilindro con un agujero donde entra el brazo del servo. Cuando el servo gira, la paleta se corre hacia un lado y las croquetas caen.
+La compuerta es una paleta que tapa la salida del embudo. En una punta tiene un **encastre**: un bloque con un hueco con la forma del brazo del servo, donde el brazo entra justo. Cuando el servo gira, la paleta se corre hacia un lado y las croquetas caen.
 
 La compuerta va en su **propio diseño**, porque al exportar se guarda todo lo que hay en el diseño.
 
 - En Tinkercad: **+ Crear → Codeblocks**. Haz clic en el nombre de arriba a la izquierda, bórralo y escribe `equipo_NOMBRE_compuerta`. **Enter**.
 
-1. **Paleta:** un Cubo de 54 × 30 × 3 mm. No se mueve: queda en el centro.
-   - De **Formas**, un **Cubo** con primer A = **54**, L = **30**, segundo A = **3**, arista = **0**.
-2. **Encastre:** un cilindro de 8 mm de ancho y 5 mm de alto, parado sobre una punta de la paleta.
-   - Debajo, un **Cilindro** con **Radio = 4** (8 ÷ 2), **A = 5**, **Lados = 32**.
-   - Debajo, **Mover: X −22, Y 0, Z 4**.
-3. **Agujero del encastre (hueco):** un cilindro de 5 mm de ancho, donde entra el brazo del servo.
-   - Debajo, otro **Cilindro** con **Radio = 2.5** (5 ÷ 2), **A = 6**, **Lados = 32**, marcado como **hueco**.
-   - Debajo, **Mover: X −22, Y 0, Z 4.5** (en el mismo lugar que el encastre). Empieza justo encima de la paleta, así la paleta no queda agujereada.
-4. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
-   - **✔ Revisa:** debes ver la paleta con un cilindro hueco en una punta.
+Tengan a mano el **brazo de un solo lado** del servo (el más largo): el encastre tiene un hueco con su forma.
 
-[IMAGEN 2.4D: compuerta en Tinkercad Codeblocks: paleta de 54 × 30 mm con el encastre del servo en una punta]
+1. **Paleta:** un Cubo de 47 × 30 × 3 mm.
+   - De **Formas**, un **Cubo** con primer A = **47**, L = **30**, segundo A = **3**, arista = **0**.
+   - Debajo, **Mover: X −3.5, Y 0, Z 0**.
+2. **Encastre:** un bloque de 26 × 10 × 2.6 mm sobre una punta de la paleta.
+   - Debajo, un **Cubo** con primer A = **26**, L = **10**, segundo A = **2.6**.
+   - Debajo, **Mover: X −14, Y 0, Z 2.8**.
+3. **Hueco del centro del brazo:** un cilindro de 8 mm de ancho, donde entra la parte redonda del brazo.
+   - Debajo, un **Cilindro** con **Radio = 4** (8 ÷ 2), **A = 5**, **Lados = 32**, marcado como **hueco**.
+   - Debajo, **Mover: X −22, Y 0, Z 2.85**.
+4. **Hueco del brazo:** un Cubo de 18.6 × 6 × 5 mm, donde entra la parte larga del brazo.
+   - Debajo, un **Cubo** con primer A = **18.6**, L = **6**, segundo A = **5**, marcado como **hueco**.
+   - Debajo, **Mover: X −12.7, Y 0, Z 2.85**.
+5. **Agujerito del tornillo:** un cilindro de 4.5 mm de ancho que atraviesa todo. Por ahí se pone el tornillo del brazo.
+   - Debajo, un **Cilindro** con **Radio = 2.25**, **A = 10**, **Lados = 32**, marcado como **hueco**.
+   - Debajo, **Mover: X −22, Y 0, Z 0**.
+6. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
+   - **✔ Revisa:** debes ver la paleta con un bloque en una punta. En el bloque, un hueco con la forma del brazo del servo y, en su centro, un agujerito que atraviesa la paleta.
 
-5. **Exporta** `equipo_NOMBRE_compuerta.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
+[IMAGEN 2.4D: compuerta en Tinkercad Codeblocks: paleta de 47 × 30 mm con el encastre del servo en una punta, con el hueco del brazo y el agujerito del tornillo]
 
-En el dispensador, la compuerta va **boca abajo**: la paleta arriba, pegada a la salida del embudo, y el encastre abajo, encajado en el brazo del servo.
+7. **Exporta** `equipo_NOMBRE_compuerta.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
+
+En el dispensador, la compuerta va **boca abajo**: la paleta arriba, pegada a la salida del embudo, y el encastre abajo, con el brazo del servo metido en su hueco.
 
 :::pregunta id="g2t-p2"
 ¿Por qué el encastre va en una punta de la paleta y no en el centro?
@@ -195,7 +204,9 @@ Antes de irse, junten los 2 `.stl` en un `.zip` (selecciónenlos, clic derecho �
 - **Versión Tinkercad (Codeblocks), reestructurada el 21 de octubre:** se centra en la práctica. Las guías 2 y 3 terminan el diseño (torre, compuerta y embudo) y desde la Guía 4 se arma lo impreso y se programa. Ya no lleva comparación de mecanismos, prototipo de cartón, boceto ni soporte suelto del servo: la torre lo reemplaza.
 - Las piezas son las mismas del lado del cereal del dispensador doble (imágenes 2.3D y 2.4D). Campos propios (g2t-…).
 - Diseño completo de referencia en la cuenta del docente: "Dispensador sencillo - propuesta completa". Las piezas por separado son los diseños "Dispensador doble - modelo torre cereal", "… compuerta" y "… embudo".
-- Medidas: torre de 10 × 11 × 15 cm. El embudo se apoya con su tapa (90 mm) sobre el agujero de 82 mm, y su salida queda a 10 cm del pie. La compuerta queda 1 mm debajo de la salida. El servo (SG90 de 22,8 × 12,2 mm, pestañas a 15,9 mm de la base) cuelga de la repisa con el eje hacia arriba, y su eje queda a 22 mm del centro de la salida. Si el servo de la academia mide distinto, se ajusta el hueco.
+- Medidas: torre de 10 × 11 × 15 cm. El embudo se apoya con su tapa (90 mm) sobre el agujero de 82 mm, y su salida queda a 10 cm del pie. El servo (SG90 de 22,5 × 11,8 mm, pestañas a 15,9 mm de la base) cuelga de la repisa con el eje hacia arriba, y su eje queda a 22 mm del centro de la salida. Si el servo de la academia mide distinto, se ajusta el hueco.
+- **Compuerta revisada el 12 de noviembre** con los planos del SG90 (Addicore) y de su brazo de un lado (centro de Ø7,4 × 5,2 mm, brazo de 2,6 mm de grueso hasta 18,1 mm del centro). Antes, el encastre era un cilindro con un agujero de 5 mm: el brazo no entraba (su centro mide 7,4) y, metido directo en el eje, giraba suelto. Además, al abrir hacia la pared, la esquina de la paleta de 54 mm chocaba con la pared entre 70° y 80°. Ahora el encastre tiene el hueco del brazo (con 0,3 mm de holgura) y el agujerito del tornillo; la paleta mide 47 mm y queda 0,8 mm debajo de la salida. Comprobado en Blender con modelos del servo, el brazo, la torre y el embudo: no choca girando de −90° a 90° (`herramientas/verificar_dispensador_stl.py`).
+- La compuerta se imprime con la paleta sobre la cama, sin soportes.
 - Plato: de menos de 9 cm de ancho y 5 cm de alto, para que quepa en el pie, debajo del servo.
 - Impresión: la torre se imprime **acostada sobre la pared** (la pared en la cama), así las repisas no necesitan soportes. STL de referencia: `Dispensador doble - STL para imprimir\dispensador_torre_cereal.stl` y `dispensador_compuerta.stl`.
 - g2t-p1: holgura; la impresora no es exacta y el servo no entraría o quedaría muy apretado.

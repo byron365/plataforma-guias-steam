@@ -56,8 +56,7 @@ Calculen las líneas que van a trazar. Pasen los metros a centímetros (× 100) 
    - En el centro de cada lado corto dejen un hueco de **10 cm** (el ancho de la portería).
 4. Pega las **porterías** en el centro de cada lado corto. La ventana del sensor debe quedar **mirando hacia la cancha**.
    - La boca de cada portería, justo en su hueco de la banda; el fondo, hacia afuera de la cancha.
-5. Haz un agujero pequeño detrás de cada portería para pasar los cables.
-   - Con la punta de un lápiz o un destornillador (con cuidado), en la base, justo detrás de la ventana del sensor.
+5. Revisen el **pie del sensor** de cada portería: queda detrás del fondo, por fuera de la base. Ahí se acuesta el sensor, y sus cables van por el borde de la base hasta el marcador.
 6. Pongan el **soporte del marcador** a un lado de la cancha, mirando hacia los jugadores. La pantalla y el buzzer se colocan el sábado 5.
 
 [IMAGEN 2.1T: mini fútbol diseñado en Tinkercad, con etiquetas: portería azul, portería roja, cancha a escala, bandas laterales, pelota, soporte del marcador, Arduino y protoboard con el botón]

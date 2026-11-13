@@ -32,7 +32,7 @@ Armar el dispensador con las piezas impresas y los componentes reales, copiando 
 - [ ] El embudo entra en el agujero de arriba y se apoya con su tapa sin tambalearse.
 - [ ] La boca de la botella entra en el cuello del embudo.
 - [ ] El servo entra en el hueco de la repisa hasta que sus pestañas se apoyan.
-- [ ] Un brazo del servo entra en el encastre de la compuerta.
+- [ ] El brazo de un solo lado del servo entra en el hueco del encastre de la compuerta.
 :::
 
 - **Si algo entra muy apretado:** lijen por dentro, poco a poco, y prueben otra vez.
@@ -71,12 +71,12 @@ Antes de montar la compuerta, el servo debe estar en **0°** (compuerta cerrada)
 1. **El servo:** métanlo desde arriba en el hueco de la repisa de en medio, con el **eje hacia arriba** y del lado que queda **debajo del embudo**. Bájenlo hasta que cuelgue de sus pestañas. Los cables salen hacia abajo; llévenlos por detrás de la torre hacia la protoboard.
 2. **El embudo:** pónganlo en el agujero de arriba, apoyado con su tapa.
 3. **La compuerta:** va **boca abajo**, con la paleta arriba y el encastre abajo.
-   - Metan un brazo del servo en el encastre de la compuerta.
-   - Encajen el brazo en el eje del servo, con la paleta justo **debajo de la salida del embudo, tapándola**.
-   - Pongan el tornillo pequeño en el centro del brazo para que no se salga.
+   - Metan el **brazo de un solo lado** (el más largo) en el hueco del encastre. Debe entrar justo; si queda flojo, una gota de silicona por los lados (nunca en el centro del brazo).
+   - Encajen el centro del brazo en el eje del servo, con la paleta justo **debajo de la salida del embudo, tapándola**.
+   - Pongan el tornillo pequeño por el **agujerito de la paleta**, con el destornillador, hasta el centro del brazo.
 4. **Revisen la abertura:** conecten el USB y presionen el botón. La compuerta debe destapar la salida sin chocar con la torre y después volver a taparla.
    - Si no tapa la salida en 0°: desconecten el USB, saquen el brazo del eje, gírenlo un poquito y vuelvan a encajarlo.
-   - Si choca con la torre al abrir: saquen la compuerta, gírenla media vuelta en el brazo y vuelvan a montarla.
+   - Si la paleta roza el embudo: avisen al docente.
 
 :::checklist id="g7p-revision"
 - [ ] En 0° la compuerta tapa toda la salida.
@@ -126,7 +126,7 @@ Dejen el dispensador armado. Desconecten el USB y guarden la botella vacía.
 
 :::docente
 - **Versión Tinkercad práctica:** junta el armado de la Guía 4 Tinkercad y el circuito completo en un solo sábado. Conviene tener las piezas impresas revisadas (soportes quitados) y la botella cortada antes de empezar. Campos propios (g7p-…).
-- La altura entre el brazo del servo y la compuerta depende del brazo: si la paleta queda lejos de la salida, suplementar con una arandela o una gota de silicona en el encastre.
+- Compuerta nueva (12 de noviembre, ver Guía 2): la paleta queda 0,8 mm debajo de la salida y no choca con la torre al abrir. Si el brazo de la academia es más alto que el del plano y la paleta roza el embudo, poner un anillo de cartón debajo de la tapa del embudo. Las compuertas impresas antes (encastre de 5 mm) no reciben el brazo: hay que reimprimirlas.
 - Si el servo baila en su hueco, una gota de silicona caliente en las pestañas lo fija (con ayuda del docente).
 - Con el programa final, el dispensador sirve solo cada minuto: avisar al equipo para que no se asusten mientras arman. Si molesta, desconectar el USB.
 - Si no alcanza el tiempo, la Parte 6 se hace al inicio de la Guía 8.

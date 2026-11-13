@@ -116,7 +116,8 @@ Los soportes tienen forma de **L**: una placa parada con el agujero del eje y un
 
 El motor TT se atornilla a esta pieza por sus dos agujeros (están uno encima del otro, separados 17,6 mm), y su eje entra en el rodillo del motor.
 
-1. **La oreja:** un **Cubo** con primer **A = 30**, **L = 3**, segundo **A = 70**. Debajo, **Mover: X 0, Y 0, Z 35**.
+1. **La oreja:** un **Cubo** con primer **A = 20**, **L = 3**, segundo **A = 70**. Debajo, **Mover: X 0, Y 0, Z 35**.
+   - Mide 20 de ancho para no tocar la parte del motor que es más gruesa (el motorcito con su clip).
 2. **El pie:** igual que el del soporte del rodillo: **Cubo** de **30 × 20 × 4** con **Mover: X 0, Y −10, Z 2**.
 3. **La ranura de los tornillos (hueco):** un **Cubo** hueco con primer **A = 3.4**, **L = 10**, segundo **A = 22**. Debajo, **Mover: X 0, Y 0, Z 55**.
    - La ranura está a la altura del eje (55 mm): los dos tornillos del motor pasan por ella.
@@ -169,6 +170,7 @@ Antes de irse: suban los cinco `.stl` juntos en un `.zip` (selecciónenlos → c
 - **Versión Práctica (7 sábados), nueva el 23 de octubre:** reemplaza la arquitectura (flujo, diagrama de bloques, protocolo y simulación en Wokwi) por el diseño 3D de la mecánica de la banda. Campos propios (g2p-…).
 - Diseños de referencia en la cuenta del docente: "Banda clasificadora - propuesta completa", "Banda - modelo rodillos y soportes" y "Banda - modelo tunel, puente y canaleta". STL: `herramientas/banda_stl.py`.
 - Medidas del motor TT tomadas del plano de Adafruit (producto 3777): eje de 5,4 mm con planos de 3,7 mm que sale 9,3 mm del cuerpo; agujeros de 3 mm separados 17,6 mm, a 22,5 mm del eje; cuerpo de 22,4 mm de alto.
+- **Revisado el 12 de noviembre** con el plano del TT de Einstronic y la banda armada en Blender (`herramientas/verificar_banda_stl.py`): el motorcito con su clip mide 22,4 de grueso (la caja de engranes, 19) y empieza 11,65 mm después de los agujeros, así que con la oreja de 30 mm el motor no quedaba plano; ahora mide 20. El eje con sus planos entra en el hueco de 3,9 × 5,6 del rodillo; el servo y su cable caben en su soporte, y la canaleta gira a 30°, 90° y 150° sin tocar el puente ni los soportes. Si el cuerpo del motor queda hacia el puente de salida, choca con su pata: va hacia el inicio de la banda (Guía 7).
 - Imprimir: rodillo del motor y rodillo libre (≈ 3 h cada uno con relleno del 15 %), 3 soportes del rodillo, 1 soporte del motor y 1 soporte del servo, todos sin soportes de impresión.
 - g2p-p1: el rodillo debe girar sobre el palito (holgura); el palito debe quedar fijo en el soporte (apretado).
 - Medidas de la banda de la Guía 3 normal: 40 cm entre rodillos, 6 cm de ancho, rodillos de 3 cm.

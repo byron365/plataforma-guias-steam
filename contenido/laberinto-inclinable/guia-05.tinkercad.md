@@ -108,8 +108,8 @@ Cada pieza va en su **propio diseño** (**+ Crear → Codeblocks**). Si sus medi
 **3. Soporte de la pantalla** (`equipo_NOMBRE_soporte_pantalla`): un panel inclinado con una ventana para la pantalla y un agujero para el buzzer, sobre una base.
 
 - **Panel:** **Cubo** con primer **A = 70**, **L = 4**, segundo **A = 50**. No se mueve.
-- **Ventana de la pantalla:** **Cubo** hueco con primer **A = 25**, **L = 10**, segundo **A = 14**. **Mover: X 0, Y 0, Z 8**.
-- **Agujero del buzzer:** **Cilindro** hueco con **Radio = 6.2**, **A = 10**, **Lados = 32**. Debajo, **Girar alrededor** con **Eje x** y **90**, y **Mover: X 0, Y 0, Z −14**.
+- **Ventana de la pantalla:** **Cubo** hueco con primer **A = 23**, **L = 10**, segundo **A = 14**. **Mover: X 0, Y 0, Z 8**.
+- **Agujero del buzzer:** **Cilindro** hueco con **Radio = 6.4**, **A = 10**, **Lados = 32**. Debajo, **Girar alrededor** con **Eje x** y **90**, y **Mover: X 0, Y 0, Z −14**.
 - **Seleccionar todo** y **Group Selection**.
 - **Inclinar el panel:** **Girar alrededor** con **Eje x** y **−15**, y **Mover: X 0, Y 0, Z 27.5**.
 - **Base:** **Cubo** con primer **A = 70**, **L = 45**, segundo **A = 4**. **Mover: X 0, Y 2.5, Z 2**.
@@ -152,7 +152,7 @@ Antes de irse: suban el programa con su inclinación elegida y, en un `.zip`, lo
 
 :::docente
 - **Versión Tinkercad, nueva el 21 de octubre:** el centrado y el montaje pasaron a la Guía 4T; aquí quedan el control y la inclinación de la Guía 5 normal y el diseño de las tres piezas pequeñas que se usan desde la Guía 6. Campos propios (g5t-…).
-- El soporte de la pantalla es el mismo del mini fútbol (ventana de 25 × 14 mm para la OLED de 0,96", agujero de 12,4 mm para el buzzer de 12 mm).
+- El soporte de la pantalla es el mismo del mini fútbol (ventana de 23 × 14 mm para la OLED de 0,96" y agujero de 12,8 mm para el buzzer de 12 mm, revisados el 12 de noviembre).
 - Soporte del sensor: el FC-51 entra **parado**, con los dos LEDs hacia arriba, hasta tocar el tablero. El tubo solo cubre la parte de arriba de la placa: el tornillo azul queda afuera para ajustarlo. Medidas de ejemplo: placa de 14,6 mm con piezas de 9,4 mm de grueso.
 - Base del joystick: medidas de ejemplo de un módulo KY-023 de 26 × 34 mm; la salida de los cables va en el lado de los pines. Si el joystick baila, una gota de silicona en el cerco.
 - Con INCLINACION mayor de 20 la canica suele saltar las paredes; el soporte está pensado hasta 20.

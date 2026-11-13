@@ -52,6 +52,8 @@ Miren la imagen de la banda completa para ver dónde va cada cosa:
    - Atornillen el motor al soporte del motor: los tornillos pasan por la ranura y por los dos agujeros del motor, con las tuercas del otro lado.
    - Metan el rodillo del motor en el eje del TT (por el lado del hueco plano). En la otra punta del rodillo, un palito que entra en el tercer soporte del rodillo.
    - El soporte del motor va del lado contrario al tercer soporte, con el motor por **dentro** (entre el soporte y el rodillo).
+   - El cuerpo del motor va **hacia el inicio** de la banda (debajo del costado de la banda), no hacia el puente de salida: si no, choca con la pata del puente.
+   - Para que el rodillo quede centrado: la cara del soporte del motor que toca el motor queda a **5,5 cm** de la línea central, y la cara de adentro del tercer soporte, a **3,6 cm** del otro lado.
 4. **La banda:** pongan el lazo de la banda alrededor de los dos rodillos **antes** de fijar el final. Corran el motor con su rodillo hasta que la banda quede **tensa** y fijen los soportes del final (tornillos o silicona).
    - Los dos rodillos deben quedar paralelos y a la misma altura: mídanlo con la regla.
 

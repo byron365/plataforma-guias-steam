@@ -59,12 +59,13 @@ Muevan los controles de la animación y miren qué parte gira con cada servo:
 
 Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_marco`.
 
-1. **Lado de adelante:** un **Cubo** con primer **A = 198**, **L = 6**, segundo **A = 19**. Debajo, **Mover: X 0, Y −100, Z 9.5**.
+1. **Lado de adelante:** un **Cubo** con primer **A = 198**, **L = 8**, segundo **A = 19**. Debajo, **Mover: X 0, Y −101, Z 9.5**.
+   - Es 2 mm más grueso que los otros lados: así el servo del tablero queda un poco más afuera y su brazo no choca con el tablero.
 2. **Lado de atrás:** otro **Cubo** igual y **Mover: X 0, Y 100, Z 9.5**.
 3. **Lado derecho:** un **Cubo** con primer **A = 6**, **L = 194**, segundo **A = 19**. Debajo, **Mover: X 96, Y 0, Z 9.5**.
 4. **Lado izquierdo:** otro igual y **Mover: X −96, Y 0, Z 9.5**.
    - Ejecuta con **▷**. **✔ Revisa:** un cuadro cerrado, sin huecos en las esquinas.
-5. **La ventana del servo (hueco):** un **Cubo** con primer **A = 23.4**, **L = 10**, segundo **A = 12.8**, marcado como **hueco**. Debajo, **Mover: X −5.4, Y −100, Z 9.5**.
+5. **La ventana del servo (hueco):** un **Cubo** con primer **A = 23.4**, **L = 12**, segundo **A = 12.8**, marcado como **hueco**. Debajo, **Mover: X −5.4, Y −101, Z 9.5**.
 6. **El agujero de atrás (hueco):** un **Cilindro** con **Radio = 2**, **A = 10**, **Lados = 32**, hueco. Debajo, **Girar alrededor** con **Eje x** y **90**, y **Mover: X 0, Y 100, Z 9.5**.
 7. **El agujero izquierdo (hueco):** otro **Cilindro** igual, hueco. Debajo, **Girar alrededor** con **Eje y** y **90**, y **Mover: X −96, Y 0, Z 9.5**.
 8. **Agrupar:** **Seleccionar todo** y **Group Selection**. Ejecuta con **▷**.
@@ -151,7 +152,8 @@ Antes de irse, junten los 4 `.stl` en un `.zip` (selecciónenlos, clic derecho �
 
 :::docente
 - **Versión Tinkercad, reestructurada el 21 de octubre:** el pseudocódigo, el juego en Wokwi, la pieza de prueba y el cronograma salen de esta versión; el código del juego se escribe directamente en la Guía 6. El soporte cardán de antes (base de 240 mm y marco de 220 mm) no se podía hacer: el **Cubo de Codeblocks llega como máximo a 200 mm**. Campos propios (g3t-…).
-- **Medidas** (probadas en Tinkercad el 21 de octubre): marco de 198 × 206 × 19 mm con lados de 6 mm, y torres de 134 mm de alto. Cabe en una cama de 220 × 220. Los ejes de giro del marco y del tablero quedan a **120 mm** de la base: así, aunque la meta esté en una esquina y se incline 15° (o 20°) en diagonal, el sensor que cuelga del tablero no choca con la base (quedan unos 13 mm a 15° y 5 mm a 20°).
+- **Revisado el 12 de noviembre** con el plano del SG90 (Addicore) y de su brazo (Printables: centro de Ø7,4 × 5,2 que entra 2,75 mm en el eje), armando el laberinto en Blender (`herramientas/verificar_laberinto_stl.py`). Con el lado de adelante de 6 mm, el centro del brazo del servo del tablero se metía 0,95 mm en el borde de adelante del tablero, y el tablero solo puede correrse 1 mm hacia atrás (la bisagra toca el marco): quedaban 0,05 mm. Con el lado de adelante de 8 mm (marco de 198 × 208) queda 1 mm libre. Con las torres a 21,5 cm (antes 21,3), el brazo del servo del marco queda 0,55 mm libre del marco (antes se metía 0,45 y el marco tenía que correrse sobre su palito). Inclinando el marco y el tablero ±25° nada roza.
+- **Medidas** (probadas en Tinkercad el 21 de octubre): marco de 198 × 208 × 19 mm con lados de 6 mm (el de adelante, de 8), y torres de 134 mm de alto. Cabe en una cama de 220 × 220. Los ejes de giro del marco y del tablero quedan a **120 mm** de la base: así, aunque la meta esté en una esquina y se incline 15° (o 20°) en diagonal, el sensor que cuelga del tablero no choca con la base (quedan unos 13 mm a 15° y 5 mm a 20°).
 - **Servo usado:** SG90 de 22,8 × 12,2 mm, con pestañas de 32,2 mm y el eje a unos 6 mm de un extremo. Por eso la ventana del marco está corrida 5,4 mm: el eje del servo cae justo en el centro del marco (X = 0) si el servo entra con el eje hacia la derecha. En la torre, el servo va parado con el eje arriba, a 120 mm. **Antes de imprimir para todos, conviene probar un marco y una torre con un servo de la academia.**
 - Los agujeros de 4 mm son para **palitos de pincho** de unos 3 mm (o un clavo): giran libres en el marco y en la torre, y se pegan con silicona en la bisagra y en el lado izquierdo del marco.
 - Impresión: el tablero y el marco tal como salen (planos); las torres **acostadas sobre la placa** (la cara sin aletas en la cama), sin soportes. Tiempos aproximados: tablero 3-4 h, marco 3 h, cada torre 1,5 h.

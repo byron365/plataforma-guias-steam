@@ -72,7 +72,7 @@ Si nuestro joystick midiera 1 mm más de ancho, ¿qué números de la base tendr
 1. Con regla y lápiz, tracen en la base una **línea de lado a lado por el centro**.
 2. Pongan las dos torres sobre esa línea, una frente a la otra, con las **caras lisas (sin aletas) mirando hacia adentro**.
    - Mirando la base desde adelante (desde donde jugarán), la **torre del servo** va a la **derecha** y la **torre del eje** a la **izquierda**.
-   - La distancia entre las dos caras lisas debe ser de **21,3 cm**. Cada torre a la misma distancia del centro.
+   - La distancia entre las dos caras lisas debe ser de **21,5 cm**. Cada torre a la misma distancia del centro.
    - Los agujeros de las torres deben quedar a la misma altura y uno frente al otro.
 3. Atornillen cada pie con dos tornillos (con el docente) o péguenlo con bastante pegamento caliente.
 
@@ -150,7 +150,7 @@ Antes de irse: suban aquí `equipo_NOMBRE_base_joystick.stl`. El docente la impr
 :::docente
 - **Versión Práctica con Wokwi (7 sábados):** la revisión de piezas, las torres, el circuito y los servos en 90° de la Guía 4 Tinkercad y la base del joystick de la Guía 5 Tinkercad. La **fuente de 5 V con jack hembra** reemplaza al portapilas de 4 AA, como en las demás versiones prácticas. Campos propios (g5p-…).
 - **Imprimir esta semana** la base del joystick, sin soportes.
-- Distancia entre torres: las caras lisas quedan a 212,6 mm (21,3 cm). Entre la torre y el marco quedan unos 7 mm para el brazo del servo.
+- Distancia entre torres: las caras lisas quedan a 215 mm (21,5 cm; antes 21,3, revisado el 12 de noviembre, ver Guía 3). Entre la torre y el marco quedan 8,5 mm: el servo sobresale 2 mm de la torre y su brazo queda a 0,5 mm del marco.
 - Base del joystick: medidas de ejemplo de un módulo KY-023 de 26 × 34 mm; la salida de los cables va en el lado de los pines. Si el joystick baila, una gota de silicona en el cerco.
 - Fuente de 5 V y al menos 1 A. Revisar el GND común de cada equipo antes de que enchufen la fuente: es el error más frecuente.
 - El servo del tablero entra con el eje hacia la derecha (mirando desde adelante); si entra al revés, el eje queda 1 cm corrido y el tablero roza.

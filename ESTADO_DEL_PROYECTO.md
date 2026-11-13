@@ -1,6 +1,6 @@
 # Estado del proyecto · Plataforma de guías STEAM
 
-*Última actualización: 7 de noviembre de 2026*
+*Última actualización: 12 de noviembre de 2026*
 
 Este documento resume qué está hecho, qué falta y cómo retomar el trabajo.
 Para usar la plataforma, ver `LEEME.md`. Para escribir guías, ver `COMO_AGREGAR_PROYECTOS.md`.
@@ -82,9 +82,13 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > **STL del puente revisados y corregidos** contra los planos reales del SG90 y del HC-SR04 (detalle en la sección del puente).
 > Verificación en Blender: `herramientas/verificar_puente_stl.py` (carga los STL y los compara con modelos del servo, su cable,
 > la torre, los LEDs, el buzzer y el sensor; mide choques y saca dos imágenes).
-> **[ ] Pendiente para otra sesión: revisar los demás STL** de `..\STL\` con el mismo método (medidas reales de cada
-> componente con margen, salida de cables, que las piezas encajen entre sí): Dispensador doble, Banda clasificadora,
-> Laberinto, Mini fútbol y Robot con mando.
+> **[x] Revisión de todos los STL terminada (12 de noviembre)** con el mismo método del puente (medidas reales de cada
+> componente con margen, salida de cables, que las piezas encajen entre sí, comprobado en Blender con un script
+> `herramientas/verificar_<proyecto>_stl.py` por proyecto): Dispensador (compuerta y torre del líquido), Robot (orejas,
+> rebaje de tuerca, soporte del sensor y bandeja), Mini fútbol (portería con pie del sensor y soporte del marcador), Banda
+> (oreja del soporte del motor) y Laberinto (lado de adelante del marco y distancia entre torres). Ver sus secciones.
+> [ ] Reimprimir las piezas corregidas de cada equipo y actualizar sus diseños de referencia en Tinkercad.
+> [ ] El Mini invernadero usa la misma manguera de la bomba (unos 8 mm): revisar su clip.
 
 ---
 
@@ -309,6 +313,21 @@ práctica y menos experimentos con cartón. Tercera versión del proyecto: `"dob
   `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/dispensador_stl.py -- "<carpeta de salida>"`.
   Sólidos cerrados y volúmenes comprobados con las cuentas a mano (torre del cereal 142 cm³, torre del líquido 67 cm³,
   embudo 32 cm³, compuerta 5 cm³). Para ajustar una medida (hueco del servo, cuello, manguera) se cambia en `PIEZAS`.
+- **STL revisados el 12 de noviembre** contra los planos del SG90 (Addicore), su brazo de un lado (Printables: centro Ø7,4 × 5,2,
+  brazo de 2,6 mm hasta 18,1 mm del centro) y la mini bomba de 3–6 V (salida de 7,5 mm, manguera de unos 8 mm). Sirven para
+  los dos equipos (versión sencilla: torre, compuerta y embudo; doble: además la torre del líquido).
+  - Bien: servo en su hueco (0,9 a 1 mm de holgura, cuelga de las pestañas, el cable sale por abajo), embudo en el agujero de
+    82 mm (se apoya con la tapa), botella de boca de 28 mm en el cuello.
+  - **Compuerta corregida:** el encastre (cilindro con agujero de 5 mm) no recibía el brazo (centro de 7,4) y, metido directo en el
+    eje, giraba suelto; con el brazo puesto, la paleta quedaba pegada al embudo; al abrir hacia la pared, la paleta de 54 mm
+    chocaba con la pared entre 70° y 80°. Ahora: paleta de 47 × 30, encastre de 26 × 10 × 2,6 con el hueco del brazo y
+    agujerito para el tornillo; queda 0,8 mm debajo de la salida y no choca girando de −90° a 90°.
+  - **Torre del líquido:** agujero de la manguera de 7,5 → 8,5 mm (ejemplo de la Guía 3 doble: manguera de 8).
+  - Guías 2T, 2 doble, 3T, 3 doble, 5 doble, 7 práctica y 7 doble práctica actualizadas; imagen 2.4D por rehacer.
+  - Verificación en Blender: `herramientas/verificar_dispensador_stl.py` (compara el generador anterior con el actual).
+    STL anteriores en `..\STL\Dispensador doble - STL para imprimir\anteriores (21 de octubre)`.
+  - [ ] Reimprimir la compuerta de los dos equipos y la torre del líquido del equipo doble. [ ] Actualizar los diseños de
+    referencia en Tinkercad ("… compuerta", "… torre liquido") y la imagen 2.4D.
 - [ ] Imagen 5.1D (circuito del dispensador doble).
 - [ ] Probar en la academia: el servo colgando de la repisa y la altura del brazo hasta la compuerta (depende del brazo).
 - [ ] **Pendiente para otra tanda:** Guía 6 doble (gramos y mililitros; hoy usa `servir()` y `TIEMPO_ABIERTA`), 7, 8
@@ -426,8 +445,20 @@ pieza nueva = soporte del marcador; sin escaneo 3D en esta versión. La Guía 1 
   comprobados con las cuentas a mano (30,6 y 24,5 cm³). Se generan con
   `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/futbol_stl.py -- "<carpeta de salida>"`.
 - [ ] Guía 7 (normal) dice "medidas y escala en la Guía 2": en la versión Tinkercad están en la Guía 4.
-- [ ] Probar en la academia: que el vidrio de la pantalla tape la ventana de 25 × 14 y que los ojitos del sensor quepan
-  en la ventana de 12 mm de la portería.
+- [x] ~~Probar que el vidrio tape la ventana y que los ojitos quepan~~: **STL revisados el 12 de noviembre** con las medidas del
+  FC-51 (placa 31,3 × 14,2 × 6,6; ojitos de Ø5 que sobresalen 7,7 mm y juntos miden ~11), de la OLED de 0,96" (vidrio
+  26,7 × 19,26, parte iluminada 21,7 × 10,9, placa 27,3 × 27,8) y del buzzer (Ø12 × 8,5); comprobado en Blender
+  (`herramientas/verificar_futbol_stl.py`). Corregido:
+  - **Portería:** ventana 12 → 14 mm (quedaban 0,5 mm por lado) y **pie del sensor** detrás del fondo (16 × 30 × 18,4) con un
+    **tope**: antes el sensor se pegaba solo por la orilla de su placa y los ojitos asomaban 4,7 mm dentro de la portería
+    (la pelota les pegaba). Ahora quedan 1 mm adentro de la ventana, a la altura del centro de la pelota. La portería mide
+    74 mm de fondo: el pie queda ~3,5 cm por fuera de la base de 60 cm (normal).
+  - **Soporte del marcador:** ventana de la pantalla 25 → 23 mm (el vidrio la tapaba solo 0,85 mm por lado) y agujero del
+    buzzer 12,4 → 12,8. La pantalla con sus cables y el buzzer caben detrás del panel.
+  - Guías 2T, 3T, 4T, 5T, 7 práctica y 8 práctica actualizadas (el agujero de los cables en la base ya no hace falta).
+    STL anteriores en `..\STL\Mini futbol - STL para imprimir\anteriores (21 de octubre)`.
+  - [ ] Reimprimir las porterías y el soporte de los dos equipos. [ ] Actualizar los diseños de referencia en Tinkercad y
+    la imagen 2.3T (y la 2.1T, que muestra las porterías sin pie).
 
 **Laberinto inclinable, versión Tinkercad reestructurada (21 de octubre)**, a pedido de Bairon ("los chicos son un poco
 más lentos": menos teoría, más práctica, y diseñar en 3D lo que faltaba). Decisiones de Bairon: impresora de 220 × 220 o
@@ -458,7 +489,18 @@ y base del joystick); sin el juego en Wokwi (el código va en la Guía 6); torre
   (60 × 50 × 10 mm, 14,1 cm³) y `laberinto_soporte_pantalla.stl` (70 × 45 × 52 mm, 24,5 cm³, igual al del mini fútbol).
   Con las medidas de ejemplo de la Guía 5T; sólidos cerrados y volúmenes iguales a las cuentas a mano. Se generan con
   `"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/laberinto_stl.py -- "<carpeta de salida>"`.
-- [ ] Generar los STL del marco y las torres si Bairon los pide (el tablero depende de cada equipo).
+- **Revisado el 12 de noviembre** armando el laberinto en Blender (`herramientas/verificar_laberinto_stl.py`) con el plano del
+  SG90 (Addicore) y de su brazo (Printables) y el joystick KY-023 (34 × 26). Bien: servos en sus ventanas, tablero dentro del
+  marco, marco y tablero inclinándose ±25° sin rozar nada, base del joystick con sus cables.
+  - **Corregido:** el centro del brazo del servo del tablero se metía 0,95 mm en el borde de adelante del tablero y este solo
+    puede correrse 1 mm (la bisagra toca el marco): lado de adelante del marco de **6 → 8 mm** (marco de 198 × 208; queda 1 mm
+    libre). El brazo del servo del marco se metía 0,45 mm en el marco: torres a **21,5 cm** (antes 21,3; queda 0,55 mm).
+    Guías 3 (Práctica y Tinkercad), 5 Práctica y 4 Tinkercad actualizadas.
+  - El soporte de la pantalla quedó igual al del mini fútbol (ventana de 23 × 14, agujero de 12,8; Guía 5T).
+  - **STL de referencia nuevos:** `laberinto_marco.stl`, `laberinto_torre_servo.stl` y `laberinto_torre_eje.stl` (el tablero no,
+    porque cada equipo diseña su laberinto). STL anteriores en `..\STL\Laberinto - STL para imprimir\anteriores (21 de octubre)`.
+  - [ ] Si el equipo ya imprimió el marco con el lado de adelante de 6 mm, reimprimirlo (o usar el de referencia).
+    [ ] Actualizar el diseño de referencia del marco en Tinkercad y la imagen 3.2T.
 - [ ] Imagen 6.1T: foto real del sensor en su soporte.
 - **Imagen 2.1 (23 de octubre)**, la usan la Guía 2 normal y la 2T: laberinto de ejemplo a lápiz sobre papel cuadriculado
   (casillas de 2 × 2 cuadritos, letras A–G arriba, números 1–7 con el 1 abajo, salida en A1 y meta en G7). Es un laberinto
@@ -514,6 +556,23 @@ TT, ruedas y rueda loca) y se diseñan las cuatro piezas propuestas.
 - Ranura del chasis alargada a 22 mm (Z 15.5) el 23 de octubre: según el plano de Adafruit del TT (producto 3777), los
   agujeros están a 2,4 mm de la cara de arriba del motor y la ranura de 20 mm empezaba a 2 mm. Guía 2P, `robot_stl.py`, el
   STL y el diseño "Robot - modelo chasis" actualizados.
+- **STL revisados el 12 de noviembre** contra los planos del TT (Einstronic: caja de engranes de 19 de grueso y 48,2 de largo,
+  eje a 14 mm de la punta y a 22,55 de los agujeros; motorcito con clip de 22,4 de grueso desde 11,65 mm después de los
+  agujeros), del HC-SR04 (Makerguides) y de los componentes de la bandeja (Arduino 68,6 × 53,4, L298N 43 × 43 × 27–29,
+  protoboard 47 × 35, portabaterías 2 × 18650 de 74,5–77,5 × 40–41, pila de 9 V 48,5 × 26,5 × 17,5). Armado y
+  comprobado en Blender (`herramientas/verificar_robot_stl.py`). Bien: ranura y agujeros del motor, ruedas (no tocan el chasis
+  ni la bandeja), robot horizontal con rueda loca de 20 mm, postes, pila de 9 V entre los pisos (lo más alto, 29 de 40 mm),
+  portabaterías, Arduino, L298N y protoboard en la bandeja. Corregido:
+  - **Orejas de 30 → 20 mm:** el motorcito con su clip sobresale 1,7 mm hacia la oreja y se montaba sobre ella (232 mm³).
+  - **Rebaje de 1,5 mm** junto a cada oreja: la tuerca o la cabeza del tornillo de arriba chocaba 0,3–0,8 mm con la placa.
+  - **Soporte del sensor:** ojos a Z 15 (antes 13; la placa del HC-SR04 chocaba 1,5 mm con la base), agujeros de 17 y hueco
+    para el cristal.
+  - **Bandeja:** paso de los cables a X −20, Y 5 (con el Arduino y la protoboard donde dice la guía, el anterior quedaba
+    tapado a la mitad).
+  - Guías 2 y 3 (Práctica y app) con los números nuevos; Guía 7 Práctica y 8 app: los dos motores en el mismo sentido (eje
+    hacia el frente) y lugar exacto del Arduino. STL anteriores en `..\STL\Robot con mando - STL para imprimir\anteriores (23 de octubre)`.
+  - [ ] Reimprimir chasis, soporte del sensor y bandeja del equipo del robot (postes y caja del mando sin cambios).
+    [ ] Actualizar "Robot - modelo chasis / soporte del sensor / bandeja" en Tinkercad y las imágenes 2.3P, 2.4P y 3.1P.
 
 **Banda clasificadora, versión "Práctica (7 sábados)" (23 de octubre)**, a pedido de Bairon ("más prácticas… 6 o 7 guías
 comenzando desde la 2, vamos con el diseño"). Decisiones de Bairon: imprimir rodillos y soportes, túnel del sensor y
@@ -539,6 +598,16 @@ soporte del servo con desviador; 7 sábados; sin la simulación en Wokwi; motor 
   "Banda - modelo tunel, puente y canaleta". Imágenes 2.1P, 2.3P y 3.1P con etiquetas; la 2.2P es el editor de Codeblocks.
 - **STL** en `..\Banda clasificadora - STL para imprimir\` (fuera de esta carpeta), generados con `herramientas/banda_stl.py`
   (sólidos cerrados). El túnel y el puente se imprimen volteados.
+- **STL revisados el 12 de noviembre** con los planos del TT (Einstronic), SG90 (Addicore) y su brazo, FC-51 y TCS34725, con la
+  banda armada en Blender (`herramientas/verificar_banda_stl.py`). Bien: eje del TT en el rodillo (hueco 3,9 × 5,6 para el eje
+  de 5,4 con planos de 3,7), servo y cable en su soporte, canaleta a 30°, 90° y 150° sin tocar el puente ni los soportes,
+  contenedores de menos de 30 mm (quedan 2,5 mm), ventana del IR (16 × 8 para ojitos de 11 × 5) y del TCS34725 (12 × 12).
+  - **Corregido:** oreja del soporte del motor de 30 → 20 mm (el motorcito con su clip sobresale 1,7 mm y se montaba sobre
+    la oreja). Guía 2P actualizada.
+  - **Guía 7P:** el cuerpo del motor va hacia el inicio de la banda (hacia el puente choca con su pata) y la cara del soporte
+    del motor a 5,5 cm de la línea central (tercer soporte a 3,6 cm) para que el rodillo quede centrado.
+  - STL anteriores en `..\STL\Banda clasificadora - STL para imprimir\anteriores (23 de octubre)`.
+  - [ ] Reimprimir el soporte del motor (las demás piezas no cambian). [ ] Actualizar "Banda - modelo rodillos y soportes".
 - [ ] Probar con piezas reales: el rodillo en el eje del TT, la banda tensa entre rodillos de 40 cm, que la pieza caiga por
   el agujero del puente sobre la canaleta y resbale hasta el contenedor (rampa de unos 24°), y el TIP41C con el TT.
 - [ ] La Guía 1 normal todavía habla de la fuente de 12 V, el regulador y el MOSFET (tabla de roles): ajustar si se quiere.

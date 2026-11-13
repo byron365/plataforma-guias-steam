@@ -222,6 +222,6 @@ Antes de irse, **saquen las pilas**, guarden `equipo_NOMBRE_doble` (**Ctrl + S**
 - Algunos módulos relé se activan con LOW (la bomba se enciende al arrancar): en ese caso invertir HIGH y LOW en las líneas de la bomba, o usar el pin "activo alto" si el módulo lo tiene.
 - Nunca encender la bomba en seco por mucho tiempo: se daña. Si gira débil, revisar las pilas (4 AA nuevas dan unos 6 V).
 - g5d-p1: el `loop` revisa primero el botón del cereal: sirve cereal, espera y en la siguiente vuelta sirve líquido si el botón sigue presionado. Nunca hace las dos cosas a la vez.
-- Si la compuerta choca con la pared al abrir, el servo está girando hacia la pared: sacar la compuerta, girarla media vuelta en el brazo y volver a montarla, o probar ABIERTA más chico.
+- La compuerta nueva (47 mm, 12 de noviembre) no choca con la pared al abrir hacia ningún lado. Con una compuerta impresa antes (54 mm), si choca con la pared, probar ABIERTA más chico.
 - Tiempo total: 10 + 35 + 35 + 25 + 5 + 10 = 120 minutos.
 :::

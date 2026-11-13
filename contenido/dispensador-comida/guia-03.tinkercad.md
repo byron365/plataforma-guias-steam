@@ -101,7 +101,7 @@ Estos bloques van **debajo** de Group Selection, en este orden:
 :::checklist id="g3t-revision"
 - [ ] Torre: el agujero redondo atraviesa la repisa de arriba.
 - [ ] Torre: el hueco del servo atraviesa la repisa de en medio.
-- [ ] Compuerta: el encastre es hueco y la paleta no tiene agujero.
+- [ ] Compuerta: el brazo de un solo lado del servo entra en el hueco del encastre, y el agujerito del tornillo atraviesa la paleta.
 - [ ] Embudo: es hueco de arriba a abajo y el cuello es un anillo.
 - [ ] Los tres `.stl` están en Descargas con su nombre correcto.
 :::
@@ -117,7 +117,7 @@ Miren el dispensador completo y ubiquen cada pieza:
 - El **embudo**, dentro del agujero de la repisa de arriba, apoyado con su tapa.
 - La **botella**, boca abajo en el cuello del embudo.
 - El **servo**, parado en el hueco de la repisa de en medio, con el eje hacia arriba, colgando de sus pestañas.
-- La **compuerta**, boca abajo: el encastre en el brazo del servo y la paleta tapando la salida del embudo.
+- La **compuerta**, boca abajo: el brazo del servo metido en el encastre y la paleta tapando la salida del embudo.
 - El **plato**, sobre el pie, debajo de la salida.
 - El **Arduino** y la **protoboard** con el botón, el LED y el buzzer, al lado de la torre, en el frente, donde se vean.
 

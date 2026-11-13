@@ -37,15 +37,15 @@ El soporte es un **panel inclinado** sobre una base. El panel tiene una **ventan
 
 [IMAGEN 3.1T: soporte del marcador en Tinkercad Codeblocks, con etiquetas: panel inclinado, ventana de la pantalla, agujero del buzzer y base]
 
-1. **La pantalla:** midan el **vidrio** (la parte oscura y brillante), sin la placa. La ventana mide 25 × 14 mm: el vidrio debe ser **más grande** que la ventana, para que tape la ventana por detrás.
-2. **El buzzer:** midan lo ancho de su parte redonda. El radio del agujero es **la mitad + 0,2 mm**, para que entre justo.
+1. **La pantalla:** midan el **vidrio** (la parte oscura y brillante), sin la placa. La ventana mide 23 × 14 mm: el vidrio debe ser **más grande** que la ventana, para que tape la ventana por detrás.
+2. **El buzzer:** midan lo ancho de su parte redonda. El radio del agujero es **la mitad + 0,4 mm**: la impresora deja los agujeros un poco más chicos.
 
 :::tabla id="g3t-medidas"
 | Medida | Ejemplo (mm) | Nuestra medida (mm) |
 | --- | --- | --- |
 | Vidrio de la pantalla (ancho × alto) | 26.7 × 19.3 | |
 | Buzzer (lo ancho) | 12 | |
-| Radio del agujero del buzzer | 6.2 | |
+| Radio del agujero del buzzer | 6.4 | |
 :::
 
 ## Parte 3 · El soporte del marcador (45 min)
@@ -54,11 +54,11 @@ Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_soporte_marcado
 
 1. **El panel:** un Cubo de 70 × 4 × 50 mm. No se mueve: queda en el centro.
    - De **Formas**, un **Cubo** con primer **A = 70**, **L = 4**, segundo **A = 50**, **arista = 0**.
-2. **La ventana de la pantalla (hueco):** un Cubo de 25 × 10 × 14 mm, arriba del centro del panel.
-   - Un **Cubo** con primer **A = 25**, **L = 10**, segundo **A = 14**, marcado como **hueco** (círculo rayado).
+2. **La ventana de la pantalla (hueco):** un Cubo de 23 × 10 × 14 mm, arriba del centro del panel.
+   - Un **Cubo** con primer **A = 23**, **L = 10**, segundo **A = 14**, marcado como **hueco** (círculo rayado).
    - Debajo, **Mover: X 0, Y 0, Z 8**.
 3. **El agujero del buzzer (hueco):** un cilindro acostado que atraviesa el panel, debajo de la ventana.
-   - Un **Cilindro** con el **Radio** de su tabla (en el ejemplo **6.2**), **A = 10**, **Lados = 32**, marcado como **hueco**.
+   - Un **Cilindro** con el **Radio** de su tabla (en el ejemplo **6.4**), **A = 10**, **Lados = 32**, marcado como **hueco**.
    - **Acostarlo:** de **Modificar**, arrastra **Girar alrededor** debajo del cilindro. Deja **Eje x** y escribe **90** en los grados.
    - Debajo, **Mover: X 0, Y 0, Z −14** (con el signo menos).
 4. **Agrupar** para que los huecos se resten: **Seleccionar todo** y **Group Selection**.
@@ -74,7 +74,7 @@ Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_soporte_marcado
 8. **Exporta** `equipo_NOMBRE_soporte_marcador.stl` (**Compartir** → **.STL**, y cambia el nombre en **Descargas**).
 
 :::pregunta id="g3t-p1"
-La placa de la pantalla mide unos 27 × 27 mm, pero la ventana solo mide 25 × 14 mm. ¿Por qué no hacemos la ventana del tamaño de toda la placa?
+La placa de la pantalla mide unos 27 × 27 mm, pero la ventana solo mide 23 × 14 mm. ¿Por qué no hacemos la ventana del tamaño de toda la placa?
 :::
 
 ## Parte 4 · Terminar y revisar las piezas (30 min)
@@ -136,7 +136,7 @@ Antes de irse, junten los 2 `.stl` en un `.zip` (clic derecho → **Comprimir en
 :::docente
 - **Versión Tinkercad, reestructurada el 21 de octubre:** el pseudocódigo, el diagrama de flujo y el cronograma salen de esta versión; el marcador completo en Wokwi pasa a la Guía 4. La Parte 4 da tiempo a los equipos que van más lento para terminar la portería. Campos propios (g3t-…).
 - El soporte del marcador es una pieza nueva de esta versión, probada en Tinkercad el 21 de octubre ("Mini futbol - modelo soporte marcador" en la cuenta del docente). Mide 70 × 45 mm de base y unos 52 mm de alto; el panel queda echado 15° hacia atrás.
-- Medidas: ventana de 25 × 14 mm para la pantalla OLED de 0,96" (el vidrio mide unos 26,7 × 19,3 mm y tapa la ventana por detrás; la parte que se ilumina mide unos 22 × 11 mm). Agujero de 12,4 mm para el buzzer de 12 mm. La pantalla y el buzzer se pegan por detrás con cinta doble cara o silicona (solo en la placa, no en el vidrio).
+- Medidas (revisadas el 12 de noviembre): ventana de 23 × 14 mm para la pantalla OLED de 0,96" (el vidrio mide unos 26,7 × 19,3 mm y tapa la ventana 1,85 mm por lado; antes, con 25 mm, solo 0,85; la parte que se ilumina mide 21,7 × 10,9 mm). Agujero de 12,8 mm para el buzzer de Ø12 × 8,5 (antes 12,4). Comprobado en Blender: la pantalla con sus cables y el buzzer caben detrás del panel sin tocar la base. La pantalla y el buzzer se pegan por detrás con cinta doble cara o silicona (solo en la placa, no en el vidrio).
 - Imprimir esta semana: el soporte con la base sobre la cama (≈1 h); no necesita soportes.
 - g3t-p1: solo debe verse la parte de la pantalla que se ilumina; la placa queda escondida detrás del panel y de ella se pega la pantalla.
 - g3t-p2: el sensor quedaría mirando hacia afuera y no vería la pelota que entra en la portería: no se contarían los goles.

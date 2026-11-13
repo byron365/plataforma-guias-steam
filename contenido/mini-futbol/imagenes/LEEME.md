@@ -35,7 +35,7 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | --- | --- |
 | IMAGEN_2.1T.png | mini fútbol diseñado en Tinkercad, con etiquetas: portería azul, portería roja, cancha a escala, bandas laterales, pelota, soporte del marcador, Arduino y protoboard con el botón *(lista)* |
 | IMAGEN_2.2T.png | media portería en Tinkercad Codeblocks y su copia en espejo con el bloque Escala *(lista: bloques y vista 3D)* |
-| IMAGEN_2.3T.png | portería completa con la ventana para el sensor en el fondo, en Tinkercad Codeblocks *(lista, con etiquetas)* |
+| IMAGEN_2.3T.png | portería completa con la ventana para el sensor en el fondo y el pie del sensor detrás, en Tinkercad Codeblocks *(hay que rehacerla: la actual no tiene el pie ni el tope del 12 de noviembre)* |
 | IMAGEN_3.1T.png | soporte del marcador en Tinkercad Codeblocks, con etiquetas: panel inclinado, ventana de la pantalla, agujero del buzzer y base *(lista)* |
 | IMAGEN_13.1T.png | maqueta de la cancha de mini fútbol en Tinkercad con las porterías azul y roja y la pelota |
 

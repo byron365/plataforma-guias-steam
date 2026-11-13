@@ -60,7 +60,8 @@ Diseño nuevo: `equipo_NOMBRE_bandeja`.
    - El cerco mide el hueco + 6 (3 mm de pared por cada lado): 77.6 + 6 = 83.6 y 41.6 + 6 = 47.6.
 3. **El hueco del portabaterías:** un **Cubo** hueco con primer **A = 77.6**, **L = 41.6** (los de su tabla), segundo **A = 10**. Debajo, **Mover: X 0, Y 45, Z 8**.
    - Empieza justo encima de la placa: la placa no se agujerea.
-4. **El paso de los cables (hueco):** un **Cubo** con primer **A = 40**, **L = 12**, segundo **A = 10**, hueco. Debajo, **Mover: X 0, Y −10, Z 1.5**.
+4. **El paso de los cables (hueco):** un **Cubo** con primer **A = 40**, **L = 12**, segundo **A = 10**, hueco. Debajo, **Mover: X −20, Y 5, Z 1.5**.
+   - Queda entre el portabaterías y el lugar del Arduino, donde ninguna pieza lo tapa.
 5. **Los agujeros de los postes:** cuatro **Cilindros** huecos con **Radio = 1.8**, **A = 10**, **Lados = 32**, en **X ±48** y **Y ±68**, todos con **Z 1.5** (las mismas X e Y del chasis, Guía 2).
 6. **Seleccionar todo** y **Group Selection**. **✔ Revisa:** el cerco está del lado del frente (Y positiva) y tiene fondo.
 7. **Exporta** `equipo_NOMBRE_bandeja.stl`.

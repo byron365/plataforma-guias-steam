@@ -400,3 +400,32 @@ Puedes cambiar el título: `:::reto titulo="Reto relámpago"`.
 Recarga la página. Si un proyecto no aparece, casi siempre es un error de comas o de
 comillas en `proyecto.json`: la consola del servidor muestra el mensaje
 `No se pudo leer ...proyecto.json`.
+
+## 6. Piezas para imprimir (STL)
+
+Las piezas que los equipos diseñan en Tinkercad Codeblocks también se generan con Blender, con los mismos bloques y
+medidas de la guía, para tener STL de referencia de la academia:
+
+```
+"C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --factory-startup --python herramientas/<proyecto>_stl.py -- "<carpeta de salida>"
+```
+
+Los STL se guardan fuera del repositorio, en `..\STL\<Proyecto> - STL para imprimir\`. Si se cambia una medida,
+se cambia **a la vez** en el generador y en la guía (los números que escriben los estudiantes deben dar la misma pieza).
+
+**Antes de imprimir para todos, comprobar que los componentes entran** (método usado el 7 y el 12 de noviembre de 2026):
+
+1. Buscar el plano del componente real (Google Imágenes con "dimensions drawing mm" da dibujos con cotas). Planos ya
+   usados: SG90 (Addicore), su brazo de un lado (Printables), motor TT (Einstronic), HC-SR04 (Makerguides), FC-51,
+   OLED de 0,96", KY-023, mini bomba de 3–6 V. Ojo con lo que sobresale: la salida del cable del servo, el cristal del
+   HC-SR04, el clip del motor TT (22,4 mm de grueso, más que su caja de 19).
+2. Armar el mecanismo en Blender con modelos de los componentes y medir los choques entre piezas, también moviendo lo
+   que gira (compuertas, hojas, marcos). Cada proyecto tiene su script: `herramientas/verificar_<proyecto>_stl.py`
+   (compara el diseño anterior con el actual e imprime los choques en mm³).
+3. Dejar holgura: unas décimas a 1,5 mm en los huecos (la impresora deja los agujeros un poco más chicos). En agujeros
+   para componentes redondos: LED de 5 mm → 5,4; buzzer de 12 mm → 12,8; ojos del HC-SR04 de 16 mm → 17.
+4. Guardar los STL anteriores en una subcarpeta `anteriores (fecha)` y anotar en `ESTADO_DEL_PROYECTO.md` qué piezas
+   hay que reimprimir.
+
+En Blender, al mover o girar mallas con matrices, aplicar antes la ubicación del objeto
+(`transform_apply(location=True)`); si no, el giro queda corrido.

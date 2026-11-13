@@ -47,6 +47,7 @@ Miren la imagen del robot completo para ver dónde va cada cosa:
 1. **Volteen el chasis:** las orejas y la columna quedan **abajo**.
 2. **Los motores.**
    - Pongan cada motor debajo del chasis, por **fuera** de su oreja: la cara de arriba del motor pegada a la placa y el eje hacia **afuera**.
+   - Los dos motores **en el mismo sentido**: con el eje hacia el frente del robot (el lado de la rueda loca). Si uno queda al revés, las ruedas no quedan una frente a la otra.
    - Pasen los dos tornillos por los agujeros del motor y por la ranura de la oreja, y pongan las tuercas. Si usan cincho, páselo por los dos agujeros del motor y por la ranura, y apriételo.
    - Los cables de los motores suben por el **paso de los cables** del chasis.
 3. **Las ruedas:** a presión en el eje de cada motor, hasta el fondo.
@@ -61,7 +62,7 @@ Miren la imagen del robot completo para ver dónde va cada cosa:
 
 ## Parte 3 · La bandeja y las dos baterías (30 min)
 
-1. **Ubiquen las piezas en la bandeja** (con cinta doble faz gruesa o una gota de silicona en las esquinas): el portabaterías en su cerco, adelante; el Arduino atrás a un lado, con su jack hacia el borde; el L298N atrás al otro lado y la protoboard pequeña delante del L298N. Los dos interruptores y el fusible, en un borde de la bandeja.
+1. **Ubiquen las piezas en la bandeja** (con cinta doble faz gruesa o una gota de silicona en las esquinas): el portabaterías en su cerco, adelante; el Arduino atrás a la izquierda (mirando el robot desde atrás), acostado a lo largo y con su jack hacia el borde; el L298N atrás a la derecha y la protoboard pequeña delante del L298N. El paso de los cables de la bandeja queda libre, entre el Arduino y el portabaterías. Los dos interruptores y el fusible, en un borde de la bandeja.
 2. **Pongan la bandeja** sobre los postes: los palitos entran en sus agujeros. Corten lo que sobre de cada palito y pongan una gota de silicona arriba.
 3. **Conecten las dos baterías** en este orden, **con las dos desconectadas**. El robot tiene **dos fuentes separadas**: la batería 2S solo para el L298N y los motores, y la pila de 9 V solo para el Arduino.
 

@@ -117,17 +117,20 @@ Agreguen cada bloque **debajo** del anterior y ejecuten con **▷** después de 
 
 1. **La placa:** un **Cubo** con primer **A = 120**, **L = 160**, segundo **A = 4**. Debajo, **Mover: X 0, Y 0, Z 2**.
    - El lado de **Y positiva** (Y = 80) es el **frente** del robot: ahí irán la rueda loca y el sensor.
-2. **La primera oreja:** un **Cubo** con primer **A = 3**, **L = 30**, segundo **A = 24**. Debajo, **Mover: X 39.7, Y −20, Z 16** (o su X de la oreja).
+2. **La primera oreja:** un **Cubo** con primer **A = 3**, **L = 20**, segundo **A = 24**. Debajo, **Mover: X 39.7, Y −20, Z 16** (o su X de la oreja).
+   - Mide 20 de largo para no tocar la parte del motor que es más gruesa (el motorcito con su clip).
    - El motor se atornilla a esta oreja. Su cara lisa va contra la oreja y el eje queda hacia afuera.
 3. **La ranura de la oreja (hueco):** un **Cubo** con primer **A = 10**, **L = 3.4**, segundo **A = 22**, marcado como **hueco**. Debajo, **Mover: X 39.7, Y −20, Z 15.5**.
    - La ranura llega casi hasta la placa: el agujero de arriba del motor queda a solo 2,4 mm de ella.
    - Por la ranura pasan los dos tornillos del motor (o un cincho). Es larga para que sirva aunque los agujeros del motor estén un poco más arriba o más abajo.
-4. **La segunda oreja y su ranura:** repitan los pasos 2 y 3 con **X −39.7** (con el signo menos) en los dos **Mover**.
-   - **✔ Revisa:** dos orejas iguales, una frente a la otra, cada una con su ranura.
-5. **La columna de la rueda loca:** un **Cilindro** con **Radio = 12**, **A = 24** (o su alto de la columna), **Lados = 32**. Debajo, **Mover: X 0, Y 60, Z 16**.
+4. **El rebaje de la tuerca (hueco):** un **Cubo** con primer **A = 8**, **L = 10**, segundo **A = 3**, hueco. Debajo, **Mover: X 34.2, Y −20, Z 4** (34.2 = su X de la oreja − 5.5).
+   - Es un escalón de 1,5 mm en la placa, junto a la oreja: ahí asienta la tuerca (o la cabeza) del tornillo de arriba, que queda muy pegado a la placa.
+5. **La segunda oreja, su ranura y su rebaje:** repitan los pasos 2, 3 y 4 con **X −39.7** y **X −34.2** (con el signo menos) en los **Mover**.
+   - **✔ Revisa:** dos orejas iguales, una frente a la otra, cada una con su ranura y su rebaje.
+6. **La columna de la rueda loca:** un **Cilindro** con **Radio = 12**, **A = 24** (o su alto de la columna), **Lados = 32**. Debajo, **Mover: X 0, Y 60, Z 16**.
    - Si su alto de la columna no es 24, la Z cambia: Z = 4 + alto ÷ 2. Con 24: 4 + 12 = **16**.
-6. **El paso de los cables (hueco):** un **Cubo** con primer **A = 40**, **L = 12**, segundo **A = 10**, hueco. Debajo, **Mover: X 0, Y −10, Z 2**.
-7. **Los agujeros de los postes (huecos):** cuatro **Cilindros** con **Radio = 1.8**, **A = 10**, **Lados = 32**, huecos. Cada uno con su **Mover**:
+7. **El paso de los cables (hueco):** un **Cubo** con primer **A = 40**, **L = 12**, segundo **A = 10**, hueco. Debajo, **Mover: X 0, Y −10, Z 2**.
+8. **Los agujeros de los postes (huecos):** cuatro **Cilindros** con **Radio = 1.8**, **A = 10**, **Lados = 32**, huecos. Cada uno con su **Mover**:
 
 | Agujero | X | Y | Z |
 | --- | --- | --- | --- |
@@ -136,7 +139,7 @@ Agreguen cada bloque **debajo** del anterior y ejecuten con **▷** después de 
 | 3 (atrás) | 48 | −68 | 2 |
 | 4 (atrás) | −48 | −68 | 2 |
 
-8. **Agrupar** para que los huecos se resten: de **Modificar**, **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección"). Ejecuten.
+9. **Agrupar** para que los huecos se resten: de **Modificar**, **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección"). Ejecuten.
 
 :::checklist id="g2p-chasis"
 - [ ] La placa tiene las dos orejas con su ranura.
@@ -144,7 +147,7 @@ Agreguen cada bloque **debajo** del anterior y ejecuten con **▷** después de 
 - [ ] Se ven el paso de los cables y los cuatro agujeros de los postes.
 :::
 
-9. **Exporta** `equipo_NOMBRE_chasis.stl`: **Compartir** → **.STL**, y cambia el nombre en **Descargas**.
+10. **Exporta** `equipo_NOMBRE_chasis.stl`: **Compartir** → **.STL**, y cambia el nombre en **Descargas**.
 
 :::pregunta id="g2p-p1"
 ¿Por qué la columna de la rueda loca tiene que medir justo eso? ¿Qué le pasaría al robot si fuera mucho más alta?
@@ -160,10 +163,12 @@ Creen otro diseño (**+ Crear → Codeblocks**) y llámenlo `equipo_NOMBRE_sopor
 
 1. **La base:** un **Cubo** con primer **A = 50**, **L = 15**, segundo **A = 3**. Debajo, **Mover: X 0, Y 0, Z 1.5**.
 2. **El panel:** un **Cubo** con primer **A = 50**, **L = 3**, segundo **A = 26**. Debajo, **Mover: X 0, Y 6, Z 16**.
-3. **El ojo izquierdo (hueco):** un **Cilindro** con **Radio = 9**, **A = 10**, **Lados = 32**, hueco. Debajo, **Girar alrededor** con **Eje x** y **90** (para acostarlo), y **Mover: X −13, Y 6, Z 13**.
-4. **El ojo derecho (hueco):** igual que el paso 3, con **Mover: X 13, Y 6, Z 13**.
-5. **Seleccionar todo** y **Group Selection**. **✔ Revisa:** los dos agujeros atraviesan el panel.
-6. **Exporta** `equipo_NOMBRE_soporte_sensor.stl`.
+3. **El ojo izquierdo (hueco):** un **Cilindro** con **Radio = 8.5**, **A = 10**, **Lados = 32**, hueco. Debajo, **Girar alrededor** con **Eje x** y **90** (para acostarlo), y **Mover: X −13, Y 6, Z 15**.
+4. **El ojo derecho (hueco):** igual que el paso 3, con **Mover: X 13, Y 6, Z 15**.
+5. **El hueco del cristal:** entre los dos ojos, el sensor tiene una pieza plateada (el cristal) que sobresale. Este hueco la deja pasar para que el sensor quede pegado al panel.
+   - Un **Cubo** con primer **A = 12.4**, **L = 10**, segundo **A = 6**, hueco. Debajo, **Mover: X 0, Y 6, Z 7.5**.
+6. **Seleccionar todo** y **Group Selection**. **✔ Revisa:** los dos agujeros atraviesan el panel y, entre ellos, abajo, se ve el hueco del cristal.
+7. **Exporta** `equipo_NOMBRE_soporte_sensor.stl`.
 
 > Los ojos del HC-SR04 están separados unos 26 mm (de centro a centro). Si al medir el suyo da otro número, la X de cada ojo es la mitad: con 26 → **13** y **−13**.
 
@@ -193,6 +198,7 @@ Antes de irse: suban los dos `.stl` juntos en un `.zip` (selecciónenlos → cli
 - Diseños de referencia en la cuenta del docente: "Robot con mando - propuesta completa" y "Robot - modelo chasis / soporte del sensor / bandeja / caja y tapa del mando", con los mismos bloques de las guías. STL de ejemplo: `herramientas/robot_stl.py`.
 - El chasis se imprime como sale (orejas y columna hacia arriba), sin soportes. Unas 3 h por chasis con relleno bajo.
 - El motor TT va **debajo** del chasis, con su cara de arriba pegada a la placa y el eje hacia afuera; la ranura de la oreja sirve para los dos tornillos M3 × 30 que atraviesan el motor (con tuerca afuera) o para un cincho delgado. Las medidas de ejemplo son de un TT común (18.8 × 22.5 mm de sección): revisar con un motor de la academia antes de imprimir para todos. Plano de Adafruit (TT 3777): agujeros de 3 mm separados 17,6 mm (a 2,4 mm de cada borde), a 22,5 mm del eje; la ranura va de 0,5 a 22,5 mm bajo la placa.
+- **Piezas revisadas el 12 de noviembre** con planos reales (TT de Einstronic, HC-SR04 de Makerguides) y comprobadas en Blender con los componentes armados (`herramientas/verificar_robot_stl.py`): (1) el motorcito del TT con su clip mide 22,4 de grueso (la caja de engranes, 19) y empieza 11,65 mm después de los agujeros: con la oreja de 30 mm el motor no quedaba plano; ahora mide 20. (2) La tuerca o la cabeza del tornillo de arriba (M3) chocaba 0,3 a 0,8 mm con la placa: rebaje de 1,5 mm. (3) Soporte del sensor: con los pines arriba, el borde de la placa del HC-SR04 chocaba 1,5 mm con la base y el cristal con el panel; ahora los ojos van a Z 15 (agujeros de 17) y hay hueco para el cristal. Los dos motores se montan en el mismo sentido (si no, las ruedas quedan desalineadas).
 - g2p-p1: la columna deja el chasis horizontal (a la altura que le dan las ruedas). Si fuera más alta, el robot quedaría inclinado hacia atrás y las ruedas motrices patinarían o se levantarían.
 - Si la rueda loca es más alta que el chasis sobre el piso (cálculo negativo), no lleva columna: se atornilla directo a la placa.
 - Tiempo total: 10 + 15 + 15 + 50 + 15 + 5 + 10 = 120 minutos.

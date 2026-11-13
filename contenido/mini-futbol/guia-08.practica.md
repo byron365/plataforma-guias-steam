@@ -26,9 +26,9 @@ Instalar los sensores infrarrojos en las porterías, armar el marcador **copiand
 
 ## Parte 1 · Instalar los sensores (25 min)
 
-1. Coloca cada sensor por detrás de la portería, con sus ojitos en la **ventana del fondo**, mirando hacia la cancha.
-2. Fíjalo con pegamento caliente (solo en la placa, no en los ojitos).
-3. Pasa los cables por el agujero detrás de la portería hasta el marcador.
+1. Acuesta cada sensor sobre el **pie** que está detrás de la portería, con los componentes hacia arriba y los ojitos hacia la **ventana del fondo**, mirando hacia la cancha.
+2. Empújalo hasta que la orilla de la placa toque el **tope**: los ojitos quedan dentro de la ventana, sin salirse hacia la cancha. Fíjalo con una gota de pegamento caliente en la placa (no en los ojitos ni en el tornillo azul, que se usa para calibrar).
+3. Lleven los cables del sensor desde la parte de atrás del pie hasta el marcador, pegados con cinta por el borde de la base.
    - Pongan cables macho–hembra en los tres pines del sensor (la punta hembra en el sensor) y márquenlos con cinta: "azul" y "rojo", según la portería.
 
 [IMAGEN 5.1: sensor infrarrojo montado detrás de la portería con sus emisores en la ventana del fondo]

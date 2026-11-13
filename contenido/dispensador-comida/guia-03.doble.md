@@ -80,13 +80,13 @@ La torre del líquido tiene un pie (donde va el vaso), una pared y un **brazo** 
 
 **Primero, midan la manguera:** su ancho **por fuera**, con el calibrador o con la regla (con cuidado). El agujero será de ese ancho **+ 0,5 mm**, para que la manguera entre a presión.
 
-- Por ejemplo, si la manguera mide 7 mm: 7 + 0,5 = 7,5 mm, y el radio es la mitad: **3.75**.
+- Por ejemplo, si la manguera mide 8 mm: 8 + 0,5 = 8,5 mm, y el radio es la mitad: **4.25**.
 
 :::tabla id="g3d-manguera"
 | Medida | Ejemplo (mm) | Nuestra manguera (mm) |
 | --- | --- | --- |
-| Ancho de la manguera (afuera) | 7 | |
-| Radio del agujero | 3.75 | |
+| Ancho de la manguera (afuera) | 8 | |
+| Radio del agujero | 4.25 | |
 :::
 
 Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_torre_liquido`.
@@ -96,7 +96,7 @@ Diseño nuevo: **+ Crear → Codeblocks**, nombre `equipo_NOMBRE_torre_liquido`.
 3. **El brazo:** un Cubo de 20 × 75 × 6 mm, arriba de la pared y hacia adelante.
    - Un **Cubo** con primer A = **20**, L = **75**, segundo A = **6**. Debajo, **Mover: X 0, Y 42.5, Z 107**.
 4. **El agujero de la manguera (hueco):** un cilindro parado que atraviesa la punta del brazo.
-   - Un **Cilindro** con el **Radio** que calcularon (en el ejemplo **3.75**), **A = 20**, **Lados = 32**, marcado como **hueco**.
+   - Un **Cilindro** con el **Radio** que calcularon (en el ejemplo **4.25**), **A = 20**, **Lados = 32**, marcado como **hueco**.
    - Debajo, **Mover: X 0, Y 70, Z 107**.
 5. **Agrupar** (Seleccionar todo y Group Selection) y ejecuta.
    - **✔ Revisa:** debe verse una pieza como una "C": el pie abajo, la pared atrás y el brazo arriba, con un agujerito en la punta del brazo.
@@ -115,7 +115,7 @@ Miren otra vez el dispensador completo y ubiquen cada pieza:
   - El **embudo** dentro del agujero de arriba, apoyado con su tapa.
   - La **botella** boca abajo en el cuello.
   - El **servo** parado en el hueco de la repisa de en medio, con el eje hacia arriba, colgando de sus pestañas.
-  - La **compuerta** boca abajo, con el encastre en el brazo del servo y la paleta tapando la salida del embudo.
+  - La **compuerta** boca abajo, con el brazo del servo metido en el encastre y la paleta tapando la salida del embudo.
   - El **plato** sobre el pie, debajo de la salida.
 - **Torre del líquido**, a un lado:
   - El **vaso** sobre el pie, debajo del agujero del brazo.
@@ -168,7 +168,7 @@ Antes de irse, junten los 2 `.stl` de hoy en un `.zip` (clic derecho → **Compr
 - El embudo es el mismo de la versión Tinkercad, con la **tapa más ancha** (radio 45 en vez de 40) para que se apoye en la repisa de la torre (agujero de 82 mm).
 - Botella del cereal: conviene una pequeña (unos 600 ml); una de 2 L con cereal pesa mucho para la torre y la puede volcar.
 - El recipiente del líquido no se imprime (el plástico impreso puede filtrar): un vaso o una botella cortada de unos 7 cm de ancho y 9 cm de alto, con la bomba sumergida.
-- La manguera de la bomba suele medir unos 7 mm por fuera (agujero de radio 3,75), igual que en el Mini invernadero.
+- La salida de las mini bombas de 3 a 6 V mide 7,5 mm por fuera, así que su manguera suele medir unos 8 mm por fuera (agujero de radio 4,25; revisado el 12 de noviembre). Si la de la academia es más delgada, el agujero se hace con su medida + 0,5.
 - Impresión: la torre del líquido se imprime **acostada sobre la pared**; el embudo, con el cono hacia abajo y **soportes** debajo de la tapa.
 - g3d-p1: si la salida fuera muy chica, los pedazos de cereal se trabarían y la salida se taparía.
 - g3d-p2: si el líquido se derrama y moja el Arduino o la protoboard, se puede hacer un cortocircuito y dañarlos.

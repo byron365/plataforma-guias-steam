@@ -37,7 +37,7 @@ Armar el dispensador doble con las piezas impresas y los componentes reales, cop
 - [ ] El embudo entra en el agujero de arriba de la torre del cereal y se apoya con su tapa.
 - [ ] La boca de la botella entra en el cuello del embudo.
 - [ ] El servo entra en el hueco de la repisa hasta que sus pestañas se apoyan.
-- [ ] Un brazo del servo entra en el encastre de la compuerta.
+- [ ] El brazo de un solo lado del servo entra en el hueco del encastre de la compuerta.
 - [ ] La manguera entra a presión en el agujero del brazo de la torre del líquido.
 :::
 
@@ -79,11 +79,11 @@ Abran su circuito simulado en Tinkercad y cópienlo, con el USB desconectado y l
 
 1. **El servo:** métanlo desde arriba en el hueco de la repisa de en medio, con el **eje hacia arriba** y del lado que queda **debajo del embudo**. Bájenlo hasta que cuelgue de sus pestañas.
 2. **El embudo:** pónganlo en el agujero de arriba, apoyado con su tapa.
-3. **La compuerta:** va **boca abajo**. Metan un brazo del servo en su encastre, encajen el brazo en el eje con la paleta **tapando la salida del embudo** y pongan el tornillo pequeño.
+3. **La compuerta:** va **boca abajo**. Metan el **brazo de un solo lado** en el hueco del encastre (si queda flojo, una gota de silicona por los lados), encajen el centro del brazo en el eje con la paleta **tapando la salida del embudo** y pongan el tornillo pequeño por el **agujerito de la paleta**.
 4. **La botella:** el docente la corta cerca del fondo. Métanla **boca abajo**, sin tapa, en el cuello del embudo.
 5. **Revisen la abertura:** conecten el USB y presionen el botón. La compuerta debe destapar la salida sin chocar y volver a taparla.
    - Si no tapa en 0°: saquen el brazo del eje, gírenlo un poquito y vuelvan a encajarlo.
-   - Si choca con la torre: saquen la compuerta, gírenla media vuelta en el brazo y vuelvan a montarla.
+   - Si la paleta roza el embudo: avisen al docente.
 
 ## Parte 5 · Montar el lado del líquido (10 min)
 
@@ -139,7 +139,7 @@ Antes de irse, **desenchufen la fuente**, vacíen el vaso y dejen el dispensador
 - g7dp-b1: el del simulador es un relé suelto (bobina en el pin 8); el real es un módulo con pines VCC, GND e IN y tornillos COM, NO y NC, que trae adentro lo necesario para que el pin del Arduino lo pueda encender.
 - Algunos módulos relé se activan con LOW (la bomba se enciende al arrancar): en ese caso invertir HIGH y LOW en las líneas de la bomba, o usar el pin "activo alto" si el módulo lo tiene.
 - Con el programa final, el dispensador sirve solo cada minuto (cereal y líquido): tener la bomba siempre sumergida mientras esté conectado.
-- La altura entre el brazo del servo y la compuerta depende del brazo: si la paleta queda lejos de la salida, suplementar con una arandela o una gota de silicona en el encastre.
+- Compuerta nueva (12 de noviembre, ver Guía 2): la paleta queda 0,8 mm debajo de la salida y no choca con la torre al abrir. Si el brazo de la academia es más alto que el del plano y la paleta roza el embudo, poner un anillo de cartón debajo de la tapa del embudo. Las compuertas impresas antes (encastre de 5 mm) no reciben el brazo, y las torres del líquido con agujero de 7,5 mm no reciben una manguera de 8: hay que reimprimirlas.
 - Si no alcanza el tiempo, la Parte 6 se hace al inicio de la Guía 8.
 - Tiempo total: 10 + 30 + 10 + 25 + 10 + 15 + 5 + 15 = 120 minutos.
 :::

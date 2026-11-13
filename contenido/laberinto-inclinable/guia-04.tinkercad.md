@@ -44,7 +44,7 @@ Si algo no entra, avisen al docente antes de seguir: a veces basta con limpiar l
 1. Con regla y lápiz, tracen en la base una **línea de lado a lado por el centro**.
 2. Pongan las dos torres sobre esa línea, una frente a la otra, con las **caras lisas (sin aletas) mirando hacia adentro**.
    - Mirando la base desde adelante (desde donde jugarán), la **torre del servo** va a la **derecha** y la **torre del eje** a la **izquierda**.
-   - La distancia entre las dos caras lisas debe ser de **21,3 cm**. Cada torre a la misma distancia del centro.
+   - La distancia entre las dos caras lisas debe ser de **21,5 cm**. Cada torre a la misma distancia del centro.
    - Los agujeros de las torres deben quedar a la misma altura y uno frente al otro.
 3. Atornillen cada pie con dos tornillos (con el docente) o péguenlo con bastante pegamento caliente.
 
@@ -193,7 +193,7 @@ Antes de irse: **saquen las pilas** y suban aquí `equipo_NOMBRE_prueba_servos`.
 
 :::docente
 - **Versión Tinkercad, nueva el 21 de octubre:** junta el circuito real de la Guía 4 normal con el centrado y el montaje de la Guía 5 normal, adaptados a las piezas impresas de las guías 2T y 3T. Campos propios (g4t-…).
-- Distancia entre torres: las caras lisas quedan a 212,6 mm (21,3 cm). Entre la torre y el marco quedan unos 7 mm para el brazo del servo; si el brazo no alcanza el marco, se rellena con silicona.
+- Distancia entre torres: las caras lisas quedan a 215 mm (21,5 cm; antes 21,3, revisado el 12 de noviembre, ver Guía 3). Entre la torre y el marco quedan 8,5 mm: el servo sobresale 2 mm de la torre y su brazo queda a 0,5 mm del marco; ese espacio se rellena con silicona.
 - El servo del marco está parado con el eje a 120 mm de la base, igual que el agujero de la torre del eje: los dos deben quedar alineados. Si el marco queda torcido, revisar que las torres estén a la misma distancia del centro.
 - El servo del tablero entra con el eje hacia la derecha (mirando desde adelante); si entra al revés, el eje queda 1 cm corrido y el tablero roza.
 - La unión brazo–pieza es el punto débil: si se despega, limpiar y volver a pegar con más silicona, o atornillar el brazo con los tornillos pequeños del servo.

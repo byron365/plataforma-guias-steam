@@ -92,8 +92,7 @@ Calculen las líneas que van a trazar. Pasen los metros a centímetros (× 100) 
 4. Pega las **porterías** en el centro de cada lado corto. La ventana del sensor debe quedar **mirando hacia la cancha**.
    - La boca de cada portería, justo en su hueco de la banda; el fondo, hacia afuera de la cancha.
    - Si una portería se va a volver a imprimir, peguen la que tienen solo con un punto de pegamento, para cambiarla el sábado 8.
-5. Haz un agujero pequeño detrás de cada portería para pasar los cables.
-   - Con la punta de un lápiz o un destornillador (con cuidado), en la base, justo detrás de la ventana del sensor.
+5. Revisen el **pie del sensor** de cada portería: queda detrás del fondo, por fuera de la base. Ahí se acuesta el sensor el sábado 8, y sus cables van por el borde de la base hasta el marcador.
 6. Pongan el **soporte del marcador** a un lado de la cancha, mirando hacia los jugadores. La pantalla y el buzzer se colocan el sábado 8.
 
 [IMAGEN 4.1: cancha armada con líneas blancas a escala, bandas laterales y las dos porterías pegadas]
@@ -128,7 +127,7 @@ Foto de la cancha con las porterías.
 :::docente
 - **Versión Práctica con Wokwi (9 sábados):** la revisión de piezas (medidas de la Guía 2 y la Guía 3 Tinkercad, ahora con las piezas impresas) y la cancha de la Guía 4 Tinkercad. Campos propios (g7p-…).
 - Reimprimir esta semana las piezas que se corrijan, para el sábado 8.
-- Medidas de ejemplo: los dos ojitos del FC-51 ocupan unos 11 mm de ancho (ventana de 12 mm); agujero de 12,4 mm para el buzzer de 12 mm.
+- Medidas (revisadas el 12 de noviembre, ver Guías 2 y 3): los dos ojitos del FC-51 ocupan unos 11 mm de ancho (ventana de 14 mm, con pie y tope para el sensor); agujero de 12,8 mm para el buzzer de 12 mm; ventana de la pantalla de 23 × 14. Las porterías impresas antes (ventana de 12, sin pie) hay que reimprimirlas.
 - Resultados de la escala: círculo 4,6 cm; área 20,2 × 8,3 cm.
 - g7p-p1: la pelota tiene que poder entrar a la portería para que el sensor la vea; si la banda tapa el hueco, no hay gol posible.
 - Si un equipo va lento, la cancha puede terminarse al inicio del sábado 8.

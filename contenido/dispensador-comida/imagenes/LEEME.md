@@ -46,7 +46,7 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | --- | --- |
 | IMAGEN_2.1D.png | dispensador doble diseñado en Tinkercad: torre del cereal con botella, embudo y compuerta; torre del líquido con su brazo y la manguera; recipiente del líquido; Arduino y protoboard del otro lado, con etiquetas de cada pieza *(lista)* |
 | IMAGEN_2.3D.png | torre del cereal en Tinkercad Codeblocks: pie, pared, repisa del embudo con su agujero y repisa del servo con su hueco *(lista)* |
-| IMAGEN_2.4D.png | compuerta en Tinkercad Codeblocks: paleta de 54 × 30 mm con el encastre del servo en una punta *(lista)* |
+| IMAGEN_2.4D.png | compuerta en Tinkercad Codeblocks: paleta de 47 × 30 mm con el encastre del servo en una punta, con el hueco del brazo y el agujerito del tornillo *(hay que rehacerla: la actual muestra la compuerta anterior)* |
 | IMAGEN_3.1D.png | embudo con tapa ancha y cuello en Tinkercad Codeblocks *(lista)* |
 | IMAGEN_3.2D.png | torre del líquido en Tinkercad Codeblocks: pie, pared y brazo con el agujero de la manguera *(lista)* |
 | IMAGEN_5.1D.png | circuito del dispensador doble: servo, dos botones, LED, buzzer y relé con la bomba y las pilas |
