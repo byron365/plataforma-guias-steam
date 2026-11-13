@@ -62,7 +62,7 @@ Abran su proyecto de Wokwi y copien el circuito, con el USB desconectado y la fu
 Ahora el agua:
 
 1. Mete la bomba en el depósito, **sumergida** y acostada en el fondo. Nunca la enciendan fuera del agua: se daña.
-2. Pasa la manguera hasta la maceta y sujétala con el clip, apuntando a la tierra.
+2. Peguen el clip por su pestaña en la pared, encima de la maceta, con el anillo parado. Pasen la manguera hasta la maceta y métanla en el clip por la abertura, apretándola un poco: queda parada, con la punta hacia la tierra.
 3. Clava el sensor de humedad en la tierra de la maceta "Con sistema", sin pasar la línea marcada, entre la planta y la orilla.
 
 :::checklist id="g7p-revision"

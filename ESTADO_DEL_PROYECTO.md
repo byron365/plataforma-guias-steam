@@ -88,7 +88,16 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > rebaje de tuerca, soporte del sensor y bandeja), Mini fútbol (portería con pie del sensor y soporte del marcador), Banda
 > (oreja del soporte del motor) y Laberinto (lado de adelante del marco y distancia entre torres). Ver sus secciones.
 > [ ] Reimprimir las piezas corregidas de cada equipo y actualizar sus diseños de referencia en Tinkercad.
-> [ ] El Mini invernadero usa la misma manguera de la bomba (unos 8 mm): revisar su clip.
+> [x] **Clip de la manguera del Mini invernadero** revisado (12 de noviembre): hueco 7,5 → 8,5 mm (manguera de 8), abertura 4 → 6 mm
+> (con 4 había que abrir el anillo de PLA y se podía quebrar) y pestaña parada de 20 × 4 × 8 bien unida al anillo (antes, placa
+> de 2 mm a media altura, casi suelta y con soportes). Guía 2T y 7 práctica actualizadas; `herramientas/invernadero_stl.py` y
+> `herramientas/verificar_invernadero_stl.py`; STL en `..\STL\Mini invernadero - STL para imprimir\`. [ ] Reimprimir el clip,
+> rehacer la imagen 2.5T y el diseño "Invernadero - modelo piezas".
+> [x] **Soporte del servo y bisagra del invernadero** revisados el mismo día: el soporte no tenía salida para el cable del
+> servo (0,45 mm entre su punta y la pared; cable de 1,2): **ranura del cable** de 6 mm. La bisagra tenía el nudillo (Ø6)
+> centrado en el grueso de la hoja, que quedaba 1,5 mm al aire (soportes, no se pegaba plana), y el agujero de 3 mm no
+> dejaba pasar un palito de 3: hoja y **nudillo de Ø7** apoyados en la cama, **agujero de 3,5**. Guías 2T y 6 práctica
+> actualizadas; STL en la misma carpeta. [ ] Reimprimir el soporte y las 2 hojas; rehacer las imágenes 2.3T y 2.4T.
 
 ---
 

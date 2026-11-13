@@ -423,7 +423,10 @@ se cambia **a la vez** en el generador y en la guía (los números que escriben 
    que gira (compuertas, hojas, marcos). Cada proyecto tiene su script: `herramientas/verificar_<proyecto>_stl.py`
    (compara el diseño anterior con el actual e imprime los choques en mm³).
 3. Dejar holgura: unas décimas a 1,5 mm en los huecos (la impresora deja los agujeros un poco más chicos). En agujeros
-   para componentes redondos: LED de 5 mm → 5,4; buzzer de 12 mm → 12,8; ojos del HC-SR04 de 16 mm → 17.
+   para componentes redondos: LED de 5 mm → 5,4; buzzer de 12 mm → 12,8; ojos del HC-SR04 de 16 mm → 17; palito de
+   pincho (2,5 a 3 mm) que gira → 3,5; manguera de la bomba (8 mm) → 8,5.
+   Revisar también que la pieza se imprima **sin soportes** (todo lo que sobresale debe nacer en la cama o en otra cara)
+   y que las aberturas que se abren a presión no obliguen a doblar mucho el PLA (se quiebra).
 4. Guardar los STL anteriores en una subcarpeta `anteriores (fecha)` y anotar en `ESTADO_DEL_PROYECTO.md` qué piezas
    hay que reimprimir.
 

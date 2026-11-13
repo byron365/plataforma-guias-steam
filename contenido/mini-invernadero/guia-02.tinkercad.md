@@ -84,14 +84,15 @@ En **Codeblocks** no se dibuja con el mouse: se arma un programa con bloques (co
 
 El soporte es una caja con un **hueco** donde entra el servo, un poco más grande que él (la **holgura**).
 
-[IMAGEN 2.3T: soporte del servo en Tinkercad Codeblocks, con etiquetas: hueco del servo de 23.4 × 12.8 mm y caja de 32 × 18 × 20 mm]
+[IMAGEN 2.3T: soporte del servo en Tinkercad Codeblocks, con etiquetas: hueco del servo de 23.4 × 12.8 mm, ranura del cable y caja de 32 × 18 × 20 mm]
 
 1. **Caja exterior:** en el diseño `equipo_NOMBRE_soporte`, de **Formas** arrastra un **Cubo**. Toca su **›**: primer **A = 32** (ancho), **L = 18** (largo), segundo **A = 20** (alto), **arista = 0**.
 2. **Hueco:** debajo, otro **Cubo** con primer **A = 23.4**, **L = 12.8**, segundo **A = 18**, **arista = 0**. Toca su **círculo rayado** para que sea hueco.
    - De **Modificar**, arrastra **Mover:** debajo y escribe **X: 0**, **Y: 0**, **Z: 2**. El hueco sube 2 mm: abajo queda un piso de 3 mm y arriba el hueco sale de la caja.
-3. **Agrupar:** de **Modificar**, **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección").
-   - Ejecuta con **▷**. **✔ Revisa:** gira la vista 3D: la caja debe tener el hueco arriba. Si sale sólida, revisa que el segundo cubo tenga el círculo en gris.
-4. **Exporta** `equipo_NOMBRE_soporte.stl`: arriba a la derecha, **Compartir** → **.STL**. Si en **Descargas** no se llama así, cámbiale el nombre (clic derecho → **Cambiar nombre**).
+3. **Ranura del cable:** el cable del servo sale por una punta, cerca de su base. Otro **Cubo** hueco con primer **A = 6**, **L = 6**, segundo **A = 14**. Debajo, **Mover: X 14, Y 0, Z 4**. Corta la pared de una punta, de arriba hacia abajo.
+4. **Agrupar:** de **Modificar**, **Seleccionar todo** y debajo **Group Selection** (este bloque aparece en inglés: quiere decir "agrupar la selección").
+   - Ejecuta con **▷**. **✔ Revisa:** gira la vista 3D: la caja debe tener el hueco arriba y la ranura en una punta. Si sale sólida, revisa que los cubos huecos tengan el círculo en gris.
+5. **Exporta** `equipo_NOMBRE_soporte.stl`: arriba a la derecha, **Compartir** → **.STL**. Si en **Descargas** no se llama así, cámbiale el nombre (clic derecho → **Cambiar nombre**).
 
 ## Parte 5 · La bisagra (25 min)
 
@@ -102,21 +103,21 @@ Cada hoja de la bisagra es una placa con un **nudillo** (un cilindro acostado) c
 Recuerda: **Girar alrededor** (de Modificar) gira la última forma desde su centro.
 
 1. Diseño nuevo: **+ Crear → Codeblocks**, con el nombre `equipo_NOMBRE_bisagra`.
-2. **Hoja:** un **Cubo** con primer **A = 30**, **L = 20**, segundo **A = 3**, **arista = 0**. No lo muevas.
-3. **Nudillo:** un **Cilindro** con **Radio = 3**, **A = 30**, **Lados = 32**.
+2. **Hoja:** un **Cubo** con primer **A = 30**, **L = 20**, segundo **A = 3**, **arista = 0**. Debajo, **Mover: X 0, Y 0, Z 1.5** (queda apoyada en el plano).
+3. **Nudillo:** un **Cilindro** con **Radio = 3.5**, **A = 30**, **Lados = 32**.
    - **Acostarlo:** debajo, **Girar alrededor** con **Eje y** y **90** grados.
-   - Debajo, **Mover: X 0, Y 10, Z 0**. (La hoja mide 20 en Y, así que su borde está en Y = 10.)
-4. **Agujero del pasador:** otro **Cilindro** con **Radio = 1.5**, **A = 40**, **Lados = 32**, marcado como **hueco**. Debajo, **Girar alrededor** con **Eje y** y **90**, y **Mover: X 0, Y 10, Z 0**.
+   - Debajo, **Mover: X 0, Y 10, Z 3.5**. (La hoja mide 20 en Y, así que su borde está en Y = 10; con Z 3.5 el nudillo también toca el plano.)
+4. **Agujero del pasador:** otro **Cilindro** con **Radio = 1.75**, **A = 40**, **Lados = 32**, marcado como **hueco**. Debajo, **Girar alrededor** con **Eje y** y **90**, y **Mover: X 0, Y 10, Z 3.5**.
 5. **Seleccionar todo**, **Group Selection** y ejecuta. **✔ Revisa** mirando de lado: un círculo con agujero en el borde de la hoja.
 6. **Exporta** `equipo_NOMBRE_bisagra.stl`. Solo se exporta **una** hoja: el docente imprime dos.
 
 :::pregunta id="g2t-p1"
-El palito mide unos 2,5 mm. ¿Por qué el agujero mide 3 mm?
+El palito mide unos 2,5 a 3 mm. ¿Por qué el agujero mide 3,5 mm?
 :::
 
 ## Parte 6 · El clip de la manguera (20 min)
 
-El clip se pega en la pared, encima de la maceta, y sostiene la manguera para que el agua caiga en la tierra. Tiene un **anillo** abierto donde la manguera entra a presión y una **pestaña** para pegarlo.
+El clip se pega en la pared, encima de la maceta, y sostiene la manguera parada para que el agua caiga en la tierra. Tiene un **anillo** abierto donde la manguera entra a presión y una **pestaña** parada que se pega plana contra la pared.
 
 [IMAGEN 2.5T: clip de la manguera en Tinkercad Codeblocks, con etiquetas: anillo con el hueco de la manguera, abertura y pestaña para pegar]
 
@@ -125,15 +126,17 @@ Primero midan el diámetro de la manguera **por fuera**, con el calibrador o la 
 :::tabla id="g2t-manguera"
 | Medida | Ejemplo (mm) | Nuestra medida (mm) |
 | --- | --- | --- |
-| Diámetro de la manguera | 7 | |
-| Radio del hueco = (diámetro + 0.5) ÷ 2 | 3.75 | |
+| Diámetro de la manguera | 8 | |
+| Radio del hueco = (diámetro + 0.5) ÷ 2 | 4.25 | |
 :::
 
 1. Diseño nuevo: `equipo_NOMBRE_clip`.
-2. **Anillo:** un **Cilindro** con **Radio = 6**, **A = 8**, **Lados = 32**.
-3. **Hueco de la manguera:** otro **Cilindro** hueco con **Radio = 3.75** (o el de su tabla) y **A = 20**. No lo muevas: queda en el centro del anillo.
-4. **Abertura:** un **Cubo** hueco con primer **A = 4**, **L = 10**, segundo **A = 20**. Debajo, **Mover: X 0, Y 6, Z 0**: se "come" un pedacito del anillo.
-5. **Pestaña:** un **Cubo** (sólido) con primer **A = 20**, **L = 10**, segundo **A = 2**. Debajo, **Mover: X 0, Y −10, Z 0**, del lado contrario a la abertura.
+2. **Anillo:** un **Cilindro** con **Radio = 6.5**, **A = 8**, **Lados = 32**.
+3. **Hueco de la manguera:** otro **Cilindro** hueco con **Radio = 4.25** (o el de su tabla) y **A = 20**. No lo muevas: queda en el centro del anillo.
+4. **Abertura:** un **Cubo** hueco con primer **A = 6**, **L = 10**, segundo **A = 20**. Debajo, **Mover: X 0, Y 6.5, Z 0**: se "come" un pedacito del anillo.
+   - Mide 6 mm: un poco menos que la manguera, que se aprieta al entrar y queda sujeta.
+5. **Pestaña:** un **Cubo** (sólido) con primer **A = 20**, **L = 4**, segundo **A = 8**. Debajo, **Mover: X 0, Y −6.5, Z 0**, del lado contrario a la abertura.
+   - Es tan alta como el anillo y se mete un poco en él: así queda bien unida. Su cara de atrás es la que se pega en la pared.
 6. **Seleccionar todo**, **Group Selection** y ejecuta. **✔ Revisa** desde arriba (cara **SUPERIOR** del cubito de vistas): el anillo como una letra C, con la pestaña del otro lado.
 7. **Exporta** `equipo_NOMBRE_clip.stl`.
 
@@ -168,7 +171,9 @@ Antes de irse, guarden juntos en un `.zip` los tres `.stl` (selecciónenlos → 
 - **Versión Tinkercad, reestructurada el 23 de octubre** (más práctica, como el Puente y el Laberinto): se quita el boceto y se diseñan aquí las tres piezas (el clip venía en la Guía 3). Campos propios (g2t-…); la tabla de plantas mantiene su campo.
 - Diseños de referencia en la cuenta del docente: "Mini invernadero - propuesta completa" (caja sin la pared de adelante, de 30 × 20 × 20 cm de ejemplo) e "Invernadero - modelo piezas".
 - Imprimir esta semana: 1 soporte, 2 hojas de bisagra y 1 clip por equipo (≈ 1 h 10 min en total).
-- g2t-p1: holgura para que el pasador gire sin trabarse.
+- g2t-p1: holgura para que el pasador gire sin trabarse (y la impresora deja los agujeros unas décimas más chicos).
+- **Soporte del servo y bisagra revisados el 12 de noviembre** con el plano del SG90 (Addicore) y comprobados en Blender (`herramientas/verificar_invernadero_stl.py`). Soporte: el cable del servo sale por la punta a 4,5 mm de su base y entre la punta y la pared quedaban 0,45 mm (el cable plano mide 1,2): se agregó la **ranura del cable**. Bisagra: el nudillo (Ø6) iba centrado en el grueso de la hoja y sobresalía 1,5 mm por debajo, así que la hoja se imprimía al aire (con soportes) y no se pegaba plana; ahora la hoja y el nudillo (Ø7) se apoyan en la cama, y el agujero de 3,5 mm (antes 3) deja girar palitos de 2,5 y de 3 mm. La ventana abre 70° sin que choquen las hojas. STL de referencia en `..\STL\Mini invernadero - STL para imprimir`.
+- **Clip revisado el 12 de noviembre** con la manguera real (las mini bombas de 3–6 V tienen la salida de 7,5 mm por fuera, así que su manguera mide unos 8): hueco de 8,5 (antes 7,5), abertura de 6 (con 4 había que abrir el anillo de PLA 3 a 4 mm y se podía quebrar) y pestaña parada de 20 × 4 × 8 bien unida al anillo (antes era una placa de 2 mm a media altura que apenas tocaba el anillo y necesitaba soportes). Se imprime sin soportes, en ≈ 10 min. Comprobado en Blender (`herramientas/verificar_invernadero_stl.py`); STL de referencia en `..\STL\Mini invernadero - STL para imprimir`.
 - Si la caja es de plástico delgado, la bisagra se pega con silicona; si es de cartón, también sirve una bisagra de cinta.
 - Tiempo total: 10 + 10 + 15 + 20 + 25 + 20 + 5 + 15 = 120 minutos.
 :::

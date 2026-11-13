@@ -32,9 +32,9 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | --- | --- |
 | IMAGEN 2.1T.png ✅ | mini invernadero completo en Tinkercad (sin la pared de adelante), con etiquetas: clip, manguera, planta, depósito con la bomba, maceta, ventana, palito, bisagra, servo en su soporte, sensores de temperatura y humedad, caja y compartimento seco (también en la Guía 3T) |
 | IMAGEN 2.2T.png ✅ | editor de Codeblocks con sus partes señaladas (la misma IMAGEN 2.3T del Dispensador) |
-| IMAGEN 2.3T.png ✅ | soporte del servo con etiquetas: hueco del servo y caja de 32 × 18 × 20 mm |
-| IMAGEN 2.4T.png ✅ | hoja de bisagra con etiquetas: hoja, nudillo y agujero del pasador |
-| IMAGEN 2.5T.png ✅ | clip de la manguera con etiquetas: anillo, abertura y pestaña (antes era la 3.1T) |
+| IMAGEN 2.3T.png | soporte del servo con etiquetas: hueco del servo, ranura del cable y caja de 32 × 18 × 20 mm *(hay que rehacerla: desde el 12 de noviembre tiene la ranura del cable)* |
+| IMAGEN 2.4T.png | hoja de bisagra con etiquetas: hoja, nudillo y agujero del pasador *(hay que rehacerla: desde el 12 de noviembre el nudillo es de Ø7 y toca el plano)* |
+| IMAGEN 2.5T.png | clip de la manguera con etiquetas: anillo, abertura y pestaña (antes era la 3.1T) *(hay que rehacerla: desde el 12 de noviembre la pestaña es parada, de 20 × 4 × 8, y la abertura de 6 mm)* |
 | IMAGEN 4.1T.png ✅ | techo con etiquetas: ventana, bisagra con su palito, palito del servo, servo en su soporte y borde del corte |
 | IMAGEN_13.1T.png | escena final del mini invernadero en Tinkercad con la caja transparente, la planta, la maceta y la ventana abierta |
 

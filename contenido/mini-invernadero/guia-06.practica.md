@@ -106,7 +106,7 @@ void loop() {
 4. Pega el **soporte del servo** debajo del techo, junto al corte, del lado contrario a la bisagra (el que se abre).
 5. Pega un palito de paleta al brazo del servo: será la "mano" que empuja la ventana hacia arriba.
    - Encaja el brazo en el eje del servo (en 0°) y pega el palito encima con silicona o cinta, **acostado, justo debajo de la ventana cerrada**.
-   - Mete el servo en el soporte, con el eje del lado del corte.
+   - Mete el servo en el soporte, con el eje del lado del corte y el cable por la **ranura** de la punta (el cable sale por la punta contraria al eje).
 6. Presionen el botón: el palito sube por el corte y empuja la ventana. Si no la alcanza, alárguenlo o acerquen el soporte.
 
 ## Parte 5 · Ajustar la apertura (15 min)
