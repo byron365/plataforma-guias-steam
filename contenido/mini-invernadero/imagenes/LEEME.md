@@ -47,4 +47,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_4.1P.png | riego simulado en Tinkercad Circuits: sensor de humedad del suelo en A0, pulsador en D2, relé en D8 y el motor de la bomba con la fuente de 5 V |
 | IMAGEN_5.1P.png | invernadero completo simulado en Wokwi: luz, botón, servo, potenciómetro, relé con el LED de la bomba y sensor DHT22 *(lista)* |
 | IMAGEN_5.2P.png | simulación andando en Wokwi con el panel del DHT22 abierto, la barra de temperatura y el Monitor escribiendo los datos *(lista)* |
-| IMAGEN_7.1P.png | circuito completo del invernadero real: relé con la bomba y la fuente de 5 V en su jack, sensor de humedad, DHT11, luz, servo y botón |
+| IMAGEN_7.1P.png | circuito completo del invernadero real: relé con la bomba y la fuente de 5 V en su jack, sensor de humedad, DHT11, luz, servo y botón | *(ya no hace falta desde el 13 de noviembre: la reemplaza la 7.9A)*
+
+**Guías de práctica de armado** (`tipo: armado`, versión práctica de 9 sábados; 13 de noviembre). La A del final es de "armado". La Guía 9 (antes 8) sigue usando la 10.1 de la versión completa.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_7.1A.png … IMAGEN_7.8A.png | Guía 7: diagrama de cada paso (1 el Arduino a las filas, 2 el servo D9, 3 el botón D2, 4 la luz D6 con 220 Ω, 5 el sensor de humedad A0, 6 el DHT11 D7, 7 el módulo relé D8, 8 la fuente, el jack y la bomba) *(listas; `herramientas/diagramas_armado.py invernadero`; el DHT11, el sensor de humedad, el relé, el jack y la bomba son dibujos propios)* |
+| IMAGEN_7.9A.png | Guía 7: circuito completo del invernadero *(lista)* |
+| IMAGEN_8.1A.png … IMAGEN_8.4A.png | Guía 8: Arduino IDE con sus partes, ventana de placa y puerto, programa de la ventana verificado y botón Subir *(listas; sin Arduino conectado, la 8.2A no muestra el COM)* |

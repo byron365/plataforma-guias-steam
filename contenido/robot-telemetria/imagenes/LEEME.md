@@ -51,3 +51,11 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN 7.2A.png ✅ | variables mensaje y datos y procedimiento leerTelemetria |
 | IMAGEN 7.3A.png ✅ | Reloj1.Temporizador final, con la lectura de la telemetría |
 | IMAGEN 7.4A.png ✅ | aviso de App Inventor al generar el APK (con el código QR tapado) |
+
+**Guías de práctica de armado de la versión con app** (`tipo: armado`, 13 de noviembre). AR = "armado" (la A sola ya es "app"):
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_9.1AR.png … IMAGEN_9.9AR.png | Guía 9: diagrama de cada paso (1 batería de los motores, 2 GND común, 3 pila de 9 V, 4 motor izquierdo, 5 motor derecho, 6 5V y GND en la protoboard pequeña, 7 HC-SR04, 8 divisor de la batería, 9 HC-05) *(listas; `herramientas/diagramas_armado.py robot`; el L298N y la batería 2S son dibujos propios)* |
+| IMAGEN_9.10AR.png | Guía 9: circuito completo del robot *(lista)* |
+| IMAGEN_10.1AR.png … IMAGEN_10.4AR.png | Guía 10: Arduino IDE con sus partes, ventana de placa y puerto, programa final del robot verificado (ya con `SoftwareSerial`) y botón Subir *(listas; sin Arduino conectado, la 10.2AR no muestra el COM)* |

@@ -144,7 +144,7 @@ Foto de la app abierta en el celular.
 - **Hace falta un celular o tablet Android por equipo** (el de un integrante, de la familia o de la academia). App Inventor no permite Bluetooth clásico en iPhone y el HC-05 usa Bluetooth clásico.
 - La instalación pide permitir "apps de origen desconocido" en ese celular: pedir permiso a la familia si el celular no es del estudiante. Los nombres exactos cambian un poco según la marca de Android.
 - Si la computadora no tiene internet, o el QR no abre, el botón **Descargar .apk** del mismo aviso baja el archivo a la computadora y se puede pasar al celular por cable.
-- La telemetría no se puede probar hoy: se prueba con el robot en la Guía 9.
+- La telemetría no se puede probar hoy: se prueba con el robot en la Guía 11.
 - `recortar` (trim) y `recorta` (split) tienen casi el mismo nombre en español: revisar que usen cada uno en su lugar.
 - `RecibirTexto` con −1 lee hasta el `ByteDelimitador` (10), que se puso en la Guía 6. Si se les olvidó, la telemetría no aparece.
 - g7a-p1: `M,150,150`; al soltar, `M,0,0`.

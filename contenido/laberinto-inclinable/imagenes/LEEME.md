@@ -50,4 +50,12 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | --- | --- |
 | IMAGEN 2.1P.png ✅ | la 2.1T sin el soporte de la pantalla y sin la nota del sensor en la meta |
 | IMAGEN 5.1P.png ✅ | recorte de la 5.1T: solo la base del joystick con la salida de los cables |
-| IMAGEN_6.1P.png | circuito real del laberinto con la fuente de 5 V en su jack hembra, joystick, dos servos y el GND común señalado |
+| IMAGEN_6.1P.png | circuito real del laberinto con la fuente de 5 V en su jack hembra, joystick, dos servos y el GND común señalado | *(ya no hace falta desde el 13 de noviembre: la reemplaza la 6.7A)*
+
+**Guías de práctica de armado** (`tipo: armado`, versión Práctica con Wokwi de 8 sábados; 13 de noviembre). La A del final es de "armado".
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_6.1A.png … IMAGEN_6.6A.png | Guía 6: diagrama de cada paso (1 el Arduino a las filas de abajo, 2 la fuente de 5 V a las de arriba, 3 GND común, 4 el servo del marco D9, 5 el servo del tablero D10, 6 el joystick en A0 y A1) *(listas; `herramientas/diagramas_armado.py laberinto`; el joystick y el jack son dibujos propios)* |
+| IMAGEN_6.7A.png | Guía 6: circuito completo del laberinto *(lista)* |
+| IMAGEN_7.1A.png … IMAGEN_7.4A.png | Guía 7: Arduino IDE con sus partes, ventana de placa y puerto, programa del control verificado y botón Subir *(listas; sin Arduino conectado, la 7.2A no muestra el COM)* |

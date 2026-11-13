@@ -102,7 +102,7 @@ Con el joystick en el centro, ¿qué ángulo tienen los servos? ¿Por qué ese �
 | 20 | | |
 :::
 
-Al terminar, dejen `INCLINACION = 15`. Con la canica de verdad, en la Guía 6, elegirán su valor.
+Al terminar, dejen `INCLINACION = 15`. Con la canica de verdad, en la Guía 7, elegirán su valor.
 
 Si un eje se mueve **al revés**, se cambia el orden de los dos últimos números de su `map`. Pruébenlo con la línea de `angX`, miren qué pasa y déjenla como estaba:
 
@@ -179,7 +179,7 @@ void loop() {
 
 ## Parte 5 · Guardar el programa final (5 min)
 
-Este código es el que van a subir al laberinto real en la Guía 6.
+Este código es el que van a subir al laberinto real en la Guía 7.
 
 1. Presionen **Save**.
 2. Copien todo el código de `sketch.ino` (**Ctrl + A**, **Ctrl + C**) a un bloc de notas y guárdenlo como `equipo_NOMBRE_control.txt`.
@@ -206,9 +206,9 @@ Este código es el que van a subir al laberinto real en la Guía 6.
 :::
 
 :::docente
-- **Versión Práctica con Wokwi (7 sábados), nueva el 6 de noviembre:** solo los dos servos con el joystick, sin sensor de meta, pantalla ni buzzer (decisión de Bairon). Guías 1 a 3: joystick en Wokwi; tablero, marco y torres en Codeblocks. 4 simula todo el sistema por partes en **Wokwi**; 5 revisa las piezas impresas, diseña la base del joystick y prepara los servos; 6 arma y ajusta, y 7 es el torneo. Campos propios (g4p-…).
+- **Versión Práctica con Wokwi (7 sábados), nueva el 6 de noviembre:** solo los dos servos con el joystick, sin sensor de meta, pantalla ni buzzer (decisión de Bairon). Guías 1 a 3: joystick en Wokwi; tablero, marco y torres en Codeblocks. 4 simula todo el sistema por partes en **Wokwi**; 5 revisa las piezas impresas, diseña la base del joystick y prepara los servos; 6 arma y ajusta, y 7 es el torneo. **Desde el 13 de noviembre son 8 sábados:** 5 sin circuito (el docente centra los servos), 6 arma el marco y el tablero y conecta el circuito con diagramas, 7 sube el programa y ajusta el control (guías de armado) y 8 es el torneo. Campos propios (g4p-…).
 - Imprimir esta semana el tablero, el marco y las dos torres. Tener los componentes de la lista para el sábado 5.
-- En Wokwi los servos van al 5V del Arduino porque en el simulador no pasa nada; en el laberinto real van a la fuente de 5 V con GND común (Guía 5).
+- En Wokwi los servos van al 5V del Arduino porque en el simulador no pasa nada; en el laberinto real van a la fuente de 5 V con GND común (Guía 6).
 - En Wokwi el joystick puede dar el eje Y invertido respecto a lo esperado: buena oportunidad para que lo descubran con la tabla.
 - g4p-p1: 90°. Así el tablero queda plano en el centro y puede inclinarse lo mismo hacia los dos lados.
 - g4p-inclinacion: 85 y 95; 80 y 100; 75 y 105; 70 y 110.

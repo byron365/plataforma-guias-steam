@@ -67,3 +67,11 @@ Las imágenes 4.3 (render de la pinza en Blender), 5.2 (circuito) y 7.1 (botón)
 | IMAGEN_5.1S.png | garra simulada en Tinkercad Circuits: Fuente de alimentación de 5 V en las filas de arriba con los 4 servos, las 4 perillas en las filas de abajo con el 5V y el GND del Arduino, y el cable del GND común *(lista)* |
 | IMAGEN_6.1S.png | garra simulada con el pulsador sobre la canaleta, una pata en D2 y la pata en diagonal en la fila − de abajo *(lista)* |
 | IMAGEN 5.2F.png | circuito completo con la fuente de 5 V en su jack hembra, los 4 servos, las 4 perillas, el botón y el GND común *(lista, hecha con `herramientas/garra_imagenes.py`)* |
+
+**Guías de práctica de armado** (`tipo: armado`, versión Blender práctica; 13 de noviembre). La A del final es de "armado":
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_9.1A.png … IMAGEN_9.9A.png | Guía 9: diagrama de cada paso (1 el Arduino a las filas de abajo, 2 la fuente de 5 V a las de arriba, 3 GND común, 4 a 7 los servos de la base, el hombro, el codo y la pinza, 8 las cuatro perillas, 9 el pulsador) *(listas; `herramientas/diagramas_armado.py garra`; las perillas vistas desde arriba y el jack son dibujos propios)* |
+| IMAGEN_9.10A.png | Guía 9: circuito completo de la garra *(lista)* |
+| IMAGEN_10.1A.png … IMAGEN_10.4A.png | Guía 10: Arduino IDE con sus partes, ventana de placa y puerto, programa de la rutina verificado y botón Subir *(listas; sin Arduino conectado, la 10.2A no muestra el COM)* |

@@ -220,7 +220,7 @@ El diseño queda guardado en Tinkercad (**Diseños → Circuitos**). El próximo
 :::
 
 :::docente
-- **Versión Práctica con app (9 sábados), nueva el 6 de noviembre:** el mando físico se reemplaza por una **app de Android hecha en MIT App Inventor** (decisión de Bairon: más barato y más simple). Sale el segundo Arduino, el segundo HC-05, el joystick, la pantalla y la caja del mando. Las guías 4 y 5 simulan el robot en Tinkercad Circuits; 6 y 7 hacen la app; 8 arma el robot y 9 conecta el HC-05 y maneja. Esta guía usa los mismos campos que la Práctica (g4p-…).
+- **Versión Práctica con app (11 sábados desde el 13 de noviembre; nueva el 6 de noviembre):** el mando físico se reemplaza por una **app de Android hecha en MIT App Inventor** (decisión de Bairon: más barato y más simple). Sale el segundo Arduino, el segundo HC-05, el joystick, la pantalla y la caja del mando. Las guías 4 y 5 simulan el robot en Tinkercad Circuits; 6 y 7 hacen la app; 8 arma el robot; 9 y 10 son guías de armado (el circuito con el HC-05, y subir los programas) y 11 es ¡a manejar con la app! Esta guía usa los mismos campos que la Práctica (g4p-…).
 - En Tinkercad no hay L298N ni motor TT: se usan el chip **L293D** (buscar "L293D") y el **Motor de aficionado**. Mismos pines del Arduino que el robot real (D5, D7, D8, D6, D4, D9), así que los programas no cambian. En el L293D la pata 16 es la alimentación de la lógica (5 V) y la 8 la de los motores.
 - La pila de 9 V del simulador hace de batería 2S: con el divisor 1:2, el Monitor muestra unos 9 V (en el robot real, 7,4 a 8,4 V).
 - En Tinkercad hay dos sensores ultrasónicos: el **PING** de 3 pines (en Básico) y el **HC-SR04** de 4 pines (en Otros componentes al buscar). Usar el HC-SR04.

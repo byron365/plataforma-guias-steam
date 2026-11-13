@@ -79,7 +79,11 @@ function dibujarPartes() {
     })));
 
   // Portada de la guía: número, sábado y sesión
-  const portada = el('header', { class: 'portada-guia' },
+  // Las guías de armado ("tipo: armado") llevan otro color y su etiqueta, para distinguirlas de las teórico-prácticas
+  const armado = guia.tipo === 'armado';
+  document.body.classList.toggle('guia-armado', armado);
+  const portada = el('header', { class: `portada-guia${armado ? ' armado' : ''}` },
+    armado ? el('span', { class: 'etiqueta-armado' }, 'Práctica de armado') : null,
     el('p', { class: 'portada-guia-datos' },
       `Guía ${guia.numero}`,
       guia.sabado ? ` · Sábado ${guia.sabado}` : '',

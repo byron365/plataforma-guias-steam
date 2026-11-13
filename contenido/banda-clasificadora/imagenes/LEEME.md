@@ -36,3 +36,14 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_6.1S.png | banda completa simulada: los dos nodos unidos por A4, A5 y GND |
 
 **Pendiente (6 de noviembre):** rehacer la `IMAGEN 6.1S` con el pulsador de la Guía 4 en D2 del nodo banda; la imagen actual no lo muestra.
+
+**Guías de práctica de armado** (`tipo: armado`, versión Práctica de 11 sábados; 13 de noviembre). La A del final es de "armado". La IMAGEN 5.1 ya no se usa en la versión Práctica: el clasificador se ve en los diagramas de la Guía 8.
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_8.1A.png … IMAGEN_8.9A.png | Guía 8, nodo banda: diagrama de cada paso (1 el Arduino a las filas de abajo, 2 la fuente de 5 V a las de arriba, 3 GND común, 4 el TIP41C, 5 D9 → 220 Ω → base, 6 la 10 kΩ y el emisor a GND, 7 el LED con su 220 Ω, 8 la perilla, 9 el sensor IR) *(listas; `herramientas/diagramas_armado.py banda`)* |
+| IMAGEN_8.10A.png | Guía 8: circuito completo del nodo banda *(lista)* |
+| IMAGEN_8.11A.png … IMAGEN_8.17A.png | Guía 8, nodo clasificador: 1 el Arduino a su protoboard, 2 A4 y A5 a los números 18 y 17 (bus I2C), 3 el TCS34725, 4 la pantalla LCD en SDA y SCL de arriba, 5 el botón de paro, 6 el servo con la fuente de la banda, 7 la unión con el nodo banda *(listas; `diagramas_armado.py clasificador`; el sensor, la pantalla y el nodo banda en pequeño son dibujos propios)* |
+| IMAGEN_8.18A.png | Guía 8: circuito completo del nodo clasificador *(lista)* |
+| IMAGEN_9.1A.png … IMAGEN_9.4A.png | Guía 9: Arduino IDE con sus partes, ventana de placa y puerto, programa de prueba del LED verificado y botón Subir *(listas; sin Arduino conectado, la 9.2A no muestra el COM)* |
+| IMAGEN_9.5A.png … IMAGEN_9.7A.png | Guía 9: el motor en lugar del LED, el diodo y el capacitor (lo de la Guía 8 se ve apagado) *(listas; `diagramas_armado.py banda-motor`)* |

@@ -1,124 +1,123 @@
 ---
-titulo: ¡El torneo de laberintos!
+titulo: Subimos el programa y ajustamos el control
 guia: 7
 sabado: 7
-sesion: Presentación del proyecto
+sesion: Práctica de armado (2)
+tipo: armado
 duracion: 120
 ---
 
-# Guía 7 · ¡El torneo de laberintos!
+# Guía 7 · Subimos el programa y ajustamos el control
 
 ## Objetivo del día
 
-Practicar con cronómetro, acordar las reglas, presentar el laberinto y competir en el torneo.
+Usar Arduino IDE para subir el programa final al laberinto y ajustar el control con la canica de verdad.
 
-**Al terminar tendremos:** la presentación hecha y los resultados del torneo.
+**Al terminar tendremos:** el laberinto funcionando: la canica recorre el tablero con el joystick.
 
 ## Materiales del equipo
 
-- Laberinto completo con la fuente de 5 V y el programa `equipo_NOMBRE_control` (sábado 6)
+- Laberinto armado con el circuito conectado y revisado (Guía 6)
+- La fuente de 5 V (ya conectada al jack en la Guía 6)
 - Canica y celular para cronometrar
+- Computadora con Arduino IDE, el cable USB del Arduino, el proyecto de Wokwi abierto y `equipo_NOMBRE_control.txt` (Guía 4)
 
-## Parte 1 · Práctica con cronómetro (25 min)
+## Parte 1 · Conociendo Arduino IDE (20 min)
 
-Si el sábado 6 no terminaron de armar o ajustar, termínenlo ahora con la **Guía 6**.
+Arduino IDE es el programa que pasa el código de la computadora al Arduino. Ábranlo y busquen estas partes:
 
-Antes de empezar, con los servos encendidos, pongan la canica en el centro del tablero: no debe rodar sola.
+- **✓ Verificar:** revisa que el programa no tenga errores.
+- **→ Subir:** lo pasa al Arduino por el cable USB.
+- **Selector de placa:** dice qué Arduino está conectado y en qué puerto.
+- **Monitor serie** (la lupa, arriba a la derecha): muestra lo que el Arduino escribe con `Serial.println`.
+- Abajo, el **cuadro de mensajes**: ahí aparecen los avisos y los errores.
 
-Practiquen en su laberinto **y en el de otro equipo**. Pónganse de acuerdo con otro equipo para intercambiar laberintos. Una persona cronometra con el celular. Una fila por jugador.
+[IMAGEN 7.1A: Arduino IDE con sus partes señaladas: Verificar, Subir, selector de placa, Monitor serie, área del programa y cuadro de mensajes]
 
-:::tabla id="g7p-practica"
-| Jugador | Laberinto propio (s) | Laberinto de otro equipo (s) |
+## Parte 2 · Conectar el Arduino (10 min)
+
+1. Con la fuente **desenchufada**, conecten el USB del Arduino a la computadora. Se enciende la luz **ON** del Arduino.
+2. Toquen el **selector de placa** y luego **Seleccione otra placa y puerto…**
+3. En **Placas**, escriban `uno` y elijan **Arduino UNO**. En **Puertos**, elijan el que dice **COM** y un número. Toquen **Aceptar**.
+
+[IMAGEN 7.2A: ventana Seleccionar otra placa y puerto: Arduino UNO elegido en Placas, la lista de Puertos donde aparece el COM cuando el Arduino está conectado y el botón Aceptar]
+
+**✔ Revisa:** si no aparece ningún puerto, prueben otro puerto USB de la computadora o avisen al docente.
+
+## Parte 3 · El programa final (20 min)
+
+1. Abran `equipo_NOMBRE_control.txt` (si están en otra computadora, descárguenlo del recuadro de la Guía 4), copien todo, péguenlo en un programa nuevo de Arduino IDE y guárdenlo como `equipo_NOMBRE_control`.
+2. Toquen **✓ Verificar**: debe aparecer el aviso **Compilación completada**.
+
+[IMAGEN 7.3A: Arduino IDE con el programa del control verificado y el aviso Compilación completada]
+
+3. Toquen **→ Subir**, el botón que está al lado de Verificar, y esperen a que el cuadro de mensajes diga que terminó, sin letras rojas.
+
+[IMAGEN 7.4A: barra de Arduino IDE con el botón Subir señalado, al lado de Verificar]
+
+4. Después enchufen la fuente.
+5. Muevan el joystick **despacio**: el tablero debe inclinarse. Si algo no funciona igual que en el simulador, el código está bien: revisen el **cable** de ese componente comparándolo con Wokwi y con los diagramas de la Guía 6. Desenchufen la fuente y desconecten el USB antes de cambiar un cable.
+
+## Parte 4 · Ajustar el control (50 min)
+
+Pongan la canica en la salida y muevan el joystick **despacio** hacia cada lado:
+
+:::tabla id="g7a-sentido"
+| Movimiento del joystick | ¿Hacia dónde se inclina el tablero? | ¿Es lo esperado? |
 | --- | --- | --- |
-| | | |
-| | | |
-| | | |
-| | | |
+| Derecha | | |
+| Izquierda | | |
+| Arriba | | |
+| Abajo | | |
 :::
 
-:::pregunta id="g7p-p1"
-¿Fue más difícil jugar en el laberinto de otro equipo? ¿Por qué?
+Si un eje se mueve **al revés**, cambien el orden de los dos últimos números de su `map`, como en la Guía 4: `CENTRO + INCLINACION, CENTRO - INCLINACION`.
+
+Ahora busquen su inclinación. Cambien `INCLINACION` por el número de cada fila, suban el código y lleven la canica a la meta. Una persona cronometra con el celular (si no llega, escriban "no llegó").
+
+:::tabla id="g7a-inclinacion"
+| INCLINACION | ¿La canica se mueve? | ¿Es fácil de controlar? | Tiempo para llegar a la meta (s) |
+| --- | --- | --- | --- |
+| 5 | | | |
+| 10 | | | |
+| 15 | | | |
+| 20 | | | |
 :::
 
-## Parte 2 · Las reglas del torneo (10 min)
+Si el tablero da saltos, bajen `SUAVE`; si responde muy lento, súbanlo.
 
-1. En equipo, escriban su propuesta para cada tema.
-2. Cada equipo lee sus propuestas al grupo y el docente modera la votación: para cada tema gana la propuesta con más votos.
-
-:::tabla id="g7p-reglas"
-| Tema | Nuestra propuesta |
-| --- | --- |
-| ¿Cuántos intentos tiene cada jugador? | |
-| ¿Se juega en el laberinto propio o en el de otros equipos? | |
-| ¿Qué pasa si la canica se sale del tablero? | |
-| ¿Hay tiempo máximo por intento? | |
+:::pregunta id="g7a-p1"
+¿Qué valores de INCLINACION y SUAVE elegimos y por qué?
 :::
 
-## Parte 3 · Presentaciones (25 min)
-
-Cada equipo presenta en **3 minutos**, con el laberinto funcionando. Repartan las partes:
-
-:::tabla id="g7p-guion"
-| Parte | ¿Qué se dice o se muestra? | Quién |
-| --- | --- | --- |
-| La idea y el diseño 3D del laberinto | | |
-| La simulación en Wokwi (inclinación y suavizado) | | |
-| El circuito y una demostración en vivo | | |
-:::
-
-## Parte 4 · El torneo (45 min)
-
-Sigan las reglas que votó el grupo. Otro equipo cronometra con el celular.
-
-[IMAGEN 9.1: estudiantes compitiendo en el torneo de laberintos inclinables]
-
-Anoten los resultados de su equipo. Una fila por jugador. En **Laberinto** escriban de qué equipo era el laberinto donde jugó. En **Mejor**, el tiempo más bajo de sus intentos. Si un intento se perdió, escriban una X.
-
-:::tabla id="g7p-torneo"
-| Jugador | Laberinto | Intento 1 (s) | Intento 2 (s) | Intento 3 (s) | Mejor (s) |
-| --- | --- | --- | --- | --- | --- |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-:::
-
-Posición final del equipo en el torneo: ______
+Dejen en el código los valores elegidos, súbanlo y guárdenlo (**Ctrl + S**).
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g7p-logramos"
-- [ ] Practicamos en dos laberintos.
-- [ ] Votamos las reglas.
-- [ ] Presentamos el laberinto.
-- [ ] Todos los integrantes jugaron el torneo.
+:::checklist id="g7a-logramos"
+- [ ] Elegimos la placa y el puerto en Arduino IDE.
+- [ ] El programa final está en el Arduino.
+- [ ] Los ejes se mueven hacia el lado correcto.
+- [ ] Elegimos la inclinación y la canica llega a la meta.
 :::
 
-## Bitácora (10 min)
+## Bitácora (15 min)
 
-:::foto id="g7p-foto"
-Foto del equipo en el torneo.
+:::foto id="g7a-foto"
+Video corto de la canica moviéndose por el laberinto.
 :::
 
-:::pregunta id="g7p-b1"
-¿Qué laberinto fue el más difícil y por qué?
-:::
-
-Cada integrante responde desde su propia sesión (entrando con su nombre):
-
-:::pregunta id="g7p-b2" individual="si"
-¿Cómo me sentí presentando y compitiendo?
-:::
+Antes de irse: desenchufen la fuente y el USB, y suban `equipo_NOMBRE_control` aquí.
 
 :::archivo id="g7-archivo"
-**Archivo de trabajo:** suban aquí el código final (.ino) y, si llevan la bitácora en el bloc de notas o en Word, también (.txt o .docx).
+**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- **Versión Práctica con Wokwi (7 sábados):** último sábado. Junta la práctica y las reglas de la Guía 8 normal y el torneo de la Guía 9 normal, con presentaciones de 3 minutos. Sin ficha técnica, hoja de cálculo ni cartel. Los tiempos se toman con el celular, porque esta versión no lleva pantalla. Campos propios (g7p-…).
-- Moderar la votación de reglas; sugerencia: 3 intentos por jugador, se cuenta el mejor, salida del tablero = intento perdido, máximo 90 s.
-- Revisar que cada laberinto tenga el mismo valor de INCLINACION para que el torneo sea justo, o convertirlo en regla.
-- Si un laberinto falla durante el torneo, permitir 5 minutos de reparación; los demás siguen jugando.
-- Premiar también el laberinto más difícil, el más creativo y la mejor presentación, no solo el tiempo.
-- Tiempo total: 25 + 10 + 25 + 45 + 5 + 10 = 120 minutos.
+- **Versión Práctica con Wokwi (8 sábados), guía de armado (tipo: armado):** desde el 13 de noviembre. Antes eran las Partes 3 y 4 de la Guía 6 práctica, más las partes de Arduino IDE. Campos propios (g7a-…): g7a-sentido, g7a-inclinacion, g7a-p1 y g7a-foto eran g6p-….
+- Imágenes 7.1A a 7.4A: capturas de Arduino IDE 2.3.10 en español con el programa del control (Guía 4), tomadas sin Arduino conectado (por eso la 7.2A no muestra el COM).
+- Si el Arduino se reinicia al mover el joystick, revisar que los servos estén en la fuente y no en el 5V del Arduino.
+- Con INCLINACION mayor de 20 la canica suele saltar las paredes.
+- Si un equipo no termina, sigue al inicio del sábado 8.
+- Tiempo total: 20 + 10 + 20 + 50 + 5 + 15 = 120 minutos.
 :::

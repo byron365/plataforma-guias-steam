@@ -173,7 +173,7 @@ Con `leer(A3, 40, 80)`, ¿qué números da la pinza en el Monitor?
 - De 0 a 180
 :::
 
-3. Dejen otra vez `leer(A3, 30, 90)`. Los límites de verdad se miden con la garra armada, en la Guía 9.
+3. Dejen otra vez `leer(A3, 30, 90)`. Los límites de verdad se miden con la garra armada, en la Guía 11.
 
 :::pregunta id="g5p-p2"
 ¿Por qué conviene que el límite esté en el código y no solo en el cuidado del piloto al girar la perilla?

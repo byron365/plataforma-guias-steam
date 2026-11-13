@@ -44,3 +44,11 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | Archivo | Descripción |
 | --- | --- |
 | IMAGEN_6.1P.png | simulación en Wokwi con el Monitor serie mostrando cada gol con su segundo y su equipo *(lista)* |
+
+**Guías de práctica de armado** (`tipo: armado`, versión Práctica con Wokwi; 13 de noviembre). La A del final es de "armado":
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_8.1A.png … IMAGEN_8.6A.png | Guía 8: diagrama de cada paso (1 filas + y −, 2 sensor de la portería roja, 3 sensor de la portería azul, 4 botón de inicio, 5 buzzer, 6 pantalla OLED) *(listas; `herramientas/diagramas_armado.py futbol`; la OLED es un dibujo propio)* |
+| IMAGEN_8.7A.png | Guía 8: circuito completo del marcador *(lista)* |
+| IMAGEN_9.1A.png … IMAGEN_9.4A.png | Guía 9: Arduino IDE con sus partes, ventana de placa y puerto, programa del marcador verificado (sensores en INPUT) y botón Subir *(listas; sin Arduino conectado, la 9.2A no muestra el COM)* |

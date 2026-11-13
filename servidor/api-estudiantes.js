@@ -182,6 +182,7 @@ router.get('/guias/:numero', requiereSesion, (req, res) => {
     titulo: guia.titulo,
     sabado: guia.sabado,
     sesion: guia.sesion,
+    tipo: guia.tipo,
     estado,
     // Las notas del docente NO se envían a los estudiantes
     partes: guia.partes.map((p) => ({ titulo: p.titulo, tiempo: p.tiempo, html: p.html })),

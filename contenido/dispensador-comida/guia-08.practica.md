@@ -1,132 +1,142 @@
 ---
-titulo: Probamos el dispensador y lo presentamos
+titulo: Armamos el circuito paso a paso
 guia: 8
 sabado: 8
-sesion: Pruebas y presentación
+sesion: Práctica de armado (1)
+tipo: armado
 duracion: 120
 ---
 
-# Guía 8 · Probamos el dispensador y lo presentamos
+# Guía 8 · Armamos el circuito paso a paso
 
 ## Objetivo del día
 
-Probar el dispensador real con croquetas, ajustar la porción a ojo hasta que sirva bien y hacer la demostración final.
+Conectar el circuito real del dispensador, componente por componente, siguiendo los diagramas. Es el mismo circuito que ya funciona en el simulador.
 
-**Al terminar tendremos:** el dispensador sirviendo bien la porción de su mascota, con el botón y a su hora, y la demostración presentada.
+**Al terminar tendremos:** todos los componentes del dispensador conectados al Arduino y revisados cable por cable, listos para subir el programa final en la Guía 9.
 
 ## Materiales del equipo
 
-- Dispensador armado con su circuito y el programa final (sábado 7)
-- Croquetas, plato y una bandeja o caja (las croquetas ruedan)
-- Computadora con Arduino IDE y el circuito simulado en Tinkercad
+- Dispensador armado (Guía 7), con el servo colgando de su repisa
+- Arduino UNO y protoboard
+- Botón, LED, resistencia de 220 Ω y buzzer
+- Cables macho–macho
+- El circuito simulado abierto en Tinkercad (Guía 6)
 
-## Parte 1 · ¿Funciona igual que en el simulador? (20 min)
+**Regla de oro:** el Arduino se queda **desconectado** del USB todo el sábado. Los cables se ponen y se cambian solo sin corriente.
 
-1. Conecten el USB. Debe estar el programa `equipo_NOMBRE_final` del sábado 7 (si no, súbanlo otra vez).
-2. Abran el **Monitor serie** (lupa arriba a la derecha) a **9600 baudios**.
-3. Sin comida todavía, presionen el botón y esperen la comida automática. Marquen la tabla:
+## Parte 1 · Cómo leer los diagramas (10 min)
 
-:::tabla id="g8p-comparar"
-| Prueba | ¿En el simulador funcionaba? | ¿En el dispensador real funciona? | Si no, ¿qué revisamos? |
-| --- | --- | --- | --- |
-| Al presionar el botón, suena el aviso | | | |
-| Se enciende el LED | | | |
-| La compuerta se abre y se cierra | | | |
-| Sirve sola al pasar el intervalo | | | |
-| El Monitor cuenta las comidas | | | |
+Cada paso tiene un dibujo. Lo que ya conectaron en los pasos anteriores se ve **gris claro**; lo nuevo de ese paso se ve **a todo color**.
+
+**Primero, la protoboard.** En los bordes tiene filas largas marcadas con **+** (línea roja) y **−** (línea azul): todos los agujeros de una fila larga están conectados. En el centro, a cada lado de la canaleta, hay filas cortas de 5 agujeros conectados entre sí.
+
+- Cada agujero del centro tiene un **nombre**: su letra (A a J, de arriba abajo) y su número (1 a 30, de izquierda a derecha). Por ejemplo, **E13** es la letra E en el número 13. Las letras y los números vienen impresos en la protoboard.
+- Las etiquetas blancas de los dibujos dicen dónde va cada punta: **D4** es el pin 4 del Arduino, **E13** es un agujero y **fila −** es cualquier agujero de una fila −.
+- Arriba y abajo hay una fila **+** y una fila **−**. Las de arriba **no** están unidas con las de abajo: en el paso 1 se unen con dos cables.
+
+Pongan la protoboard y el Arduino al lado de la torre, en el frente, donde se vean el botón y el LED.
+
+[IMAGEN 8.6A: circuito completo del dispensador en la protoboard, con el LED, el buzzer, el botón y el servo de la compuerta]
+
+## Parte 2 · Las filas + y − (10 min)
+
+**Paso 1.**
+
+1. Un cable rojo del **5V** del Arduino a la **fila +** de abajo y uno negro del **GND** a la **fila −** de abajo.
+2. Un cable rojo de la fila **+** de abajo a la fila **+** de arriba y uno negro de la fila **−** de abajo a la fila **−** de arriba, en el extremo derecho de la protoboard.
+
+[IMAGEN 8.1A: paso 1, 5V y GND del Arduino a las filas + y − de abajo y dos cables que las unen con las de arriba]
+
+**✔ Revisa:** el rojo siempre en una fila **+** y el negro en una fila **−**.
+
+## Parte 3 · El LED (25 min)
+
+Como en el simulador: pata larga → resistencia → pin; pata corta → fila −.
+
+**Paso 2.**
+
+1. Doblen un poco las patas del LED. La **pata corta** va a la **fila −** de arriba y la **pata larga** a **A9**.
+2. Resistencia de 220 Ω de **C9** a **C13** (una pata en cada uno).
+3. Un cable de **E13** al pin **D4** del Arduino.
+
+[IMAGEN 8.2A: paso 2, LED con la pata corta en la fila − y la pata larga en A9, resistencia de C9 a C13 y cable de E13 a D4]
+
+**✔ Revisa:** un error muy común es que la resistencia quede en una fila distinta de la pata larga.
+
+## Parte 4 · Buzzer y botón (20 min)
+
+**Paso 3: buzzer.** La pata **+** del buzzer está marcada con + o es la más larga.
+
+1. Claven el buzzer con la pata **+** en **C2** y la **−** en **C5**.
+2. Un cable de **E2** al pin **D5**.
+3. Un cable de **A5** a la **fila −** de arriba.
+
+[IMAGEN 8.3A: paso 3, buzzer con la + en C2 y la − en C5, cable de E2 a D5 y de A5 a la fila −]
+
+**Paso 4: botón.**
+
+1. Claven el botón con sus 4 patas en **A17**, **D17**, **A19** y **D19**.
+2. Un cable de **E17** al pin **D2**.
+3. Un cable de **E19** a la **fila −** de abajo: es la pata en diagonal a la del pin.
+
+[IMAGEN 8.4A: paso 4, botón con sus patas en A17, D17, A19 y D19, cable de E17 a D2 y de E19 a la fila − de abajo]
+
+## Parte 5 · El servo (15 min)
+
+**Paso 5.** El cable del servo baja por detrás de la torre hasta la protoboard. En el servo real, los colores dicen qué es cada cable: **naranja** es la señal, **rojo** la potencia y **café** la tierra.
+
+1. Metan tres cables macho–macho en su conector.
+2. Naranja → **D9**, rojo → **fila +** de abajo y café → **fila −** de abajo.
+
+[IMAGEN 8.5A: paso 5, servo de la compuerta: naranja a D9, rojo a la fila + y café a la fila − de abajo]
+
+## Parte 6 · Revisión cable por cable (25 min)
+
+Abran su circuito simulado en Tinkercad. Una persona lee cada fila de la tabla y la otra sigue el cable con el dedo en el circuito real:
+
+| Componente | Conexión |
+| --- | --- |
+| Servo | Naranja → D9 · Rojo → fila + · Café → fila − |
+| Botón | Una pata → D2 · la pata en diagonal → fila − |
+| LED | Pata larga → 220 Ω → D4 · pata corta → fila − |
+| Buzzer | + → D5 · − → fila − |
+| Filas de la protoboard | 5V → fila + · GND → fila − |
+
+:::checklist id="g8a-revision"
+- [ ] 5V y GND llegan a las filas + y −, y las de arriba están unidas con las de abajo.
+- [ ] El LED tiene su resistencia en la misma fila que la pata larga.
+- [ ] El buzzer está en D5 y el botón en D2.
+- [ ] El servo está en D9.
+- [ ] Ningún cable rojo toca una fila − ni un cable negro una fila +.
 :::
-
-Si algo falla en el real pero funcionaba en el simulador, el código está bien: revisen el **cable** de ese componente comparándolo con Tinkercad.
-
-## Parte 2 · Pruebas con croquetas (35 min)
-
-Pongan la bandeja debajo de todo. Llenen la botella hasta la mitad con croquetas.
-
-1. Presionen el botón 5 veces, esperando entre una y otra, y anoten. Después de cada prueba, vacíen el plato.
-
-:::tabla id="g8p-pruebas"
-| Prueba | ¿Cayó comida? | ¿Se atascó? | ¿Se escapó comida con la compuerta cerrada? |
-| --- | --- | --- | --- |
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-:::
-
-2. Ajusten a ojo, cambiando los **Ajustes del equipo** y subiendo el programa otra vez:
-   - **Se atasca** → `ABIERTA` a 90. Revisen que la compuerta no choque; si choca, regresen a 70 y avisen al docente.
-   - **La porción del gato se ve muy poca o demasiada** → cambien `TIEMPO_GATO`. Una buena porción de gato apenas cubre el fondo del plato.
-3. Con su `TIEMPO_GATO` elegido, prueben las tres mascotas: la del perro grande debe verse unas cuatro veces la del gato.
-
-:::tabla id="g8p-ajustes"
-| Ajuste | Valor final | ¿Por qué? |
-| --- | --- | --- |
-| ABIERTA (°) | | |
-| TIEMPO_GATO (ms) | | |
-| MASCOTA | | |
-:::
-
-:::pregunta id="g8p-p1"
-¿Qué ajuste tuvieron que hacer en el dispensador real que no hacía falta en el simulador? ¿Por qué?
-:::
-
-## Parte 3 · El horario con comida (10 min)
-
-1. Dejen la botella con croquetas y el plato vacío.
-2. No toquen nada durante el intervalo: el dispensador debe servir solo.
-3. Revisen en el Monitor serie el número de la comida.
-
-## Parte 4 · Demostración final (40 min)
-
-Cada equipo presenta su dispensador en **3 minutos**. Repartan las partes (una persona puede tener dos) y escriban 2 o 3 ideas cortas para cada una:
-
-:::tabla id="g8p-guion"
-| Parte | ¿Qué se dice o se muestra? | Quién |
-| --- | --- | --- |
-| El problema: mascotas solas en casa | | |
-| Cómo diseñamos las piezas en Tinkercad | | |
-| Cómo lo simulamos antes de armarlo | | |
-| Demostración: porción con el botón y comida automática | | |
-:::
-
-1. Ensayen una vez (10 min).
-2. Presenten por turnos. Mientras los demás equipos presentan, escuchen y hagan al menos una pregunta.
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g8p-logramos"
-- [ ] Comparamos el dispensador real con el simulado.
-- [ ] Hicimos 5 pruebas con croquetas y ajustamos la porción.
-- [ ] El dispensador sirvió solo a su hora.
-- [ ] Presentamos el dispensador.
+:::checklist id="g8a-logramos"
+- [ ] Conectamos todos los componentes siguiendo los diagramas.
+- [ ] Revisamos cada cable con la tabla y con el simulador.
+- [ ] El botón y el LED quedaron al frente, donde se ven.
 :::
-
-## Reto extra
-
-Haz que el buzzer toque una melodía corta (tres notas) para llamar a la mascota en lugar de un solo pitido.
-
-Pista: en `servir()`, cambien el `tone(BUZZER, 1500, 300);` por tres `tone` con notas distintas y un `delay` entre ellos.
 
 ## Bitácora (10 min)
 
-:::foto id="g8p-foto"
-Video del dispensador sirviendo croquetas.
+:::foto id="g8a-foto"
+Foto de la protoboard con todo el circuito conectado.
 :::
 
-:::pregunta id="g8p-b1"
-Si tuvieran que hacer otro proyecto, ¿lo simularían primero? ¿Por qué?
-:::
-
-:::archivo id="g8-archivo"
-**Archivo de trabajo:** suban aquí el código final (.ino) con los ajustes del dispensador real. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+:::pregunta id="g8a-b1"
+¿En qué les ayudó tener el circuito simulado al conectar el circuito real?
 :::
 
 :::docente
-- **Versión Tinkercad práctica (8 sábados):** último sábado. La porción se ajusta a ojo, sin báscula (decisión de Bairon). Sin ficha técnica ni cartel. Campos propios (g8p-…).
-- Si se escapa comida con la compuerta cerrada, acercar la compuerta a la salida o pegarle un pedazo de fomi.
-- Si el servo se traba con croquetas grandes, probar croquetas más pequeñas o `ABIERTA` mayor.
-- Para la demostración, `INTERVALO = 60000` (un minuto) o menos, para que se vea la comida automática.
-- Invitar a las familias a la demostración si es posible.
-- Tiempo total: 20 + 35 + 10 + 40 + 5 + 10 = 120 minutos.
+- **Versión Tinkercad práctica, guía de armado (tipo: armado):** antes era la Parte 2 de la Guía 7. Ahora tiene un sábado propio para conectar con calma y revisar. Campos propios (g8a-…).
+- Diagramas hechos con `herramientas/diagramas_armado.py dispensador` (dibujos de las piezas de Fritzing, CC BY-SA 3.0, con el crédito en cada imagen). Si cambia el circuito, se vuelven a generar y se copian como IMAGEN 8.1A a 8.6A.
+- El LED va directo en la protoboard, con las patas dobladas: la corta a la fila − y la larga a la fila A. El buzzer de 12 mm tapa algunos agujeros, pero A y E de sus columnas quedan libres.
+- El botón va en las filas A y D de un mismo lado (patas en A17, D17, A19 y D19), y no sobre la canaleta como en Tinkercad. Funciona igual: las patas del mismo número están unidas dentro del botón.
+- Las dos uniones entre las filas + y − de arriba y de abajo (paso 1) hacen falta porque en la protoboard de 400 no están unidas por dentro.
+- El orden de las filas de la protoboard es una sugerencia para que los cables no se crucen. Si un equipo usa otras filas, lo importante es la tabla de la Parte 6.
+- Errores comunes: LED al revés, resistencia en una fila distinta de la pata larga, buzzer al revés, el cable del servo en el pin equivocado.
+- Si no alcanza el tiempo, la revisión se termina al inicio de la Guía 9, antes de conectar el USB.
+- Tiempo total: 10 + 10 + 25 + 20 + 15 + 25 + 5 + 10 = 120 minutos.
 :::

@@ -130,7 +130,7 @@ Si la tierra sigue seca después de regar, ¿qué hace el programa? ¿Para qué 
 
 ## Parte 5 · Elegir el umbral (15 min)
 
-El **umbral** es el número que separa "seca" de "húmeda". En el invernadero real lo calibraremos con tierra de verdad (Guía 7); hoy probamos cómo cambia el riego.
+El **umbral** es el número que separa "seca" de "húmeda". En el invernadero real lo calibraremos con tierra de verdad (Guía 8); hoy probamos cómo cambia el riego.
 
 1. Cambien `UMBRAL_SECO` por cada número de la tabla y busquen, moviendo la barra del sensor, a partir de qué número riega.
 
@@ -176,7 +176,7 @@ El diseño queda guardado en Tinkercad (**Diseños → Circuitos**).
 :::docente
 - **Versión práctica (8 sábados):** esta guía se simula en **Tinkercad Circuits** (decisión de Bairon: tiene el sensor de humedad del suelo y el relé); las guías 3 y 5 son en Wokwi. Campos propios (g4p-…).
 - En Tinkercad se usan el **Sensor de humedad del suelo** (Básico), el **Relé SPDT** con la bobina directo al pin 8 (solo en el simulador; el módulo relé real trae el transistor y el diodo, por eso en la Guía 7 se conecta VCC, GND e IN), un **Motor de CC** como bomba y la **Fuente de alimentación** en 5 V.
-- El sensor de Tinkercad es resistivo: su número **sube** con el agua (0 en seco, unos 850 mojado). El capacitivo real **baja** con el agua. Por eso el código usa `1023 - analogRead(SENSOR_SUELO)`: así "más alto = más seco" en los dos. En el programa final (Guía 5, Wokwi, y Guía 7, real) se lee directo con `analogRead`, porque allí el número ya sube con la tierra seca.
+- El sensor de Tinkercad es resistivo: su número **sube** con el agua (0 en seco, unos 850 mojado). El capacitivo real **baja** con el agua. Por eso el código usa `1023 - analogRead(SENSOR_SUELO)`: así "más alto = más seco" en los dos. En el programa final (Guía 5, Wokwi, y Guía 8, real) se lee directo con `analogRead`, porque allí el número ya sube con la tierra seca.
 - g4p-p1: vuelve a regar después de 5 s, hasta que el número baje del umbral; el `delay(5000)` da tiempo a que el agua llegue a la tierra y el sensor lo note.
 - g4p-p2: muy bajo → riega casi siempre y la tierra se encharca (las raíces se pudren); muy alto → la tierra se seca demasiado antes de regar.
 - g4p-b1: la bomba necesita más corriente de la que da el Arduino; con su propia fuente, el Arduino no se reinicia ni se daña.

@@ -10,18 +10,17 @@ duracion: 120
 
 ## Objetivo del día
 
-Preparar el cuerpo del invernadero, montar la ventana con la bisagra impresa y el servo que la empuja, y ajustar cuánto se abre.
+Preparar el cuerpo del invernadero y montar la ventana con la bisagra impresa y el servo que la empuja.
 
-**Al terminar tendremos:** la casa del invernadero lista, con su ventana que se abre y se cierra con el botón.
+**Al terminar tendremos:** la casa del invernadero lista, con su ventana y el servo que la empuja en su lugar, lista para conectar el circuito en la Guía 7.
 
 ## Materiales del equipo
 
 - Caja transparente o de plástico reciclado
 - Cartón o plástico para el compartimento seco, regla y plumón
 - Piezas impresas: 2 hojas de bisagra y el soporte del servo; palito de pincho y un palito de paleta
-- Servo SG90 con su brazo, botón, Arduino UNO con cable USB, protoboard, cables
+- Servo SG90 con su brazo; Arduino UNO y 3 cables macho–macho (para poner el servo en 0°)
 - Cutter (lo usa el docente), silicona (con el docente), cinta, tijeras
-- Computadora con Arduino IDE
 
 ## Parte 1 · Revisar las plantas (10 min)
 
@@ -34,7 +33,7 @@ Midan la altura (regla parada en la tierra, hasta la punta más alta), cuenten l
 | Control | | | |
 :::
 
-## Parte 2 · El cuerpo del invernadero (30 min)
+## Parte 2 · El cuerpo del invernadero (35 min)
 
 Miren la imagen del invernadero completo para ver dónde va cada cosa:
 
@@ -52,7 +51,7 @@ Miren la imagen del invernadero completo para ver dónde va cada cosa:
 ¿Por qué la ventana va en el techo y no abajo?
 :::
 
-## Parte 3 · La bisagra (20 min)
+## Parte 3 · La bisagra (25 min)
 
 [IMAGEN 4.1T: techo del invernadero en Tinkercad con etiquetas: ventana, bisagra con sus dos hojas y el palito, palito pegado al brazo del servo, servo en su soporte bajo el techo y borde del corte]
 
@@ -67,65 +66,19 @@ Miren la imagen del invernadero completo para ver dónde va cada cosa:
 - [ ] Al cerrarla, tapa el corte del techo.
 :::
 
-## Parte 4 · El servo que empuja (30 min)
+## Parte 4 · El servo que empuja (35 min)
 
-1. **El circuito**, igual que en el simulador (Guía 3), con el USB desconectado:
-   - 5V del Arduino a la fila **+** de la protoboard y GND a la fila **−**.
-   - **Servo:** naranja → pin **9**, rojo → fila **+**, café → fila **−** (con tres cables macho–macho en su conector).
-   - **Botón:** sobre la canaleta del centro; dos patas en **diagonal**: una → pin **2**, la otra → fila **−**.
-2. **El programa:** conecten el USB, elijan **Arduino Uno** y su puerto en **Seleccionar placa**, creen un programa nuevo y escriban el de la ventana (es la parte de la ventana de la Guía 3):
+**Muy importante:** antes de pegar el palito al brazo del servo, el servo debe estar en **0°** (ventana cerrada).
 
-```cpp
-#include <Servo.h>
-Servo ventana;
-
-const int BOTON = 2;
-const int ANGULO_ABIERTA = 60;   // grados
-bool abierta = false;
-
-void setup() {
-  pinMode(BOTON, INPUT_PULLUP);   // botón suelto = HIGH
-  ventana.attach(9);
-  ventana.write(0);               // cerrada
-}
-
-void loop() {
-  if (digitalRead(BOTON) == LOW) {    // botón presionado
-    abierta = !abierta;               // cambiar: abierta <-> cerrada
-    if (abierta) {
-      ventana.write(ANGULO_ABIERTA);
-    } else {
-      ventana.write(0);
-    }
-    delay(500);                       // evitar doble toque
-  }
-}
-```
-
-3. Guárdenlo como `equipo_NOMBRE_ventana`, verifiquen (✓) y súbanlo (→). Al encender, el servo va a **0°**.
+1. Con el Arduino **desconectado**, conecten el servo directo al Arduino: cable **café → GND**, **rojo → 5V**, **naranja → pin 9**.
+2. Llamen al docente: conecta el USB y sube un programa corto que deja el servo en 0°. El servo gira un poquito y se queda quieto. Cómo se sube un programa lo aprenderán en la Guía 8.
+3. Desconecten el USB y los tres cables del servo. Desde ahora, **no giren el eje del servo con la mano**.
 4. Pega el **soporte del servo** debajo del techo, junto al corte, del lado contrario a la bisagra (el que se abre).
 5. Pega un palito de paleta al brazo del servo: será la "mano" que empuja la ventana hacia arriba.
    - Encaja el brazo en el eje del servo (en 0°) y pega el palito encima con silicona o cinta, **acostado, justo debajo de la ventana cerrada**.
    - Mete el servo en el soporte, con el eje del lado del corte y el cable por la **ranura** de la punta (el cable sale por la punta contraria al eje).
-6. Presionen el botón: el palito sube por el corte y empuja la ventana. Si no la alcanza, alárguenlo o acerquen el soporte.
 
-## Parte 5 · Ajustar la apertura (15 min)
-
-Cambien el número de `ANGULO_ABIERTA` por cada valor de la tabla, suban el código, abran la ventana con el botón y observen. Si el servo zumba o empuja contra algo, eso es "forzar".
-
-:::tabla id="g6p-angulos"
-| Ángulo de "abierta" | ¿Cuánto se abre la ventana? | ¿El servo fuerza o choca? |
-| --- | --- | --- |
-| 30 | | |
-| 60 | | |
-| 90 | | |
-:::
-
-Nuestro ángulo de ventana abierta: ANGULO_ABIERTA = ______
-
-:::pregunta id="g6p-p2"
-¿Qué le pasa al servo si el ángulo es demasiado grande y la ventana ya no puede abrirse más?
-:::
+La ventana se prueba con el botón y se elige cuánto se abre en la Guía 8, cuando suban el programa.
 
 ## ¿Lo logramos? (5 min)
 
@@ -133,14 +86,13 @@ Nuestro ángulo de ventana abierta: ANGULO_ABIERTA = ______
 - [ ] Revisamos las plantas.
 - [ ] El compartimento seco está pegado y la ventana cortada.
 - [ ] La ventana gira sobre la bisagra.
-- [ ] El servo abre y cierra la ventana con el botón.
-- [ ] Elegimos el ángulo de la ventana.
+- [ ] El servo está en su soporte, en 0°, con el palito justo debajo de la ventana.
 :::
 
 ## Bitácora (10 min)
 
 :::foto id="g6p-foto"
-Video corto de la ventana abriéndose con el botón.
+Foto de la casa con la ventana y el servo en su lugar.
 :::
 
 :::pregunta id="g6p-b1"
@@ -148,14 +100,27 @@ Video corto de la ventana abriéndose con el botón.
 :::
 
 :::archivo id="g6-archivo"
-**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** si llevan la bitácora en el bloc de notas o en Word, pueden subirla aquí (.txt o .docx). La próxima sesión la descargan en cualquier computadora y siguen donde se quedaron.
 :::
 
 :::docente
-- **Versión práctica (8 sábados):** junta el cuerpo del invernadero de la Guía 3 Tinkercad y el montaje de la ventana de la Guía 4 Tinkercad en un solo sábado. Las piezas impresas (bisagra, soporte del servo y clip) deben estar listas antes. Campos propios (g6p-…).
+- **Versión práctica:** junta el cuerpo del invernadero de la Guía 3 Tinkercad y el montaje de la ventana de la Guía 4 Tinkercad en un solo sábado. Las piezas impresas (bisagra, soporte del servo y clip) deben estar listas antes. Campos propios (g6p-…).
+- **Desde el 13 de noviembre (9 sábados):** solo el armado. El circuito del servo y del botón pasó a la Guía 7 y el programa de la ventana con el ajuste del ángulo, a la Guía 8 (guías de armado): g6p-angulos y g6p-p2 ahora son g8a-angulos y g8a-p1. El servo lo pone en 0° el docente.
+- **Programa para poner el servo en 0° (lo sube el docente en la Parte 4):** Arduino IDE, placa Arduino Uno y su puerto:
+
+```cpp
+#include <Servo.h>
+Servo ventana;
+
+void setup() {
+  ventana.attach(9);
+  ventana.write(0);   // cerrada
+}
+
+void loop() {
+}
+```
 - El docente corta la caja con el cutter; los estudiantes marcan.
-- El ángulo elegido (g6p-angulos) se escribe en `ANGULO_ABIERTA` del programa final el sábado 7.
 - g6p-p1: el aire caliente sube; una ventana arriba deja salir el calor.
-- g6p-p2: el servo se queda empujando, zumba y se calienta; puede dañarse o despegar la ventana.
-- Tiempo total: 10 + 30 + 20 + 30 + 15 + 5 + 10 = 120 minutos.
+- Tiempo total: 10 + 35 + 25 + 35 + 5 + 10 = 120 minutos.
 :::

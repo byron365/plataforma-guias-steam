@@ -1,135 +1,153 @@
 ---
-titulo: Prueba final y ¡gran torneo!
+titulo: Subimos los programas y calibramos los sensores
 guia: 9
 sabado: 9
-sesion: Presentación del proyecto
+sesion: Práctica de armado (2)
+tipo: armado
 duracion: 120
 ---
 
-# Guía 9 · Prueba final y ¡gran torneo!
+# Guía 9 · Subimos los programas y calibramos los sensores
 
 ## Objetivo del día
 
-Comprobar con 20 goles que el marcador es confiable, votar las reglas del torneo, presentar el proyecto y jugar el torneo con los marcadores de todos los equipos.
+Usar Arduino IDE para subir un programa de prueba, calibrar los sensores de las porterías y subir el programa final del marcador.
 
-**Al terminar tendremos:** la precisión de nuestro marcador, la tabla de posiciones final y un campeón.
+**Al terminar tendremos:** la cancha con su marcador electrónico real, que detecta los goles y los celebra.
 
 ## Materiales del equipo
 
-- Cancha con marcador y el programa `equipo_NOMBRE_marcador` (sábado 8)
-- Pelota y jugadores o paletas para empujarla
-- Computadora con Arduino IDE
+- Cancha con el marcador conectado y revisado (Guía 8)
+- Computadora con Arduino IDE y el cable USB del Arduino
+- `equipo_NOMBRE_marcador.txt` (Guía 6) y el proyecto de Wokwi abierto
+- Destornillador pequeño y la pelota
 
-## Parte 1 · Prueba de 20 goles (20 min)
+## Parte 1 · Conociendo Arduino IDE (15 min)
 
-1. Conecten el marcador e inicien un partido.
-2. Metan **10 goles** en cada portería, uno por uno, de forma parecida (no muy rápido ni muy lento). Una persona cuenta los goles reales.
-3. Anoten cuántos goles sumó el marcador (azul + rojo). Si contó de más o de menos, cambien `PAUSA_GOL`, suban el código y repitan.
+Arduino IDE es el programa que pasa el código de la computadora al Arduino. Ábranlo y busquen estas partes:
 
-:::tabla id="g9p-goles"
-| PAUSA_GOL (ms) | Goles reales | Goles en el marcador | ¿Contó de más o de menos? |
+- **✓ Verificar:** revisa que el programa no tenga errores.
+- **→ Subir:** lo pasa al Arduino por el cable USB.
+- **Selector de placa:** dice qué Arduino está conectado y en qué puerto.
+- **Monitor serie** (la lupa, arriba a la derecha): muestra lo que el Arduino escribe con `Serial.println`.
+- Abajo, el **cuadro de mensajes**: ahí aparecen los avisos y los errores.
+
+[IMAGEN 9.1A: Arduino IDE con sus partes señaladas: Verificar, Subir, selector de placa, Monitor serie, área del programa y cuadro de mensajes]
+
+## Parte 2 · Conectar el Arduino (10 min)
+
+1. Conecten el USB del Arduino a la computadora. Se enciende la luz **ON** del Arduino.
+2. Toquen el **selector de placa** y luego **Seleccione otra placa y puerto…**
+3. En **Placas**, escriban `uno` y elijan **Arduino UNO**. En **Puertos**, elijan el que dice **COM** y un número. Toquen **Aceptar**.
+
+[IMAGEN 9.2A: ventana Seleccionar otra placa y puerto: Arduino UNO elegido en Placas, la lista de Puertos donde aparece el COM cuando el Arduino está conectado y el botón Aceptar]
+
+**✔ Revisa:** si no aparece ningún puerto, prueben otro puerto USB de la computadora o avisen al docente.
+
+## Parte 3 · Probar y calibrar los sensores (40 min)
+
+1. **Archivo → Nuevo boceto**, borra lo que trae, escribe este código de prueba, verifica (✓) y súbelo (→).
+2. Abre el Monitor serie (lupa, arriba a la derecha) y elige **9600 baudios**.
+
+[IMAGEN 9.4A: barra de Arduino IDE con el botón Subir señalado, al lado de Verificar]
+
+```cpp
+void setup() {
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.print("Azul: ");
+  Serial.print(digitalRead(3));
+  Serial.print("   Rojo: ");
+  Serial.println(digitalRead(4));
+  delay(200);
+}
+```
+
+Cada sensor tiene un **tornillo azul** (potenciómetro) que cambia hasta qué distancia detecta.
+
+3. Gira el tornillo **a la izquierda** hasta que el LED del sensor se apague sin pelota. Giren con el destornillador pequeño, poco a poco (un cuarto de vuelta cada vez).
+4. Gíralo **poco a poco a la derecha** hasta que detecte la pelota dentro de la portería, pero **no** cuando pasa por fuera, frente a ella. Después de cada pequeño giro, pongan la pelota dentro y fuera, y miren el LED y el Monitor serie.
+
+Muevan el tornillo en la animación y miren cómo cambia la distancia a la que detecta:
+
+:::animacion tipo="calibracion-ir"
+:::
+
+Hagan cada prueba en las dos porterías y escriban Sí o No. En la última columna, ¿el sensor hizo lo que debía?
+
+:::tabla id="g9a-calibracion"
+| Prueba | Portería azul (¿detecta?) | Portería roja (¿detecta?) | ¿Es correcto? |
 | --- | --- | --- | --- |
-| 1500 | 20 | | |
-| | 20 | | |
+| Pelota en el fondo de la portería | | | |
+| Pelota en la línea de gol | | | |
+| Pelota pasando frente a la portería, por fuera | | | |
+| Mano de un jugador cerca de la portería | | | |
 :::
 
-> Precisión (%) = Goles en el marcador ÷ Goles reales × 100
+## Parte 4 · El programa final (40 min)
 
-Ejemplo con números inventados: si el marcador sumó 19 de 20 goles, la precisión es 19 ÷ 20 × 100 = 95 %. Si contó de más (por ejemplo 22), la precisión pasa de 100 %: también es un error.
+1. Abran `equipo_NOMBRE_marcador.txt` (si están en otra computadora, descárguenlo del recuadro de la Guía 6), copien todo, péguenlo en un programa nuevo de Arduino IDE y guárdenlo como `equipo_NOMBRE_marcador`.
+2. Instalen las librerías **Adafruit SSD1306** y **Adafruit GFX Library**: **Gestor de bibliotecas** (icono de los libros a la izquierda) → buscar → **Instalar** (si pregunta por otras, **Instalar todo**).
+3. **Cambio importante:** en `setup()` cambien `INPUT_PULLUP` por `INPUT` en los dos sensores (el sensor real ya da su propia señal).
+   - Son las líneas de `SENSOR_AZUL` y `SENSOR_ROJO`, las que dicen `// en el real: INPUT`. El botón de inicio se queda con `INPUT_PULLUP`.
+4. Verifiquen (✓): debe aparecer el aviso **Compilación completada**. Después súbanlo (→).
 
-Nuestra pausa elegida: ______ ms · Precisión: ______ %
+[IMAGEN 9.3A: Arduino IDE con el programa del marcador verificado, con los sensores en INPUT y el aviso Compilación completada]
 
-## Parte 2 · Reglas del torneo (15 min)
+5. Prueben metiendo goles con la mano: presionen el botón de inicio (suena el silbato) y metan la pelota en cada portería.
 
-1. En equipo, escriban su propuesta para cada tema.
-2. Cada equipo lee sus propuestas al grupo y el docente modera la votación: para cada tema gana la propuesta con más votos.
+[IMAGEN 5.3: marcador terminado a un lado de la cancha mostrando AZUL 1 - 0 ROJO]
 
-:::tabla id="g9p-reglas"
-| Tema | Nuestra propuesta |
-| --- | --- |
-| Duración de cada partido | |
-| ¿Cuántos jugadores por lado? | |
-| ¿Cómo se mueve la pelota? (paletas, dedos, soplando...) | |
-| ¿Qué pasa si hay empate? | |
-:::
-
-3. Pongan en `DURACION` el tiempo que votaron (en milisegundos) y suban el código.
-
-## Parte 3 · Presentaciones (20 min)
-
-Cada equipo presenta en **3 minutos**, con la cancha y el marcador funcionando. Repartan las partes:
-
-:::tabla id="g9p-guion"
-| Parte | ¿Qué se dice o se muestra? | Quién |
+:::tabla id="g9a-pruebas"
+| Prueba | ¿Funciona? | Observaciones |
 | --- | --- | --- |
-| La cancha a escala y las piezas en Tinkercad | | |
-| La simulación en Wokwi | | |
-| Sensores, antirrebote y precisión del marcador (demostración de un gol) | | |
+| Gol en la portería azul suma al ROJO | | |
+| Gol en la portería roja suma al AZUL | | |
+| Suena la celebración | | |
+| El tiempo baja | | |
 :::
 
-## Parte 4 · El torneo (50 min)
+Si algo no funciona igual que en el simulador, el código está bien: revisen el **cable** de ese componente comparándolo con Wokwi y con el diagrama de la Guía 8. Desconecten el USB antes de cambiar un cable.
 
-En los torneos de fútbol se dan **3 puntos** por ganar, **1** por empatar y **0** por perder. Sigan el calendario del docente y las reglas votadas.
-
-[IMAGEN 9.1: partido del torneo de mini fútbol con el marcador electrónico mostrando el resultado]
-
-Anoten los partidos de su equipo. En **Cancha** escriban de qué equipo era la cancha. En **Resultado**: Ganado, Empatado o Perdido.
-
-:::tabla id="g9p-partidos"
-| Partido | Rival | Cancha | Goles a favor | Goles en contra | Resultado |
-| --- | --- | --- | --- | --- | --- |
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
+:::pregunta id="g9a-p1"
+¿Pasó que un gol se contó dos veces o que un gol no se contó? Describe qué pasó.
 :::
-
-Al final, el docente lee la tabla de posiciones. Escriban una fila por equipo (PG = partidos ganados, PE = empatados, PP = perdidos; Puntos = PG × 3 + PE):
-
-:::tabla id="g9p-posiciones"
-| Equipo | PG | PE | PP | Puntos |
-| --- | --- | --- | --- | --- |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-:::
-
-Posición final del equipo: ______
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g9p-logramos"
-- [ ] Hicimos la prueba de 20 goles y sabemos la precisión.
-- [ ] Votamos las reglas del torneo.
-- [ ] Presentamos el proyecto.
-- [ ] Jugamos el torneo y completamos la tabla.
+:::checklist id="g9a-logramos"
+- [ ] Elegimos la placa y el puerto en Arduino IDE.
+- [ ] Los sensores están calibrados: detectan dentro, no por fuera.
+- [ ] El marcador real cuenta los goles.
+- [ ] El buzzer celebra los goles.
 :::
 
 ## Bitácora (10 min)
 
-:::foto id="g9p-foto"
-Foto del equipo en el torneo.
+:::foto id="g9a-foto"
+Video corto de un gol con el marcador sumando.
 :::
 
-:::pregunta id="g9p-b1"
-¿Qué marcador de otro equipo funcionó mejor y qué tenía de especial?
+:::pregunta id="g9a-b1"
+¿Qué problema tuvimos hoy y cómo lo resolvimos?
 :::
 
-Cada integrante responde desde su propia sesión (entrando con su nombre):
-
-:::pregunta id="g9p-b2" individual="si"
-¿Cómo me sentí presentando y jugando?
-:::
+Antes de irse, guarden `equipo_NOMBRE_marcador` (**Ctrl + S**) y súbanlo aquí.
 
 :::archivo id="g9-archivo"
-**Archivo de trabajo:** suban aquí el código final (.ino) y, si llevan la bitácora en el bloc de notas o en Word, también (.txt o .docx).
+**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- **Versión Práctica con Wokwi (9 sábados):** último sábado. Junta la prueba de 20 goles de la Guía 6 normal, las reglas de la Guía 8 Tinkercad (sin hoja de cálculo ni cartel) y el torneo de la Guía 9 normal, con presentaciones de 3 minutos. Campos propios (g9p-…).
-- Si la precisión no llega a 95 %, revisar primero la calibración de los sensores (Guía 8) y después la pausa.
-- Preparar el calendario de partidos según el número de equipos: "todos contra todos" si hay 4 equipos o menos; con más, grupos y final.
-- Si un marcador falla en un partido, se juega en otra cancha y se anota a mano; dar 5 minutos de reparación.
-- Reconocer al campeón, la mejor presentación y el marcador más preciso.
-- Tiempo total: 20 + 15 + 20 + 50 + 5 + 10 = 120 minutos.
+- **Versión Práctica con Wokwi (10 sábados), guía de armado (tipo: armado):** desde el 13 de noviembre. Junta la calibración y el programa final que estaban en la Guía 8 (Partes 3 y 4), con las partes de Arduino IDE. Campos propios (g9a-…): g9a-calibracion, g9a-pruebas y g9a-p1 eran g8p-calibracion, g8p-pruebas y g8p-p1.
+- Imágenes 9.1A a 9.4A: capturas de Arduino IDE 2.3.10 en español con el programa del marcador (el de la Guía 5 con los cambios de la Guía 6 y los sensores en `INPUT`), tomadas sin Arduino conectado (por eso la 9.2A no muestra el COM).
+- Antes de la clase, instalar las librerías Adafruit SSD1306 y Adafruit GFX en cada computadora si no hay internet en el aula.
+- Si un sensor marca siempre 0, está detectando algo cerca (la propia portería): girar su tornillo azul para bajar la sensibilidad.
+- Pelotas blancas se detectan mejor que las negras.
+- g9a-p1 prepara la prueba de 20 goles de la Guía 10.
+- Tiempo total: 15 + 10 + 40 + 40 + 5 + 10 = 120 minutos.
 :::

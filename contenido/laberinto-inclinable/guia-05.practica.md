@@ -19,10 +19,9 @@ Revisar las piezas impresas, diseñar la **base del joystick**, fijar las torres
 - Piezas impresas: tablero, marco, torre del servo y torre del eje
 - 2 servos SG90 con sus tornillos y 1 palito de pincho (o clavo de 3 mm)
 - Módulo joystick y una regla o calibrador
-- Computadora con internet, mouse, la cuenta de Tinkercad del equipo y Arduino IDE
+- Computadora con internet, mouse y la cuenta de Tinkercad del equipo
 - Base de MDF o cartón grueso de unos 30 × 25 cm, 4 tornillos para madera pequeños (o pegamento caliente), regla y lápiz
-- Arduino UNO + cable USB, protoboard y cables
-- Fuente (cargador) de 5 V con plug de 5,5 × 2,1 mm y un conector jack hembra con tornillos, destornillador pequeño
+- Arduino UNO y 3 cables macho–macho (para centrar los servos)
 
 **Seguridad con el pegamento caliente:** la punta de la pistola y el pegamento recién puesto queman. Esperen unos segundos antes de tocarlo y dejen la pistola parada en su base.
 
@@ -39,7 +38,7 @@ Prueben cada cosa **sin pegar nada** y marquen:
 
 Si algo no entra, avisen al docente antes de seguir: a veces basta con limpiar los bordes con una lija o pasar un clavo por el agujero.
 
-## Parte 2 · La base del joystick (35 min)
+## Parte 2 · La base del joystick (40 min)
 
 Es una placa con un cerco donde encaja el joystick, abierto por un lado para los cables.
 
@@ -76,46 +75,18 @@ Si nuestro joystick midiera 1 mm más de ancho, ¿qué números de la base tendr
    - Los agujeros de las torres deben quedar a la misma altura y uno frente al otro.
 3. Atornillen cada pie con dos tornillos (con el docente) o péguenlo con bastante pegamento caliente.
 
-## Parte 4 · Energía y servos en 90° (30 min)
+## Parte 4 · Los servos en 90° (15 min)
 
-Dos servos con el tablero encima piden más corriente de la que da el Arduino: si los conectamos al Arduino, se reinicia y el tablero tiembla. Por eso los servos usan una **fuente de 5 V aparte**, con una regla de oro:
+**Muy importante:** antes de poner los servos en su lugar, los dos deben estar en **90°** (tablero plano).
 
-> **Todas las tierras (GND) deben estar unidas.** Sin GND común, los servos no entienden la señal del Arduino.
+1. Con el Arduino **desconectado**, conecten un servo directo al Arduino: cable **café → GND**, **rojo → 5V**, **naranja → pin 9**.
+2. Llamen al docente: conecta el USB y sube un programa corto que deja el servo en 90°. El servo gira un poquito y se queda quieto. Cómo se sube un programa lo aprenderán en la Guía 7.
+3. Desconecten el USB, cambien al otro servo y vuelvan a conectar el USB: el programa ya está en el Arduino y centra el segundo servo.
+4. Marquen cada servo con un papelito: "D9 marco" y "D10 tablero". Desconecten el USB y los cables.
 
-La fuente se enchufa en el **jack hembra**, que tiene dos tornillos marcados **+** y **−**. Para meter un cable en un tornillo: aflójenlo con el destornillador, metan la punta pelada del cable y aprieten.
+Desde ahora, **no giren los ejes con la mano**.
 
-Hagan todo con el USB desconectado y la **fuente desenchufada**. En la protoboard usen las filas largas de los bordes: **arriba** para la fuente y **abajo** para el Arduino.
-
-1. **Energía:** tornillo **+** del jack → fila **+** de arriba; tornillo **−** → fila **−** de arriba. Del Arduino: **5V** → fila **+** de abajo; **GND** → fila **−** de abajo.
-2. **GND común:** un cable de la fila **−** de arriba a la fila **−** de abajo. (¡Nunca unan las dos filas **+**!)
-3. **Servos** (con tres cables macho–macho en cada conector): rojo → fila **+** de **arriba** (fuente); café → fila **−** de arriba; naranja → **D9** (servo del marco) y **D10** (servo del tablero). Marquen cada servo con un papelito: "D9 marco" y "D10 tablero".
-
-[IMAGEN 6.1P: circuito real del laberinto con la fuente de 5 V en su jack hembra, joystick, dos servos y el GND común señalado]
-
-**Servos en 90°:** antes de pegar los brazos, los dos servos deben estar en **90°** (tablero plano).
-
-4. Conecten el USB, abran **Arduino IDE** y elijan **Arduino Uno** y su puerto en **Seleccionar placa**.
-5. **Archivo → Nuevo boceto**, borren lo que trae y escriban este código. Súbanlo (→).
-6. Enchufen la fuente: los dos servos giran a 90° y se quedan quietos. **No giren sus ejes con la mano después de esto.**
-
-```cpp
-#include <Servo.h>
-Servo servoX, servoY;
-
-void setup() {
-  servoX.attach(9);
-  servoY.attach(10);
-  servoX.write(90);
-  servoY.write(90);
-}
-
-void loop() {
-}
-```
-
-7. Desenchufen la fuente y el USB.
-
-## Parte 5 · Los servos en su lugar (10 min)
+## Parte 5 · Los servos en su lugar (20 min)
 
 1. **El servo del tablero en el marco** (servo D10).
    - Miren el marco **desde adelante** (desde afuera, con la ventana frente a ustedes).
@@ -131,7 +102,7 @@ void loop() {
 - [ ] Revisamos las piezas impresas con el servo y el palito.
 - [ ] Exportamos la base del joystick.
 - [ ] Las torres están fijas en la base.
-- [ ] Los servos usan la fuente con GND común y quedaron en 90°.
+- [ ] Los dos servos quedaron en 90° y marcados.
 - [ ] Los dos servos están en su lugar.
 :::
 
@@ -148,13 +119,27 @@ Antes de irse: suban aquí `equipo_NOMBRE_base_joystick.stl`. El docente la impr
 :::
 
 :::docente
-- **Versión Práctica con Wokwi (7 sábados):** la revisión de piezas, las torres, el circuito y los servos en 90° de la Guía 4 Tinkercad y la base del joystick de la Guía 5 Tinkercad. La **fuente de 5 V con jack hembra** reemplaza al portapilas de 4 AA, como en las demás versiones prácticas. Campos propios (g5p-…).
+- **Versión Práctica con Wokwi:** la revisión de piezas, las torres y los servos en 90° de la Guía 4 Tinkercad y la base del joystick de la Guía 5 Tinkercad. Campos propios (g5p-…).
+- **Desde el 13 de noviembre (8 sábados):** sin circuito. La energía con la **fuente de 5 V con jack hembra** (en lugar del portapilas de 4 AA) y el GND común pasaron a la Guía 6, con diagramas. Los servos los centra el docente:
+
+```cpp
+#include <Servo.h>
+Servo miServo;
+
+void setup() {
+  miServo.attach(9);
+  miServo.write(90);  // centro
+}
+
+void loop() {
+}
+```
+- Un servo solo, sin carga, puede tomar los 5 V del Arduino para centrarlo; desde la Guía 6 los servos toman la energía de la fuente.
 - **Imprimir esta semana** la base del joystick, sin soportes.
 - Distancia entre torres: las caras lisas quedan a 215 mm (21,5 cm; antes 21,3, revisado el 12 de noviembre, ver Guía 3). Entre la torre y el marco quedan 8,5 mm: el servo sobresale 2 mm de la torre y su brazo queda a 0,5 mm del marco.
 - Base del joystick: medidas de ejemplo de un módulo KY-023 de 26 × 34 mm; la salida de los cables va en el lado de los pines. Si el joystick baila, una gota de silicona en el cerco.
-- Fuente de 5 V y al menos 1 A. Revisar el GND común de cada equipo antes de que enchufen la fuente: es el error más frecuente.
 - El servo del tablero entra con el eje hacia la derecha (mirando desde adelante); si entra al revés, el eje queda 1 cm corrido y el tablero roza.
 - g5p-p1: el ancho del hueco (26.6 → 27.6) y el ancho del cerco (32.6 → 33.6).
 - g5p-b1: holgura; la impresora no es perfecta y la pieza no entraría o quedaría muy apretada.
-- Tiempo total: 15 + 35 + 15 + 30 + 10 + 5 + 10 = 120 minutos.
+- Tiempo total: 15 + 40 + 15 + 15 + 20 + 5 + 10 = 120 minutos.
 :::

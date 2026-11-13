@@ -80,10 +80,11 @@ function tarjetaGuia(guia) {
         ? el('span', { class: 'sesion-guia' }, [guia.sabado ? `Sábado ${guia.sabado}` : '', guia.sesion].filter(Boolean).join(' · '))
         : null,
       el('strong', {}, guia.titulo),
+      guia.tipo === 'armado' ? el('span', { class: 'etiqueta-armado' }, 'Práctica de armado') : null,
       el('span', { class: `estado estado-${guia.estado}` }, el('span', { 'aria-hidden': 'true' }, estado.icono), estado.texto),
     ),
   ];
-  const clase = `tarjeta-guia ${abrible ? '' : 'bloqueada'} ${guia.estado === 'completada' ? 'completada' : ''}`;
+  const clase = `tarjeta-guia ${abrible ? '' : 'bloqueada'} ${guia.estado === 'completada' ? 'completada' : ''} ${guia.tipo === 'armado' ? 'armado' : ''}`;
   return el('li', {}, abrible
     ? el('a', { class: clase, href: `/guia/${guia.numero}` }, contenido)
     : el('div', { class: clase, 'aria-disabled': 'true' }, contenido));

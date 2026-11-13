@@ -2,7 +2,7 @@
 titulo: Armar el robot
 guia: 8
 sabado: 8
-sesion: Construcción y electrónica
+sesion: Construcción del prototipo
 duracion: 120
 ---
 
@@ -10,22 +10,22 @@ duracion: 120
 
 ## Objetivo del día
 
-Armar las piezas impresas con los motores, las ruedas y el sensor, conectar las dos baterías, el puente H L298N y el sensor, y hacer girar los motores con un código de prueba.
+Armar las piezas impresas con los motores, las ruedas y el sensor, y ubicar en la bandeja las baterías, el Arduino, el puente H L298N y la protoboard pequeña.
 
-**Al terminar tendremos:** el robot armado y sus ruedas haciendo adelante, atrás y giro.
+**Al terminar tendremos:** el robot armado sobre sus ruedas, con todo en su lugar para conectar el circuito en la Guía 9.
 
 ## Materiales del equipo
 
 - Piezas impresas: chasis, soporte del sensor, 4 postes y bandeja
 - 2 motores TT con sus ruedas, rueda loca, 4 tornillos M3 × 30 con tuerca (o 2 cinchos delgados) y 4 palitos de pincho
-- Batería de los motores (2S, 7,4 V) en su portabaterías, con fusible e interruptor
-- Pila de 9 V con su broche y plug para el jack del Arduino (5,5 × 2,1 mm), con un segundo interruptor
-- Puente H L298N, protoboard pequeña, Arduino UNO con cable USB, HC-SR04, 2 resistencias de 10 kΩ y cables
-- Pegamento caliente (silicona), cinta doble faz, destornillador, tijeras o alicate, multímetro
+- Batería de los motores (2S, 7,4 V) en su portabaterías, con su fusible y su interruptor
+- Pila de 9 V con su broche y plug, con un segundo interruptor
+- Puente H L298N, protoboard pequeña, Arduino UNO y HC-SR04
+- Pegamento caliente (silicona), cinta doble faz, tijeras o alicate
 
 **Seguridad con el pegamento caliente:** la punta de la pistola y el pegamento recién puesto queman. Esperen unos segundos antes de tocarlo y dejen la pistola parada en su base.
 
-## Parte 1 · Revisar las piezas (10 min)
+## Parte 1 · Revisar las piezas (15 min)
 
 Prueben cada cosa **sin pegar nada** y marquen:
 
@@ -38,7 +38,7 @@ Prueben cada cosa **sin pegar nada** y marquen:
 
 Si algo no entra, avisen al docente antes de seguir: a veces basta con limpiar los bordes con una lija o pasar un clavo por el agujero.
 
-## Parte 2 · El piso de abajo (30 min)
+## Parte 2 · El piso de abajo (45 min)
 
 Miren la imagen del robot completo para ver dónde va cada cosa:
 
@@ -60,137 +60,37 @@ Miren la imagen del robot completo para ver dónde va cada cosa:
 
 ✔ **Revisa:** pongan el robot en el piso. Debe quedar **horizontal**, apoyado en las dos ruedas y en la rueda loca.
 
-## Parte 3 · La bandeja y las dos baterías (30 min)
+## Parte 3 · La bandeja (45 min)
 
 1. **Ubiquen las piezas en la bandeja** (con cinta doble faz gruesa o una gota de silicona en las esquinas): el portabaterías en su cerco, adelante; el Arduino atrás a la izquierda (mirando el robot desde atrás), acostado a lo largo y con su jack hacia el borde; el L298N atrás a la derecha y la protoboard pequeña delante del L298N. El paso de los cables de la bandeja queda libre, entre el Arduino y el portabaterías. Los dos interruptores y el fusible, en un borde de la bandeja.
 2. **Pongan la bandeja** sobre los postes: los palitos entran en sus agujeros. Corten lo que sobre de cada palito y pongan una gota de silicona arriba.
-3. **Conecten las dos baterías** en este orden, **con las dos desconectadas**. El robot tiene **dos fuentes separadas**: la batería 2S solo para el L298N y los motores, y la pila de 9 V solo para el Arduino.
 
-| Desde | Hasta |
-| --- | --- |
-| Batería de los motores + | Fusible → interruptor → borne **+12V** del L298N |
-| Batería de los motores − | Borne **GND** del L298N |
-| Borne **GND** del L298N | Un **GND** del Arduino (GND común) |
-| Pila de 9 V | Segundo interruptor → plug al **jack** del Arduino |
-| Borne **5V** del L298N | **Nada** (queda libre) |
-
-Lean la tabla fila por fila y hagan una conexión a la vez:
-
-1. El **+** de la batería de los motores pasa primero por el fusible y luego por el interruptor, y llega al borne **+12V** del L298N (puede decir 12V o VCC). Funciona con 7,4 V.
-2. El **−** de la batería va al borne **GND** del L298N.
-3. En ese mismo borne GND pongan otro cable hasta un **GND** del Arduino. Sin este cable, el L298N no entiende las señales del Arduino.
-4. La pila de 9 V va al **jack** del Arduino, con su propio interruptor en el cable rojo. El Arduino baja los 9 V a 5 V con su regulador interno.
-5. El borne **5V** del L298N queda **libre**: no lo conecten al Arduino. Dejen puesto el puente (jumper) que trae junto a los bornes: así el L298N se alimenta solo con su batería.
-6. Antes de conectar las baterías, **pidan al docente que revise** el armado.
-
-Miren en la animación por qué todas las tierras deben estar unidas:
-
-:::animacion tipo="gnd-comun" pilas="Batería 2S (7,4 V)"
-:::
-
-[IMAGEN 4.1P: las dos fuentes del robot: batería 2S con fusible e interruptor al L298N, pila de 9 V con interruptor al jack del Arduino y el cable de GND común entre el L298N y el Arduino]
-
-:::checklist id="g8a-potencia"
-- [ ] La pila de 9 V llega al jack del Arduino; ninguna batería llega al pin 5V.
-- [ ] El borne 5V del L298N está libre.
-- [ ] El GND del L298N está unido a un GND del Arduino.
-- [ ] Hay fusible entre la batería de los motores y el L298N.
-:::
-
-## Parte 4 · Puente H, motores y sensor (25 min)
-
-| L298N | Arduino / motor | Nombre en el código |
-| --- | --- | --- |
-| ENA | D5 | PWMA |
-| IN1 / IN2 | D7 / D8 | AIN1 / AIN2 |
-| ENB | D6 | PWMB |
-| IN3 / IN4 | D4 / D9 | BIN1 / BIN2 |
-| OUT1, OUT2 | Motor izquierdo | — |
-| OUT3, OUT4 | Motor derecho | — |
-
-| HC-SR04 | Arduino |
-| --- | --- |
-| VCC / GND | 5V / GND |
-| Trig / Echo | D2 / D3 |
-
-- **L298N:** primero **quiten los dos puentes (jumpers) de ENA y ENB**; si se quedan, los motores siempre van a fondo. Después conecten los pines según la tabla. Los dos cables de cada motor van a los bornes OUT1/OUT2 (izquierdo) y OUT3/OUT4 (derecho).
-- **HC-SR04:** toma la energía del pin **5V** del Arduino (y su GND).
-- **HC-SR04:** sus cables suben del soporte a la bandeja por el costado.
-- **Divisor de batería:** el Arduino mide la batería en **A0**, pero solo aguanta hasta 5 V y la batería llega a 8,4 V. Dos resistencias iguales de 10 kΩ la dividen entre 2.
-  - En la protoboard, pongan las dos resistencias en fila, una después de la otra. El punto donde se unen va a **A0**.
-  - El otro extremo de la primera resistencia va al **+** de la batería de los motores (después del interruptor); el otro extremo de la segunda, a GND.
-  - Así el Arduino mide la batería que mueve el robot, no la pila de 9 V.
-
-## Parte 5 · Prueba de motores (15 min)
-
-1. Pongan el robot sobre una caja, con las ruedas en el aire.
-2. Conecten el Arduino del robot por USB. Programa nuevo, escriban el código, guárdenlo como `equipo_NOMBRE_prueba_motores`, verifiquen (✓) y suban (→).
-3. Enciendan las dos baterías con sus interruptores: las ruedas hacen adelante, atrás, giro y pausa, y se repite.
-
-```cpp
-// L298N: PWMA = ENA, AIN1 = IN1, AIN2 = IN2, PWMB = ENB, BIN1 = IN3, BIN2 = IN4
-const int PWMA = 5, AIN1 = 7, AIN2 = 8;
-const int PWMB = 6, BIN1 = 4, BIN2 = 9;
-
-void motor(int pwm, int in1, int in2, int vel) {
-  digitalWrite(in1, vel > 0);
-  digitalWrite(in2, vel < 0);
-  analogWrite(pwm, abs(vel));
-}
-
-void setup() {
-  int pines[] = {PWMA, AIN1, AIN2, PWMB, BIN1, BIN2};
-  for (int p : pines) pinMode(p, OUTPUT);
-}
-
-void loop() {
-  motor(PWMA, AIN1, AIN2, 150);  motor(PWMB, BIN1, BIN2, 150);   delay(1500); // adelante
-  motor(PWMA, AIN1, AIN2, -150); motor(PWMB, BIN1, BIN2, -150);  delay(1500); // atrás
-  motor(PWMA, AIN1, AIN2, 150);  motor(PWMB, BIN1, BIN2, -150);  delay(1000); // gira
-  motor(PWMA, AIN1, AIN2, 0);    motor(PWMB, BIN1, BIN2, 0);     delay(2000); // para
-}
-```
-
-:::tabla id="g8a-motores"
-| Paso | ¿Lo hizo bien? | Si no, ¿qué pasó? |
-| --- | --- | --- |
-| Adelante | | |
-| Atrás | | |
-| Giro a la derecha | | |
-:::
-
-> Si un motor gira al revés, **intercambia sus dos cables** en OUT1/OUT2 (o OUT3/OUT4).
+Las conexiones (baterías, L298N, motores y sensor) se hacen en la Guía 9, con los diagramas paso a paso.
 
 ## ¿Lo logramos? (5 min)
 
 :::checklist id="g8a-logramos"
 - [ ] El robot queda horizontal sobre sus ruedas.
-- [ ] Las dos baterías están conectadas, con GND común y fusible.
-- [ ] Los motores hacen adelante, atrás y giro.
+- [ ] La bandeja está sobre los postes, con el portabaterías, el Arduino, el L298N y la protoboard pequeña en su lugar.
+- [ ] El sensor está en su soporte y sus cables llegan a la bandeja.
 :::
 
-## Bitácora (5 min)
+## Bitácora (10 min)
 
 :::foto id="g8a-foto"
 Foto del robot armado.
 :::
 
-Antes de irse: **apaguen las dos baterías** y suban aquí `equipo_NOMBRE_prueba_motores`.
-
 :::archivo id="g8-archivo"
-**Archivo de trabajo:** antes de irse, suban su código de Arduino (.ino). La próxima sesión lo descargan en cualquier computadora y siguen donde se quedaron. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí (.txt o .docx).
+**Archivo de trabajo:** si llevan la bitácora en el bloc de notas o en Word, pueden subirla aquí (.txt o .docx).
 :::
 
 :::docente
-- **Versión Práctica con app (9 sábados):** es la Guía 7 de la Práctica; va después de la simulación y de la app. Campos propios (g8a-…). En el simulador usaron el chip L293D; en el robot real es el módulo L298N, con los mismos pines del Arduino.
+- **Versión Práctica con app (11 sábados):** es la Guía 7 de la Práctica; va después de la simulación y de la app. Campos propios (g8a-…). Desde el 13 de noviembre, solo el armado mecánico: las conexiones de las baterías, el L298N, los motores, el sensor y el divisor pasaron a la Guía 9 (práctica de armado) y la prueba de motores a la Guía 10.
 - **Desde el 23 de octubre:** el armado de las piezas impresas, la potencia, los motores y el sensor de la Guía 4 normal y el divisor de la Guía 3 normal. Desde el 23 de octubre usa **dos fuentes separadas** (batería 2S → fusible → interruptor → L298N; pila de 9 V → interruptor → jack del Arduino) y el **puente H L298N** en lugar del TB6612 y el LM2596. Mismos pines del Arduino que la versión completa (D5, D7, D8, D6, D4, D9), así el código solo pierde STBY. El HC-05 va en la Guía 9.
-- Revisar el armado de potencia de cada equipo **antes** de conectar las baterías: es el punto de mayor riesgo. Errores típicos: el borne 5V del L298N conectado al Arduino, falta del GND común o los puentes de ENA/ENB puestos.
-- El L298N pierde unos 2 V: con la batería llena a los motores les llegan unos 6,4 V, y con 6,4 V en la batería, unos 4,4 V. Los motores TT andan, pero más lento que con el TB6612; si con PWM bajo solo zumban, es normal.
-- Con el puente de 5V puesto, el L298N alimenta su lógica con su regulador interno desde la batería de los motores; su borne 5V es una salida y no se usa: las dos fuentes van separadas a propósito.
-- La pila de 9 V alimenta el Arduino, el HC-05 y el HC-SR04 (unos 110 mA): dura pocas horas; tener pilas de repuesto.
 - Si los motores TT vienen sin cables, soldarlos antes de la clase.
 - Si el robot no queda horizontal, revisar el alto de la columna (Guía 2): se puede compensar con una arandela o con silicona debajo de la rueda loca.
 - Baterías de litio: siempre en portabaterías con protección, no perforarlas ni cargarlas sin supervisión.
-- Si un equipo no termina, sigue al inicio del sábado 9 (Guía 9, Parte 1).
-- Tiempo total: 10 + 30 + 30 + 25 + 15 + 5 + 5 = 120 minutos.
+- Si un equipo no termina, lo que falte del armado se hace al inicio de la Guía 9.
+- Tiempo total: 15 + 45 + 45 + 5 + 10 = 120 minutos.
 :::

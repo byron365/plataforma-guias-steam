@@ -94,7 +94,14 @@ duracion: 120
 ---
 ```
 
-(Si `proyecto.json` también trae `titulo`, `sabado` o `sesion`, se usa el de `proyecto.json`.)
+(Si `proyecto.json` también trae `titulo`, `sabado` o `sesion`, se usa el de `proyecto.json`. En el archivo de una
+versión, como `guia-08.practica.md`, mandan su `titulo` y su `sesion`.)
+
+**Guías de práctica de armado:** con `tipo: armado` en el encabezado, la guía se ve en morado en la lista (número,
+borde y la etiqueta "Práctica de armado") y en su portada. Es para las guías de armar el circuito y subir el programa,
+para que se distingan de las teórico-prácticas. Ejemplo: guías 8 y 9 de la versión práctica del Puente levadizo. Sus
+diagramas de conexiones se hacen con `herramientas/diagramas_armado.py` (ver las notas del 12 y 13 de noviembre en
+`ESTADO_DEL_PROYECTO.md`).
 
 ### Título y partes
 

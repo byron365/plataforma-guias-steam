@@ -178,9 +178,9 @@ Captura de pantalla del circuito simulado (tecla **Impr Pant** o la herramienta 
 :::
 
 :::docente
-- **Versión Práctica con Wokwi (9 sábados), nueva el 31 de octubre:** guías 1 a 3 iguales a la versión Tinkercad (marcador básico en Wokwi, portería y soporte del marcador en Tinkercad Codeblocks); 4, 5 y 6 simulan todo el marcador por partes en **Wokwi** (goles, tiempo del partido, antirrebote y estadísticas); 7 revisa las piezas impresas y arma la cancha; 8 instala los sensores y arma el marcador real, y 9 es la prueba de 20 goles, las reglas y el torneo (decisión de Bairon). Campos propios (g4p-…).
+- **Versión Práctica con Wokwi (10 sábados desde el 13 de noviembre; nueva el 31 de octubre):** guías 1 a 3 iguales a la versión Tinkercad (marcador básico en Wokwi, portería y soporte del marcador en Tinkercad Codeblocks); 4, 5 y 6 simulan todo el marcador por partes en **Wokwi** (goles, tiempo del partido, antirrebote y estadísticas); 7 revisa las piezas impresas y arma la cancha; 8 instala los sensores y conecta el marcador real y 9 sube los programas y calibra los sensores (guías de armado), y 10 es la prueba de 20 goles, las reglas y el torneo (decisión de Bairon). Campos propios (g4p-…).
 - Imprimir esta semana y la siguiente las dos porterías (azul y roja) y el soporte del marcador. Tener los componentes de la lista para el sábado 8.
-- En Wokwi no hay sensor infrarrojo de obstáculos: se usan botones con `INPUT_PULLUP` (presionado = LOW, como el sensor que ve la pelota). En el marcador real los sensores van con `INPUT` (Guía 8).
+- En Wokwi no hay sensor infrarrojo de obstáculos: se usan botones con `INPUT_PULLUP` (presionado = LOW, como el sensor que ve la pelota). En el marcador real los sensores van con `INPUT` (Guía 9).
 - Hoy el `delay(500)` evita contar un gol varias veces; en la Guía 6 se cambia por el antirrebote con `millis()`.
 - g4p-p1: hacer clic en el botón de D3 (el "sensor de la portería azul").
 - g4p-p2: gol del equipo ROJO, porque la portería azul la defiende el equipo azul (línea `golesRojo++;` dentro del `if` del SENSOR_AZUL).

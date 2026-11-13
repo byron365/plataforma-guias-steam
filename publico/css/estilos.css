@@ -54,6 +54,10 @@
   --verde-borde: #86EFAC;
   --verde-texto-fuerte: #14532D;
   --ambar-texto: #92400E;
+  --armado: #7C3AED;                /* guías de práctica de armado ("tipo: armado"): morado de taller */
+  --armado-texto: #5B21B6;
+  --armado-suave: #EDE9FE;
+  --armado-borde: #C4B5FD;
   --rojo-suave: #FEE2E2;
   --rojo-borde: #FCA5A5;
   --rojo-texto: #991B1B;
@@ -263,6 +267,16 @@ a.tarjeta-guia:hover { border-color: var(--acento); transform: translateY(-2px);
 .tarjeta-guia.bloqueada { opacity: .65; box-shadow: none; background: var(--superficie-bloqueada); }
 .tarjeta-guia.bloqueada .numero { background: #8D8A84; }
 .tarjeta-guia.completada .numero { background: var(--verde); }
+/* Guías de práctica de armado: número morado, borde a la izquierda y su etiqueta */
+.tarjeta-guia.armado { border-left: 6px solid var(--armado); }
+.tarjeta-guia.armado .numero { background: var(--armado); color: #fff; }
+.tarjeta-guia.armado.completada .numero { background: var(--verde); }
+a.tarjeta-guia.armado:hover { border-color: var(--armado); }
+.etiqueta-armado {
+  display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  color: var(--armado-texto); background: var(--armado-suave); border: 1px solid var(--armado-borde);
+  border-radius: 999px; padding: .1em .65em; margin-top: .35em; margin-right: .35em;
+}
 
 /* ============================================================
    Guía interactiva
@@ -533,6 +547,9 @@ html:has(.ampliador[open]) { overflow: hidden; }
 .portada-guia { padding-top: 22px; }
 .portada-guia h1 { margin: .1em 0 0; }
 .portada-guia-datos { margin: 0; font-weight: 700; color: var(--acento-texto); font-size: .95rem; }
+.portada-guia.armado { border-left: 6px solid var(--armado); padding-left: 14px; }
+.portada-guia.armado .portada-guia-datos { color: var(--armado-texto); }
+.portada-guia.armado .etiqueta-armado { margin: 0 0 .4em; }
 
 /* ---------- Opción única ---------- */
 .opciones { border: 2px solid var(--azul-borde); background: var(--azul-fondo); border-radius: var(--radio); padding: 12px 16px 16px; margin: 18px 0; }

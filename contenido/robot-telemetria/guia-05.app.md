@@ -150,7 +150,7 @@ void loop() {
 }
 ```
 
-- `#define bt Serial` hace que `bt` sea el Monitor en serie. En el robot real, en la Guía 9, solo cambiaremos esa línea para que `bt` sea el Bluetooth.
+- `#define bt Serial` hace que `bt` sea el Monitor en serie. En el robot real, en la Guía 10, solo cambiaremos esa línea para que `bt` sea el Bluetooth.
 - `indexOf(',')` busca dónde está cada coma; `substring` corta el texto entre las comas y `toInt()` lo convierte en número.
 - El mensaje termina con salto de línea (`\n`), que es lo que enviará la app, o con `;`, que usaremos aquí para escribirlo a mano.
 
@@ -210,7 +210,7 @@ Pista: en `procesar()`, antes de mover los motores, si `izq` y `der` son positiv
 ¿Qué creen que será distinto cuando armen el robot real?
 :::
 
-**Muy importante:** este es el programa que van a subir al Arduino real en la Guía 9. Cópienlo completo (**Ctrl + A** y **Ctrl + C** en el panel Código), péguenlo en un bloc de notas, guárdenlo como `equipo_NOMBRE_robot.txt` y súbanlo aquí.
+**Muy importante:** este es el programa que van a subir al Arduino real en la Guía 10. Cópienlo completo (**Ctrl + A** y **Ctrl + C** en el panel Código), péguenlo en un bloc de notas, guárdenlo como `equipo_NOMBRE_robot.txt` y súbanlo aquí.
 
 :::archivo id="g5-archivo"
 **Archivo de trabajo:** suban aquí `equipo_NOMBRE_robot.txt`. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla.

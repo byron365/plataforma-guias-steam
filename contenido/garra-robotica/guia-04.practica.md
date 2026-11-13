@@ -215,12 +215,12 @@ El diseño queda guardado en Tinkercad (**Diseños → Circuitos**). El próximo
 :::
 
 :::docente
-- **Versión Blender práctica (9 sábados), desde el 31 de octubre:** guías 1 a 3 iguales; 4, 5 y 6 simulan la garra por partes en **Tinkercad Circuits** (base y hombro; las cuatro articulaciones con la fuente; botón y rutina); 7 termina y revisa las piezas en Blender; 8 arma todo en físico y 9 son pruebas, ajustes y el reto. Antes era de 7 sábados: el contenido de las guías 4 a 7 anteriores se repartió en las guías 5 a 9. Campos propios (g4p-…).
+- **Versión Blender práctica (11 sábados desde el 13 de noviembre; desde el 31 de octubre):** guías 1 a 3 iguales; 4, 5 y 6 simulan la garra por partes en **Tinkercad Circuits** (base y hombro; las cuatro articulaciones con la fuente; botón y rutina); 7 termina y revisa las piezas en Blender; 8 arma la garra; 9 y 10 son guías de armado (el circuito, y subir el programa) y 11 son pruebas, ajustes y el reto. Antes era de 7 sábados: el contenido de las guías 4 a 7 anteriores se repartió en las guías 5 a 9. Campos propios (g4p-…).
 - Imprimir esta semana y la siguiente la base y el plato (Guía 2): en la Guía 7 se prueba el servo real en ellos. Tener los componentes de la lista para el sábado 8.
 - Mismos pines de la garra en todas las guías: servos en D3 (base), D5 (hombro), D6 (codo) y D9 (pinza); perillas en A0 a A3; botón en D2.
 - En Tinkercad, al pasar de Bloques a Texto pueden quedar restos del ejemplo: por eso se borra todo con Ctrl + A.
 - Hoy los dos servos usan el 5V del Arduino porque en el simulador no pasa nada. En la Guía 5 se explica por qué la garra real necesita una fuente aparte.
-- g4p-p1: para que el brazo no choque contra el plato o la mesa en los extremos; los límites de verdad se encuentran con la garra armada (Guía 9).
+- g4p-p1: para que el brazo no choque contra el plato o la mesa en los extremos; los límites de verdad se encuentran con la garra armada (Guía 11).
 - g4p-sentido: baja.
 - Tiempo total: 15 + 35 + 35 + 15 + 5 + 15 = 120 minutos.
 :::

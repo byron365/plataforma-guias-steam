@@ -33,10 +33,26 @@ function tituloDesdeArchivo(ruta) {
   try {
     const texto = fs.readFileSync(ruta, 'utf8');
     const delEncabezado = texto.match(/^---\r?\n[\s\S]*?^titulo\s*:\s*(.+?)\s*$/m);
-    if (delEncabezado) return delEncabezado[1];
+    // Sin las comillas de YAML: titulo: 'La app (2): órdenes' → La app (2): órdenes
+    if (delEncabezado) return delEncabezado[1].replace(/^(['"])(.*)\1$/, '$2');
     const m = texto.match(/^#\s+(.+)$/m);
     return m ? m[1].trim() : null;
   } catch { return null; }
+}
+
+// Tipo de la guía, del encabezado --- ("tipo: armado" = práctica de armado de circuito; se ve con otro color).
+// Sin "tipo:", la guía es de las normales (teórico-prácticas).
+function tipoDesdeArchivo(ruta) {
+  return campoDesdeArchivo(ruta, 'tipo').toLowerCase();
+}
+
+// Un campo del encabezado --- de la guía ("" si no lo tiene)
+function campoDesdeArchivo(ruta, campo) {
+  try {
+    const m = fs.readFileSync(ruta, 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    const valor = m && m[1].match(new RegExp(`^${campo}\\s*:\\s*(.+?)\\s*$`, 'm'));
+    return valor ? valor[1] : '';
+  } catch { return ''; }
 }
 
 // Lista de proyectos (lee todos los proyecto.json)
@@ -90,6 +106,11 @@ function obtenerProyecto(id) {
       versiones: conArchivo.map((v) => v.id),
       // Título de cada versión (del encabezado de su archivo), para las listas de guías
       titulosVersion: Object.fromEntries(conArchivo.map((v) => [v.id, tituloDesdeArchivo(rutaDeVersion(ruta, v.id))]).filter(([, t]) => t)),
+      // Tipo de cada versión (de su encabezado) y el del archivo normal
+      tiposVersion: Object.fromEntries(conArchivo.map((v) => [v.id, tipoDesdeArchivo(rutaDeVersion(ruta, v.id))])),
+      tipo: existe ? tipoDesdeArchivo(ruta) : '',
+      // Sesión de cada versión ("sesion:" de su encabezado), si la trae; si no, la de proyecto.json
+      sesionesVersion: Object.fromEntries(conArchivo.map((v) => [v.id, campoDesdeArchivo(rutaDeVersion(ruta, v.id), 'sesion')]).filter(([, s]) => s)),
       titulo: g.titulo || (existe && tituloDesdeArchivo(ruta)) || `Guía ${numero}`,
       sabado: Number(g.sabado) || null,
       sesion: g.sesion || '',
@@ -195,8 +216,10 @@ function obtenerGuia(proyectoId, numero, version = '') {
   // Una versión puede traer su propio título en el encabezado (ej. "Del papel a Tinkercad")
   if (usaVersion && guia.datos.titulo) guia.titulo = guia.datos.titulo;
   guia.sabado = info.sabado || guia.datos.sabado || null;
-  guia.sesion = info.sesion || guia.datos.sesion || '';
+  // La sesión del archivo de la versión manda (la de proyecto.json es la de la versión normal)
+  guia.sesion = (usaVersion && guia.datos.sesion) || info.sesion || guia.datos.sesion || '';
   guia.version = usada;
+  guia.tipo = String(guia.datos.tipo || '').toLowerCase();   // "armado": práctica de armado de circuito
   cache.set(clave, { firma, guia });
   return guia;
 }
@@ -211,7 +234,12 @@ function guiasDeVersion(proyecto, version = '') {
     .filter((g) => !lista || lista.includes(g.numero))
     .map((g) => {
       const usada = cadenaDeVersiones(proyecto, version).find((v) => g.titulosVersion[v]);
-      return usada ? { ...g, titulo: g.titulosVersion[usada] } : g;
+      // El tipo sale del mismo archivo que se va a mostrar (el de la versión, el de su base o el normal)
+      const conTipo = cadenaDeVersiones(proyecto, version).find((v) => v in g.tiposVersion);
+      const tipo = conTipo ? g.tiposVersion[conTipo] : g.tipo;
+      const conSesion = cadenaDeVersiones(proyecto, version).find((v) => g.sesionesVersion[v]);
+      const sesion = conSesion ? g.sesionesVersion[conSesion] : g.sesion;
+      return usada ? { ...g, titulo: g.titulosVersion[usada], tipo, sesion } : { ...g, tipo, sesion };
     });
 }
 

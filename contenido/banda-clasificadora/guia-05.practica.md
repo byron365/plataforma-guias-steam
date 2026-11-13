@@ -188,10 +188,10 @@ Captura de pantalla del clasificador simulado con la pantalla mostrando un color
 
 :::docente
 - Simulador de las tres perillas (`perillas-color`, 6 de noviembre): usa la misma lógica de `leerColor()`. Sirve para comprobar la tabla g5p-colores antes de armar el circuito.
-- **Versión Práctica (10 sábados):** el clasificador se simula con un segundo Arduino en el mismo diseño. El TCS34725 se imita con **tres potenciómetros** (como la simulación en Wokwi de la Guía 2 completa); solo cambia `leerColor()`. Campos propios (g5p-…). Las respuestas de la Guía 5 anterior (los dos nodos) pasaron a la Guía 8 (g8p-…).
+- **Versión Práctica (10 sábados):** el clasificador se simula con un segundo Arduino en el mismo diseño. El TCS34725 se imita con **tres potenciómetros** (como la simulación en Wokwi de la Guía 2 completa); solo cambia `leerColor()`. Campos propios (g5p-…). Las respuestas de la Guía 5 anterior (los dos nodos) pasaron a la Guía 8 (g8p-…); desde el 13 de noviembre están en la Guía 9 (g9a-…).
 - La pantalla es la **LCD 16 × 2 I2C** (decisión de Bairon, también en la banda real, en lugar del MAX7219). En Tinkercad: **Tipo: Basado en PCF8574**, **Dirección: 39 (0x27)**; la librería LiquidCrystal I2C ya está incluida en Tinkercad.
 - g5p-colores: rojo, verde, azul y azul (R y G empatan, ningún `if` se cumple y el programa responde azul).
-- g5p-p1: dice azul, aunque B es el más bajo: es un caso que el programa no resuelve bien. En la banda real casi no pasa con piezas rojas, verdes y azules; en la Guía 10 se mejora con proporciones.
+- g5p-p1: dice azul, aunque B es el más bajo: es un caso que el programa no resuelve bien. En la banda real casi no pasa con piezas rojas, verdes y azules; en la Guía 11 se mejora con proporciones.
 - g5p-p2: el 150 de `ANG[3]` (por ejemplo 160).
 - g5p-b1: los ángulos están juntos en un lugar fácil de ajustar, y el código elige con `ANG[c]` sin repetir líneas.
 - Tiempo total: 20 + 35 + 35 + 15 + 5 + 10 = 120 minutos.

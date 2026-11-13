@@ -25,7 +25,7 @@ function estadosDeGuias(equipoId, proyecto) {
     if (!desbloqueadas.has(g.numero)) estado = 'bloqueada';
     else if (!g.existe) estado = 'proximamente';
     else if (progreso.has(g.numero)) estado = progreso.get(g.numero);
-    return { numero: g.numero, titulo: g.titulo, sabado: g.sabado, sesion: g.sesion, estado };
+    return { numero: g.numero, titulo: g.titulo, sabado: g.sabado, sesion: g.sesion, tipo: g.tipo || '', estado };
   });
 }
 

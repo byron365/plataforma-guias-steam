@@ -58,7 +58,7 @@ En el simulador los servos no tienen brazo: para ver cómo se movería la garra,
 :::animacion tipo="rutina" tabla="g6p-posiciones"
 :::
 
-En la Guía 9 corregirán estos números con la garra real y objetos de verdad.
+En la Guía 11 corregirán estos números con la garra real y objetos de verdad.
 
 ## Parte 3 · El programa final (45 min)
 
@@ -148,7 +148,7 @@ void loop() {
 
 ## Parte 4 · Guardar el programa final (10 min)
 
-Este código es el que van a subir a la garra real en la Guía 8.
+Este código es el que van a subir a la garra real en la Guía 10.
 
 1. Al terminar las pruebas, dejen `VELOCIDAD = 15`.
 2. Cópienlo del panel Código (**Ctrl + A**, **Ctrl + C**) a un bloc de notas y guárdenlo como `equipo_NOMBRE_rutina.txt`.
@@ -183,7 +183,7 @@ Captura o video de la pantalla con la rutina en el simulador.
 - **La línea `void mover(Servo &s, int &actual, int meta);` (debajo de `Servo base…`) es obligatoria.** Sin ella, Tinkercad pone su propio aviso de `mover()` antes de `#include <Servo.h>` y el programa no compila: `variable or field 'mover' declared void` y `'Servo' was not declared in this scope` en la línea 2 (comprobado el 7 de noviembre). Con esa línea compila, el pulsador hace la rutina y vuelve a las perillas. Si un equipo ya escribió el programa sin ella, basta con agregarla.
 - El pulsador del simulador se presiona con un clic. Si no responde, revisar que cruce la canaleta y que el cable vaya a la pata en diagonal.
 - El símbolo `&` en `mover()` se explica como "la función recuerda dónde quedó el servo".
-- Las posiciones del simulador son un plan: en la Guía 9 se corrigen con la garra real. Los límites de `leer()` también se cambian en la Guía 9.
+- Las posiciones del simulador son un plan: en la Guía 11 se corrigen con la garra real. Los límites de `leer()` también se cambian en la Guía 11.
 - g6p-p1: con 5 va más rápido (y en la garra real puede soltar el objeto); con 30, más lento y suave.
 - g6p-b1: en manual el piloto mueve cada articulación con su perilla; en automático la garra repite sola los pasos guardados en el código.
 - Tiempo total: 15 + 30 + 45 + 10 + 5 + 15 = 120 minutos.

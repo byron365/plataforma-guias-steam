@@ -287,14 +287,14 @@ Pista: en el `loop` del clasificador, justo después de leer `vel`, escriban en 
 ¿Qué creen que será distinto cuando armen la banda real? (Piensen en el sensor de color de verdad y en la luz del salón.)
 :::
 
-**Muy importante:** estos son los programas que van a subir a los Arduinos reales el sábado 8. Copien cada uno completo (**Ctrl + A** y **Ctrl + C** en el panel Código), péguenlo en un bloc de notas y guárdenlos como `equipo_NOMBRE_banda.txt` (Arduino 1) y `equipo_NOMBRE_clasificador.txt` (Arduino 2). Súbanlos aquí juntos en un `.zip`.
+**Muy importante:** estos son los programas que van a subir a los Arduinos reales el sábado 9. Copien cada uno completo (**Ctrl + A** y **Ctrl + C** en el panel Código), péguenlo en un bloc de notas y guárdenlos como `equipo_NOMBRE_banda.txt` (Arduino 1) y `equipo_NOMBRE_clasificador.txt` (Arduino 2). Súbanlos aquí juntos en un `.zip`.
 
 :::archivo id="g6-archivo"
 **Archivo de trabajo:** suban aquí el `.zip` con `equipo_NOMBRE_banda.txt` y `equipo_NOMBRE_clasificador.txt`. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí.
 :::
 
 :::docente
-- **Versión Práctica (10 sábados):** los dos programas son los de la Guía 8 (antes Guía 5 Práctica); el clasificador del simulador cambia `leerColor()` (tres perillas en A0, A1 y A2 en lugar del TCS34725) y además muestra el color en vivo en la fila de abajo. Campos propios (g6p-…). Las respuestas de la Guía 6 anterior (calibrar y sincronizar) pasaron a la Guía 9 (g9p-…).
+- **Versión Práctica (10 sábados):** los dos programas son los de la Guía 9 (antes Guía 8, y antes Guía 5 Práctica); el clasificador del simulador cambia `leerColor()` (tres perillas en A0, A1 y A2 en lugar del TCS34725) y además muestra el color en vivo en la fila de abajo. Campos propios (g6p-…). Las respuestas de la Guía 6 anterior (calibrar y sincronizar) pasaron a la Guía 9 (g9p-…); desde el 13 de noviembre son la Guía 10 (g10p-…).
 - I2C en Tinkercad: maestro (clasificador) y esclavo 8 (banda) unidos por A4, A5 y GND; la LCD (0x27) comparte el bus. Comprobado en Tinkercad el 6 de noviembre.
 - El paro tiene enclavamiento: un toque detiene y otro reanuda, porque un clic corto en el simulador no alcanzaba a notarse. `bool antes = true` evita contar una pieza falsa al encender.
 - Si un equipo dice que la pantalla no cuenta, revisar primero el pulsador de D2 en el nodo banda.

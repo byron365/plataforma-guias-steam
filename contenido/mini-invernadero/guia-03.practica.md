@@ -201,7 +201,7 @@ Enlace del proyecto de Wokwi:
 :::
 
 :::docente
-- **Versión práctica (8 sábados), desde el 30 de octubre:** guías 1 y 2 iguales a la versión Tinkercad (diseño 3D en Tinkercad); 3 y 5 simulan el circuito por partes en **Wokwi** (tiene el sensor de temperatura y el módulo relé) y la 4, el riego, en **Tinkercad Circuits** (tiene el sensor de humedad del suelo y el relé), por decisión de Bairon; 6 arma la casa y la ventana, 7 el circuito completo y 8 es plantas, datos y demostración. Campos propios (g3p-…).
+- **Versión práctica (8 sábados), desde el 30 de octubre:** guías 1 y 2 iguales a la versión Tinkercad (diseño 3D en Tinkercad); 3 y 5 simulan el circuito por partes en **Wokwi** (tiene el sensor de temperatura y el módulo relé) y la 4, el riego, en **Tinkercad Circuits** (tiene el sensor de humedad del suelo y el relé), por decisión de Bairon; 6 arma la casa y la ventana, 7 el circuito completo y 8 es plantas, datos y demostración. **Desde el 13 de noviembre son 9 sábados:** 6 arma la casa y la ventana, 7 conecta el circuito y 8 sube los programas y calibra (guías de armado), 9 es plantas, datos y demostración. Campos propios (g3p-…).
 - Mismos pines del invernadero: luz D6, botón D2, servo D9 (y en las guías 4 y 5: sensor de humedad A0, relé D8, temperatura D7).
 - Para probar se usan 10 segundos de luz encendida y 10 apagada; en el invernadero real serían horas.
 - g3p-p1: 45 000 % 20 000 = 5 000; como es menor que LUZ_ON (10 000), la luz está encendida.

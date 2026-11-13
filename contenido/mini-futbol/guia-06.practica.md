@@ -64,7 +64,7 @@ Hubo un gol cuando `millis()` valía 40 000. Con PAUSA_GOL = 1500, ¿a partir de
 ¿Qué problema aparece si la pausa es muy larga?
 :::
 
-Al terminar, dejen `PAUSA_GOL = 1500`. Con los sensores reales, en la Guía 9, comprobarán si es la pausa correcta.
+Al terminar, dejen `PAUSA_GOL = 1500`. Con los sensores reales, en la Guía 10, comprobarán si es la pausa correcta.
 
 ## Parte 2 · El marcador también informa (35 min)
 
@@ -126,7 +126,7 @@ Copien aquí los goles de su partido de prueba:
 - [ ] `DURACION` = 120000 y `PAUSA_GOL` = 1500.
 :::
 
-3. **Guarden el programa final:** presionen **Save**. Copien todo el código de `sketch.ino` (**Ctrl + A**, **Ctrl + C**) a un bloc de notas y guárdenlo como `equipo_NOMBRE_marcador.txt`. Es el programa que van a subir al marcador real en la Guía 8.
+3. **Guarden el programa final:** presionen **Save**. Copien todo el código de `sketch.ino` (**Ctrl + A**, **Ctrl + C**) a un bloc de notas y guárdenlo como `equipo_NOMBRE_marcador.txt`. Es el programa que van a subir al marcador real en la Guía 9.
 
 ## ¿Lo logramos? (5 min)
 
@@ -154,7 +154,7 @@ Pista: en el `loop()`, cuando `DURACION - pasado` sea menor que 10000, suenen tr
 :::
 
 :::docente
-- **Versión Práctica con Wokwi (9 sábados):** el antirrebote de la Guía 6 normal y el envío de goles por el puerto serie de la Guía 7 normal, en el simulador. La calibración de los sensores y la prueba de 20 goles quedan para el marcador real (guías 8 y 9). Campos propios (g6p-…).
+- **Versión Práctica con Wokwi (9 sábados):** el antirrebote de la Guía 6 normal y el envío de goles por el puerto serie de la Guía 7 normal, en el simulador. La calibración de los sensores y la prueba de 20 goles quedan para el marcador real (guías 9 y 10). Campos propios (g6p-…).
 - g6p-p1: a partir de 41 500 ms.
 - g6p-pausas: con 6 segundos presionado, más o menos 5 goles con 0, 4 con 1500, 2 con 3000 y 1 con 6000 (cambia un poco según cuándo se suelta). Con PAUSA_GOL = 0 la función `gol()` ya tiene `delay(1200)` en total, así que también protege un poco.
 - g6p-p2: si la pausa es larga, un gol rápido justo después no se cuenta (con 6000, el segundo clic no suma).

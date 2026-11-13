@@ -87,17 +87,166 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 > `herramientas/verificar_<proyecto>_stl.py` por proyecto): Dispensador (compuerta y torre del líquido), Robot (orejas,
 > rebaje de tuerca, soporte del sensor y bandeja), Mini fútbol (portería con pie del sensor y soporte del marcador), Banda
 > (oreja del soporte del motor) y Laberinto (lado de adelante del marco y distancia entre torres). Ver sus secciones.
-> [ ] Reimprimir las piezas corregidas de cada equipo y actualizar sus diseños de referencia en Tinkercad.
+> [ ] Reimprimir las piezas corregidas de cada equipo y rehacer las imágenes que muestran las piezas anteriores.
+> [x] **Diseños de referencia en el Tinkercad del docente actualizados (12 de noviembre)** con las medidas nuevas (22 diseños):
+> Puente (orilla, torres del semáforo y del buzzer, soporte del sensor y propuesta completa, con las torres detrás de la
+> ranura), Dispensador (compuerta, torre del líquido y las dos propuestas), Robot (chasis, soporte del sensor, bandeja y
+> propuesta), Mini fútbol (portería, soporte del marcador y propuesta), Banda (rodillos y soportes, propuesta), Laberinto
+> (marco, piezas pequeñas y propuesta, con las torres a 21,5 cm) e Invernadero (modelo piezas y propuesta). Se editaron por
+> JavaScript sobre los bloques (editor: `tinkercad.com/codeblocks/edit?doc=<id>`; ayudas en localStorage 'ayudasRevision'),
+> se ejecutaron con ▷ y se comprobó al recargar que quedaron guardados. Las hojas del puente, el embudo, la torre del
+> cereal, las torres del laberinto y la caja del mando no cambiaron.
 > [x] **Clip de la manguera del Mini invernadero** revisado (12 de noviembre): hueco 7,5 → 8,5 mm (manguera de 8), abertura 4 → 6 mm
 > (con 4 había que abrir el anillo de PLA y se podía quebrar) y pestaña parada de 20 × 4 × 8 bien unida al anillo (antes, placa
 > de 2 mm a media altura, casi suelta y con soportes). Guía 2T y 7 práctica actualizadas; `herramientas/invernadero_stl.py` y
 > `herramientas/verificar_invernadero_stl.py`; STL en `..\STL\Mini invernadero - STL para imprimir\`. [ ] Reimprimir el clip,
-> rehacer la imagen 2.5T y el diseño "Invernadero - modelo piezas".
+> rehacer la imagen 2.5T (el diseño "Invernadero - modelo piezas" ya está actualizado).
 > [x] **Soporte del servo y bisagra del invernadero** revisados el mismo día: el soporte no tenía salida para el cable del
 > servo (0,45 mm entre su punta y la pared; cable de 1,2): **ranura del cable** de 6 mm. La bisagra tenía el nudillo (Ø6)
 > centrado en el grueso de la hoja, que quedaba 1,5 mm al aire (soportes, no se pegaba plana), y el agujero de 3 mm no
 > dejaba pasar un palito de 3: hoja y **nudillo de Ø7** apoyados en la cama, **agujero de 3,5**. Guías 2T y 6 práctica
 > actualizadas; STL en la misma carpeta. [ ] Reimprimir el soporte y las 2 hojas; rehacer las imágenes 2.3T y 2.4T.
+> **12 de noviembre (guías de armado, en curso):** diagramas de conexiones paso a paso con los dibujos reales de las piezas
+> de Fritzing (fritzing-parts, CC BY-SA 3.0, crédito escrito en cada imagen). `herramientas/diagramas_armado.py <proyecto>
+> <carpeta de piezas> <salida>` compone los SVG y exporta PNG con Inkscape. Piezas descargadas en `..\Diagramas\piezas\`
+> (con sus licencias y las medidas de los pines en `consultas\`). Hecho de prueba: **Puente levadizo** (`..\Diagramas\puente\`,
+> pasos 1 a 10 + completo; tabla de conexiones de la Guía 7 práctica). A Bairon le gustaron. Pendientes para la próxima sesión:
+> - [x] **Resaltado del paso nuevo cambiado (13 de noviembre)** (el halo amarillo se confundía con el cable amarillo). Bairon eligió:
+>       (1) lo de los pasos anteriores apagado (gris claro o transparente; Arduino y protoboard siempre normales) y lo nuevo a
+>       todo color, y (4) etiquetas en las puntas de los cables nuevos con el agujero o pin ("D4", "E12", "A16", "fila −").
+>       Hecho: además, "220 Ω" sobre cada resistencia en su paso. Las imágenes con halo quedaron en
+>       `..\Diagramas\puente\anteriores (halo amarillo)\`. Avance publicado en una página privada de claude.ai.
+> - [x] Bairon aprobó los diagramas ("quedaron excelente"), con los 2 cables entre las filas de arriba y de abajo y el orden
+>       de la protoboard (botón 2–4, buzzer 8, LED rojo 12–16, amarillo 17–21, verde 22–26).
+> - [x] **Puente, versión práctica pasa a 10 sábados (13 de noviembre)**, decisiones de Bairon: las guías de armado siguen a
+>       la Guía 7; tienen otro color; la Guía 7 deja que el docente suba el programa de centrado; la Guía 9 es un sábado entero.
+>       - **Guía 7** (Armamos el puente de verdad): sin la Parte 5 (circuito); el docente sube el programa de centrado (código en
+>         su nota); tiempos 15 + 15 + 40 + 35 + 5 + 10. Se quitó la pregunta de la bitácora (pasó a la 8) y el .ino del archivo.
+>       - **Guía 8 nueva** (Armamos el circuito paso a paso, `tipo: armado`): cómo leer los diagramas, filas + y −, semáforo,
+>         buzzer y botón, sensor, servos y eliminador, revisión cable por cable. Imágenes 8.1A–8.11A (los diagramas).
+>       - **Guía 9 nueva** (Subimos el programa al Arduino, `tipo: armado`): partes de Arduino IDE, placa y puerto, verificar,
+>         subir y la comparación con el simulador (antes Parte 1 de la Guía 8). Imágenes 9.1A–9.4A: capturas reales de Arduino
+>         IDE 2.3.10 en español (tomadas por el puerto de depuración de Electron, sin Arduino conectado: por eso 9.2A no muestra
+>         el COM y la Parte 4 solo señala el botón Subir). Después se dejó el IDE en inglés, como estaba.
+>       - **Guía 10** (la antigua 8, Ajustamos el puente y lo presentamos): sin la Parte 1; campos g10p-…; tiempos 40 + 10 + 55 + 5 + 10.
+>       - No había respuestas guardadas de las guías 5 en adelante, así que cambiar los números no afecta a los equipos.
+>       - Plataforma: `tipo: armado` en el encabezado → color morado (tarjeta, número, etiqueta "Práctica de armado" y portada).
+>         También se corrigió que la lista mostrara la sesión de la versión Blender en las guías de otras versiones.
+> - [ ] Rehacer la 9.2A con un Arduino conectado (para que se vea el puerto COM) y, si se quiere, una captura después de subir.
+> - [ ] Revisar con Bairon: el paso 10 (eliminador en el jack sin enchufar en la Guía 8, se enchufa en la 9), la bitácora de la
+>       Guía 7 (quedó solo la foto) y el botón en las filas B y E en vez de sobre la canaleta (nota del docente en la Guía 8).
+> - [x] **Dispensador, versiones práctica y doble práctica pasan a 10 sábados (13 de noviembre)**, con la misma estructura
+>       que el puente (Bairon: "sigamos con el siguiente proyecto"; se eligió el Dispensador porque sus dos equipos ya terminaron
+>       la Guía 6). Las respuestas guardadas llegan hasta la Guía 6: cambiar los números no afecta a los equipos.
+>       - **Guía 7** (las dos): solo armado mecánico. El docente deja el servo en 0° (programa en su nota; antes se subía
+>         `equipo_NOMBRE_compuerta` de la Guía 1); la revisión de la abertura y el programa final pasaron a la 9. Tiempos
+>         25 + 15 + 50 + 15 + 5 + 10 (sencillo) y 15 + 15 + 45 + 25 + 5 + 15 (doble).
+>       - **Guía 8** (armado): sencillo con LED (patas dobladas: corta a la fila −, larga a A9), buzzer en C2/C5, botón en
+>         A/D 17–19 y servo; doble con 2 botones (C en 20–22, L en 15–17), módulo relé (IN D8) y fuente, jack y bomba.
+>         Imágenes 8.1A–8.6A y 8.1AD–8.9AD (`diagramas_armado.py dispensador` y `dispensador-doble`; relé, jack y bomba son
+>         dibujos propios). En el doble, el cable del botón L a la fila − cruza el de D2 (único cruce).
+>       - **Guía 9** (armado): Arduino IDE, programa final, subir, botón y revisión de la abertura (doble: fuente, botones C y L),
+>         y la comparación con el simulador (antes Parte 1 de la Guía 8). Capturas 9.1A–9.4A y 9.1AD–9.4AD con los programas
+>         del dispensador.
+>       - **Guía 10**: la antigua 8 sin su Parte 1; campos g10p-… / g10dp-…; tiempos 45 + 10 + 50 + 5 + 10.
+>       - `diagramas_armado.py`: lo común (Arduino, protoboard, paso 1 y cables por la canaleta) quedó en
+>         `arduino_y_protoboard()` y el servo de abajo en `servo_hacia_la_derecha()`; las imágenes del puente salen idénticas.
+> - [x] **Robot con mando, versión "Práctica con app" pasa a 11 sábados (13 de noviembre)**, misma estructura (su equipo va en la
+>       Guía 7; respuestas guardadas hasta la 5). La versión "Práctica" con mando físico no tiene equipos y no se tocó.
+>       - **Guía 8**: solo el armado mecánico (piezas, piso de abajo, bandeja); tiempos 15 + 45 + 45 + 5 + 10.
+>       - **Guía 9 nueva** (armado): las dos fuentes con GND común, L298N y motores, 5V y GND repartidos en la protoboard
+>         pequeña (números 17 y 5: propuesta del dibujo, para revisar con Bairon), HC-SR04, divisor de la batería y HC-05 con su
+>         divisor. Imágenes 9.1AR–9.10AR (L298N y batería 2S dibujados; HC-05, pila de 9 V, fusible, interruptor, protoboard
+>         pequeña y motor TT de Fritzing). Las señales del L298N se cruzan en el dibujo: con el orden de sus pines no hay forma de evitarlo.
+>       - **Guía 10 nueva** (armado): Arduino IDE, prueba de motores (antes Guía 8) y programa final con `SoftwareSerial` (antes
+>         Guía 9). Capturas 10.1AR–10.4AR con el programa final ya cambiado.
+>       - **Guía 11**: la antigua 9 sin el HC-05 ni el programa final; campos g11a-…; tiempos 10 + 25 + 40 + 25 + 5 + 15.
+>       - Referencias corregidas en las guías 4, 5 y 7 con app. `contenido.js`: los títulos de la lista ya no muestran las
+>         comillas de YAML (la Guía 7 salía como 'La app (2)…').
+> - [x] **Mini fútbol, versión "Práctica con Wokwi" pasa a 10 sábados (13 de noviembre)**. Sus dos equipos de esta versión
+>       tienen respuestas hasta la Guía 6 (el de la versión normal, hasta la 2): cambiar números no los afecta.
+>       - **Guía 7** sin cambios (ya era solo piezas y cancha).
+>       - **Guía 8** (armado): instalar sensores, pantalla y buzzer (antes Parte 1) y conectar con diagramas: sensores FC-51
+>         directo a D4 (roja) / D3 (azul) y a las filas + y −, botón de inicio sobre la canaleta (E6–F8, A6 → D2, J8 → fila −),
+>         buzzer directo a D5, OLED a A4/A5 y a las filas de abajo. Imágenes 8.1A–8.7A (OLED dibujada; FC-51 de Fritzing).
+>       - **Guía 9** (armado): Arduino IDE, programa de prueba y calibración, librerías y programa final (antes Partes 3 y 4 de
+>         la 8; campos g9a-…). Capturas 9.1A–9.4A con el programa del marcador armado con las guías 5 y 6 (compila con las
+>         librerías Adafruit instaladas en la PC del docente).
+>       - **Guía 10**: la antigua 9 (prueba de 20 goles y torneo), campos g10p-…. Referencias corregidas en las guías 4 y 6.
+> - [x] **Garra robótica, versión "Blender práctica" pasa a 11 sábados (13 de noviembre)**, misma estructura (su equipo va en
+>       la Guía 6, con respuestas hasta la 4).
+>       - **Guía 8**: solo el armado (centrar servos, base, plato, brazo y pinza); los servos los centra el docente (programa en
+>         su nota). Tiempos 20 + 50 + 35 + 5 + 10.
+>       - **Guía 9** (armado): las dos fuentes (el Arduino a las filas de abajo, la fuente de 5 V en el jack a las de arriba y
+>         solo el GND común entre las dos filas −), los 4 servos (uno por paso), las 4 perillas en la mitad de abajo (patas
+>         en F4–F8, F10–F14, F16–F20 y F22–F26, de izquierda a derecha pinza, codo, hombro y base, para que sus cables a A3…A0
+>         no se crucen) y el pulsador sobre la canaleta (E27–F29). Imágenes 9.1A–9.10A (perillas vistas desde arriba: dibujo
+>         propio). `arduino_y_protoboard(..., unir_filas=False)`: aquí no se unen las filas +.
+>       - **Guía 10** (armado): Arduino IDE, programa de la rutina, prueba de las perillas y Monitor serie (antes Parte 5 de
+>         la 8). Capturas 10.1A–10.4A con el programa de la rutina (Guía 6).
+>       - **Guía 11**: la antigua 9 (límites, agarre, rutina y reto), campos g11p-…. Referencias corregidas en las guías 4, 5 y 6.
+>       - Para revisar con Bairon: el orden de las perillas en el dibujo (pinza → base de izquierda a derecha).
+> - [x] **Banda clasificadora, versión "Práctica" pasa a 11 sábados (13 de noviembre)**, misma estructura (sus dos equipos
+>       van en la Guía 6, con respuestas hasta la 6).
+>       - **Guía 7**: solo el armado (banda, túnel, sensores, puente, servo) y la canaleta pegada con el servo en 90°: el
+>         programa lo sube el docente (en su nota). Tiempos 10 + 45 + 30 + 25 + 5 + 5.
+>       - **Guía 8** (armado): los circuitos de los dos nodos. Nodo banda (8.1A–8.10A): el Arduino a las filas de abajo, la
+>         fuente en el jack a las de arriba, GND común, TIP41C de pie con las patas B, C, E en A7, A8, A9, D9 → E3 y 220 Ω
+>         C3–C7, 10 kΩ D7–D11 con A11 a la fila − (base → 10 kΩ → GND), emisor E9 → fila − de abajo, colector B8 → B15, LED
+>         en A15/A16 con 220 Ω D16–D20 y A20 → fila +, perilla F22–F26 (A0) y sensor IR (D2; VCC y GND en las filas de la
+>         fuente). Clasificador (8.11A–8.18A): bus I2C en dos números de su protoboard (A5 → 17 = SCL, A4 → 18 = SDA; ahí
+>         van el TCS34725 y los cables a A4/A5 de la banda), la pantalla en los pines SDA y SCL de arriba del Arduino, botón
+>         de paro E24–F26 (D7), servo con la fuente de la banda (D6) y GND común; el nodo banda se dibuja en pequeño.
+>       - **Guía 9** (armado): Arduino IDE, prueba con el LED, cambio al motor + diodo + capacitor (9.5A–9.7A, con
+>         `diagramas_armado.py banda-motor`), nodo banda, color crudo (librerías), nodo clasificador y primera prueba.
+>         Capturas 9.1A–9.4A con el programa de prueba del LED. Campos g9a-… (antes g7p-led/motor/pruebas y g8p-…).
+>       - **Guías 10 y 11**: las antiguas 9 y 10 (calibrar; luz, ángulos y lote final), campos g10p-… y g11p-…. Referencias
+>         corregidas en las guías 4, 5 y 6.
+>       - Para revisar con Bairon: el sensor IR en las filas de la fuente (el texto decía "VCC → 5V"), el bus I2C en la
+>         protoboard del clasificador y la pantalla en SDA/SCL de arriba (en un pin cabe un solo cable), la 10 kΩ de D7 a
+>         D11 con un cable a GND, y el LED y el motor en el número 15 (con un cable desde el colector).
+> - [x] **Mini invernadero, versión "Práctica con Wokwi" pasa a 9 sábados (13 de noviembre)**, misma estructura (sus dos
+>       equipos van en la Guía 5, con respuestas hasta la 5).
+>       - **Guía 6**: solo el armado (cuerpo, ventana, bisagra y el servo con el palito); el servo lo pone en 0° el docente
+>         (programa en su nota). Tiempos 10 + 35 + 25 + 35 + 5 + 10.
+>       - **Guía 7** (armado): revisar plantas y el circuito en 8 pasos (7.1A–7.9A): servo D9, botón D2 (patas A24–D26), luz
+>         D6 (LED blanco con cables macho–hembra, 220 Ω C13–C17), sensor de humedad A0 (abajo a la derecha), DHT11 D7 (S → A8),
+>         relé D8 y la fuente con el jack y la bomba (igual que el dispensador doble); después el agua (bomba, clip, sensor).
+>       - **Guía 8** (armado): revisar plantas, Arduino IDE, programa de la ventana y elegir el ángulo (antes en la Guía 6),
+>         programa final con DHT11, calibrar el umbral y probar (antes en la Guía 7). Capturas 8.1A–8.4A con el programa de
+>         la ventana. Campos g8a-….
+>       - **Guía 9**: la antigua 8 (plantas, datos y demostración), campos g9p-…. Referencias corregidas en las guías 3, 4 y 5.
+>       - Para revisar con Bairon: el orden de los pines del sensor de humedad del dibujo (AOUT, VCC, GND) y que las guías
+>         7 y 8 también tienen la tabla de las plantas (para la gráfica de todos los sábados).
+> - [x] **Laberinto, versión "Práctica con Wokwi" pasa a 8 sábados (13 de noviembre)**, decisión de Bairon (el armado
+>       estaba repartido entre las guías 5 y 6; su equipo tiene respuestas solo en la Guía 1).
+>       - **Guía 5**: sin circuito; los servos los centra el docente (programa en su nota). Tiempos 15 + 40 + 15 + 15 + 20 + 5 + 10.
+>       - **Guía 6** (armado): el montaje del marco y el tablero y el circuito en 6 pasos (6.1A–6.7A): el Arduino abajo, la
+>         fuente en el jack arriba, solo el GND común, servo del marco D9 y del tablero D10 (parados arriba, como la garra) y el
+>         joystick debajo del Arduino con VRx y VRy derecho a A0 y A1 (+5V y GND dan la vuelta por abajo; dibujo propio).
+>       - **Guía 7** (armado): Arduino IDE, programa del control (Guía 4) y ajuste del sentido y la inclinación. Capturas
+>         7.1A–7.4A con el programa del control. Campos g7a-… (antes g6p-sentido, g6p-inclinacion, g6p-p1, g6p-foto).
+>       - **Guía 8**: la antigua 7 (el torneo), campos g8p-…. Referencias corregidas en la Guía 4.
+> - [x] **Las guías de armado de los 8 proyectos quedaron hechas (13 de noviembre).** Falta la revisión de Bairon de cada uno.
+> - **Cómo se hace cada proyecto (receta del 13 de noviembre):**
+>       1. Ver en la base (solo lectura) qué versión usa cada equipo y hasta qué guía tiene respuestas: solo se renumeran
+>          guías sin respuestas.
+>       2. Las guías de armado van después de la última guía de armado mecánico: N+1 = circuito con diagramas, N+2 = subir
+>          los programas con Arduino IDE (y lo que use el programa: calibrar, probar). La guía final pasa a N+3. Si una guía
+>          mecánica sube un programa antes de la de IDE (centrar un servo), lo sube el docente (decisión de Bairon).
+>       3. Diagramas: función nueva en `herramientas/diagramas_armado.py` (usar `arduino_y_protoboard`, `servo_hacia_la_derecha`,
+>          `resistencia`, dibujos propios si Fritzing no trae la pieza; piezas de fritzing-parts en `..\Diagramas\piezas\`).
+>          Pasos separados para que cada paso tenga pocos cruces; los cruces con pasos anteriores (en gris) no importan.
+>       4. Capturas del IDE: `herramientas/arduino_ide/capturar_ide.py <programa.ino> <carpeta>` y luego
+>          `anotar_ide.py <salida> <carpeta> <sufijo> <guía>`. Abre el IDE con el puerto de depuración (CDP, sin instalar nada),
+>          lo pone en español (también `arduino-cli.yaml`) y deja todo como estaba. No hay Arduino en la PC: la ventana de
+>          placa y puerto sale sin COM.
+>       5. Guías con `tipo: armado`, imágenes `N.xA` (o `AR`/`AD` si la A ya se usa), notas del docente y LEEME de imágenes.
+>       6. Página privada de avance (claude.ai, la de los artefactos de Bairon): su copia está en `..\Diagramas\avance\`,
+>          con `herramientas\exportar_guias.js` y `pagina_proyecto.py` (ejemplo de configuración: `cfg_futbol.json`).
+>       7. Scripts con barras invertidas: escribirlos en un archivo, no por heredoc de Bash (se convirtieron en caracteres de
+>          control el 13 de noviembre); al final, revisar que no haya caracteres de control en los archivos cambiados.
+> - No subir a GitHub hasta que Bairon lo pida.
 
 ---
 
@@ -335,8 +484,8 @@ práctica y menos experimentos con cartón. Tercera versión del proyecto: `"dob
   - Guías 2T, 2 doble, 3T, 3 doble, 5 doble, 7 práctica y 7 doble práctica actualizadas; imagen 2.4D por rehacer.
   - Verificación en Blender: `herramientas/verificar_dispensador_stl.py` (compara el generador anterior con el actual).
     STL anteriores en `..\STL\Dispensador doble - STL para imprimir\anteriores (21 de octubre)`.
-  - [ ] Reimprimir la compuerta de los dos equipos y la torre del líquido del equipo doble. [ ] Actualizar los diseños de
-    referencia en Tinkercad ("… compuerta", "… torre liquido") y la imagen 2.4D.
+  - [ ] Reimprimir la compuerta de los dos equipos y la torre del líquido del equipo doble. [x] Diseños de referencia en Tinkercad actualizados.
+    [ ] Rehacer la imagen 2.4D.
 - [ ] Imagen 5.1D (circuito del dispensador doble).
 - [ ] Probar en la academia: el servo colgando de la repisa y la altura del brazo hasta la compuerta (depende del brazo).
 - [ ] **Pendiente para otra tanda:** Guía 6 doble (gramos y mililitros; hoy usa `servir()` y `TIEMPO_ABIERTA`), 7, 8
@@ -361,6 +510,9 @@ electrónica en la protoboard y adaptar también la Guía 4).
 
 **Visor de imágenes (6 de noviembre, a pedido de Bairon):** cada imagen de las guías lleva un botón **Ampliar** (`publico/js/visor-imagen.js`, sin librerías). Abre la imagen a pantalla completa; se acerca con − y +, rueda, doble clic o pellizco, se mueve arrastrando o con las flechas, y se cierra con ✕, Esc o tocando el fondo. Funciona en las guías de los estudiantes y en la vista de guía del panel docente. Clases `ampliador-…` (`visor-…` ya la usa el panel). Probado en Chrome con mouse y teclado, a 390 px de ancho y en los dos temas; el pellizco, con eventos simulados.
 
+**Desde el 13 de noviembre, la versión Práctica con Wokwi del Mini invernadero tiene 9 sábados** (ver la nota del 13 de
+noviembre arriba). Lo que sigue es como quedó el 30 de octubre.
+
 **Mini invernadero: versión nueva "Práctica con Wokwi (8 sábados)" (30 de octubre, a pedido de Bairon).** `practica`,
 base `tinkercad`: guías 1 y 2 = Tinkercad (sembrar y piezas 3D); **3P** simular en **Wokwi** la luz con temporizador y la
 ventana con botón; **4P** riego en **Tinkercad Circuits** (Sensor de humedad del suelo con `1023 - analogRead` porque el de Tinkercad sube con el
@@ -375,6 +527,9 @@ Wokwi con potenciómetro, **Relay Module** y LED azul; **5P** DHT22 (en Wokwi; D
 - **Guía 5P probada en Wokwi (6 de noviembre):** con el código exacto de la guía compilan Servo y DHT sensor library; pasan ventana con histéresis (30,5 °C abre a 60°, 28 °C sigue abierta, 26,9 °C cierra), riego automático (se apaga solo), riego con el botón, luz apagada al pasar 60 s (esto último con el primer cableado) y Monitor. Un clic corto en el botón no se detecta: hay que mantenerlo 1 segundo (nota en guías 5P y 7P). [ ] No comprobado: la luz encendiéndose otra vez a los 120 s. El proyecto no quedó guardado en Wokwi (el plan gratuito solo guarda públicos y Unlisted es de pago): el circuito está en `herramientas/wokwi/mini-invernadero-guia-05.diagram.json`.
 - Lista de materiales (14 materiales) generada para el equipo: `herramientas/materiales/mini-invernadero.json` (sensor de humedad = ilustración propia; DHT11 de Wikimedia Commons).
 - [ ] Lista de materiales revisada el 6 de noviembre, con cuatro ajustes propuestos que esperan la decisión de Bairon (todavía no aplicados): avisar que el servo y la manguera se miden en la Guía 2; pedir la bomba con manguera; escribir la bomba como "de 3 a 6 V"; agregar a "No hace falta comprar" regla o calibrador, plumón, etiquetas, tijeras y 2 vasos más (falta definir si los pone la academia o el hogar).
+
+**Desde el 13 de noviembre, la versión Práctica de la Banda tiene 11 sábados** (ver la nota del 13 de noviembre arriba).
+Lo que sigue es como quedó el 30 de octubre.
 
 **Banda clasificadora: versión Práctica ahora de 10 sábados (30 de octubre, a pedido de Bairon).** Guías 1 a 3
 iguales; **4P** simular el nodo banda en Tinkercad (Fuente de alimentación en 5 V = cargador, **Transistor NPN** en lugar
@@ -410,6 +565,9 @@ código del mando con `LiquidCrystal_I2C`, dirección 0x27 o 0x3F). Los campos d
 - Los 9 programas de las guías 4 a 9 compilan con arduino-cli (la LCD con una copia mínima de la librería, sin instalar nada).
 - [ ] Imagen 5.1S (simulación) y rehacer la 3.2P (caja nueva). La 4.1S, 4.2S y 4.3S ya están. Siguen pendientes las de antes: 4.1P, 4.2 y 5.1P.
 - [ ] La versión Completa (14 sábados) sigue con la OLED.
+
+**Desde el 13 de noviembre, las dos versiones prácticas del Dispensador tienen 10 sábados** (ver la nota del 13 de noviembre
+arriba). Lo que sigue es como quedaron el 30 de octubre.
 
 **Dispensador: versiones prácticas de 8 sábados (30 de octubre, a pedido de Bairon).** Igual que el Puente: guías 4-6
 simulan por partes en Tinkercad Circuits, 7 arma en físico y 8 prueba y presenta.
@@ -466,8 +624,8 @@ pieza nueva = soporte del marcador; sin escaneo 3D en esta versión. La Guía 1 
     buzzer 12,4 → 12,8. La pantalla con sus cables y el buzzer caben detrás del panel.
   - Guías 2T, 3T, 4T, 5T, 7 práctica y 8 práctica actualizadas (el agujero de los cables en la base ya no hace falta).
     STL anteriores en `..\STL\Mini futbol - STL para imprimir\anteriores (21 de octubre)`.
-  - [ ] Reimprimir las porterías y el soporte de los dos equipos. [ ] Actualizar los diseños de referencia en Tinkercad y
-    la imagen 2.3T (y la 2.1T, que muestra las porterías sin pie).
+  - [ ] Reimprimir las porterías y el soporte de los dos equipos. [x] Diseños de referencia en Tinkercad actualizados.
+    [ ] Rehacer la imagen 2.3T (y la 2.1T, que muestra las porterías sin pie).
 
 **Laberinto inclinable, versión Tinkercad reestructurada (21 de octubre)**, a pedido de Bairon ("los chicos son un poco
 más lentos": menos teoría, más práctica, y diseñar en 3D lo que faltaba). Decisiones de Bairon: impresora de 220 × 220 o
@@ -509,7 +667,7 @@ y base del joystick); sin el juego en Wokwi (el código va en la Guía 6); torre
   - **STL de referencia nuevos:** `laberinto_marco.stl`, `laberinto_torre_servo.stl` y `laberinto_torre_eje.stl` (el tablero no,
     porque cada equipo diseña su laberinto). STL anteriores en `..\STL\Laberinto - STL para imprimir\anteriores (21 de octubre)`.
   - [ ] Si el equipo ya imprimió el marco con el lado de adelante de 6 mm, reimprimirlo (o usar el de referencia).
-    [ ] Actualizar el diseño de referencia del marco en Tinkercad y la imagen 3.2T.
+    [x] Marco y propuesta actualizados en Tinkercad. [ ] Imagen 3.2T.
 - [ ] Imagen 6.1T: foto real del sensor en su soporte.
 - **Imagen 2.1 (23 de octubre)**, la usan la Guía 2 normal y la 2T: laberinto de ejemplo a lápiz sobre papel cuadriculado
   (casillas de 2 × 2 cuadritos, letras A–G arriba, números 1–7 con el 1 abajo, salida en A1 y meta en G7). Es un laberinto
@@ -581,7 +739,7 @@ TT, ruedas y rueda loca) y se diseñan las cuatro piezas propuestas.
   - Guías 2 y 3 (Práctica y app) con los números nuevos; Guía 7 Práctica y 8 app: los dos motores en el mismo sentido (eje
     hacia el frente) y lugar exacto del Arduino. STL anteriores en `..\STL\Robot con mando - STL para imprimir\anteriores (23 de octubre)`.
   - [ ] Reimprimir chasis, soporte del sensor y bandeja del equipo del robot (postes y caja del mando sin cambios).
-    [ ] Actualizar "Robot - modelo chasis / soporte del sensor / bandeja" en Tinkercad y las imágenes 2.3P, 2.4P y 3.1P.
+    [x] "Robot - modelo chasis / soporte del sensor / bandeja" y la propuesta actualizados en Tinkercad. [ ] Imágenes 2.3P, 2.4P y 3.1P.
 
 **Banda clasificadora, versión "Práctica (7 sábados)" (23 de octubre)**, a pedido de Bairon ("más prácticas… 6 o 7 guías
 comenzando desde la 2, vamos con el diseño"). Decisiones de Bairon: imprimir rodillos y soportes, túnel del sensor y
@@ -616,7 +774,7 @@ soporte del servo con desviador; 7 sábados; sin la simulación en Wokwi; motor 
   - **Guía 7P:** el cuerpo del motor va hacia el inicio de la banda (hacia el puente choca con su pata) y la cara del soporte
     del motor a 5,5 cm de la línea central (tercer soporte a 3,6 cm) para que el rodillo quede centrado.
   - STL anteriores en `..\STL\Banda clasificadora - STL para imprimir\anteriores (23 de octubre)`.
-  - [ ] Reimprimir el soporte del motor (las demás piezas no cambian). [ ] Actualizar "Banda - modelo rodillos y soportes".
+  - [ ] Reimprimir el soporte del motor (las demás piezas no cambian). [x] "Banda - modelo rodillos y soportes" y la propuesta actualizados en Tinkercad.
 - [ ] Probar con piezas reales: el rodillo en el eje del TT, la banda tensa entre rodillos de 40 cm, que la pieza caiga por
   el agujero del puente sobre la canaleta y resbale hasta el contenedor (rampa de unos 24°), y el TIP41C con el TT.
 - [ ] La Guía 1 normal todavía habla de la fuente de 12 V, el regulador y el MOSFET (tabla de roles): ajustar si se quiere.
@@ -729,9 +887,9 @@ piezas imprimibles** (Tinkercad Codeblocks). Solo cambió la **versión Tinkerca
     **12T:** tabla de aplicaciones igual; sin barrera (tercer servo): rojo intermitente con pitidos mientras el puente
     está arriba (cruce de tren) y `bajarConCuidado()`, que vuelve a subir si llega otro barco (puerta automática).
     Código de la 6T + 11T + 12T compilado con arduino-cli (en `%LOCALAPPDATA%\Programs\Arduino IDE\resources\app\lib\backend\resources\`,
-esourcespp\libackend
-esources\`,
     con `--libraries %LOCALAPPDATA%\Arduino15\libraries` para Servo.h).
+- **Desde el 13 de noviembre es "Tinkercad práctica (10 sábados)"**, guías 1-10: la 8 y la 9 son guías de armado
+  (`tipo: armado`) y la antigua 8 pasó a ser la 10 (ver la nota del 13 de noviembre arriba). Lo que sigue es como quedó el 30 de octubre:
 - **Versión nueva "Tinkercad práctica (8 sábados)"** (`practica`, base `tinkercad`, guías 1-8; 30 de octubre, a pedido de
   Bairon): guías 1-3 = las de Tinkercad; **4P** simular semáforo + piezo + pulsador en Tinkercad Circuits y diagrama de
   flujo; **5P** dos microservomotores en espejo + secuencia con botón + VELOCIDAD; **6P** HC-SR04 + puente automático +

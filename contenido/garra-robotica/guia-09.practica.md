@@ -1,164 +1,161 @@
 ---
-titulo: Ajustes y ¡día del reto!
+titulo: Conectamos el circuito de la garra
 guia: 9
 sabado: 9
-sesion: Presentación del proyecto
+sesion: Práctica de armado (1)
+tipo: armado
 duracion: 120
 ---
 
-# Guía 9 · Ajustes y ¡día del reto!
+# Guía 9 · Conectamos el circuito de la garra
 
 ## Objetivo del día
 
-Encontrar los límites seguros de la garra real, probar qué objetos agarra, corregir la rutina automática y competir en el reto de los 5 objetos.
+Conectar el circuito de la garra paso a paso, siguiendo los diagramas: las dos fuentes con el GND común, los cuatro servos, las cuatro perillas y el pulsador. Es el mismo circuito del simulador.
 
-**Al terminar tendremos:** la garra terminada, nuestro tiempo oficial del reto y la tabla de resultados del grupo.
+**Al terminar tendremos:** todo el circuito de la garra conectado y revisado, listo para subir el programa final en la Guía 10.
 
 ## Materiales del equipo
 
-- Garra armada con su circuito, la fuente de 5 V y el programa `equipo_NOMBRE_rutina` (sábado 8)
-- 5 objetos ligeros (pelota de esponja, dado, tapa de botella, borrador y vaso de papel) y un vaso
-- Ligas o cinta de goma, cinta para marcar lugares, cronómetro (celular)
-- Computadora con Arduino IDE
+- Garra armada (Guía 8), con los cuatro servos etiquetados B, H, C y P
+- Arduino UNO, protoboard, cables macho–macho, 4 potenciómetros de 10 kΩ y 1 pulsador
+- Fuente (cargador) de 5 V con plug de 5,5 × 2,1 mm y un conector jack hembra con tornillos
+- Destornillador pequeño y cinta para etiquetas
+- El circuito simulado abierto en Tinkercad (Guía 6)
 
-## Parte 1 · Los límites seguros (20 min)
+**Regla de oro:** todo el sábado, el USB **desconectado** y la fuente **desenchufada**. Los cables se ponen y se cambian solo sin corriente.
 
-Cada garra es distinta: hay que descubrir hasta dónde puede girar cada articulación sin chocar.
+## Parte 1 · Cómo leer los diagramas (10 min)
 
-1. Conecten el circuito (revisen el GND común), el USB y la fuente. Abran el **Monitor Serie** (lupa) a **9600 baudios**: cuatro columnas, en orden **base, hombro, codo y pinza**.
-2. Muevan **una perilla a la vez, muy despacio**. Cuando una pieza esté a punto de chocar o el servo zumbe, anoten el número de su columna. En la pinza: mínimo = **cerrada** (sin apretar fuerte), máximo = **abierta**.
+Cada paso tiene un dibujo. Lo que ya conectaron en los pasos anteriores se ve **gris claro**; lo nuevo de ese paso se ve **a todo color**.
 
-[IMAGEN 6.2: Monitor Serie mostrando las cuatro columnas de ángulos]
+- Cada agujero del centro de la protoboard tiene su letra (A a J) y su número (1 a 30), impresos en la protoboard: **A27** es la letra A en el número 27.
+- Las etiquetas blancas dicen dónde va cada punta: **D3** es el pin 3 del Arduino, **A0** es el pin A0 (abajo, en ANALOG IN) y **fila −** es cualquier agujero de una fila −.
+- Los cables con la punta de cobre van **atornillados** en el jack.
+- El dibujo no muestra dónde va cada pieza: los servos se quedan en la garra; sus cables llegan hasta la protoboard.
 
-:::tabla id="g9p-limites"
-| Articulación | Mínimo seguro | Máximo seguro |
+[IMAGEN 9.10A: circuito completo de la garra: la fuente de 5 V en las filas de arriba, el Arduino en las de abajo, el GND común, los 4 servos, las 4 perillas y el pulsador]
+
+## Parte 2 · Las dos fuentes y el GND común (20 min)
+
+Cuatro servos piden más corriente de la que da el Arduino: por eso usan una **fuente de 5 V aparte**. En la protoboard las filas se usan así:
+
+| Filas | Qué llevan | Qué se conecta ahí |
 | --- | --- | --- |
-| Base | | |
-| Hombro | | |
-| Codo | | |
-| Pinza (cerrada / abierta) | | |
-:::
+| + y − de **arriba** | La fuente de 5 V | Los 4 servos |
+| + y − de **abajo** | El 5V y el GND del Arduino | Las 4 perillas y el pulsador |
+| Un cable entre las dos filas **−** | El **GND común** | — |
 
-3. **Escriban sus límites en el código**, en las cuatro líneas de `leer()` que dicen `<- tus límites`. Ejemplo: si la base va de 10 a 170, `pB = leer(A0, 0, 180);` queda `pB = leer(A0, 10, 170);`. Súbanlo y comprueben que ninguna articulación choca.
+**Nunca se unen las dos filas +:** una tiene los 5 V de la fuente y la otra los del Arduino.
 
-## Parte 2 · Pruebas de agarre (15 min)
+**Paso 1: el Arduino.** Un cable rojo del **5V** del Arduino a la **fila +** de abajo y uno negro del **GND** a la **fila −** de abajo.
 
-Intenten mover cada objeto de la mesa al vaso con las perillas. Marquen ✓ si lo lograron o ✗ si falló.
+[IMAGEN 9.1A: paso 1, 5V y GND del Arduino a las filas + y − de abajo]
 
-:::tabla id="g9p-agarre"
-| Objeto | Intento 1 | Intento 2 | ¿Qué falló? |
+**Paso 2: la fuente.** La fuente de 5 V se enchufa en el **jack hembra**, que tiene dos tornillos marcados **+** y **−**. Para meter un cable en un tornillo: aflójenlo con el destornillador, metan la punta pelada del cable y aprieten.
+
+1. Un cable del tornillo **+** del jack a la **fila +** de arriba.
+2. Un cable del tornillo **−** del jack a la **fila −** de arriba.
+
+[IMAGEN 9.2A: paso 2, la fuente de 5 V en el jack hembra; el + del jack a la fila + de arriba y el − a la fila − de arriba]
+
+**Paso 3: GND común.** Un cable de la **fila −** de arriba a la **fila −** de abajo.
+
+[IMAGEN 9.3A: paso 3, un cable une la fila − de arriba con la fila − de abajo; las filas + no se unen]
+
+## Parte 3 · Los cuatro servos (30 min)
+
+Cada servo tiene un conector de 3 (café, rojo y naranja). Metan tres cables macho–macho en su conector:
+
+| Servo | Café | Rojo | Naranja |
 | --- | --- | --- | --- |
-| Pelota de esponja | | | |
-| Dado | | | |
-| Tapa de botella | | | |
-| Borrador | | | |
-| Vaso de papel | | | |
-:::
+| Base (B) | fila − de arriba | fila + de arriba | D3 |
+| Hombro (H) | fila − de arriba | fila + de arriba | D5 |
+| Codo (C) | fila − de arriba | fila + de arriba | D6 |
+| Pinza (P) | fila − de arriba | fila + de arriba | D9 |
 
-**Ajustes:** si los objetos resbalan, pongan ligas o cinta de goma en las mandíbulas; si la garra se vuelca, agreguen peso en el plato de apoyo; si el hombro no levanta, acorten el movimiento o usen un servo MG90S.
+**Paso 4: servo de la base (B).** Naranja → **D3**.
 
-## Parte 3 · La rutina con la garra real (25 min)
+[IMAGEN 9.4A: paso 4, servo de la base: café a la fila − y rojo a la fila + de arriba, naranja a D3]
 
-Las posiciones de la Guía 6 eran un plan hecho en el simulador. Ahora se corrigen con objetos de verdad.
+**Paso 5: servo del hombro (H).** Naranja → **D5**.
 
-1. Marquen con cinta dónde va el objeto y dónde va el vaso.
-2. Con las perillas y el Monitor Serie, lleven la garra a cada posición, **un paso a la vez y en orden**, y copien los cuatro números en esa fila. En cada paso solo cambia una articulación.
+[IMAGEN 9.5A: paso 5, servo del hombro: café a la fila − y rojo a la fila + de arriba, naranja a D5]
 
-:::tabla id="g9p-posiciones"
-| Paso | Base | Hombro | Codo | Pinza |
-| --- | --- | --- | --- | --- |
-| 1. Pinza abierta | | | | |
-| 2. Girar hacia el objeto | | | | |
-| 3. Bajar el brazo | | | | |
-| 4. Acercar el codo | | | | |
-| 5. Cerrar la pinza | | | | |
-| 6. Levantar | | | | |
-| 7. Girar hacia el vaso | | | | |
-| 8. Abrir la pinza | | | | |
-| 9. Volver al centro | | | | |
-:::
+**Paso 6: servo del codo (C).** Naranja → **D6**.
 
-3. Cambien los números de `rutina()` por los de esta tabla y súbanlo.
-4. **Prueba:** dejen las perillas cerca del centro, pongan el objeto en su lugar y presionen el botón una vez. La garra debe hacer los 9 pasos.
-5. **Ajusta:** si falla un paso, busquen su línea en `rutina()`, cambien el número de 5 en 5 grados, súbanlo y prueben otra vez.
+[IMAGEN 9.6A: paso 6, servo del codo: café a la fila − y rojo a la fila + de arriba, naranja a D6]
 
-:::opciones id="g9p-rutina"
-¿La rutina automática deja el objeto en el vaso?
-- Sí
-- A veces
-- Todavía no
-:::
+**Paso 7: servo de la pinza (P).** Naranja → **D9**.
 
-## Parte 4 · ¡El reto! (50 min)
+[IMAGEN 9.7A: paso 7, servo de la pinza: café a la fila − y rojo a la fila + de arriba, naranja a D9]
 
-> **Reto final:** mover 5 objetos de la mesa al vaso en el menor tiempo posible, usando las perillas. Si un objeto cae fuera del vaso, se vuelve a colocar y el reloj sigue. Después se muestra la rutina automática con el botón.
+**✔ Revisa:** ningún servo va en el 5V del Arduino: todos toman la energía de las filas de **arriba**.
 
-Primero, en 5 minutos, repartan qué va a contar cada quien (no hace falta memorizar) y elijan al piloto:
+## Parte 4 · Las cuatro perillas (20 min)
 
-:::tabla id="g9p-guion"
-| Parte | Ideas | Quién |
-| --- | --- | --- |
-| 1. Qué construimos (las 4 articulaciones y la pinza de engranes) | | |
-| 2. Cómo la simulamos, la diseñamos en Blender y la armamos | | |
-| 3. Piloto del reto | | |
-:::
+**Paso 8.** Cada perilla tiene 3 patas: la de la izquierda va a la **fila +** de abajo, la del centro a su pin y la de la derecha a la **fila −** de abajo.
 
-Cada equipo tiene unos 6 minutos:
+1. Claven las cuatro perillas en la mitad de abajo de la protoboard, con las patas en la fila **F**: pinza en F4–F8, codo en F10–F14, hombro en F16–F20 y base en F22–F26.
+2. Desde la fila **J**, debajo de cada pata: la izquierda a la **fila +** de abajo y la derecha a la **fila −** de abajo.
+3. La del centro, a su pin: base **A0**, hombro **A1**, codo **A2**, pinza **A3**.
+4. Márquenlas con cinta, en el mismo orden que los servos del dibujo.
 
-| Momento | Tiempo |
+[IMAGEN 9.8A: paso 8, las cuatro perillas: patas izquierdas a la fila +, derechas a la fila − y las del centro a A3, A2, A1 y A0]
+
+## Parte 5 · El pulsador (10 min)
+
+**Paso 9.** Va sobre la canaleta del centro, con sus patas en **E27**, **F27**, **E29** y **F29**.
+
+1. Un cable de **A27** al pin **D2**.
+2. Un cable de **J29** a la **fila −** de abajo: es la pata en diagonal.
+
+[IMAGEN 9.9A: paso 9, pulsador sobre la canaleta, cable de A27 a D2 y de J29 a la fila − de abajo]
+
+## Parte 6 · Revisión cable por cable (15 min)
+
+Tengan la simulación de Tinkercad abierta. Una persona lee cada fila de la tabla y la otra sigue el cable con el dedo:
+
+| Qué | Conexión |
 | --- | --- |
-| Presentación | 1 min |
-| Reto de los 5 objetos (modo manual) | hasta 3 min |
-| Rutina automática con el botón | 1 min |
-| Preguntas del público | 1 min |
+| Jack hembra + / − | Fila **+** de arriba / fila **−** de arriba |
+| Arduino 5V / GND | Fila **+** de abajo / fila **−** de abajo |
+| GND común | Un cable de la fila **−** de arriba a la fila **−** de abajo. **Nunca unas las dos filas +.** |
+| Servos (rojo / café / naranja) | Fila + de arriba / fila − de arriba / su pin: base **D3**, hombro **D5**, codo **D6**, pinza **D9** |
+| Perillas (izquierda / centro / derecha) | Fila + de abajo / su pin: base **A0**, hombro **A1**, codo **A2**, pinza **A3** / fila − de abajo |
+| Pulsador | Una pata → **D2** · la pata en diagonal → fila − de abajo |
 
-Cuando les toque: lleven la garra y los objetos a la mesa, cuenten su parte, el piloto hace el reto mientras el docente cronometra (empieza cuando toca la primera perilla y para cuando cae el quinto objeto en el vaso) y luego muestran la rutina.
-
-**Resultados:** escriban una fila por equipo, incluido el suyo.
-
-:::tabla id="g9p-resultados"
-| Equipo | Tiempo del reto (s) | ¿Funcionó la rutina automática? | Lo que más me gustó |
-| --- | --- | --- | --- |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-:::
-
-:::pregunta id="g9p-p1"
-Si volvieran a hacer la garra, ¿qué mejorarían primero: el diseño en Blender, el armado o el código? ¿Por qué?
+:::checklist id="g9a-revision"
+- [ ] El + del jack va a la fila + de arriba y el − a la fila − de arriba.
+- [ ] GND común unido.
+- [ ] Ningún servo en el 5V del Arduino.
+- [ ] Cada cable naranja en su pin.
+- [ ] Cada perilla en su pin A.
 :::
 
 ## ¿Lo logramos? (5 min)
 
-:::checklist id="g9p-logramos"
-- [ ] Programamos los límites seguros de la garra real.
-- [ ] Corregimos la rutina con la garra real.
-- [ ] Hicimos el reto y tenemos nuestro tiempo oficial.
-- [ ] Completamos la tabla de resultados del grupo.
+:::checklist id="g9a-logramos"
+- [ ] Las dos fuentes están conectadas, con el GND común y sin unir las filas +.
+- [ ] Los cuatro servos, las cuatro perillas y el pulsador están conectados.
+- [ ] El USB y la fuente siguen desconectados.
 :::
 
-## Bitácora (5 min)
+## Bitácora (10 min)
 
-:::foto id="g9p-foto"
-Foto o video de la garra en el reto.
+:::foto id="g9a-foto"
+Foto de la protoboard con todo el circuito de la garra.
 :::
 
-:::pregunta id="g9p-b1"
-¿Qué fue lo que más aprendimos en este proyecto?
-:::
-
-:::archivo id="g9-archivo"
-**Archivo de trabajo:** suban aquí el código final (.ino) y, si llevan la bitácora en el bloc de notas o en Word, también (.txt o .docx).
+:::pregunta id="g9a-b1"
+¿Qué problema tuvimos al armar y cómo lo resolvimos?
 :::
 
 :::docente
-- **Versión Blender práctica (9 sábados), desde el 31 de octubre:** último sábado. Junta los límites de la Guía 5 práctica anterior, las pruebas de agarre y la rutina de la Guía 6 práctica anterior y el reto de la Guía 7 práctica anterior, con una presentación más corta. Campos propios (g9p-…).
-- El programa final de la Guía 6 ya muestra los ángulos en el Monitor Serie en modo manual: sirve para los límites y para las posiciones sin cambiar de programa.
-- Al terminar la rutina, los servos vuelven a la posición de las perillas: por eso conviene dejarlas cerca del centro.
-- Si un equipo tiene la rutina automática inestable, puede presentar solo el modo manual y explicar el problema: también es aprendizaje.
-- Con 6 equipos, el reto dura unos 36 minutos; el tiempo que sobre se usa para repetir el reto de quien quiera mejorar su marca.
-- Tiempo total: 20 + 15 + 25 + 50 + 5 + 5 = 120 minutos.
+- **Versión Blender práctica (11 sábados), guía de armado (tipo: armado):** desde el 13 de noviembre. Antes era la Parte 4 de la Guía 8. Campos propios (g9a-…); g9a-revision era g8p-revision. La pregunta de la bitácora es la misma de la Guía 8.
+- Diagramas hechos con `herramientas/diagramas_armado.py garra` (dibujos de Fritzing, CC BY-SA 3.0; las perillas vistas desde arriba y el jack son dibujos propios: el potenciómetro de Fritzing está de lado y tapa media protoboard). Si cambia el circuito, se vuelven a generar y se copian como IMAGEN 9.1A a 9.10A.
+- En el dibujo, las perillas van de izquierda a derecha en el orden pinza, codo, hombro y base (y los servos también), para que sus cables a A3, A2, A1 y A0 no se crucen.
+- La fuente de 5 V con jack hembra reemplaza al portapilas de 4 AA (decisión de Bairon). Que sea de al menos 2 A: cuatro servos juntos piden bastante corriente.
+- Revisar el GND común de cada equipo antes de que enchufen la fuente: es el error más frecuente.
+- Tiempo total: 10 + 20 + 30 + 20 + 10 + 15 + 5 + 10 = 120 minutos.
 :::

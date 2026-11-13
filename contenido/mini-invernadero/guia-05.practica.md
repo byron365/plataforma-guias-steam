@@ -156,7 +156,7 @@ void loop() {
 ```
 
 - Desde hoy el botón es solo para regar a mano: la ventana se mueve sola con la temperatura.
-- Cada segundo el Monitor escribe una línea con dos números separados por coma: la humedad de la tierra y la temperatura. El sábado 8 usaremos esas líneas para hacer una gráfica.
+- Cada segundo el Monitor escribe una línea con dos números separados por coma: la humedad de la tierra y la temperatura. El sábado 9 usaremos esas líneas para hacer una gráfica.
 
 ## Parte 5 · Probar todo (20 min)
 
@@ -191,7 +191,7 @@ void loop() {
 ¿Qué número cambiarían si su ventana real se abre bien con 45° en vez de 60°?
 :::
 
-**Muy importante:** este es el programa que van a subir al Arduino real el sábado 7. Guarden con **Save**, copien el código completo de `sketch.ino`, péguenlo en un bloc de notas y guárdenlo como `equipo_NOMBRE_final.txt`.
+**Muy importante:** este es el programa que van a subir al Arduino real el sábado 8. Guarden con **Save**, copien el código completo de `sketch.ino`, péguenlo en un bloc de notas y guárdenlo como `equipo_NOMBRE_final.txt`.
 
 ## ¿Lo logramos? (5 min)
 
@@ -215,11 +215,11 @@ Pista: un `if` más en la parte 2 del `loop`, que llame a `regar()` si `temp > 3
 :::
 
 :::archivo id="g5-archivo"
-**Archivo de trabajo:** suban aquí `equipo_NOMBRE_final.txt` con el código final del simulador. El sábado 7 lo pegan en Arduino IDE. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí.
+**Archivo de trabajo:** suban aquí `equipo_NOMBRE_final.txt` con el código final del simulador. El sábado 8 lo pegan en Arduino IDE. Si llevan la bitácora en el bloc de notas o en Word, también pueden subirla aquí.
 :::
 
 :::docente
-- **Versión práctica (8 sábados):** el programa final es el de la Guía 8 normal, con el ángulo de la ventana en la constante `ANGULO_ABIERTA` y el sensor DHT22 de Wokwi. En el invernadero real solo cambia una palabra: `DHT22` por `DHT11` (Guía 7). Campos propios (g5p-…).
+- **Versión práctica (8 sábados):** el programa final es el de la Guía 8 normal, con el ángulo de la ventana en la constante `ANGULO_ABIERTA` y el sensor DHT22 de Wokwi. En el invernadero real solo cambia una palabra: `DHT22` por `DHT11` (Guía 8). Campos propios (g5p-…).
 - La histéresis y el registro de datos son los de la Guía 7 normal; el temporizador de la luz, el de la Guía 8 normal.
 - El riego se probó en Tinkercad (Guía 4); aquí se agrega en Wokwi con un potenciómetro (más alto = más seco, sin el `1023 -` que hacía falta en Tinkercad) y el **Relay Module** con un LED azul como bomba.
 - g5p-p1: no; solo se cierra bajo 27 °C. Entre 27 y 30 °C se queda como estaba (histéresis).

@@ -12,7 +12,7 @@
     },
     {
       "id": "practica",
-      "nombre": "Práctica (10 sábados)",
+      "nombre": "Práctica (11 sábados)",
       "guias": [
         1,
         2,
@@ -23,7 +23,8 @@
         7,
         8,
         9,
-        10
+        10,
+        11
       ]
     }
   ],

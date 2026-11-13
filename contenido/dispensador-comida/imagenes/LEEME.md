@@ -51,7 +51,7 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_3.2D.png | torre del líquido en Tinkercad Codeblocks: pie, pared y brazo con el agujero de la manguera *(lista)* |
 | IMAGEN_5.1D.png | circuito del dispensador doble: servo, dos botones, LED, buzzer y relé con la bomba y las pilas |
 
-**Versiones prácticas de 8 sábados** (`guia-NN.practica.md` = sencillo y `guia-NN.doble-practica.md` = doble). Las guías 7 reutilizan 1.3, 4.1T y 5.1D:
+**Versiones prácticas de 10 sábados** (`guia-NN.practica.md` = sencillo y `guia-NN.doble-practica.md` = doble). Las guías 7 reutilizan 4.1T:
 
 | Archivo | Descripción |
 | --- | --- |
@@ -59,3 +59,14 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_4.2P.png | dispensador sencillo simulado en Tinkercad Circuits: servo, pulsador, LED y piezo *(lista)* |
 | IMAGEN_4.2DP.png | dispensador doble simulado: servo, dos pulsadores (cereal y líquido), LED y piezo *(lista)* |
 | IMAGEN_5.1DP.png | dispensador doble simulado con el relé, el motor que hace de bomba y la pila de 9 V *(lista)* |
+
+**Guías de práctica de armado** (`tipo: armado`, versiones prácticas; 13 de noviembre). La A del final es de "armado" y AD, de "armado doble":
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_8.1A.png … IMAGEN_8.5A.png | Guía 8 sencillo: diagrama de cada paso (1 filas + y −, 2 LED, 3 buzzer, 4 botón, 5 servo): lo anterior en gris y lo nuevo a color, con etiquetas en las puntas de los cables *(listas; `herramientas/diagramas_armado.py dispensador`)* |
+| IMAGEN_8.6A.png | Guía 8 sencillo: circuito completo *(lista)* |
+| IMAGEN_8.1AD.png … IMAGEN_8.8AD.png | Guía 8 doble: 1 filas, 2 LED, 3 buzzer, 4 botón C, 5 botón L, 6 servo, 7 módulo relé, 8 fuente, jack y bomba *(listas; `diagramas_armado.py dispensador-doble`; el relé, el jack y la bomba son dibujos propios)* |
+| IMAGEN_8.9AD.png | Guía 8 doble: circuito completo *(lista)* |
+| IMAGEN_9.1A.png … IMAGEN_9.4A.png | Guía 9 sencillo: Arduino IDE con sus partes, ventana de placa y puerto, programa final verificado y botón Subir, con el programa del dispensador *(listas; sin Arduino conectado, la 9.2A no muestra el COM)* |
+| IMAGEN_9.1AD.png … IMAGEN_9.4AD.png | Guía 9 doble: lo mismo con el programa del dispensador doble *(listas)* |

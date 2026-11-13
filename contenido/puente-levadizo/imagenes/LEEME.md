@@ -47,7 +47,7 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_8.2T.png | ejemplo de cartel del puente con foto, piezas impresas, diagrama de flujo y prueba de carga |
 | IMAGEN_13.1T.png | escena final del puente en Tinkercad con las hojas levantadas, las torres, el río azul y el barco pasando |
 
-**Versión Tinkercad práctica (8 sábados)** (archivos `guia-NN.practica.md`; las guías 7 y 8 reutilizan 4.2T, 4.3T, 5.2 y 9.1):
+**Versión Tinkercad práctica (10 sábados)** (archivos `guia-NN.practica.md`; la Guía 7 reutiliza 4.2T y 4.3T, y la Guía 10, la 9.1):
 
 | Archivo | Descripción |
 | --- | --- |
@@ -55,3 +55,14 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_4.2P.png | semáforo, piezo y pulsador armados en Tinkercad Circuits, con sus cables al Arduino *(lista)* |
 | IMAGEN_5.1P.png | circuito del puente en Tinkercad Circuits con los dos microservomotores agregados *(lista)* |
 | IMAGEN_6.1P.png | circuito completo del puente en Tinkercad Circuits con el sensor HC-SR04, el objeto de prueba y la distancia en pantalla |
+
+**Guías de práctica de armado** (`tipo: armado`, versión práctica; 13 de noviembre). La A del final es de "armado":
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN_8.1A.png … IMAGEN_8.10A.png | Guía 8: diagrama de cada paso del circuito (1 filas + y −, 2 a 4 LEDs rojo, amarillo y verde, 5 buzzer, 6 botón, 7 sensor, 8 y 9 servos, 10 eliminador): lo anterior en gris y lo nuevo a color, con etiquetas en las puntas de los cables *(listas; `herramientas/diagramas_armado.py puente`)* |
+| IMAGEN_8.11A.png | Guía 8: circuito completo del puente en la protoboard *(lista)* |
+| IMAGEN_9.1A.png | Guía 9: Arduino IDE con sus partes numeradas: Verificar, Subir, selector de placa, Monitor serie, área del programa y cuadro de mensajes *(lista)* |
+| IMAGEN_9.2A.png | Guía 9: ventana Seleccionar otra placa y puerto con Arduino UNO elegido; tomada sin Arduino conectado, por eso la lista de puertos está vacía *(lista; rehacer con un Arduino conectado para que se vea el COM)* |
+| IMAGEN_9.3A.png | Guía 9: programa del puente verificado, con el aviso Compilación completada *(lista)* |
+| IMAGEN_9.4A.png | Guía 9: barra de Arduino IDE con el botón Subir señalado *(lista)* |

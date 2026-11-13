@@ -185,7 +185,7 @@ El diseño queda guardado en Tinkercad (**Diseños → Circuitos**). El próximo
 :::
 
 :::docente
-- **Versión Tinkercad práctica (8 sábados):** guías 1 a 3 iguales a la versión Tinkercad; 4, 5 y 6 simulan el puente por partes en Tinkercad Circuits mientras se imprimen las piezas; 7 arma todo en físico y 8 prueba y presenta. Campos propios (g4p-…).
+- **Versión Tinkercad práctica (10 sábados):** guías 1 a 3 iguales a la versión Tinkercad; 4, 5 y 6 simulan el puente por partes en Tinkercad Circuits mientras se imprimen las piezas; 7 arma el puente, 8 y 9 son guías de armado (circuito y subir el programa) y 10 ajusta y presenta. Campos propios (g4p-…).
 - Imprimir esta semana y la siguiente las 7 piezas (orillas, hojas, torres y soporte del sensor) y tener los componentes de la lista para el sábado 7.
 - g4p-secuencia: paso 3 amarillo; 4 rojo; 5 subir; 7 bajar; 8 verde.
 - g4p-p1: el botón hace los pasos 1 y 2 (decide cuándo empezar); `delay(TIEMPO_ARRIBA)` guarda el lugar de subir, esperar y bajar.

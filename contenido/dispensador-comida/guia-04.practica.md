@@ -179,7 +179,7 @@ El diseño queda guardado en Tinkercad (**Diseños → Circuitos**). El próximo
 :::
 
 :::docente
-- **Versión Tinkercad práctica (8 sábados):** guías 1 a 3 iguales a la versión Tinkercad; 4, 5 y 6 simulan el dispensador por partes en Tinkercad Circuits mientras se imprimen las piezas; 7 arma todo en físico y 8 prueba y presenta. Campos propios (g4p-…).
+- **Versión Tinkercad práctica (10 sábados):** guías 1 a 3 iguales a la versión Tinkercad; 4, 5 y 6 simulan el dispensador por partes en Tinkercad Circuits mientras se imprimen las piezas; 7 arma el dispensador, 8 y 9 son guías de armado (circuito y subir el programa) y 10 prueba y presenta. Campos propios (g4p-…).
 - Imprimir esta semana y la siguiente las piezas (torre, compuerta y embudo) y tener los componentes de la lista para el sábado 7.
 - En Tinkercad, al pasar de Bloques a Texto pueden quedar restos del ejemplo: por eso se borra todo con Ctrl + A.
 - El pulsador del simulador se presiona con un clic. Si no responde, revisar que cruce la canaleta y que el cable vaya a la pata en diagonal.
