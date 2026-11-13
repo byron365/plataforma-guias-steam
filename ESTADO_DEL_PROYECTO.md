@@ -246,7 +246,7 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 >          con `herramientas\exportar_guias.js` y `pagina_proyecto.py` (ejemplo de configuración: `cfg_futbol.json`).
 >       7. Scripts con barras invertidas: escribirlos en un archivo, no por heredoc de Bash (se convirtieron en caracteres de
 >          control el 13 de noviembre); al final, revisar que no haya caracteres de control en los archivos cambiados.
-> - No subir a GitHub hasta que Bairon lo pida.
+> - Subido a GitHub el 13 de noviembre (commit 8d72c10).
 
 ---
 
