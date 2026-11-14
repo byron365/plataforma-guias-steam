@@ -1,7 +1,7 @@
 # Genera los STL del laberinto: piezas pequeñas (soporte del sensor, base del joystick y soporte de la pantalla) y, como
-# referencia, el marco y las dos torres (el tablero no, porque cada equipo diseña su propio laberinto)
+# referencia, el marco, las dos torres y un tablero con el laberinto de ejemplo de la Guía 2 (cada equipo diseña el suyo)
 # con las mismas formas y medidas de los bloques de Tinkercad (Guía 5T, medidas de ejemplo).
-# Uso: blender --background --factory-startup --python laberinto_stl.py -- <carpeta de salida>
+# Uso: blender --background --factory-startup --python laberinto_stl.py -- <carpeta de salida> [pieza …]
 import sys, os, math, bpy
 
 salida = sys.argv[sys.argv.index('--') + 1]
@@ -86,11 +86,43 @@ def torre(con_servo=True):
         huecos.append(agujero)
     return agrupar(cubo(6, 40, 134, 0, 0, 67), solidos, huecos)
 
+def tablero():
+    # Tablero de ejemplo (13 de noviembre): el laberinto de papel de la imagen 2.1 (Guía 2), hecho como en las guías 2 y 3:
+    # placa de 180 × 180 × 3, bordes de 3 × 12, paredes de 3 de grueso y 12 de alto sobre las líneas entre casillas de
+    # 25 mm, agujero de la meta de 8 mm en G7 y bisagra atrás con su agujero de 4 mm. Salida en A1.
+    # Columnas A a G: X = −75 … 75; filas 1 a 7: Y = −75 … 75; líneas entre casillas en ±12,5, ±37,5 y ±62,5.
+    bordes = [cubo(180, 3, 12, 0, 88.5, 7.5), cubo(180, 3, 12, 0, -88.5, 7.5),
+              cubo(3, 180, 12, 88.5, 0, 7.5), cubo(3, 180, 12, -88.5, 0, 7.5)]
+    # (largo, x, y) de las paredes horizontales (separan filas) y verticales (separan columnas)
+    horizontales = [(75, -50, 37.5),    # A–C, entre las filas 5 y 6
+                    (100, 37.5, 62.5),  # D–G, entre 6 y 7
+                    (100, 37.5, 12.5),  # D–G, entre 4 y 5
+                    (75, -25, -37.5),   # B–D, entre 2 y 3
+                    (100, 12.5, -62.5)]  # C–F, entre 1 y 2
+    verticales = [(25, -62.5, 75),      # A|B, fila 7
+                  (75, -37.5, 25),      # B|C, filas 4 a 6
+                  (100, -62.5, -37.5),  # A|B, filas 1 a 4
+                  (50, 12.5, 12.5),     # D|E, filas 4 y 5
+                  (50, -12.5, -37.5),   # C|D, filas 2 y 3
+                  (25, 37.5, 50),       # E|F, fila 6
+                  (75, 62.5, 0),        # F|G, filas 3 a 5
+                  (50, 37.5, -37.5)]    # E|F, filas 2 y 3
+    paredes = [cubo(l, 3, 12, x, y, 7.5) for l, x, y in horizontales] + [cubo(3, l, 12, x, y, 7.5) for l, x, y in verticales]
+    bisagra = cubo(12, 6, 12, 0, 93, 7.5)
+    agujero_bisagra = cilindro(2, 14, 0, 98, 7.5, girado_x=90)
+    meta = cilindro(4, 10, 75, 75, 0)
+    return agrupar(cubo(180, 180, 3, 0, 0, 0), bordes + paredes + [bisagra], [meta, agujero_bisagra])
+
 PIEZAS = {'laberinto_soporte_sensor': soporte_sensor, 'laberinto_base_joystick': base_joystick,
           'laberinto_soporte_pantalla': soporte_pantalla, 'laberinto_marco': marco,
-          'laberinto_torre_servo': lambda: torre(True), 'laberinto_torre_eje': lambda: torre(False)}
+          'laberinto_torre_servo': lambda: torre(True), 'laberinto_torre_eje': lambda: torre(False),
+          'laberinto_tablero': tablero}
 
+# Después de la carpeta se pueden nombrar solo algunas piezas: -- <carpeta> laberinto_tablero
+pedidas = sys.argv[sys.argv.index('--') + 2:]
 for nombre, crear in PIEZAS.items():
+    if pedidas and nombre not in pedidas:
+        continue
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.object.delete()
     base = crear()

@@ -131,6 +131,11 @@ function obtenerProyecto(id) {
     versiones,
     imagen: imagen ? `/imagenes/${id}/${encodeURIComponent(imagen)}` : null,
     guias,
+    // Piezas 3D para "Descargas": carpeta dentro de ..\STL y, por versión, las piezas que no usa
+    // ({ "carpeta": "Puente levadizo - STL para imprimir", "quitar": { "practica": ["…"] } })
+    stl: datos.stl && typeof datos.stl.carpeta === 'string'
+      ? { carpeta: datos.stl.carpeta, quitar: datos.stl.quitar && typeof datos.stl.quitar === 'object' ? datos.stl.quitar : {} }
+      : null,
   };
 }
 

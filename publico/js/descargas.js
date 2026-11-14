@@ -1,6 +1,7 @@
 // ============================================================
 // Apartado "Descargas" del panel de la bitácora: la lista de materiales
-// del grupo y las guías desbloqueadas en PDF (en blanco) para repasar en casa.
+// del grupo, las guías desbloqueadas en PDF (en blanco) para repasar en casa
+// y las piezas 3D (.stl) de su proyecto.
 // La lista se pide al servidor la primera vez que se abre el apartado.
 // ============================================================
 import { api, el } from './comun.js';
@@ -78,9 +79,14 @@ async function llenar(contenido) {
     filas.push(fila('📄', `Guía ${g.numero} · ${g.titulo}`, g.sabado ? `Sábado ${g.sabado} · PDF` : 'PDF',
       `/api/descargas/guias/${g.numero}`, `Guía ${g.numero}.pdf`, estado));
   }
+  // Piezas 3D del proyecto: un archivo .stl por pieza
+  const piezas = (datos.piezas || []).map((p) => fila('🧊', p.nombre, `Pieza 3D · STL · ${p.kb} KB`,
+    `/api/descargas/stl/${encodeURIComponent(p.archivo)}`, p.archivo, estado));
   contenido.replaceChildren(
     el('p', { class: 'texto-suave' }, 'Las guías salen en blanco, sin sus respuestas, para repasar o imprimir en casa. Solo aparecen las que ya están desbloqueadas.'),
     filas.length ? el('ul', { class: 'descargas-lista' }, filas) : el('p', { class: 'texto-suave' }, 'Todavía no hay nada para descargar.'),
+    piezas.length ? el('p', { class: 'texto-suave' }, 'Piezas 3D: los archivos STL que imprime el docente. Se abren en Tinkercad (Importar) o en el programa de la impresora.') : null,
+    piezas.length ? el('ul', { class: 'descargas-lista' }, piezas) : null,
     estado);
   return true;
 }
@@ -90,7 +96,7 @@ export function crearDescargas() {
   const contenido = el('div', { class: 'descargas-contenido' });
   let cargado = false;
   const apartado = el('details', { class: 'descargas' },
-    el('summary', {}, el('span', { 'aria-hidden': 'true' }, '⬇'), ' Descargas: guías y materiales'),
+    el('summary', {}, el('span', { 'aria-hidden': 'true' }, '⬇'), ' Descargas: guías, materiales y piezas 3D'),
     contenido);
   // Se carga al abrirlo; si falló, se vuelve a intentar la próxima vez
   apartado.addEventListener('toggle', async () => {

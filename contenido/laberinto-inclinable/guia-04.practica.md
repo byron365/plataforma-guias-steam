@@ -35,6 +35,10 @@ Abran el proyecto de la Guía 1: con el enlace de su bitácora, o en **wokwi.com
 
 ## Parte 2 · El joystick mueve los dos servos (30 min)
 
+Así queda el circuito en Wokwi. Armen el suyo igual, cable por cable, y compárenlo con la tabla de abajo:
+
+[IMAGEN 4.1P: circuito en Wokwi con el joystick y los dos servos: servo del tablero en D10 (arriba a la izquierda), servo del marco en D9 (arriba a la derecha), joystick abajo con HORZ en A0, VERT en A1, SEL en D2, y los cables rojos a 5V y los negros a GND]
+
 1. Agreguen con el **+** un segundo *Servo* (si no lo hicieron en el reto de la Guía 1) y conéctenlo: **PWM → D10**, **V+ → 5V**, **GND → GND**.
 
 | Componente | Conexión |
@@ -208,6 +212,7 @@ Este código es el que van a subir al laberinto real en la Guía 7.
 :::docente
 - **Versión Práctica con Wokwi (7 sábados), nueva el 6 de noviembre:** solo los dos servos con el joystick, sin sensor de meta, pantalla ni buzzer (decisión de Bairon). Guías 1 a 3: joystick en Wokwi; tablero, marco y torres en Codeblocks. 4 simula todo el sistema por partes en **Wokwi**; 5 revisa las piezas impresas, diseña la base del joystick y prepara los servos; 6 arma y ajusta, y 7 es el torneo. **Desde el 13 de noviembre son 8 sábados:** 5 sin circuito (el docente centra los servos), 6 arma el marco y el tablero y conecta el circuito con diagramas, 7 sube el programa y ajusta el control (guías de armado) y 8 es el torneo. Campos propios (g4p-…).
 - Imprimir esta semana el tablero, el marco y las dos torres. Tener los componentes de la lista para el sábado 5.
+- Imagen 4.1P (13 de noviembre): circuito de `herramientas/wokwi/laberinto-guia-04.diagram.json` (se pega en la pestaña `diagram.json` de un proyecto nuevo de Wokwi). El joystick está girado para que HORZ y VERT bajen derecho a A0 y A1; solo se cruzan el rojo y el negro del servo del marco junto a su conector.
 - En Wokwi los servos van al 5V del Arduino porque en el simulador no pasa nada; en el laberinto real van a la fuente de 5 V con GND común (Guía 6).
 - En Wokwi el joystick puede dar el eje Y invertido respecto a lo esperado: buena oportunidad para que lo descubran con la tabla.
 - g4p-p1: 90°. Así el tablero queda plano en el centro y puede inclinarse lo mismo hacia los dos lados.

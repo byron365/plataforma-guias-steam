@@ -5,6 +5,15 @@
   "descripcion": "Un robot con dos motores DC y un mando con joystick y pantalla, comunicados por Bluetooth con un protocolo propio de órdenes y telemetría.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "stl": {
+    "carpeta": "Robot con mando - STL para imprimir",
+    "quitar": {
+      "app": [
+        "robot_caja_mando",
+        "robot_tapa_mando"
+      ]
+    }
+  },
   "versiones": [
     {
       "id": "completa",

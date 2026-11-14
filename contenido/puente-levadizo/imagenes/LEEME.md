@@ -39,8 +39,8 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_3.2T.png | torre del buzzer en Tinkercad Codeblocks con el agujero redondo en el techo *(lista)* |
 | IMAGEN_3.3T.png | soporte del sensor ultrasónico en Tinkercad Codeblocks: placa con dos agujeros y pie *(lista)* |
 | IMAGEN_4.1T.png | las 7 piezas impresas del puente sobre la mesa con su nombre: orillas A y B, hojas A y B, torre del semáforo, torre del buzzer y soporte del sensor |
-| IMAGEN_4.2T.png | servo acostado en el cajón de la orilla, con su brazo pegado a la oreja de la hoja dentro de la ranura |
-| IMAGEN_4.3T.png | puente armado sobre la base: orillas pegadas a 16,4 cm, hojas cerradas, torres encima de cada orilla y soporte del sensor adelante de la orilla A |
+| IMAGEN 4.2T.png ✅ | servo acostado en el cajón de la orilla, con su brazo pegado a la oreja de la hoja dentro de la ranura *(13 de noviembre: captura del diseño de Codeblocks "Puente - imagen 4.2T", con un SG90 hecho con bloques)* |
+| IMAGEN 4.3T.png ✅ | puente armado sobre la base: orillas pegadas a 16,4 cm, hojas cerradas, torres encima de cada orilla y soporte del sensor adelante de la orilla A *(13 de noviembre: captura del diseño de Codeblocks "Puente - imagen 4.3T": la propuesta completa con la hoja A cerrada, la base de 50 × 30 cm y el río)* |
 | IMAGEN_6.1T.png | sensor ultrasónico en su soporte impreso, adelante de la orilla A, con los ojos mirando al otro lado del río |
 | IMAGEN_7.1T.png | prueba de carga con monedas en el centro del puente impreso, donde se juntan las hojas, y una regla midiendo cuánto baja |
 | IMAGEN_8.1T.png | barco modelado en Tinkercad Codeblocks con proa redondeada, cabina, mástil y bandera |

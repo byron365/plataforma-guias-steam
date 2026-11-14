@@ -59,3 +59,7 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | IMAGEN_6.1A.png … IMAGEN_6.6A.png | Guía 6: diagrama de cada paso (1 el Arduino a las filas de abajo, 2 la fuente de 5 V a las de arriba, 3 GND común, 4 el servo del marco D9, 5 el servo del tablero D10, 6 el joystick en A0 y A1) *(listas; `herramientas/diagramas_armado.py laberinto`; el joystick y el jack son dibujos propios)* |
 | IMAGEN_6.7A.png | Guía 6: circuito completo del laberinto *(lista)* |
 | IMAGEN_7.1A.png … IMAGEN_7.4A.png | Guía 7: Arduino IDE con sus partes, ventana de placa y puerto, programa del control verificado y botón Subir *(listas; sin Arduino conectado, la 7.2A no muestra el COM)* |
+
+| Archivo | Descripción |
+| --- | --- |
+| IMAGEN 4.1P.png ✅ | Guía 4 práctica: circuito en Wokwi con el joystick y los dos servos (D10 tablero, D9 marco; HORZ → A0, VERT → A1, SEL → D2) *(13 de noviembre; `herramientas/wokwi/laberinto-guia-04.diagram.json`)* |

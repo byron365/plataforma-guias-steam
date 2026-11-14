@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "author": "STEAM Robotics Academy",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servoY", "top": -184.65, "left": 59.25, "rotate": 270, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servoX", "top": -184.65, "left": 189.75, "rotate": 270, "attrs": {} },
+    { "type": "wokwi-analog-joystick", "id": "joy1", "top": 250, "left": 157.6, "rotate": 180, "attrs": {} }
+  ],
+  "connections": [
+    [ "servoY:PWM", "uno:10", "orange", [] ],
+    [ "servoY:GND", "uno:GND.1", "black", [ "v10", "h-19" ] ],
+    [ "servoY:V+", "uno:5V", "red", [ "v15", "h-4.75", "v211", "h15.75" ] ],
+    [ "servoX:PWM", "uno:9", "orange", [ "v6", "h10", "v-24", "h-140.75" ] ],
+    [ "servoX:GND", "uno:GND.3", "black", [ "v12", "h-81.5", "v210", "h-4.5" ] ],
+    [ "servoX:V+", "uno:5V", "red", [ "v20", "h-96", "v195", "h-18.5" ] ],
+    [ "joy1:HORZ", "uno:A0", "green", [] ],
+    [ "joy1:VERT", "uno:A1", "gold", [] ],
+    [ "joy1:GND", "uno:GND.3", "black", [ "v-29", "h-9.8" ] ],
+    [ "joy1:SEL", "uno:2", "blue", [ "v-104", "h38.1" ] ],
+    [ "joy1:VCC", "uno:5V", "red", [ "v-4", "h18", "v139", "h-95", "v-189", "h9.8" ] ]
+  ],
+  "dependencies": {}
+}

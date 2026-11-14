@@ -18,28 +18,40 @@ Hacer que la app envíe las órdenes al robot, instalarla en un celular Android,
 
 - Computadora con internet y la cuenta de Google de la Guía 6
 - Proyecto `equipo_NOMBRE_robot` en App Inventor (sábado 6)
-- **Un celular o tablet con Android** (en iPhone no funciona)
+- **Un celular o tablet con Android** (en iPhone no funciona), si se puede con la app **MIT AI2 Companion** (Guía 6)
 - Bitácora
 
 ## Parte 1 · Enviar las órdenes (25 min)
 
 El **Reloj1** se dispara 10 veces por segundo. En cada vuelta arma el mensaje `M,izq,der` con las variables y, si hay conexión, lo envía terminado en salto de línea (`\n`).
 
-Abran el proyecto y toquen **Bloques**. Armen este bloque:
+Abran el proyecto (**Proyectos → Mis proyectos** y toquen su nombre) y toquen **Bloques**.
 
-[IMAGEN 7.1A: bloque Reloj1.Temporizador que arma la orden en la etiqueta Orden y la envía con ClienteBluetooth1.EnviarTexto]
+Primero preparen el bloque **unir**, que pega varios textos en uno. Trae dos espacios y la orden necesita cuatro:
+
+[IMAGEN 7.1A: globo del engranaje del bloque unir con cuatro cadenas adentro]
+
+1. Arrastren **unir** del cajón **Texto** al Visor y toquen su engranaje azul. Se abre un globo con dos lados.
+2. Arrastren **cadena**, del lado izquierdo, hacia adentro del bloque de la derecha, debajo de las que ya están.
+3. Repitan hasta tener **cuatro cadenas**. El bloque **unir** queda con cuatro huecos. Toquen el engranaje otra vez para cerrar el globo.
+
+Ahora armen este bloque:
+
+[IMAGEN 7.2A: bloque Reloj1.Temporizador que arma la orden en la etiqueta Orden y la envía con ClienteBluetooth1.EnviarTexto]
 
 | Bloque | ¿Dónde está? |
 | --- | --- |
 | cuando Reloj1.Temporizador | Cajón **Reloj1** |
 | poner Orden.Texto como / Orden.Texto | Cajón **Orden** |
-| unir | Cajón **Texto**. Trae dos espacios: toquen su engranaje azul y arrastren más **cadena** hasta tener cuatro |
-| tomar global izq | Cajón **Variables**, bloque **tomar** (elijan `global izq` en la lista) |
+| unir | Cajón **Texto**, con cuatro cadenas (imagen 7.1A) |
+| tomar global izq | Cajón **Variables**, bloque **tomar**: toquen el triangulito de su lista y elijan `global izq` |
 | si / entonces / else | Cajón **Control** |
 | ClienteBluetooth1.Conectado | Cajón **ClienteBluetooth1** (verde claro) |
 | llamar ClienteBluetooth1.EnviarTexto | Cajón **ClienteBluetooth1** (morado) |
 
 Escriban `\n` tal cual, con la barra invertida: es el salto de línea que el robot espera.
+
+**Si tienen el AI Companion conectado** (Guía 6, imágenes 6.15A y 6.16A), ya pueden probarlo: mantengan presionado un botón en el celular y miren cómo cambia la etiqueta `Orden`.
 
 :::pregunta id="g7a-p1"
 Mientras presionamos **Adelante** con la velocidad en 150, ¿qué texto muestra la etiqueta `Orden`? ¿Qué texto muestra al soltar?
@@ -47,10 +59,10 @@ Mientras presionamos **Adelante** con la velocidad en 150, ¿qué texto muestra 
 
 ## Parte 2 · Instalar la app en el celular (25 min)
 
-1. En App Inventor: **Generar → App de Android (.apk)**. Esperen a que la barra llegue al 100 %.
+1. En App Inventor, toquen el menú **Generar** (en la barra de arriba, al lado de **Conectar**) y elijan **App de Android (.apk)**. Esperen a que la barra llegue al 100 %.
 2. Aparece un aviso con un **código QR**, que sirve por 2 horas.
 
-[IMAGEN 7.4A: aviso de App Inventor con el botón de descarga y el código QR de la app]
+[IMAGEN 7.3A: aviso de App Inventor con el botón de descarga y el código QR de la app]
 
 3. Escaneen el código con la cámara del celular (o con una app de lector QR) y abran el enlace para descargar la app.
 4. Abran el archivo descargado. Android pregunta si permite instalar apps de este origen: toquen **Ajustes**, activen **Permitir** y vuelvan a tocar **Instalar**.
@@ -71,6 +83,8 @@ Todavía no hay robot, pero la etiqueta `Orden` nos deja probar los botones:
 
 Si un botón no hace lo esperado, revisen sus dos números en los bloques (Guía 6, Parte 4).
 
+Cuando cambien algo en los bloques, no hace falta volver a instalar para probarlo: con el **AI Companion** (**Conectar → AI Companion**, como en la Guía 6) el cambio se ve en vivo. El APK nuevo se genera al final, en la Parte 4.
+
 ## Parte 3 · La telemetría (40 min)
 
 El robot envía `T,bat,dist` tres veces por segundo. La app tiene que recibirlo, **separarlo por las comas** y mostrar cada dato. Si el mensaje es `T,7.4,32`, separado queda una lista de tres elementos:
@@ -82,7 +96,7 @@ El robot envía `T,bat,dist` tres veces por segundo. La app tiene que recibirlo,
 
 Armen estos bloques: dos variables nuevas y el procedimiento `leerTelemetria`.
 
-[IMAGEN 7.2A: variables mensaje y datos y procedimiento leerTelemetria]
+[IMAGEN 7.4A: variables mensaje y datos y procedimiento leerTelemetria]
 
 | Bloque | ¿Dónde está? |
 | --- | --- |
@@ -98,7 +112,7 @@ Armen estos bloques: dos variables nuevas y el procedimiento `leerTelemetria`.
 
 Ahora agreguen la lectura en el **Reloj1.Temporizador**. Debajo de **llamar ClienteBluetooth1.EnviarTexto**, dentro del **entonces**, pongan un **si** nuevo:
 
-[IMAGEN 7.3A: bloque Reloj1.Temporizador final, que llama a leerTelemetria cuando hay datos]
+[IMAGEN 7.5A: bloque Reloj1.Temporizador final, que llama a leerTelemetria cuando hay datos]
 
 - **llamar ClienteBluetooth1.BytesDisponiblesParaRecibir** está en el cajón **ClienteBluetooth1**: dice cuántas letras llegaron y están esperando.
 - **Llamar leerTelemetria** está en **Procedimientos**.
@@ -145,6 +159,8 @@ Foto de la app abierta en el celular.
 - La instalación pide permitir "apps de origen desconocido" en ese celular: pedir permiso a la familia si el celular no es del estudiante. Los nombres exactos cambian un poco según la marca de Android.
 - Si la computadora no tiene internet, o el QR no abre, el botón **Descargar .apk** del mismo aviso baja el archivo a la computadora y se puede pasar al celular por cable.
 - La telemetría no se puede probar hoy: se prueba con el robot en la Guía 11.
+- **Capturas paso a paso (13 de noviembre):** la 7.1A muestra el globo del engranaje de **unir** con cuatro cadenas. Las imágenes de los bloques terminados se renumeraron en el orden en que aparecen (7.2A a 7.5A).
+- **AI Companion (Guía 6):** sirve para probar los botones y la etiqueta `Orden` sin instalar el APK. El APK sigue siendo necesario para usar la app sin la computadora (en la pista, Guía 11). El Companion también puede usar el Bluetooth, pero esto no se probó: para la conexión con el robot, usar el APK.
 - `recortar` (trim) y `recorta` (split) tienen casi el mismo nombre en español: revisar que usen cada uno en su lugar.
 - `RecibirTexto` con −1 lee hasta el `ByteDelimitador` (10), que se puso en la Guía 6. Si se les olvidó, la telemetría no aparece.
 - g7a-p1: `M,150,150`; al soltar, `M,0,0`.

@@ -5,6 +5,9 @@
   "descripcion": "Un puente a escala que se abre solo al detectar un barco, con semáforo, alarma y torres reforzadas con triángulos.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "stl": {
+    "carpeta": "Puente levadizo - STL para imprimir"
+  },
   "versiones": [
     {
       "id": "blender",

@@ -5,6 +5,9 @@
   "descripcion": "Un invernadero que riega la planta cuando la tierra está seca, abre la ventana con calor y enciende la luz con temporizador.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "stl": {
+    "carpeta": "Mini invernadero - STL para imprimir"
+  },
   "versiones": [
     {
       "id": "blender",

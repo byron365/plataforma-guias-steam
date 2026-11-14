@@ -3,6 +3,7 @@
 //   · Las guías desbloqueadas del equipo, en PDF y en blanco (servidor/pdf.js).
 //   · La lista de materiales del grupo: el Word que hizo el docente con
 //     herramientas/lista_materiales.py, en PDF si existe (listas_a_pdf.py).
+//   · Las piezas 3D (.stl) de su proyecto, las mismas que imprime el docente.
 // Cada equipo solo ve lo suyo: su proyecto, su versión y sus guías desbloqueadas.
 // ============================================================
 const fs = require('fs');
@@ -74,6 +75,30 @@ function listaDeMateriales(sesion, proyecto) {
 }
 
 // ------------------------------------------------------------
+// Piezas 3D: los .stl de la carpeta del proyecto ("stl.carpeta" en su proyecto.json), sin las
+// subcarpetas (las versiones anteriores y los GCODE se quedan en la PC del docente). "stl.quitar"
+// dice qué piezas no usa cada versión: { "practica": ["dispensador_torre_liquido"] }.
+// ------------------------------------------------------------
+function piezasDelEquipo(sesion, proyecto) {
+  const stl = proyecto.stl;
+  if (!stl || !stl.carpeta) return [];
+  const carpeta = path.join(RUTAS.stl, path.basename(stl.carpeta)); // basename: sin "..\" ni rutas raras
+  if (!fs.existsSync(carpeta)) return [];
+  const quitar = new Set(((stl.quitar || {})[sesion.version || ''] || []).map((n) => n.toLowerCase()));
+  return fs.readdirSync(carpeta, { withFileTypes: true })
+    .filter((f) => f.isFile() && /\.stl$/i.test(f.name) && !quitar.has(f.name.replace(/\.stl$/i, '').toLowerCase()))
+    .map((f) => ({ archivo: f.name, ruta: path.join(carpeta, f.name), bytes: fs.statSync(path.join(carpeta, f.name)).size }))
+    .sort((a, b) => a.archivo.localeCompare(b.archivo, 'es'));
+}
+
+// "puente_orilla_A.stl" → "Orilla A": sin el nombre del proyecto del inicio y con espacios
+function nombreDePieza(archivo) {
+  const partes = archivo.replace(/\.stl$/i, '').split('_');
+  const texto = (partes.length > 1 ? partes.slice(1) : partes).join(' ');
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+// ------------------------------------------------------------
 // Rutas
 // ------------------------------------------------------------
 router.get('/', (req, res) => {
@@ -83,6 +108,17 @@ router.get('/', (req, res) => {
   res.json({
     materiales: lista ? { tipo: lista.pdf ? 'pdf' : 'docx' } : null,
     guias: guiasDescargables(req.sesion, proyecto).map((g) => ({ numero: g.numero, titulo: g.titulo, sabado: g.sabado })),
+    piezas: piezasDelEquipo(req.sesion, proyecto).map((p) => ({ archivo: p.archivo, nombre: nombreDePieza(p.archivo), kb: Math.max(1, Math.round(p.bytes / 1024)) })),
+  });
+});
+
+router.get('/stl/:archivo', (req, res) => {
+  const proyecto = obtenerProyecto(req.sesion.proyecto);
+  // Solo un archivo de la lista del equipo: así no se puede pedir otro proyecto ni salir de la carpeta
+  const pieza = proyecto && piezasDelEquipo(req.sesion, proyecto).find((p) => p.archivo === req.params.archivo);
+  if (!pieza) return res.status(404).json({ error: 'No se encontró esa pieza.' });
+  res.download(pieza.ruta, pieza.archivo, (error) => {
+    if (error && !res.headersSent) res.status(404).json({ error: 'No se encontró esa pieza.' });
   });
 });
 
@@ -117,4 +153,4 @@ router.get('/guias/:numero', async (req, res, next) => {
   }
 });
 
-module.exports = { router, listaDeMateriales, nombreDeVersion };
+module.exports = { router, listaDeMateriales, nombreDeVersion, piezasDelEquipo };

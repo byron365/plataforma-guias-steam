@@ -5,6 +5,14 @@
   "descripcion": "Un dispensador que sirve porciones de croquetas con un botón o con horario, según el tamaño de la mascota.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "stl": {
+    "carpeta": "Dispensador doble - STL para imprimir",
+    "quitar": {
+      "practica": [
+        "dispensador_torre_liquido"
+      ]
+    }
+  },
   "versiones": [
     {
       "id": "blender",

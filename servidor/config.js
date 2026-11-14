@@ -48,6 +48,10 @@ cargarEnv();
 // Está fuera del repositorio porque los archivos llevan el nombre del grupo.
 RUTAS.listas = path.resolve(process.env.LISTAS_DIR || path.join(RAIZ, '..', 'Listas de materiales'));
 
+// Carpeta con los STL para imprimir de cada proyecto ("<proyecto> - STL para imprimir"), generados con
+// herramientas/<proyecto>_stl.py. Está fuera del repositorio; cada proyecto dice su carpeta en "stl" de su proyecto.json.
+RUTAS.stl = path.resolve(process.env.STL_DIR || path.join(RAIZ, '..', 'STL'));
+
 module.exports = {
   RUTAS,
   PUERTO: parseInt(process.env.PUERTO, 10) || 3000,

@@ -43,14 +43,41 @@ Guarda cada imagen en esta carpeta con el nombre exacto. Si falta, la plataforma
 | Archivo | Descripción |
 | --- | --- |
 | IMAGEN 2.1A.png ✅ | la 2.1P sin el mando |
-| IMAGEN 6.1A.png ✅ | Diseñador de App Inventor con la pantalla de la app terminada |
-| IMAGEN 6.2A.png ✅ | bloques Conectar.AntesDeSelección y Conectar.DespuésDeSelección |
-| IMAGEN 6.3A.png ✅ | variables izq y der, procedimiento mover y Velocidad.PosiciónCambiada |
-| IMAGEN 6.4A.png ✅ | bloques Presionar y Soltar de los cuatro botones |
-| IMAGEN 7.1A.png ✅ | Reloj1.Temporizador que arma y envía la orden |
-| IMAGEN 7.2A.png ✅ | variables mensaje y datos y procedimiento leerTelemetria |
-| IMAGEN 7.3A.png ✅ | Reloj1.Temporizador final, con la lectura de la telemetría |
-| IMAGEN 7.4A.png ✅ | aviso de App Inventor al generar el APK (con el código QR tapado) |
+| IMAGEN 6.1A.png ✅ | menú Proyectos → Comenzar un proyecto nuevo |
+| IMAGEN 6.2A.png ✅ | aviso para el nombre del proyecto y Aceptar |
+| IMAGEN 6.3A.png ✅ | Diseñador con la pantalla de la app terminada y sus partes numeradas (Paleta, Visor, Componentes, Cambiar nombre, Propiedades, Diseñador y Bloques) |
+| IMAGEN 6.4A.png ✅ | Screen1: DispHorizontal en Centro y Título |
+| IMAGEN 6.5A.png ✅ | arrastrar el SelectorDeLista al Visor |
+| IMAGEN 6.6A.png ✅ | Cambiar nombre: SelectorDeLista1 → Conectar |
+| IMAGEN 6.7A.png ✅ | propiedad Texto del botón Conectar |
+| IMAGEN 6.8A.png ✅ | Buscar Componentes "tabular" y arrastrar la DisposiciónTabular |
+| IMAGEN 6.9A.png ✅ | Columnas 3 y Filas 3 |
+| IMAGEN 6.10A.png ✅ | los cuatro botones en cruz y sus nombres en Componentes |
+| IMAGEN 6.11A.png ✅ | deslizador Velocidad: ValorMax, ValorMin y PosiciónDelPulsador |
+| IMAGEN 6.12A.png ✅ | Conectividad → ClienteBluetooth y Componentes no visibles |
+| IMAGEN 6.13A.png ✅ | ClienteBluetooth1: ByteDelimitador 10 y DesconectarSiError |
+| IMAGEN 6.14A.png ✅ | Reloj1: IntervaloDelTemporizador 100 |
+| IMAGEN 6.15A.png ✅ | menú Conectar → AI Companion |
+| IMAGEN 6.16A.png ✅ | aviso del Companion con el código QR y el código de 6 letras tapados |
+| IMAGEN 6.17A.png ✅ | pantalla de Bloques con sus partes numeradas (correo tapado) |
+| IMAGEN 6.18A.png ✅ | cajón Conectar y el bloque AntesDeSelección |
+| IMAGEN 6.19A.png ✅ | cajón Control y el bloque si / entonces / else |
+| IMAGEN 6.20A.png ✅ | el si encajado en ejecutar |
+| IMAGEN 6.21A.png ✅ | bloques Conectar.AntesDeSelección y Conectar.DespuésDeSelección (antes 6.2A) |
+| IMAGEN 6.22A.png ✅ | cajón Variables e inicializar global |
+| IMAGEN 6.23A.png ✅ | globo del engranaje de mover con las entradas izquierdo y derecho |
+| IMAGEN 6.24A.png ✅ | tomar izquierdo al pasar el mouse sobre la entrada |
+| IMAGEN 6.25A.png ✅ | variables izq y der, procedimiento mover y Velocidad.PosiciónCambiada (antes 6.3A) |
+| IMAGEN 6.26A.png ✅ | bloques Presionar y Soltar de los cuatro botones (antes 6.4A) |
+| IMAGEN 7.1A.png ✅ | globo del engranaje de unir con cuatro cadenas |
+| IMAGEN 7.2A.png ✅ | Reloj1.Temporizador que arma y envía la orden (antes 7.1A) |
+| IMAGEN 7.3A.png ✅ | aviso de App Inventor al generar el APK, con el código QR tapado (antes 7.4A) |
+| IMAGEN 7.4A.png ✅ | variables mensaje y datos y procedimiento leerTelemetria (antes 7.2A) |
+| IMAGEN 7.5A.png ✅ | Reloj1.Temporizador final, con la lectura de la telemetría (antes 7.3A) |
+
+Capturas paso a paso del 13 de noviembre (a pedido de Bairon): proyecto `equipo_ejemplo_robot` armado desde cero en la cuenta
+del docente, recuadros morados numerados como en las capturas de Arduino IDE. Las imágenes de solo bloques (6.23A, 6.24A, 7.1A)
+se sacaron del SVG de Blockly en la propia página. Se renumeraron en el orden en que aparecen en las guías.
 
 **Guías de práctica de armado de la versión con app** (`tipo: armado`, 13 de noviembre). AR = "armado" (la A sola ya es "app"):
 

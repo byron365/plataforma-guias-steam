@@ -5,6 +5,9 @@
   "descripcion": "Una banda con motor DC que detecta el color de cada pieza y la desvía con un servo; dos Arduino comunicados por I2C.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "stl": {
+    "carpeta": "Banda clasificadora - STL para imprimir"
+  },
   "versiones": [
     {
       "id": "completa",

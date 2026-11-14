@@ -5,6 +5,15 @@
   "descripcion": "Un laberinto con canica que se inclina en dos ejes con un joystick, con cronómetro, récord y torneo.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "stl": {
+    "carpeta": "Laberinto - STL para imprimir",
+    "quitar": {
+      "practica": [
+        "laberinto_soporte_pantalla",
+        "laberinto_soporte_sensor"
+      ]
+    }
+  },
   "versiones": [
     {
       "id": "blender",

@@ -5,6 +5,9 @@
   "descripcion": "Una cancha a escala con sensores en cada portería, marcador OLED con tiempo y buzzer para celebrar los goles.",
   "docente": "Bairon Alas",
   "imagen": "imagenes/IMAGEN_1.1.png",
+  "stl": {
+    "carpeta": "Mini futbol - STL para imprimir"
+  },
   "versiones": [
     {
       "id": "blender",

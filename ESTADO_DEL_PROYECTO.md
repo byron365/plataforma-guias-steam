@@ -228,6 +228,16 @@ Respaldo del código y las guías en GitHub: https://github.com/byron365/platafo
 >         7.1A–7.4A con el programa del control. Campos g7a-… (antes g6p-sentido, g6p-inclinacion, g6p-p1, g6p-foto).
 >       - **Guía 8**: la antigua 7 (el torneo), campos g8p-…. Referencias corregidas en la Guía 4.
 > - [x] **Las guías de armado de los 8 proyectos quedaron hechas (13 de noviembre).** Falta la revisión de Bairon de cada uno.
+> - [x] **Robot con app, guías 6 y 7 paso a paso (13 de noviembre, a pedido de Bairon):** los estudiantes usan App Inventor por
+>       primera vez, así que cada acción tiene su captura con recuadros morados numerados (31 imágenes: 6.1A–6.26A y 7.1A–7.5A;
+>       las de los bloques terminados se renumeraron en el orden de lectura). Hechas armando desde cero `equipo_ejemplo_robot` en la
+>       cuenta del docente (al final quedó con los 141 bloques de `equipo_robot_app`, sin avisos). Correo y códigos QR tapados.
+>       Guía 6: crear el proyecto, cada pieza (poner, cambiar nombre, cambiar datos), las invisibles, la pantalla de Bloques,
+>       el primer bloque paso a paso, el engranaje de `mover` y el `tomar`. Nueva sección **"Ver la app en vivo en el
+>       celular"** con **MIT AI2 Companion** (Google Play, misma Wi-Fi, Conectar → AI Companion, QR o código de 6 letras), sin
+>       tiempo propio. Guía 7: el engranaje de `unir`, Generar paso a paso y probar con el Companion antes del APK.
+>       [ ] Probar el Companion con un celular en la Wi-Fi de la academia (no se probó). [ ] Revisión de Bairon.
+>       Marcas: `herramientas/app_inventor/anotar_appinventor.py` (las capturas originales no se suben: algunas muestran el correo).
 > - **Cómo se hace cada proyecto (receta del 13 de noviembre):**
 >       1. Ver en la base (solo lectura) qué versión usa cada equipo y hasta qué guía tiene respuestas: solo se renumeran
 >          guías sin respuestas.
@@ -506,7 +516,7 @@ electrónica en la protoboard y adaptar también la Guía 4).
 - [ ] Guía 5 (normal) dice "pegar la protoboard en el frente de la base": con la torre no hay base aparte (nota al docente en la 4T).
 - [ ] Guía 13T: la escena final todavía menciona el soporte suelto del servo; adaptarla a la torre.
 
-**Descargas del equipo (7 de noviembre, a pedido de Bairon):** apartado **⬇ Descargas** arriba del panel de la bitácora (`publico/js/descargas.js`, rutas en `servidor/descargas.js`). Decisiones de Bairon: guías **en blanco**, lista de materiales desde **los Word ya hechos** y el botón **en la bitácora**. Las guías se imprimen a PDF con Microsoft Edge sin ventanas (`servidor/pdf.js` + `publico/css/imprimir.css`; caché en la carpeta temporal de Windows); las listas, con Word (`herramientas/listas_a_pdf.py`, que `lista_materiales.py` llama solo). Las 9 listas existentes ya tienen su PDF. Probado: las 90 guías de las versiones en uso salen en PDF sin errores (1 a 2 s cada una, máx. 1,9 MB); cada equipo ve solo sus guías desbloqueadas; las bloqueadas y sin sesión se rechazan; se ve bien a 390 px y en los dos temas. Mini fútbol no tiene lista de materiales y un equipo de la banda tampoco tiene la suya: a esos no les aparece. Hay que reiniciar el servidor para que funcione.
+**Descargas del equipo (7 de noviembre, a pedido de Bairon):** apartado **⬇ Descargas** arriba del panel de la bitácora (`publico/js/descargas.js`, rutas en `servidor/descargas.js`). Decisiones de Bairon: guías **en blanco**, lista de materiales desde **los Word ya hechos** y el botón **en la bitácora**. Las guías se imprimen a PDF con Microsoft Edge sin ventanas (`servidor/pdf.js` + `publico/css/imprimir.css`; caché en la carpeta temporal de Windows); las listas, con Word (`herramientas/listas_a_pdf.py`, que `lista_materiales.py` llama solo). Las 9 listas existentes ya tienen su PDF. Probado: las 90 guías de las versiones en uso salen en PDF sin errores (1 a 2 s cada una, máx. 1,9 MB); cada equipo ve solo sus guías desbloqueadas; las bloqueadas y sin sesión se rechazan; se ve bien a 390 px y en los dos temas. Mini fútbol no tiene lista de materiales y un equipo de la banda tampoco tiene la suya: a esos no les aparece. Hay que reiniciar el servidor para que funcione. **Piezas 3D (13 de noviembre, a pedido de Bairon):** el apartado también da los **STL** del proyecto del equipo, uno por pieza, desde `..\STL\<proyecto> - STL para imprimir\` (sin las subcarpetas de versiones anteriores ni los GCODE). Cada proyecto dice su carpeta en `"stl"` de su `proyecto.json`, con `"quitar"` por versión: el dispensador sencillo no recibe la torre del líquido, el robot con app no recibe la caja ni la tapa del mando y el laberinto práctica no recibe los soportes de la pantalla ni del sensor. La Garra no tiene carpeta de STL. Otra carpeta con `STL_DIR` en el `.env`. Hay que reiniciar el servidor.
 
 **Visor de imágenes (6 de noviembre, a pedido de Bairon):** cada imagen de las guías lleva un botón **Ampliar** (`publico/js/visor-imagen.js`, sin librerías). Abre la imagen a pantalla completa; se acerca con − y +, rueda, doble clic o pellizco, se mueve arrastrando o con las flechas, y se cierra con ✕, Esc o tocando el fondo. Funciona en las guías de los estudiantes y en la vista de guía del panel docente. Clases `ampliador-…` (`visor-…` ya la usa el panel). Probado en Chrome con mouse y teclado, a 390 px de ancho y en los dos temas; el pellizco, con eventos simulados.
 
@@ -666,6 +676,11 @@ y base del joystick); sin el juego en Wokwi (el código va en la Guía 6); torre
   - El soporte de la pantalla quedó igual al del mini fútbol (ventana de 23 × 14, agujero de 12,8; Guía 5T).
   - **STL de referencia nuevos:** `laberinto_marco.stl`, `laberinto_torre_servo.stl` y `laberinto_torre_eje.stl` (el tablero no,
     porque cada equipo diseña su laberinto). STL anteriores en `..\STL\Laberinto - STL para imprimir\anteriores (21 de octubre)`.
+  - **Tablero de ejemplo (13 de noviembre, a pedido de Bairon):** `laberinto_tablero.stl` con el laberinto de papel de la
+    imagen 2.1 (13 paredes, salida en A1, meta en G7), hecho como en las guías 2 y 3 (placa de 180 × 180 × 3, bordes y
+    paredes de 3 × 12, agujero de la meta de 8 mm, bisagra con agujero de 4 mm): 180 × 186 × 15 mm, 155 cm³, sólido cerrado.
+    Revisado visto desde arriba contra la imagen 2.1. Sale en Descargas junto con las demás piezas. Se genera solo con
+    `… --python herramientas/laberinto_stl.py -- "<carpeta>" laberinto_tablero` (sin nombres de piezas, genera todas).
   - [ ] Si el equipo ya imprimió el marco con el lado de adelante de 6 mm, reimprimirlo (o usar el de referencia).
     [x] Marco y propuesta actualizados en Tinkercad. [ ] Imagen 3.2T.
 - [ ] Imagen 6.1T: foto real del sensor en su soporte.
